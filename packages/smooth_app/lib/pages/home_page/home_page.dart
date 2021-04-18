@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:openfoodfacts/model/Attribute.dart';
 import 'package:openfoodfacts/utils/PnnsGroups.dart';
 import 'package:provider/provider.dart';
+import 'package:smooth_app/data_models/home_page_widget_model.dart';
 import 'package:smooth_ui_library/widgets/smooth_card.dart';
 import 'package:smooth_app/bottom_sheet_views/user_preferences_view.dart';
 import 'package:smooth_app/cards/product_cards/product_list_preview.dart';
@@ -55,32 +56,13 @@ class _HomePageState extends State<HomePage> {
     final ThemeData themeData = Theme.of(context);
     final ColorScheme colorScheme = themeData.colorScheme;
     final AppLocalizations appLocalizations = AppLocalizations.of(context);
-    return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          children: const <Widget>[
-            Icon(Icons.pets),
-            SizedBox(width: 10.0),
-            Text('Smoothie'),
-          ],
-        ),
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.settings),
-            onPressed: () async {
-              await Navigator.push<Widget>(
-                context,
-                MaterialPageRoute<Widget>(
-                  builder: (BuildContext context) => ProfilePage(),
-                ),
-              );
-            },
-          ),
-        ],
-      ),
-      body: ListView(
-        children: <Widget>[
-          TextSearchWidget(
+
+    final HomePageWidgetList homePageBody = HomePageWidgetList(
+      activated: <HomePageWidgetModel>[
+        HomePageWidgetModel(
+          index: 0,
+          tag: 'search-widget',
+          child: TextSearchWidget(
             color: SmoothTheme.getColor(
               colorScheme,
               Colors.red,
@@ -88,7 +70,11 @@ class _HomePageState extends State<HomePage> {
             ),
             daoProduct: _daoProduct,
           ),
-          _getProductListCard(
+        ),
+        HomePageWidgetModel(
+          index: 1,
+          tag: 'my-lists-widget',
+          child: _getProductListCard(
             <String>[ProductList.LIST_TYPE_USER_DEFINED],
             appLocalizations.my_lists,
             Icon(
@@ -101,23 +87,39 @@ class _HomePageState extends State<HomePage> {
             ),
             appLocalizations,
           ),
-          _getPantryCard(
+        ),
+        HomePageWidgetModel(
+          index: 2,
+          tag: 'my-pantries-widget',
+          child: _getPantryCard(
             userPreferences,
             _daoProduct,
             PantryType.PANTRY,
             appLocalizations,
           ),
-          _getPantryCard(
+        ),
+        HomePageWidgetModel(
+          index: 3,
+          tag: 'my-shopping-lists-widget',
+          child: _getPantryCard(
             userPreferences,
             _daoProduct,
             PantryType.SHOPPING,
             appLocalizations,
           ),
-          _getRankingPreferences(
+        ),
+        HomePageWidgetModel(
+          index: 4,
+          tag: 'food-ranking-parameter-widget',
+          child: _getRankingPreferences(
             productPreferences,
             appLocalizations,
           ),
-          ProductListPreview(
+        ),
+        HomePageWidgetModel(
+          index: 5,
+          tag: 'recently-seen-products-widget',
+          child: ProductListPreview(
             daoProductList: _daoProductList,
             productList: ProductList(
               listType: ProductList.LIST_TYPE_HISTORY,
@@ -125,7 +127,11 @@ class _HomePageState extends State<HomePage> {
             ),
             nbInPreview: 5,
           ),
-          GestureDetector(
+        ),
+        HomePageWidgetModel(
+          index: 6,
+          tag: 'food-categories-widget',
+          child: GestureDetector(
             child: SmoothCard(
               child: ListTile(
                 leading: Icon(
@@ -157,7 +163,11 @@ class _HomePageState extends State<HomePage> {
               );
             },
           ),
-          _getProductListCard(
+        ),
+        HomePageWidgetModel(
+          index: 7,
+          tag: 'search-history-widget',
+          child: _getProductListCard(
             <String>[
               ProductList.LIST_TYPE_HTTP_SEARCH_GROUP,
               ProductList.LIST_TYPE_HTTP_SEARCH_KEYWORDS,
@@ -174,7 +184,52 @@ class _HomePageState extends State<HomePage> {
             ),
             appLocalizations,
           ),
+        ),
+      ],
+      deactivated: <HomePageWidgetModel>[
+        HomePageWidgetModel(
+          index: 8,
+          tag: 'test',
+          child: const SmoothCard(
+            child: Center(
+              child: Text('Test'),
+            ),
+          ),
+        )
+      ],
+    );
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Row(
+          children: const <Widget>[
+            Icon(Icons.pets),
+            SizedBox(width: 10.0),
+            Text('Smoothie'),
+          ],
+        ),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () async {
+              await Navigator.push<Widget>(
+                context,
+                MaterialPageRoute<Widget>(
+                  builder: (BuildContext context) => ProfilePage(),
+                ),
+              );
+            },
+          ),
         ],
+      ),
+      body: ListView.builder(
+        itemCount: homePageBody.activated.length,
+        itemBuilder: (BuildContext context, int index) {
+          return homePageBody.activated
+              .singleWhere(
+                  (HomePageWidgetModel element) => element.index == index)
+              .getWidget(context, false, body: homePageBody);
+        },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
