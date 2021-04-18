@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:sentry/sentry.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:smooth_app/database/local_database.dart';
-import 'package:smooth_app/pages/home_page.dart';
+import 'package:smooth_app/pages/home_page/home_page.dart';
 import 'package:openfoodfacts/personalized_search/product_preferences_selection.dart';
 import 'package:smooth_app/data_models/user_preferences.dart';
 import 'package:smooth_app/themes/smooth_theme.dart';
