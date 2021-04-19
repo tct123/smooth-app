@@ -228,7 +228,7 @@ class _HomePageState extends State<HomePage> {
           return homePageBody.activated
               .singleWhere(
                   (HomePageWidgetModel element) => element.index == index)
-              .getWidget(context, false, body: homePageBody);
+              .getWidget(context: context, editMode: false, body: homePageBody);
         },
       ),
       floatingActionButton: FloatingActionButton(
