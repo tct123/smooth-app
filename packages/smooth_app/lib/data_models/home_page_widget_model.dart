@@ -21,7 +21,7 @@ class HomePageWidgetModel {
       tag: tag,
       key: ValueKey<String>(tag),
       child: StatefulBuilder(
-        builder: (BuildContext context, Function setState) {
+        builder: (BuildContext context, StateSetter setState) {
           return Container(
             padding: editMode
                 ? const EdgeInsets.fromLTRB(10, 5, 10, 5)
@@ -45,7 +45,7 @@ class HomePageWidgetModel {
                     child: GestureDetector(
                       onTap: () {
                         activated = !activated;
-                        setState();
+                        setState(() {});
                       },
                       child: CircleAvatar(
                         child: Icon(

@@ -20,15 +20,19 @@ class _HomeReorderPageState extends State<HomeReorderPage> {
         controller: ModalScrollController.of(context),
         itemCount: widget.body.length,
         itemBuilder: (BuildContext context, int index) {
-          return CheckboxListTile(
-            title: Text(widget.body[index].tag),
-            value: widget.body[index].activated,
-            controlAffinity: ListTileControlAffinity.trailing,
-            onChanged: (bool value) {
-              setState(() {
-                print(value);
-                widget.body[index].activated = value;
-              });
+          return StatefulBuilder(
+            builder: (BuildContext context, StateSetter setState) {
+              return CheckboxListTile(
+                title: Text(widget.body[index].tag),
+                value: widget.body[index].activated,
+                controlAffinity: ListTileControlAffinity.trailing,
+                onChanged: (bool value) {
+                  setState(() {
+                    print(value);
+                    widget.body[index].activated = value;
+                  });
+                },
+              );
             },
           );
         },

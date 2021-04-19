@@ -220,10 +220,26 @@ class _HomePageState extends State<HomePage> {
               navigationFunction: () async {
                 final List<HomePageWidgetModel> result = await Navigator.push(
                   context,
-                  MaterialPageRoute<List<HomePageWidgetModel>>(
-                    builder: (BuildContext context) => HomeReorderPage(
-                      body: homePageBody,
-                    ),
+                  PageRouteBuilder<List<HomePageWidgetModel>>(
+                    transitionDuration: const Duration(seconds: 0),
+                    transitionsBuilder: (
+                      BuildContext context,
+                      Animation<double> animation,
+                      Animation<double> secAnimation,
+                      Widget child,
+                    ) {
+                      return FadeTransition(
+                        opacity: animation,
+                        child: child,
+                      );
+                    },
+                    pageBuilder: (
+                      BuildContext context,
+                      Animation<double> animation,
+                      Animation<double> secAnimation,
+                    ) {
+                      return HomeReorderPage(body: homePageBody);
+                    },
                   ),
                 );
 
