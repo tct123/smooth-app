@@ -6,7 +6,7 @@ import 'package:smooth_ui_library/buttons/smooth_simple_button.dart';
 
 class HomeReorderPage extends StatefulWidget {
   const HomeReorderPage({@required this.body});
-  final HomePageWidgetList body;
+  final List<HomePageWidgetModel> body;
 
   @override
   _HomeReorderPageState createState() => _HomeReorderPageState();
@@ -14,40 +14,22 @@ class HomeReorderPage extends StatefulWidget {
 
 class _HomeReorderPageState extends State<HomeReorderPage> {
   Future<void> showSheet() async {
-    for (final HomePageWidgetModel i in widget.body.deactivated) {
-      print(i.tag);
-    }
     return showMaterialModalBottomSheet(
       context: context,
       builder: (BuildContext context) => ListView.builder(
         controller: ModalScrollController.of(context),
-        itemCount:
-            widget.body.activated.length + widget.body.deactivated.length,
+        itemCount: widget.body.length,
         itemBuilder: (BuildContext context, int index) {
-          HomePageWidgetModel item;
-          if (index < widget.body.activated.length) {
-            item = widget.body.activated.singleWhere(
-                (HomePageWidgetModel element) => element.index == index);
-          } else {
-            item = widget.body.deactivated.singleWhere(
-                (HomePageWidgetModel element) => element.index == index);
-          }
-          return ListTile(
-            title: Text(item.tag),
-            trailing: Checkbox(
-              value: widget.body.activated.contains(item),
-              onChanged: (bool value) {
-                setState(() {
-                  if (widget.body.activated.contains(item)) {
-                    widget.body.activated.remove(item);
-                    widget.body.deactivated.insert(0, item);
-                  } else {
-                    widget.body.deactivated.remove(item);
-                    widget.body.activated.insert(0, item);
-                  }
-                });
-              },
-            ),
+          return CheckboxListTile(
+            title: Text(widget.body[index].tag),
+            value: widget.body[index].activated,
+            controlAffinity: ListTileControlAffinity.trailing,
+            onChanged: (bool value) {
+              setState(() {
+                print(value);
+                widget.body[index].activated = value;
+              });
+            },
           );
         },
       ),
@@ -59,23 +41,19 @@ class _HomeReorderPageState extends State<HomeReorderPage> {
     return Scaffold(
       appBar: AppBar(title: const Text('Reorder')),
       body: ReorderableListView.builder(
-        itemCount: widget.body.activated.length,
+        itemCount: widget.body.length,
         onReorder: (int oldIndex, int newIndex) {
           setState(() {
             if (newIndex > oldIndex) {
               newIndex = newIndex - 1;
             }
+
+            final HomePageWidgetModel item = widget.body.removeAt(oldIndex);
+            widget.body.insert(newIndex, item);
           });
         },
         itemBuilder: (BuildContext context, int index) {
-          return widget.body.activated
-              .singleWhere(
-                  (HomePageWidgetModel element) => element.index == index)
-              .getWidget(
-                context: context,
-                editMode: true,
-                activated: true,
-              );
+          return widget.body[index].getWidget(context: context, editMode: true);
         },
       ),
       bottomNavigationBar: BottomAppBar(

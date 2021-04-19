@@ -32,6 +32,8 @@ import 'package:smooth_app/themes/smooth_theme.dart';
 import 'package:smooth_app/pages/text_search_widget.dart';
 import 'package:smooth_app/pages/product/common/smooth_chip.dart';
 
+import 'home_reorder_page.dart';
+
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -45,6 +47,8 @@ class _HomePageState extends State<HomePage> {
   DaoProductList _daoProductList;
   DaoProduct _daoProduct;
 
+  List<HomePageWidgetModel> homePageBody = <HomePageWidgetModel>[];
+
   @override
   Widget build(BuildContext context) {
     final LocalDatabase localDatabase = context.watch<LocalDatabase>();
@@ -57,147 +61,130 @@ class _HomePageState extends State<HomePage> {
     final ColorScheme colorScheme = themeData.colorScheme;
     final AppLocalizations appLocalizations = AppLocalizations.of(context);
 
-    final HomePageWidgetList homePageBody = HomePageWidgetList(
-      activated: <HomePageWidgetModel>[
-        HomePageWidgetModel(
-          index: 0,
-          tag: 'search-widget',
-          child: TextSearchWidget(
-            color: SmoothTheme.getColor(
-              colorScheme,
-              Colors.red,
-              _COLOR_DESTINATION_FOR_ICON,
-            ),
-            daoProduct: _daoProduct,
-          ),
-        ),
-        HomePageWidgetModel(
-          index: 1,
-          tag: 'my-lists-widget',
-          child: _getProductListCard(
-            <String>[ProductList.LIST_TYPE_USER_DEFINED],
-            appLocalizations.my_lists,
-            Icon(
-              Icons.list,
+    if (homePageBody.isEmpty) {
+      homePageBody.addAll(
+        <HomePageWidgetModel>[
+          HomePageWidgetModel(
+            tag: 'search-widget',
+            child: TextSearchWidget(
               color: SmoothTheme.getColor(
                 colorScheme,
-                Colors.purple,
+                Colors.red,
                 _COLOR_DESTINATION_FOR_ICON,
               ),
+              daoProduct: _daoProduct,
             ),
-            appLocalizations,
           ),
-        ),
-        HomePageWidgetModel(
-          index: 2,
-          tag: 'my-pantries-widget',
-          child: _getPantryCard(
-            userPreferences,
-            _daoProduct,
-            PantryType.PANTRY,
-            appLocalizations,
-          ),
-        ),
-        HomePageWidgetModel(
-          index: 3,
-          tag: 'my-shopping-lists-widget',
-          child: _getPantryCard(
-            userPreferences,
-            _daoProduct,
-            PantryType.SHOPPING,
-            appLocalizations,
-          ),
-        ),
-        HomePageWidgetModel(
-          index: 4,
-          tag: 'food-ranking-parameter-widget',
-          child: _getRankingPreferences(
-            productPreferences,
-            appLocalizations,
-          ),
-        ),
-        HomePageWidgetModel(
-          index: 5,
-          tag: 'recently-seen-products-widget',
-          child: ProductListPreview(
-            daoProductList: _daoProductList,
-            productList: ProductList(
-              listType: ProductList.LIST_TYPE_HISTORY,
-              parameters: '',
+          HomePageWidgetModel(
+            tag: 'my-lists-widget',
+            child: _getProductListCard(
+              <String>[ProductList.LIST_TYPE_USER_DEFINED],
+              appLocalizations.my_lists,
+              Icon(
+                Icons.list,
+                color: SmoothTheme.getColor(
+                  colorScheme,
+                  Colors.purple,
+                  _COLOR_DESTINATION_FOR_ICON,
+                ),
+              ),
+              appLocalizations,
             ),
-            nbInPreview: 5,
           ),
-        ),
-        HomePageWidgetModel(
-          index: 6,
-          tag: 'food-categories-widget',
-          child: GestureDetector(
-            child: SmoothCard(
-              child: ListTile(
-                leading: Icon(
-                  Icons.fastfood,
-                  color: SmoothTheme.getColor(
-                    colorScheme,
-                    Colors.orange,
-                    _COLOR_DESTINATION_FOR_ICON,
+          HomePageWidgetModel(
+            tag: 'my-pantries-widget',
+            child: _getPantryCard(
+              userPreferences,
+              _daoProduct,
+              PantryType.PANTRY,
+              appLocalizations,
+            ),
+          ),
+          HomePageWidgetModel(
+            tag: 'my-shopping-lists-widget',
+            child: _getPantryCard(
+              userPreferences,
+              _daoProduct,
+              PantryType.SHOPPING,
+              appLocalizations,
+            ),
+          ),
+          HomePageWidgetModel(
+            tag: 'food-ranking-parameter-widget',
+            child: _getRankingPreferences(
+              productPreferences,
+              appLocalizations,
+            ),
+          ),
+          HomePageWidgetModel(
+            tag: 'recently-seen-products-widget',
+            child: ProductListPreview(
+              daoProductList: _daoProductList,
+              productList: ProductList(
+                listType: ProductList.LIST_TYPE_HISTORY,
+                parameters: '',
+              ),
+              nbInPreview: 5,
+            ),
+          ),
+          HomePageWidgetModel(
+            tag: 'food-categories-widget',
+            child: GestureDetector(
+              child: SmoothCard(
+                child: ListTile(
+                  leading: Icon(
+                    Icons.fastfood,
+                    color: SmoothTheme.getColor(
+                      colorScheme,
+                      Colors.orange,
+                      _COLOR_DESTINATION_FOR_ICON,
+                    ),
+                  ),
+                  title: Text(appLocalizations.food_categories,
+                      style: Theme.of(context).textTheme.subtitle2),
+                  subtitle: Text(
+                    '${PnnsGroup1.BEVERAGES.name}'
+                    ', ${PnnsGroup1.CEREALS_AND_POTATOES.name}'
+                    ', ${PnnsGroup1.COMPOSITE_FOODS.name}'
+                    ', ${PnnsGroup1.FAT_AND_SAUCES.name}'
+                    ', ${PnnsGroup1.FISH_MEAT_AND_EGGS.name}'
+                    ', ...',
                   ),
                 ),
-                title: Text(appLocalizations.food_categories,
-                    style: Theme.of(context).textTheme.subtitle2),
-                subtitle: Text(
-                  '${PnnsGroup1.BEVERAGES.name}'
-                  ', ${PnnsGroup1.CEREALS_AND_POTATOES.name}'
-                  ', ${PnnsGroup1.COMPOSITE_FOODS.name}'
-                  ', ${PnnsGroup1.FAT_AND_SAUCES.name}'
-                  ', ${PnnsGroup1.FISH_MEAT_AND_EGGS.name}'
-                  ', ...',
+              ),
+              onTap: () async {
+                await Navigator.push<Widget>(
+                  context,
+                  MaterialPageRoute<Widget>(
+                    builder: (BuildContext context) => ChoosePage(),
+                  ),
+                );
+              },
+            ),
+          ),
+          HomePageWidgetModel(
+            tag: 'search-history-widget',
+            child: _getProductListCard(
+              <String>[
+                ProductList.LIST_TYPE_HTTP_SEARCH_GROUP,
+                ProductList.LIST_TYPE_HTTP_SEARCH_KEYWORDS,
+                ProductList.LIST_TYPE_HTTP_SEARCH_CATEGORY,
+              ],
+              appLocalizations.search_history,
+              Icon(
+                Icons.youtube_searched_for,
+                color: SmoothTheme.getColor(
+                  colorScheme,
+                  Colors.yellow,
+                  _COLOR_DESTINATION_FOR_ICON,
                 ),
               ),
-            ),
-            onTap: () async {
-              await Navigator.push<Widget>(
-                context,
-                MaterialPageRoute<Widget>(
-                  builder: (BuildContext context) => ChoosePage(),
-                ),
-              );
-            },
-          ),
-        ),
-        HomePageWidgetModel(
-          index: 7,
-          tag: 'search-history-widget',
-          child: _getProductListCard(
-            <String>[
-              ProductList.LIST_TYPE_HTTP_SEARCH_GROUP,
-              ProductList.LIST_TYPE_HTTP_SEARCH_KEYWORDS,
-              ProductList.LIST_TYPE_HTTP_SEARCH_CATEGORY,
-            ],
-            appLocalizations.search_history,
-            Icon(
-              Icons.youtube_searched_for,
-              color: SmoothTheme.getColor(
-                colorScheme,
-                Colors.yellow,
-                _COLOR_DESTINATION_FOR_ICON,
-              ),
-            ),
-            appLocalizations,
-          ),
-        ),
-      ],
-      deactivated: <HomePageWidgetModel>[
-        HomePageWidgetModel(
-          index: 8,
-          tag: 'test',
-          child: const SmoothCard(
-            child: Center(
-              child: Text('Test'),
+              appLocalizations,
             ),
           ),
-        )
-      ],
-    );
+        ],
+      );
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -223,12 +210,31 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: ListView.builder(
-        itemCount: homePageBody.activated.length,
+        itemCount: homePageBody.length,
         itemBuilder: (BuildContext context, int index) {
-          return homePageBody.activated
-              .singleWhere(
-                  (HomePageWidgetModel element) => element.index == index)
-              .getWidget(context: context, editMode: false, body: homePageBody);
+          if (homePageBody[index].activated) {
+            return homePageBody[index].getWidget(
+              context: context,
+              editMode: false,
+              body: homePageBody,
+              navigationFunction: () async {
+                final List<HomePageWidgetModel> result = await Navigator.push(
+                  context,
+                  MaterialPageRoute<List<HomePageWidgetModel>>(
+                    builder: (BuildContext context) => HomeReorderPage(
+                      body: homePageBody,
+                    ),
+                  ),
+                );
+
+                setState(() {
+                  homePageBody = result;
+                });
+              },
+            );
+          } else {
+            return Container();
+          }
         },
       ),
       floatingActionButton: FloatingActionButton(
