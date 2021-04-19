@@ -5,9 +5,11 @@ class HomePageWidgetList {
   HomePageWidgetList({
     @required this.activated,
     @required this.deactivated,
+    this.indexList,
   });
   final List<HomePageWidgetModel> activated;
   final List<HomePageWidgetModel> deactivated;
+  final List<Map<String, int>> indexList;
 }
 
 class HomePageWidgetModel {
