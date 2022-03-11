@@ -1,58 +1,37 @@
-// Dart imports:
 import 'dart:async';
 
-// Flutter imports:
-import 'package:flutter/material.dart';
-
-// Package imports:
-import 'package:openfoodfacts/model/SearchResult.dart';
 import 'package:openfoodfacts/model/parameter/SearchTerms.dart';
 import 'package:openfoodfacts/openfoodfacts.dart';
-
-// Project imports:
 import 'package:smooth_app/data_models/product_list.dart';
 import 'package:smooth_app/database/product_query.dart';
 
 class KeywordsProductQuery implements ProductQuery {
   KeywordsProductQuery({
-    @required this.keywords,
-    @required this.languageCode,
-    @required this.countryCode,
-    @required this.size,
+    required this.keywords,
+    required this.size,
   });
 
   final String keywords;
-  final String languageCode;
-  final String countryCode;
   final int size;
 
   @override
   Future<SearchResult> getSearchResult() async =>
-      await OpenFoodAPIClient.searchProducts(
-        ProductQuery.SMOOTH_USER,
+      OpenFoodAPIClient.searchProducts(
+        ProductQuery.getUser(),
         ProductSearchQueryConfiguration(
           fields: ProductQuery.fields,
           parametersList: <Parameter>[
             PageSize(size: size),
             SearchTerms(terms: <String>[keywords]),
           ],
-          lc: languageCode,
-          cc: countryCode,
+          language: ProductQuery.getLanguage(),
+          country: ProductQuery.getCountry(),
         ),
       );
 
   @override
-  ProductList getProductList() => ProductList(
-        listType: ProductList.LIST_TYPE_HTTP_SEARCH_KEYWORDS,
-        // TODO(monsieurtanuki): parameters should include languageCode, countryCode and pageSize
-        parameters: keywords,
-      );
+  ProductList getProductList() => ProductList.keywordSearch(keywords);
 
   @override
-  String toString() => 'KeywordsProductQuery('
-      '"$keywords"'
-      ', $languageCode'
-      ', $countryCode'
-      ', $size'
-      ')';
+  String toString() => 'KeywordsProductQuery("$keywords", $size)';
 }

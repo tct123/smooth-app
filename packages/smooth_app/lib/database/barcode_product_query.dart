@@ -1,40 +1,41 @@
-// Dart imports:
 import 'dart:async';
 
-// Flutter imports:
-import 'package:flutter/foundation.dart';
-
-// Package imports:
 import 'package:openfoodfacts/openfoodfacts.dart';
-
-// Project imports:
+import 'package:smooth_app/data_models/fetched_product.dart';
+import 'package:smooth_app/database/dao_product.dart';
 import 'package:smooth_app/database/product_query.dart';
 
 class BarcodeProductQuery {
   BarcodeProductQuery({
-    @required this.barcode,
-    @required this.languageCode,
-    @required this.countryCode,
+    required this.barcode,
+    required this.daoProduct,
   });
 
   final String barcode;
-  final String languageCode;
-  final String countryCode;
+  final DaoProduct daoProduct;
 
-  Future<Product> getProduct() async {
+  Future<FetchedProduct> getFetchedProduct() async {
     final ProductQueryConfiguration configuration = ProductQueryConfiguration(
       barcode,
       fields: ProductQuery.fields,
-      lc: languageCode,
-      cc: countryCode,
+      language: ProductQuery.getLanguage(),
+      country: ProductQuery.getCountry(),
     );
 
-    final ProductResult result =
-        await OpenFoodAPIClient.getProduct(configuration);
+    final ProductResult result;
+    try {
+      result = await OpenFoodAPIClient.getProduct(configuration);
+    } catch (e) {
+      return FetchedProduct.error(FetchedProductStatus.internetError);
+    }
 
     if (result.status == 1) {
-      return result.product;
+      final Product? product = result.product;
+      if (product != null) {
+        await daoProduct.put(product);
+        return FetchedProduct(product);
+      }
     }
-    return null;
+    return FetchedProduct.error(FetchedProductStatus.internetNotFound);
   }
 }

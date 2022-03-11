@@ -31,7 +31,8 @@ platform :android do
         skip_upload_metadata: true,
         skip_upload_images: true,
         skip_upload_screenshots: true,
-        release_status: "draft",
+        skip_upload_changelogs: true,
+        #release_status: "draft",
         version_code: flutter_version(pubspec_location: '../pubspec.yaml')["version_code"],
       )
     end
@@ -47,12 +48,14 @@ platform :android do
           new_version_code = old_version_code.last().to_i + 1
           puts "new_version_code: " + new_version_code.to_s
 
-          new_version_name = get_version_number_from_git_branch(pattern: 'release/#')
-          puts new_version_name.to_s
+          new_version_name = ENV["VERSION_NAME"]
+          new_version_name = new_version_name.to_s
+          new_version_name = new_version_name[8..-1]
+          puts new_version_name
 
           flutter_set_version(
             path_to_yaml: "../pubspec.yaml",
-            version_name: new_version_name.to_s,
+            version_name: new_version_name,
             version_code: new_version_code.to_s,
           )
       end

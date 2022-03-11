@@ -1,32 +1,25 @@
-// Dart imports:
 import 'dart:async';
 
-// Flutter imports:
 import 'package:flutter/material.dart';
-
-// Package imports:
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:provider/provider.dart';
-import 'package:smooth_ui_library/animations/smooth_reveal_animation.dart';
-
-// Project imports:
-import 'package:smooth_app/bottom_sheet_views/group_query_filter_view.dart';
 import 'package:smooth_app/cards/product_cards/smooth_product_card_found.dart';
 import 'package:smooth_app/data_models/product_list_supplier.dart';
 import 'package:smooth_app/data_models/product_query_model.dart';
-import 'package:smooth_app/database/local_database.dart';
+import 'package:smooth_app/helpers/analytics_helper.dart';
 import 'package:smooth_app/pages/personalized_ranking_page.dart';
 import 'package:smooth_app/pages/product/common/product_query_page_helper.dart';
 import 'package:smooth_app/themes/constant_icons.dart';
+import 'package:smooth_app/views/bottom_sheet_views/group_query_filter_view.dart';
+import 'package:smooth_app/widgets/ranking_floating_action_button.dart';
 
 class ProductQueryPage extends StatefulWidget {
   const ProductQueryPage({
-    @required this.productListSupplier,
-    @required this.heroTag,
-    @required this.mainColor,
-    @required this.name,
+    required this.productListSupplier,
+    required this.heroTag,
+    required this.mainColor,
+    required this.name,
     this.lastUpdate,
   });
 
@@ -34,10 +27,10 @@ class ProductQueryPage extends StatefulWidget {
   final String heroTag;
   final Color mainColor;
   final String name;
-  final int lastUpdate;
+  final int? lastUpdate;
 
   @override
-  _ProductQueryPageState createState() => _ProductQueryPageState();
+  State<ProductQueryPage> createState() => _ProductQueryPageState();
 }
 
 class _ProductQueryPageState extends State<ProductQueryPage> {
@@ -45,8 +38,8 @@ class _ProductQueryPageState extends State<ProductQueryPage> {
   final GlobalKey<ScaffoldState> _scaffoldKeyNotEmpty =
       GlobalKey<ScaffoldState>();
 
-  ProductQueryModel _model;
-  int _lastUpdate;
+  late ProductQueryModel _model;
+  int? _lastUpdate;
   final ScrollController _scrollController = ScrollController();
   bool _showTitle = true;
 
@@ -74,13 +67,13 @@ class _ProductQueryPageState extends State<ProductQueryPage> {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<ProductQueryModel>.value(
       value: _model,
-      builder: (BuildContext context, Widget wtf) {
+      builder: (BuildContext context, Widget? wtf) {
         context.watch<ProductQueryModel>();
+        final AppLocalizations appLocalizations = AppLocalizations.of(context)!;
         final Size screenSize = MediaQuery.of(context).size;
         final ThemeData themeData = Theme.of(context);
         if (_model.loadingStatus == LoadingStatus.LOADED) {
-          final LocalDatabase localDatabase = context.watch<LocalDatabase>();
-          _model.process(localDatabase);
+          _model.process(appLocalizations.category_all);
         }
         switch (_model.loadingStatus) {
           case LoadingStatus.POST_LOAD_STARTED:
@@ -96,6 +89,11 @@ class _ProductQueryPageState extends State<ProductQueryPage> {
           case LoadingStatus.COMPLETE:
             if (_model.isNotEmpty()) {
               _showRefreshSnackBar(_scaffoldKeyNotEmpty);
+              AnalyticsHelper.trackSearch(
+                search: widget.name,
+                searchCategory: _model.currentCategory,
+                searchCount: _model.displayProducts?.length,
+              );
               return _getNotEmptyScreen(screenSize, themeData);
             }
             _showRefreshSnackBar(_scaffoldKeyEmpty);
@@ -105,7 +103,7 @@ class _ProductQueryPageState extends State<ProductQueryPage> {
               _getEmptyText(
                 themeData,
                 widget.mainColor,
-                AppLocalizations.of(context).no_product_found,
+                appLocalizations.no_product_found,
               ),
             );
           case LoadingStatus.ERROR:
@@ -115,11 +113,10 @@ class _ProductQueryPageState extends State<ProductQueryPage> {
               _getEmptyText(
                 themeData,
                 widget.mainColor,
-                '${AppLocalizations.of(context).error_occurred}: ${_model.loadingError}',
+                '${appLocalizations.error_occurred}: ${_model.loadingError}',
               ),
             );
         }
-        throw Exception('unknown LoadingStatus: ${_model.loadingStatus}');
       },
     );
   }
@@ -155,54 +152,30 @@ class _ProductQueryPageState extends State<ProductQueryPage> {
   ) =>
       Scaffold(
           key: _scaffoldKeyNotEmpty,
-          floatingActionButton: SmoothRevealAnimation(
-            animationCurve: Curves.easeInOutBack,
-            startOffset: const Offset(0.0, 1.0),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                SizedBox(width: screenSize.width * 0.09),
-                FloatingActionButton.extended(
-                  elevation: 12.0,
-                  icon: SvgPicture.asset(
-                    'assets/actions/smoothie.svg',
-                    width: 24.0,
-                    height: 24.0,
-                    color: widget.mainColor,
-                  ),
-                  label: Text(
-                    AppLocalizations.of(context).myPersonalizedRanking,
-                    style: TextStyle(color: widget.mainColor),
-                  ),
-                  backgroundColor: Colors.white,
-                  onPressed: () {
-                    Navigator.push<Widget>(
-                      context,
-                      MaterialPageRoute<Widget>(
-                        builder: (BuildContext context) =>
-                            PersonalizedRankingPage(
-                          _model.supplier.getProductList(),
-                        ),
-                      ),
-                    );
-                  },
+          floatingActionButton: RankingFloatingActionButton(
+            color: widget.mainColor,
+            onPressed: () => Navigator.push<Widget>(
+              context,
+              MaterialPageRoute<Widget>(
+                builder: (BuildContext context) => PersonalizedRankingPage(
+                  productList: _model.supplier.getProductList(),
+                  title: widget.name,
                 ),
-              ],
+              ),
             ),
           ),
           body: Stack(
             children: <Widget>[
               _getHero(screenSize, themeData),
               ListView.builder(
-                itemCount: _model.displayProducts.length,
+                itemCount: _model.displayProducts!.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 12.0, vertical: 8.0),
                     child: SmoothProductCardFound(
-                      heroTag: _model.displayProducts[index].barcode,
-                      product: _model.displayProducts[index],
+                      heroTag: _model.displayProducts![index].barcode!,
+                      product: _model.displayProducts![index],
                       elevation:
                           Theme.of(context).brightness == Brightness.light
                               ? 0.0
@@ -229,7 +202,7 @@ class _ProductQueryPageState extends State<ProductQueryPage> {
                           Icons.filter_list,
                           color: widget.mainColor,
                         ),
-                        label: Text(AppLocalizations.of(context).filter),
+                        label: Text(AppLocalizations.of(context)!.filter),
                         style: TextButton.styleFrom(
                           textStyle: TextStyle(
                             color: widget.mainColor,
@@ -241,7 +214,6 @@ class _ProductQueryPageState extends State<ProductQueryPage> {
                             context: context,
                             backgroundColor: Colors.transparent,
                             bounce: true,
-                            barrierColor: Colors.black45,
                             builder: (BuildContext context) =>
                                 GroupQueryFilterView(
                               categories: _model.categories,
@@ -275,7 +247,7 @@ class _ProductQueryPageState extends State<ProductQueryPage> {
             padding: const EdgeInsets.only(left: 10.0, right: 10.0, top: 96.0),
             child: Column(
               children: <Widget>[
-                Container(
+                SizedBox(
                   height: 80.0,
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
@@ -289,7 +261,7 @@ class _ProductQueryPageState extends State<ProductQueryPage> {
                             child: Text(
                               widget.name,
                               textAlign: TextAlign.center,
-                              style: themeData.textTheme.headline1
+                              style: themeData.textTheme.headline1!
                                   .copyWith(color: widget.mainColor),
                             )),
                       ),
@@ -312,7 +284,7 @@ class _ProductQueryPageState extends State<ProductQueryPage> {
           Flexible(
             child: Text(message,
                 textAlign: TextAlign.center,
-                style: themeData.textTheme.subtitle1
+                style: themeData.textTheme.subtitle1!
                     .copyWith(color: color, fontSize: 18.0)),
           ),
         ],
@@ -322,26 +294,26 @@ class _ProductQueryPageState extends State<ProductQueryPage> {
     if (_lastUpdate == null) {
       return;
     }
-    final ProductListSupplier refreshSupplier =
+    final ProductListSupplier? refreshSupplier =
         widget.productListSupplier.getRefreshSupplier();
     if (refreshSupplier == null) {
       return;
     }
     final String lastTime =
         ProductQueryPageHelper.getDurationStringFromTimestamp(
-            _lastUpdate, context);
+            _lastUpdate!, context);
     final String message =
-        '${AppLocalizations.of(context).chached_results_from} $lastTime';
+        '${AppLocalizations.of(context)!.cached_results_from} $lastTime';
     _lastUpdate = null;
 
     Future<void>.delayed(
-      const Duration(seconds: 0),
+      Duration.zero,
       () => ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(message),
           duration: const Duration(seconds: 5),
           action: SnackBarAction(
-            label: AppLocalizations.of(context).label_refresh,
+            label: AppLocalizations.of(context)!.label_refresh,
             onPressed: () => setState(
               () => _model = ProductQueryModel(refreshSupplier),
             ),
@@ -357,7 +329,7 @@ class _ProductQueryPageState extends State<ProductQueryPage> {
         padding: const EdgeInsets.only(top: 28.0),
         child: IconButton(
           icon: Icon(
-            ConstantIcons.getBackIcon(),
+            ConstantIcons.instance.getBackIcon(),
             color: color,
           ),
           onPressed: () => Navigator.pop(context),

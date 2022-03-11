@@ -1,17 +1,13 @@
-// Flutter imports:
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
-
-// Package imports:
 import 'package:openfoodfacts/model/Product.dart';
-import 'package:qr_code_scanner/qr_code_scanner.dart';
-
-// Project imports:
+import 'package:smooth_app/data_models/fetched_product.dart';
 import 'package:smooth_app/data_models/product_list.dart';
 import 'package:smooth_app/database/barcode_product_query.dart';
 import 'package:smooth_app/database/dao_product.dart';
 import 'package:smooth_app/database/dao_product_list.dart';
 import 'package:smooth_app/database/local_database.dart';
+import 'package:smooth_app/helpers/analytics_helper.dart';
 
 enum ScannedProductState {
   FOUND,
@@ -19,53 +15,66 @@ enum ScannedProductState {
   LOADING,
   THANKS,
   CACHED,
+  ERROR,
 }
 
 class ContinuousScanModel with ChangeNotifier {
-  ContinuousScanModel({
-    @required bool contributionMode,
-    @required this.countryCode,
-    @required this.languageCode,
-  }) : _contributionMode = contributionMode;
+  ContinuousScanModel();
 
   final Map<String, ScannedProductState> _states =
       <String, ScannedProductState>{};
   final List<String> _barcodes = <String>[];
-  final ProductList _productList =
-      ProductList(listType: ProductList.LIST_TYPE_SCAN, parameters: '');
+  final ProductList _productList = ProductList.scanSession();
+  final ProductList _history = ProductList.history();
 
-  bool _contributionMode;
-  String _barcodeLatest;
-  String _barcodeTrustCheck;
-  DaoProduct _daoProduct;
-  DaoProductList _daoProductList;
-  final String languageCode;
-  final String countryCode;
+  String? _latestScannedBarcode;
+  String? _latestFoundBarcode;
+  String? _barcodeTrustCheck; // TODO(monsieurtanuki): could probably be removed
+  late DaoProduct _daoProduct;
+  late DaoProductList _daoProductList;
 
-  bool get isNotEmpty => getBarcodes().isNotEmpty;
-  bool get contributionMode => _contributionMode;
   ProductList get productList => _productList;
 
   List<String> getBarcodes() => _barcodes;
 
-  Future<ContinuousScanModel> load(final LocalDatabase localDatabase) async {
+  Future<ContinuousScanModel?> load(final LocalDatabase localDatabase) async {
     try {
       _daoProduct = DaoProduct(localDatabase);
       _daoProductList = DaoProductList(localDatabase);
-      await _daoProductList.get(_productList);
-      for (final String barcode in _productList.barcodes) {
-        _barcodes.add(barcode);
-        _states[barcode] = ScannedProductState.CACHED;
-        _barcodeLatest = barcode;
+      if (!await _refresh()) {
+        return null;
       }
       return this;
     } catch (e) {
-      print('exception: $e');
+      debugPrint('exception: $e');
     }
     return null;
   }
 
-  void setBarcodeState(
+  Future<bool> _refresh() async {
+    try {
+      _latestScannedBarcode = null;
+      _latestFoundBarcode = null;
+      _barcodeTrustCheck = null;
+      _barcodes.clear();
+      _states.clear();
+      _latestScannedBarcode = null;
+      await refreshProductList();
+      for (final String barcode in _productList.barcodes.reversed) {
+        _barcodes.add(barcode);
+        _states[barcode] = ScannedProductState.CACHED;
+        _latestScannedBarcode = barcode;
+      }
+      return true;
+    } catch (e) {
+      debugPrint('exception: $e');
+    }
+    return false;
+  }
+
+  Future<void> refreshProductList() async => _daoProductList.get(_productList);
+
+  void _setBarcodeState(
     final String barcode,
     final ScannedProductState state,
   ) {
@@ -73,45 +82,46 @@ class ContinuousScanModel with ChangeNotifier {
     notifyListeners();
   }
 
-  ScannedProductState getBarcodeState(final String barcode) => _states[barcode];
+  ScannedProductState? getBarcodeState(final String barcode) =>
+      _states[barcode];
 
   Product getProduct(final String barcode) => _productList.getProduct(barcode);
 
-  void setupScanner(QRViewController controller) => controller.scannedDataStream
-      .listen((Barcode barcode) => onScan(barcode.code));
+  Future<void> onScan(String? code) async {
+    if (code == null) {
+      return;
+    }
 
-  List<Product> getProducts() => _productList.getList();
-
-  Future<void> onScan(final String code) async {
     if (_barcodeTrustCheck != code) {
       _barcodeTrustCheck = code;
       return;
     }
-    if (_barcodeLatest == code) {
+    if (_latestScannedBarcode == code) {
       return;
     }
-    _barcodeLatest = code;
+    AnalyticsHelper.trackScannedProduct(barcode: code);
+
+    _latestScannedBarcode = code;
     _addBarcode(code);
   }
 
-  void contributionModeSwitch(bool value) {
-    if (_contributionMode != value) {
-      _contributionMode = value;
-      notifyListeners();
-    }
+  Future<void> retryBarcodeFetch(String barcode) async {
+    _setBarcodeState(barcode, ScannedProductState.LOADING);
+    await _updateBarcode(barcode);
   }
 
   Future<bool> _addBarcode(final String barcode) async {
-    final ScannedProductState state = getBarcodeState(barcode);
+    final ScannedProductState? state = getBarcodeState(barcode);
     if (state == null) {
       _barcodes.add(barcode);
-      setBarcodeState(barcode, ScannedProductState.LOADING);
+      _setBarcodeState(barcode, ScannedProductState.LOADING);
       _cacheOrLoadBarcode(barcode);
       return true;
     }
     if (state == ScannedProductState.FOUND ||
         state == ScannedProductState.CACHED) {
       final Product product = getProduct(barcode);
+      _barcodes.remove(barcode);
       _barcodes.add(barcode);
       _addProduct(product, state);
 
@@ -131,58 +141,82 @@ class ContinuousScanModel with ChangeNotifier {
   }
 
   Future<bool> _cachedBarcode(final String barcode) async {
-    final int latestUpdate = await _daoProduct.getLastUpdate(barcode);
-    if (latestUpdate != null) {
-      _addProduct(await _daoProduct.get(barcode), ScannedProductState.CACHED);
+    final Product? product = await _daoProduct.get(barcode);
+    if (product != null) {
+      _addProduct(product, ScannedProductState.CACHED);
       return true;
     }
     return false;
   }
 
-  Future<Product> _queryBarcode(
+  Future<FetchedProduct> _queryBarcode(
     final String barcode,
   ) async =>
-      await BarcodeProductQuery(
+      BarcodeProductQuery(
         barcode: barcode,
-        languageCode: languageCode,
-        countryCode: countryCode,
-      ).getProduct();
+        daoProduct: _daoProduct,
+      ).getFetchedProduct();
 
   Future<void> _loadBarcode(
     final String barcode,
   ) async {
-    final Product product = await _queryBarcode(barcode);
-    if (product != null) {
-      _addProduct(product, ScannedProductState.FOUND);
-    } else {
-      setBarcodeState(barcode, ScannedProductState.NOT_FOUND);
+    final FetchedProduct fetchedProduct = await _queryBarcode(barcode);
+    switch (fetchedProduct.status) {
+      case FetchedProductStatus.ok:
+        _addProduct(fetchedProduct.product!, ScannedProductState.FOUND);
+        return;
+      case FetchedProductStatus.internetNotFound:
+        _setBarcodeState(barcode, ScannedProductState.NOT_FOUND);
+        return;
+      case FetchedProductStatus.internetError:
+        _setBarcodeState(barcode, ScannedProductState.ERROR);
+        return;
+      case FetchedProductStatus.userCancelled:
+        // we do nothing
+        return;
     }
   }
 
   Future<void> _updateBarcode(
     final String barcode,
   ) async {
-    final Product product = await _queryBarcode(barcode);
-    if (product != null) {
-      _refreshProduct(product, ScannedProductState.FOUND);
+    final FetchedProduct fetchedProduct = await _queryBarcode(barcode);
+    switch (fetchedProduct.status) {
+      case FetchedProductStatus.ok:
+        _addProduct(fetchedProduct.product!, ScannedProductState.FOUND);
+        return;
+      case FetchedProductStatus.internetNotFound:
+        _setBarcodeState(barcode, ScannedProductState.NOT_FOUND);
+        return;
+      case FetchedProductStatus.internetError:
+        _setBarcodeState(barcode, ScannedProductState.ERROR);
+        return;
+      case FetchedProductStatus.userCancelled:
+        // we do nothing
+        return;
     }
-  }
-
-  Future<void> _refreshProduct(
-    final Product product,
-    final ScannedProductState state,
-  ) async {
-    _productList.refresh(product);
-    await _daoProductList.put(_productList);
-    setBarcodeState(product.barcode, state);
   }
 
   Future<void> _addProduct(
     final Product product,
     final ScannedProductState state,
   ) async {
-    _productList.add(product);
-    await _daoProductList.put(_productList);
-    setBarcodeState(product.barcode, state);
+    _productList.refresh(product);
+    if (_latestFoundBarcode != product.barcode!) {
+      _latestFoundBarcode = product.barcode;
+      await _daoProductList.push(productList, _latestFoundBarcode!);
+      await _daoProductList.push(_history, _latestFoundBarcode!);
+    }
+    _setBarcodeState(product.barcode!, state);
+  }
+
+  Future<void> clearScanSession() async {
+    await _daoProductList.clear(productList);
+    await refresh();
+  }
+
+  Future<void> refresh() async {
+    await _refresh();
+    notifyListeners();
   }
 }

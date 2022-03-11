@@ -1,5 +1,5 @@
-// Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:smooth_app/themes/theme_provider.dart';
 
 /// Color destination
 enum ColorDestination {
@@ -12,6 +12,17 @@ enum ColorDestination {
 }
 
 class SmoothTheme {
+  @visibleForTesting
+  const SmoothTheme();
+
+  /// The singleton for the theme.
+  static SmoothTheme get instance => _instance ??= const SmoothTheme();
+  static SmoothTheme? _instance;
+
+  /// Setter that allows tests to override the singleton instance.
+  @visibleForTesting
+  static set instance(SmoothTheme testInstance) => _instance = testInstance;
+
   static const double ADDITIONAL_OPACITY_FOR_DARK = .3;
 
   /// Theme color tags
@@ -22,10 +33,22 @@ class SmoothTheme {
   /// Theme material colors
   static const Map<String, MaterialColor> MATERIAL_COLORS =
       <String, MaterialColor>{
-    COLOR_TAG_BLUE: Colors.blue,
+    COLOR_TAG_BLUE: Colors.lightBlue,
     COLOR_TAG_GREEN: Colors.green,
     COLOR_TAG_BROWN: Colors.brown,
   };
+
+  static Color? getColor(
+    final ColorScheme colorScheme,
+    final MaterialColor materialColor,
+    final ColorDestination colorDestination,
+  ) =>
+      instance.getColorImpl(colorScheme, materialColor, colorDestination);
+
+  static MaterialColor getMaterialColor(
+    final ThemeProvider themeProvider,
+  ) =>
+      instance.getMaterialColorImpl(themeProvider);
 
   /// Returns a shade of a [materialColor]
   ///
@@ -34,7 +57,8 @@ class SmoothTheme {
   /// the destination will be ColorDestination.BUTTON_BACKGROUND,
   /// and you'll specify the current ColorScheme.
   /// For the moment, the ColorScheme matters only for the light/dark switch.
-  static Color getColor(
+  @protected
+  Color? getColorImpl(
     final ColorScheme colorScheme,
     final MaterialColor materialColor,
     final ColorDestination colorDestination,
@@ -44,11 +68,11 @@ class SmoothTheme {
         case ColorDestination.APP_BAR_BACKGROUND:
         case ColorDestination.SURFACE_FOREGROUND:
         case ColorDestination.BUTTON_BACKGROUND:
-          return materialColor[800];
+          return materialColor[800]!;
         case ColorDestination.APP_BAR_FOREGROUND:
         case ColorDestination.SURFACE_BACKGROUND:
         case ColorDestination.BUTTON_FOREGROUND:
-          return materialColor[100];
+          return materialColor[100]!;
       }
     }
     switch (colorDestination) {
@@ -56,16 +80,21 @@ class SmoothTheme {
         return null;
       case ColorDestination.SURFACE_BACKGROUND:
       case ColorDestination.BUTTON_BACKGROUND:
-        return materialColor[900].withOpacity(ADDITIONAL_OPACITY_FOR_DARK);
+        return materialColor[900]!.withOpacity(ADDITIONAL_OPACITY_FOR_DARK);
       case ColorDestination.APP_BAR_FOREGROUND:
       case ColorDestination.SURFACE_FOREGROUND:
       case ColorDestination.BUTTON_FOREGROUND:
-        return materialColor[100];
+        return materialColor[100]!;
     }
-    throw Exception(
-      'unknown brightness / destination:'
-      ' ${colorScheme.brightness} / $colorDestination',
-    );
+  }
+
+  @protected
+  MaterialColor getMaterialColorImpl(final ThemeProvider themeProvider) {
+    if (themeProvider.darkTheme) {
+      return Colors.grey;
+    }
+    return MATERIAL_COLORS[themeProvider.colorTag] ??
+        MATERIAL_COLORS[COLOR_TAG_BLUE]!;
   }
 
   static ThemeData getThemeData(
@@ -77,10 +106,10 @@ class SmoothTheme {
       myColorScheme = const ColorScheme.dark();
     } else {
       final MaterialColor materialColor =
-          MATERIAL_COLORS[colorTag] ?? MATERIAL_COLORS[COLOR_TAG_BLUE];
+          MATERIAL_COLORS[colorTag] ?? MATERIAL_COLORS[COLOR_TAG_BLUE]!;
       myColorScheme = ColorScheme.light(
-        primary: materialColor[600],
-        primaryVariant: materialColor[900],
+        primary: materialColor[600]!,
+        primaryContainer: materialColor[900],
       );
     }
 
@@ -124,7 +153,6 @@ class SmoothTheme {
     ),
     subtitle1: TextStyle(
       fontSize: 14.0,
-      fontWeight: FontWeight.w200,
     ),
     subtitle2: TextStyle(
       fontSize: 12.0,

@@ -1,62 +1,43 @@
-// Dart imports:
 import 'dart:async';
 
-// Flutter imports:
-import 'package:flutter/material.dart';
-
-// Package imports:
-import 'package:openfoodfacts/model/SearchResult.dart';
 import 'package:openfoodfacts/model/parameter/TagFilter.dart';
 import 'package:openfoodfacts/openfoodfacts.dart';
-
-// Project imports:
 import 'package:smooth_app/data_models/product_list.dart';
 import 'package:smooth_app/database/product_query.dart';
 
-/// Product query dedicated to category (e.g. 'en:mueslis-with-fruits')
+/// Back-end query about a category.
 class CategoryProductQuery implements ProductQuery {
   CategoryProductQuery({
-    @required this.category,
-    @required this.languageCode,
-    @required this.countryCode,
-    @required this.size,
+    required this.categoryTag,
+    required this.size,
   });
 
-  final String category;
-  final String languageCode;
-  final String countryCode;
+  // e.g. 'en:unsweetened-natural-soy-milks'
+  final String categoryTag;
   final int size;
 
   @override
   Future<SearchResult> getSearchResult() async =>
-      await OpenFoodAPIClient.searchProducts(
-        ProductQuery.SMOOTH_USER,
+      OpenFoodAPIClient.searchProducts(
+        ProductQuery.getUser(),
         ProductSearchQueryConfiguration(
           fields: ProductQuery.fields,
           parametersList: <Parameter>[
             PageSize(size: size),
-            TagFilter(
-              tagType: 'categories',
+            TagFilter.fromType(
+              tagFilterType: TagFilterType.CATEGORIES,
               contains: true,
-              tagName: category,
+              tagName: categoryTag,
             ),
           ],
-          lc: languageCode,
-          cc: countryCode,
+          language: ProductQuery.getLanguage(),
+          country: ProductQuery.getCountry(),
         ),
       );
 
   @override
-  ProductList getProductList() => ProductList(
-        listType: ProductList.LIST_TYPE_HTTP_SEARCH_CATEGORY,
-        parameters: category,
-      );
+  ProductList getProductList() => ProductList.categorySearch(categoryTag);
 
   @override
-  String toString() => 'CategoryProductQuery('
-      '$category'
-      ', $languageCode'
-      ', $countryCode'
-      ', $size'
-      ')';
+  String toString() => 'CategoryProductQuery("$categoryTag", $size)';
 }

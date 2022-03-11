@@ -1,23 +1,14 @@
-// Note to myself : this needs to be transferred to the openfoodfacts-dart plugin when ready
-
-// Flutter imports:
 import 'package:flutter/material.dart';
-
-// Package imports:
-import 'package:openfoodfacts/model/AttributeGroup.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-// Project imports:
-import 'package:smooth_app/data_models/pantry.dart';
 import 'package:openfoodfacts/personalized_search/preference_importance.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_app/data_models/product_preferences.dart';
+import 'package:smooth_app/pages/onboarding/onboarding_flow_navigator.dart';
 
 class UserPreferences extends ChangeNotifier {
-  UserPreferences._shared(final SharedPreferences sharedPreferences) {
-    _sharedPreferences = sharedPreferences;
-  }
+  UserPreferences._shared(final SharedPreferences sharedPreferences)
+      : _sharedPreferences = sharedPreferences;
 
-  SharedPreferences _sharedPreferences;
+  final SharedPreferences _sharedPreferences;
 
   static Future<UserPreferences> getUserPreferences() async {
     final SharedPreferences preferences = await SharedPreferences.getInstance();
@@ -25,22 +16,18 @@ class UserPreferences extends ChangeNotifier {
   }
 
   static const String _TAG_PREFIX_IMPORTANCE = 'IMPORTANCE_AS_STRING';
-  static const String _TAG_PANTRY_REPOSITORY = 'pantry_repository';
-  static const String _TAG_SHOPPING_REPOSITORY = 'shopping_repository';
-  static const String _TAG_VISIBLE_GROUPS = 'visible_groups';
   static const String _TAG_INIT = 'init';
   static const String _TAG_THEME_DARK = 'themeDark';
   static const String _TAG_THEME_COLOR_TAG = 'themeColorTag';
-
-  static const Map<PantryType, String> _PANTRY_TYPE_TO_TAG =
-      <PantryType, String>{
-    PantryType.PANTRY: _TAG_PANTRY_REPOSITORY,
-    PantryType.SHOPPING: _TAG_SHOPPING_REPOSITORY,
-  };
+  static const String _TAG_USER_COUNTRY_CODE = 'userCountry';
+  static const String _TAG_LAST_VISITED_ONBOARDING_PAGE =
+      'lastVisitedOnboardingPage';
+  static const String _TAG_PREFIX_FLAG = 'FLAG_PREFIX_';
+  static const String _TAG_DEV_MODE = 'devMode';
+  static const String _TAG_CAMERA_DECLINE = 'declined_camera_use_once';
 
   Future<void> init(final ProductPreferences productPreferences) async {
-    final bool alreadyDone = _sharedPreferences.getBool(_TAG_INIT);
-    if (alreadyDone != null) {
+    if (_sharedPreferences.getBool(_TAG_INIT) != null) {
       return;
     }
     await productPreferences.resetImportances();
@@ -54,7 +41,7 @@ class UserPreferences extends ChangeNotifier {
     final String attributeId,
     final String importanceId,
   ) async =>
-      await _sharedPreferences.setString(
+      _sharedPreferences.setString(
           _getImportanceTag(attributeId), importanceId);
 
   String getImportance(final String attributeId) =>
@@ -63,60 +50,64 @@ class UserPreferences extends ChangeNotifier {
 
   Future<void> resetImportances(
     final ProductPreferences productPreferences,
-  ) async {
-    await _sharedPreferences.remove(_TAG_VISIBLE_GROUPS);
-    await productPreferences.resetImportances();
-  }
-
-  bool isAttributeGroupVisible(final AttributeGroup group) {
-    final List<String> visibleList =
-        _sharedPreferences.getStringList(_TAG_VISIBLE_GROUPS);
-    return visibleList != null && visibleList.contains(group.id);
-  }
-
-  Future<void> setAttributeGroupVisibility(
-      final AttributeGroup group, final bool visible) async {
-    final List<String> visibleList =
-        _sharedPreferences.getStringList(_TAG_VISIBLE_GROUPS) ?? <String>[];
-    final String tag = group.id;
-    if (visibleList.contains(tag)) {
-      if (visible) {
-        return;
-      }
-      visibleList.remove(tag);
-    } else {
-      if (!visible) {
-        return;
-      }
-      visibleList.add(tag);
-    }
-    await _sharedPreferences.setStringList(_TAG_VISIBLE_GROUPS, visibleList);
-    notifyListeners();
-  }
-
-  Future<void> setPantryRepository(
-    final List<String> encodedJsons,
-    final PantryType pantryType,
-  ) async {
-    await _sharedPreferences.setStringList(
-      _PANTRY_TYPE_TO_TAG[pantryType],
-      encodedJsons,
-    );
-    notifyListeners();
-  }
-
-  List<String> getPantryRepository(final PantryType pantryType) =>
-      _sharedPreferences.getStringList(_PANTRY_TYPE_TO_TAG[pantryType]) ??
-      <String>[];
+  ) async =>
+      productPreferences.resetImportances();
 
   Future<void> setThemeDark(final bool state) async =>
-      await _sharedPreferences.setBool(_TAG_THEME_DARK, state);
+      _sharedPreferences.setBool(_TAG_THEME_DARK, state);
 
   bool get isThemeDark => _sharedPreferences.getBool(_TAG_THEME_DARK) ?? false;
 
   Future<void> setThemeColorTag(final String colorTag) async =>
-      await _sharedPreferences.setString(_TAG_THEME_COLOR_TAG, colorTag);
+      _sharedPreferences.setString(_TAG_THEME_COLOR_TAG, colorTag);
 
   String get themeColorTag =>
-      _sharedPreferences.getString(_TAG_THEME_COLOR_TAG);
+      _sharedPreferences.getString(_TAG_THEME_COLOR_TAG) ?? 'COLOR_TAG_BLUE';
+
+  Future<void> setUserCountry(final String countryCode) async =>
+      _sharedPreferences.setString(_TAG_USER_COUNTRY_CODE, countryCode);
+
+  String? get userCountryCode =>
+      _sharedPreferences.getString(_TAG_USER_COUNTRY_CODE);
+
+  Future<void> setLastVisitedOnboardingPage(final OnboardingPage page) async =>
+      _sharedPreferences.setInt(_TAG_LAST_VISITED_ONBOARDING_PAGE, page.index);
+
+  OnboardingPage get lastVisitedOnboardingPage {
+    final int? pageIndex =
+        _sharedPreferences.getInt(_TAG_LAST_VISITED_ONBOARDING_PAGE);
+    return pageIndex == null
+        ? OnboardingPage.NOT_STARTED
+        : OnboardingPage.values[pageIndex];
+  }
+
+  Future<void> setCameraDecline(final bool declined) async {
+    _sharedPreferences.setBool(_TAG_CAMERA_DECLINE, declined);
+  }
+
+  bool get cameraDeclinedOnce =>
+      _sharedPreferences.getBool(_TAG_CAMERA_DECLINE) ?? false;
+
+  String _getFlagTag(final String key) => _TAG_PREFIX_FLAG + key;
+
+  Future<void> setFlag(
+    final String key,
+    final bool? value,
+  ) async =>
+      value == null
+          ? await _sharedPreferences.remove(_getFlagTag(key))
+          : await _sharedPreferences.setBool(_getFlagTag(key), value);
+
+  bool? getFlag(final String key) =>
+      _sharedPreferences.getBool(_getFlagTag(key));
+
+  Future<void> setDevMode(final int value) async =>
+      _sharedPreferences.setInt(_TAG_DEV_MODE, value);
+
+  int get devMode => _sharedPreferences.getInt(_TAG_DEV_MODE) ?? 0;
+
+  Future<void> setDevModeIndex(final String tag, final int index) async =>
+      _sharedPreferences.setInt(tag, index);
+
+  int? getDevModeIndex(final String tag) => _sharedPreferences.getInt(tag);
 }

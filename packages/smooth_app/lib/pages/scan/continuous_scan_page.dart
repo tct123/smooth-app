@@ -1,139 +1,57 @@
-// Flutter imports:
 import 'package:flutter/material.dart';
-
-// Package imports:
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
-import 'package:smooth_ui_library/animations/smooth_reveal_animation.dart';
-import 'package:smooth_ui_library/widgets/smooth_view_finder.dart';
-
-// Project imports:
 import 'package:smooth_app/data_models/continuous_scan_model.dart';
-import 'package:smooth_app/lists/smooth_product_carousel.dart';
-import 'package:smooth_app/pages/personalized_ranking_page.dart';
-import 'package:smooth_app/pages/scan/scan_page.dart';
+import 'package:smooth_app/pages/scan/lifecycle_manager.dart';
 
-class ContinuousScanPage extends StatelessWidget {
-  ContinuousScanPage(this._continuousScanModel);
+class ContinuousScanPage extends StatefulWidget {
+  const ContinuousScanPage();
 
-  final ContinuousScanModel _continuousScanModel;
+  @override
+  State<ContinuousScanPage> createState() => _ContinuousScanPageState();
+}
 
-  final GlobalKey _scannerViewKey = GlobalKey(debugLabel: 'Barcode Scanner');
+class _ContinuousScanPageState extends State<ContinuousScanPage> {
+  final GlobalKey _scannerViewKey = GlobalKey(debugLabel: 'qr Barcode Scanner');
+  late ContinuousScanModel _model;
+  QRViewController? _controller;
 
   @override
   Widget build(BuildContext context) {
-    final Size screenSize = MediaQuery.of(context).size;
-    final AppLocalizations appLocalizations = AppLocalizations.of(context);
-    final ThemeData themeData = Theme.of(context);
-    return ChangeNotifierProvider<ContinuousScanModel>.value(
-      value: _continuousScanModel,
-      child: Consumer<ContinuousScanModel>(
-        builder:
-            (BuildContext context, ContinuousScanModel dummy, Widget child) =>
-                Scaffold(
-          extendBodyBehindAppBar: true,
-          appBar: AppBar(
-            elevation: 0,
-            backgroundColor: Colors.transparent,
-            leading: IconButton(
-              icon: const Icon(Icons.arrow_back),
-              onPressed: () => Navigator.pop(context),
+    _model = context.watch<ContinuousScanModel>();
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints constraints) {
+        final double carouselHeight =
+            constraints.maxHeight / 1.81; // roughly 55% of the available height
+        final double viewFinderBottomOffset = carouselHeight / 2.0;
+
+        return LifeCycleManager(
+          onResume: _resumeLiveFeed,
+          onPause: _stopLiveFeed,
+          child: QRView(
+            overlay: QrScannerOverlayShape(
+              // We use [SmoothViewFinder] instead of the overlay.
+              overlayColor: Colors.transparent,
+              // This offset adjusts the scanning area on iOS.
+              cutOutBottomOffset: viewFinderBottomOffset,
             ),
+            key: _scannerViewKey,
+            onQRViewCreated: setupScanner,
           ),
-          floatingActionButton: SmoothRevealAnimation(
-            delay: 400,
-            animationCurve: Curves.easeInOutBack,
-            child: FloatingActionButton.extended(
-              icon: SvgPicture.asset(
-                'assets/actions/smoothie.svg',
-                width: 24.0,
-                height: 24.0,
-                color: Colors.black,
-              ),
-              label: Text(
-                appLocalizations.myPersonalizedRanking,
-                style: const TextStyle(color: Colors.black),
-              ),
-              backgroundColor: Colors.white,
-              onPressed: () => Navigator.push<Widget>(
-                context,
-                MaterialPageRoute<Widget>(
-                  builder: (BuildContext context) =>
-                      PersonalizedRankingPage(_continuousScanModel.productList),
-                ),
-              ),
-            ),
-          ),
-          body: Stack(
-            children: <Widget>[
-              ScanPage.getHero(screenSize),
-              SmoothRevealAnimation(
-                delay: 400,
-                startOffset: const Offset(0.0, 0.0),
-                animationCurve: Curves.easeInOutBack,
-                child: QRView(
-                  key: _scannerViewKey,
-                  onQRViewCreated: (QRViewController controller) =>
-                      _continuousScanModel.setupScanner(controller),
-                ),
-              ),
-              SmoothRevealAnimation(
-                delay: 400,
-                startOffset: const Offset(0.0, 0.1),
-                animationCurve: Curves.easeInOutBack,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  mainAxisSize: MainAxisSize.max,
-                  children: <Widget>[
-                    Container(
-                      padding: const EdgeInsets.only(top: 32.0),
-                      child: Column(
-                        children: <Widget>[
-                          ScanPage.getContributeChooseToggle(
-                            _continuousScanModel,
-                            context,
-                          ),
-                        ],
-                      ),
-                    ),
-                    Center(
-                      child: Container(
-                        child: SmoothViewFinder(
-                          width: screenSize.width * 0.8,
-                          height: screenSize.width * 0.4,
-                          animationDuration: 1500,
-                        ),
-                      ),
-                    ),
-                    if (_continuousScanModel.isNotEmpty)
-                      Container(
-                        height: screenSize.height * 0.35,
-                        padding:
-                            EdgeInsets.only(bottom: screenSize.height * 0.08),
-                        child: SmoothProductCarousel(
-                          continuousScanModel: _continuousScanModel,
-                        ),
-                      )
-                    else
-                      Container(
-                        width: screenSize.width,
-                        height: screenSize.height * 0.35,
-                        padding: EdgeInsets.only(top: screenSize.height * 0.08),
-                        child: Text(
-                          appLocalizations.scannerProductsEmpty,
-                          style: themeData.textTheme.subtitle1,
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+        );
+      },
     );
   }
+
+  void setupScanner(QRViewController controller) {
+    _controller = controller;
+    _controller?.scannedDataStream
+        .listen((Barcode barcode) => _model.onScan(barcode.code));
+  }
+
+  //Used when navigating away from the QRView itself
+  void _stopLiveFeed() => _controller?.stopCamera();
+
+  //Used when navigating back to the QRView
+  void _resumeLiveFeed() => _controller?.resumeCamera();
 }
