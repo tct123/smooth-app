@@ -67,12 +67,18 @@ abstract class ProductQuery {
       );
 
   /// Sets the query type according to the current [UserPreferences]
-  static void setQueryType(final UserPreferences userPreferences) =>
-      OpenFoodAPIConfiguration.globalQueryType = userPreferences
-                  .getFlag(UserPreferencesDevMode.userPreferencesFlagProd) ??
-              true
-          ? QueryType.PROD
-          : QueryType.TEST;
+  static void setQueryType(final UserPreferences userPreferences) {
+    OpenFoodAPIConfiguration.globalQueryType = userPreferences
+                .getFlag(UserPreferencesDevMode.userPreferencesFlagProd) ??
+            true
+        ? QueryType.PROD
+        : QueryType.TEST;
+    final String? testEnvHost = userPreferences
+        .getDevModeString(UserPreferencesDevMode.userPreferencesTestEnvHost);
+    if (testEnvHost != null) {
+      OpenFoodAPIConfiguration.uriTestHost = testEnvHost;
+    }
+  }
 
   static List<ProductField> get fields => <ProductField>[
         ProductField.NAME,
@@ -94,6 +100,7 @@ abstract class ProductQuery {
         ProductField.NUTRIMENT_ENERGY_UNIT,
         ProductField.ADDITIVES,
         ProductField.INGREDIENTS_ANALYSIS_TAGS,
+        ProductField.INGREDIENTS_TEXT,
         ProductField.LABELS_TAGS,
         ProductField.LABELS_TAGS_IN_LANGUAGES,
         ProductField.ENVIRONMENT_IMPACT_LEVELS,
@@ -105,6 +112,7 @@ abstract class ProductQuery {
         ProductField.ECOSCORE_DATA,
         ProductField.ECOSCORE_GRADE,
         ProductField.ECOSCORE_SCORE,
+        ProductField.KNOWLEDGE_PANELS,
       ];
 
   Future<SearchResult> getSearchResult();

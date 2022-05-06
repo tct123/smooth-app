@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:openfoodfacts/model/Attribute.dart';
 import 'package:openfoodfacts/utils/OpenFoodAPIConfiguration.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_app/data_models/product_list.dart';
@@ -7,6 +8,7 @@ import 'package:smooth_app/data_models/user_preferences.dart';
 import 'package:smooth_app/database/dao_product_list.dart';
 import 'package:smooth_app/database/local_database.dart';
 import 'package:smooth_app/database/product_query.dart';
+import 'package:smooth_app/helpers/product_list_import_export.dart';
 import 'package:smooth_app/pages/abstract_user_preferences.dart';
 import 'package:smooth_app/pages/onboarding/onboarding_flow_navigator.dart';
 
@@ -35,11 +37,15 @@ class UserPreferencesDevMode extends AbstractUserPreferences {
         );
 
   static const String userPreferencesFlagProd = '__devWorkingOnProd';
+  static const String userPreferencesTestEnvHost = '__testEnvHost';
   static const String userPreferencesFlagUseMLKit = '__useMLKit';
-  static const String userPreferencesFlagLenientMatching = '__lenientMatching';
+  static const String userPreferencesFlagStrongMatching = '__lenientMatching';
   static const String userPreferencesFlagAdditionalButton =
       '__additionalButtonOnProductPage';
+  static const String userPreferencesFlagEditIngredients = '__editIngredients';
   static const String userPreferencesEnumScanMode = '__scanMode';
+
+  final TextEditingController _textFieldController = TextEditingController();
 
   @override
   bool isCollapsedByDefault() => true;
@@ -84,7 +90,8 @@ class UserPreferencesDevMode extends AbstractUserPreferences {
           },
         ),
         ListTile(
-          title: const Text('Switch between openfoodfacts.org and .net'),
+          title: const Text(
+              'Switch between openfoodfacts.org (PROD) and test env'),
           subtitle: Text(
             'Current query type is ${OpenFoodAPIConfiguration.globalQueryType}',
           ),
@@ -94,6 +101,13 @@ class UserPreferencesDevMode extends AbstractUserPreferences {
             ProductQuery.setQueryType(userPreferences);
             setState(() {});
           },
+        ),
+        ListTile(
+          title: const Text('Test env parameters'),
+          subtitle: Text(
+            'Current base URL of test env is ${OpenFoodAPIConfiguration.uriScheme}://${OpenFoodAPIConfiguration.uriTestHost}/',
+          ),
+          onTap: () async => _changeTestEnvHost(),
         ),
         SwitchListTile(
           title: const Text('Use ML Kit'),
@@ -112,6 +126,17 @@ class UserPreferencesDevMode extends AbstractUserPreferences {
           onChanged: (bool value) async {
             await userPreferences.setFlag(
                 userPreferencesFlagAdditionalButton, value);
+            ScaffoldMessenger.of(context)
+                .showSnackBar(const SnackBar(content: Text('Ok')));
+          },
+        ),
+        SwitchListTile(
+          title: const Text('Edit ingredients via a knowledge panel button'),
+          value: userPreferences.getFlag(userPreferencesFlagEditIngredients) ??
+              false,
+          onChanged: (bool value) async {
+            await userPreferences.setFlag(
+                userPreferencesFlagEditIngredients, value);
             ScaffoldMessenger.of(context)
                 .showSnackBar(const SnackBar(content: Text('Ok')));
           },
@@ -163,15 +188,30 @@ class UserPreferencesDevMode extends AbstractUserPreferences {
           },
         ),
         ListTile(
+          title: const Text('Import History'),
+          subtitle:
+              const Text('Will clear history and put 3 products in there'),
+          onTap: () async {
+            final LocalDatabase localDatabase = context.read<LocalDatabase>();
+            await ProductListImportExport().import(
+              ProductListImportExport.TMP_IMPORT,
+              localDatabase,
+            );
+            ScaffoldMessenger.of(context)
+                .showSnackBar(const SnackBar(content: Text('Done')));
+            localDatabase.notifyListeners();
+          },
+        ),
+        ListTile(
           title: const Text('Switch between strong and lenient matching'),
           subtitle: Text(
             'Current matching level is '
-            '${(userPreferences.getFlag(userPreferencesFlagLenientMatching) ?? false) ? 'strong' : 'lenient'}',
+            '${(userPreferences.getFlag(userPreferencesFlagStrongMatching) ?? false) ? 'strong' : 'lenient'}',
           ),
           onTap: () async {
             await userPreferences.setFlag(
-                userPreferencesFlagLenientMatching,
-                !(userPreferences.getFlag(userPreferencesFlagLenientMatching) ??
+                userPreferencesFlagStrongMatching,
+                !(userPreferences.getFlag(userPreferencesFlagStrongMatching) ??
                     false));
             setState(() {});
           },
@@ -220,7 +260,52 @@ class UserPreferencesDevMode extends AbstractUserPreferences {
             }
           },
         ),
+        SwitchListTile(
+          title: const Text('Exclude ecoscore'),
+          value: userPreferences
+              .getExcludedAttributeIds()
+              .contains(Attribute.ATTRIBUTE_ECOSCORE),
+          onChanged: (bool value) async {
+            const String tag = Attribute.ATTRIBUTE_ECOSCORE;
+            final List<String> list = userPreferences.getExcludedAttributeIds();
+            list.removeWhere((final String element) => element == tag);
+            if (value) {
+              list.add(tag);
+            }
+            await userPreferences.setExcludedAttributeIds(list);
+            setState(() {});
+          },
+        ),
       ];
+
+  Future<void> _changeTestEnvHost() async {
+    _textFieldController.text =
+        userPreferences.getDevModeString(userPreferencesTestEnvHost) ??
+            OpenFoodAPIConfiguration.uriTestHost;
+    final bool? result = await showDialog<bool>(
+      context: context,
+      builder: (final BuildContext context) => AlertDialog(
+        title: const Text('Test Env Host'),
+        content: TextField(controller: _textFieldController),
+        actions: <Widget>[
+          TextButton(
+            child: const Text('Cancel'),
+            onPressed: () => Navigator.pop(context, false),
+          ),
+          ElevatedButton(
+            child: const Text('OK'),
+            onPressed: () => Navigator.pop(context, true),
+          ),
+        ],
+      ),
+    );
+    if (result == true) {
+      await userPreferences.setDevModeString(
+          userPreferencesTestEnvHost, _textFieldController.text);
+      ProductQuery.setQueryType(userPreferences);
+      setState(() {});
+    }
+  }
 }
 
 enum DevModeScanMode {

@@ -6,7 +6,6 @@ import 'package:openfoodfacts/model/AttributeGroup.dart';
 import 'package:openfoodfacts/personalized_search/available_attribute_groups.dart';
 import 'package:openfoodfacts/personalized_search/available_preference_importances.dart';
 import 'package:openfoodfacts/personalized_search/available_product_preferences.dart';
-import 'package:openfoodfacts/personalized_search/preference_importance.dart';
 import 'package:openfoodfacts/personalized_search/product_preferences_manager.dart';
 import 'package:openfoodfacts/personalized_search/product_preferences_selection.dart';
 import 'package:smooth_app/data_models/downloadable_string.dart';
@@ -42,22 +41,6 @@ class ProductPreferences extends ProductPreferencesManager with ChangeNotifier {
       'assets/metadata/init_preferences_$languageCode.json';
   static String _getAttributeAssetPath(final String languageCode) =>
       'assets/metadata/init_attribute_groups_$languageCode.json';
-
-  static const List<String> _DEFAULT_ATTRIBUTES = <String>[
-    Attribute.ATTRIBUTE_NUTRISCORE,
-    Attribute.ATTRIBUTE_ECOSCORE,
-    Attribute.ATTRIBUTE_NOVA,
-    Attribute.ATTRIBUTE_VEGETARIAN,
-    Attribute.ATTRIBUTE_VEGAN,
-    Attribute.ATTRIBUTE_PALM_OIL_FREE,
-    Attribute.ATTRIBUTE_LOW_SALT,
-    Attribute.ATTRIBUTE_LOW_SUGARS,
-    Attribute.ATTRIBUTE_LOW_FAT,
-    Attribute.ATTRIBUTE_LOW_SATURATED_FAT,
-    Attribute.ATTRIBUTE_LABELS_ORGANIC,
-    Attribute.ATTRIBUTE_LABELS_FAIR_TRADE,
-    Attribute.ATTRIBUTE_FOREST_FOOTPRINT,
-  ];
 
   /// Inits with the best available not-network references.
   ///
@@ -200,15 +183,22 @@ class ProductPreferences extends ProductPreferencesManager with ChangeNotifier {
 
   Future<void> resetImportances() async {
     await clearImportances(notifyListeners: false);
-    await Future.wait(
-      _DEFAULT_ATTRIBUTES.map(
-        (String attributeId) => setImportance(
-          attributeId,
-          PreferenceImportance.ID_IMPORTANT,
-          notifyListeners: false,
-        ),
-      ),
-    );
+    if (attributeGroups != null) {
+      for (final AttributeGroup attributeGroup in attributeGroups!) {
+        if (attributeGroup.attributes != null) {
+          for (final Attribute attribute in attributeGroup.attributes!) {
+            final String? defaultF = attribute.defaultF;
+            if (attribute.id != null && defaultF != null) {
+              await setImportance(
+                attribute.id!,
+                defaultF,
+                notifyListeners: false,
+              );
+            }
+          }
+        }
+      }
+    }
     notify();
   }
 

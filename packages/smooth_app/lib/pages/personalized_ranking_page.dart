@@ -3,22 +3,17 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:openfoodfacts/openfoodfacts.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_app/cards/product_cards/smooth_product_card_found.dart';
-import 'package:smooth_app/data_models/product_list.dart';
 import 'package:smooth_app/data_models/product_preferences.dart';
 import 'package:smooth_app/data_models/smooth_it_model.dart';
 import 'package:smooth_app/data_models/user_preferences.dart';
 import 'package:smooth_app/database/dao_product_list.dart';
 import 'package:smooth_app/database/local_database.dart';
+import 'package:smooth_app/generic_lib/design_constants.dart';
 import 'package:smooth_app/helpers/analytics_helper.dart';
 import 'package:smooth_app/helpers/smooth_matched_product.dart';
 
 class PersonalizedRankingPage extends StatefulWidget {
-  PersonalizedRankingPage({
-    required final ProductList productList,
-    required this.title,
-  }) : products = productList.getList();
-
-  const PersonalizedRankingPage.fromItems({
+  const PersonalizedRankingPage({
     required this.products,
     required this.title,
   });
@@ -54,6 +49,8 @@ class _PersonalizedRankingPageState extends State<PersonalizedRankingPage> {
         context.watch<ProductPreferences>();
     final LocalDatabase localDatabase = context.watch<LocalDatabase>();
     final DaoProductList daoProductList = DaoProductList(localDatabase);
+    final ThemeData themeData = Theme.of(context);
+    final ColorScheme colorScheme = themeData.colorScheme;
     _model.refresh(
       widget.products,
       productPreferences,
@@ -88,8 +85,8 @@ class _PersonalizedRankingPageState extends State<PersonalizedRankingPage> {
       initialIndex: _ORDERED_MATCH_TABS.indexOf(MatchTab.YES),
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.white,
-          foregroundColor: Colors.black,
+          backgroundColor: colorScheme.background,
+          foregroundColor: colorScheme.onBackground,
           bottom: TabBar(
             unselectedLabelStyle: const TextStyle(
               fontSize: 15,
@@ -111,7 +108,9 @@ class _PersonalizedRankingPageState extends State<PersonalizedRankingPage> {
                 (final int index) => Tab(
                   child: Text(
                     titles[index],
-                    style: TextStyle(color: colors[index]),
+                    style: index == 0
+                        ? TextStyle(color: themeData.hintColor)
+                        : TextStyle(color: colors[index]),
                   ),
                 ),
               ),
@@ -121,7 +120,10 @@ class _PersonalizedRankingPageState extends State<PersonalizedRankingPage> {
             mainAxisSize: MainAxisSize.max,
             children: <Widget>[
               Flexible(
-                child: Text(widget.title, overflow: TextOverflow.fade),
+                child: Text(
+                  widget.title,
+                  overflow: TextOverflow.fade,
+                ),
               ),
             ],
           ),
@@ -147,6 +149,17 @@ class _PersonalizedRankingPageState extends State<PersonalizedRankingPage> {
     final AppLocalizations appLocalizations,
   ) =>
       Dismissible(
+        direction: DismissDirection.endToStart,
+        background: Container(
+          alignment: Alignment.centerRight,
+          margin: const EdgeInsets.symmetric(vertical: 14),
+          color: RED_COLOR,
+          padding: const EdgeInsets.only(right: 30),
+          child: const Icon(
+            Icons.delete,
+            color: Colors.white,
+          ),
+        ),
         key: Key(matchedProduct.product.barcode!),
         onDismissed: (final DismissDirection direction) async {
           final bool removed = widget.products.remove(matchedProduct.product);
@@ -157,7 +170,7 @@ class _PersonalizedRankingPageState extends State<PersonalizedRankingPage> {
             SnackBar(
               content: Text(
                 removed
-                    ? appLocalizations.product_removed
+                    ? appLocalizations.product_removed_comparison
                     : appLocalizations.product_could_not_remove,
               ),
               duration: const Duration(seconds: 3),

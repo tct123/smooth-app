@@ -2,6 +2,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:openfoodfacts/openfoodfacts.dart';
+import 'package:provider/provider.dart';
+import 'package:smooth_app/data_models/user_management_provider.dart';
 import 'package:smooth_app/generic_lib/buttons/smooth_action_button.dart';
 import 'package:smooth_app/generic_lib/design_constants.dart';
 import 'package:smooth_app/generic_lib/dialogs/smooth_alert_dialog.dart';
@@ -65,7 +67,9 @@ class _SignUpPageState extends State<SignUpPage> {
               textInputAction: TextInputAction.next,
               hintText: appLocalizations.sign_up_page_display_name_hint,
               prefixIcon: const Icon(Icons.person),
-              autofillHints: const <String>[AutofillHints.name],
+              autofillHints: const <String>[
+                AutofillHints.name,
+              ],
               validator: (String? value) {
                 if (value == null || value.isEmpty) {
                   return appLocalizations.sign_up_page_display_name_error_empty;
@@ -81,15 +85,18 @@ class _SignUpPageState extends State<SignUpPage> {
               textInputAction: TextInputAction.next,
               hintText: appLocalizations.sign_up_page_email_hint,
               prefixIcon: const Icon(Icons.person),
-              autofillHints: const <String>[AutofillHints.email],
+              autofillHints: const <String>[
+                AutofillHints.email,
+              ],
               validator: (String? value) {
                 if (value == null || value.isEmpty) {
                   return appLocalizations.sign_up_page_email_error_empty;
-                }
-                if (!UserManagementHelper.isEmailValid(value)) {
+                } else if (!UserManagementHelper.isEmailValid(
+                    _emailController.trimmedText)) {
                   return appLocalizations.sign_up_page_email_error_invalid;
+                } else {
+                  return null;
                 }
-                return null;
               },
             ),
             const SizedBox(height: space),
@@ -99,33 +106,46 @@ class _SignUpPageState extends State<SignUpPage> {
               textInputAction: TextInputAction.next,
               hintText: appLocalizations.sign_up_page_username_hint,
               prefixIcon: const Icon(Icons.person),
-              autofillHints: const <String>[AutofillHints.username],
+              autofillHints: const <String>[
+                AutofillHints.newUsername,
+              ],
               validator: (String? value) {
                 if (value == null || value.isEmpty) {
                   return appLocalizations.sign_up_page_username_error_empty;
                 }
-                if (!UserManagementHelper.isUsernameValid(value)) {
-                  return appLocalizations.sign_up_page_username_error_invalid;
+                if (!UserManagementHelper.isUsernameValid(
+                    _userController.trimmedText)) {
+                  return appLocalizations.sign_up_page_username_description;
+                }
+                if (!UserManagementHelper.isUsernameLengthValid(
+                    _userController.trimmedText)) {
+                  const int maxLength = OpenFoodAPIClient.USER_NAME_MAX_LENGTH;
+                  return appLocalizations
+                      .sign_up_page_username_length_invalid(maxLength);
                 }
                 return null;
               },
             ),
+
             const SizedBox(height: space),
+
             SmoothTextFormField(
               type: TextFieldTypes.PASSWORD,
               controller: _password1Controller,
               textInputAction: TextInputAction.next,
               hintText: appLocalizations.sign_up_page_password_hint,
               prefixIcon: const Icon(Icons.vpn_key),
-              autofillHints: const <String>[AutofillHints.password],
+              autofillHints: const <String>[
+                AutofillHints.newPassword,
+              ],
               validator: (String? value) {
                 if (value == null || value.isEmpty) {
                   return appLocalizations.sign_up_page_password_error_empty;
-                }
-                if (!UserManagementHelper.isPasswordValid(value)) {
+                } else if (!UserManagementHelper.isPasswordValid(value)) {
                   return appLocalizations.sign_up_page_password_error_invalid;
+                } else {
+                  return null;
                 }
-                return null;
               },
             ),
             const SizedBox(height: space),
@@ -136,23 +156,23 @@ class _SignUpPageState extends State<SignUpPage> {
               hintText: appLocalizations.sign_up_page_confirm_password_hint,
               prefixIcon: const Icon(Icons.vpn_key),
               autofillHints: const <String>[
-                AutofillHints.password,
+                AutofillHints.newPassword,
               ],
               validator: (String? value) {
                 if (value == null || value.isEmpty) {
                   return appLocalizations
                       .sign_up_page_confirm_password_error_empty;
-                }
-                if (value != _password1Controller.text) {
+                } else if (_password2Controller.text !=
+                    _password1Controller.text) {
                   return appLocalizations
                       .sign_up_page_confirm_password_error_invalid;
+                } else {
+                  return null;
                 }
-                return null;
               },
             ),
             const SizedBox(height: space),
-            Text(appLocalizations.sign_up_page_username_description),
-            const SizedBox(height: space),
+
             // careful with CheckboxListTile and hyperlinks
             // cf. https://github.com/flutter/flutter/issues/31437
             ListTile(
@@ -167,9 +187,9 @@ class _SignUpPageState extends State<SignUpPage> {
               title: RichText(
                 text: TextSpan(
                   children: <InlineSpan>[
-                    // TODO(monsieurtanuki): refactor / translate
+                    // TODO(monsieurtanuki): refactor
                     TextSpan(
-                      text: 'I agree to the Open Food Facts ',
+                      text: appLocalizations.sign_up_page_agree_text,
                       style: TextStyle(color: theme.colorScheme.onBackground),
                     ),
                     TextSpan(
@@ -177,15 +197,15 @@ class _SignUpPageState extends State<SignUpPage> {
                         color: Colors.blue,
                         decoration: TextDecoration.underline,
                       ),
-                      text: 'terms of use and contribution',
+                      text: appLocalizations.sign_up_page_terms_text,
                       recognizer: TapGestureRecognizer()
                         ..onTap = () async {
                           final String url =
                               appLocalizations.sign_up_page_agree_url;
-                          if (await canLaunch(url)) {
-                            await launch(
-                              url,
-                              forceSafariVC: false,
+                          if (await canLaunchUrl(Uri.parse(url))) {
+                            await launchUrl(
+                              Uri.parse(url),
+                              mode: LaunchMode.platformDefault,
                             );
                           }
                         },
@@ -262,6 +282,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ),
             ),
+            const SizedBox(height: space),
           ],
         ),
       ),
@@ -275,17 +296,17 @@ class _SignUpPageState extends State<SignUpPage> {
       return;
     }
     final User user = User(
-      userId: _userController.text,
+      userId: _userController.trimmedText,
       password: _password1Controller.text,
     );
     final Status? status = await LoadingDialog.run<Status>(
       context: context,
       future: OpenFoodAPIClient.register(
         user: user,
-        name: _displayNameController.text,
-        email: _emailController.text,
+        name: _displayNameController.trimmedText,
+        email: _emailController.trimmedText,
         newsletter: _subscribe,
-        orgName: _foodProducer ? _brandController.text : null,
+        orgName: _foodProducer ? _brandController.trimmedText : null,
       ),
       title: AppLocalizations.of(context)!.sign_up_page_action_doing_it,
     );
@@ -297,7 +318,7 @@ class _SignUpPageState extends State<SignUpPage> {
       await LoadingDialog.error(context: context, title: status.error);
       return;
     }
-    await UserManagementHelper.put(user);
+    await context.read<UserManagementProvider>().putUser(user);
     await showDialog<void>(
       context: context,
       builder: (BuildContext context) => SmoothAlertDialog(

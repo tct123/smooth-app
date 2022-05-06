@@ -33,8 +33,9 @@ class _PreferencesPageState extends State<PreferencesPage> {
     _initFuture = _init();
   }
 
-  Future<dynamic> _init() async => _product =
-      await OnboardingDataProduct(widget._localDatabase).getData(rootBundle);
+  Future<void> _init() async =>
+      _product = await OnboardingDataProduct.forProduct(widget._localDatabase)
+          .getData(rootBundle);
 
   @override
   Widget build(BuildContext context) => FutureBuilder<void>(
@@ -44,7 +45,7 @@ class _PreferencesPageState extends State<PreferencesPage> {
             return Text('Fatal Error: ${snapshot.error}');
           }
           if (snapshot.connectionState != ConnectionState.done) {
-            return const CircularProgressIndicator();
+            return const Center(child: CircularProgressIndicator());
           }
           return _Helper(_product);
         },
@@ -79,9 +80,7 @@ class _HelperState extends State<_Helper> {
         ),
         child: Text(
           appLocalizations.productDataUtility,
-          style: Theme.of(context).textTheme.headline2!.apply(
-                color: Colors.black,
-              ),
+          style: Theme.of(context).textTheme.displayMedium,
         ),
       ),
       Container(
@@ -97,6 +96,7 @@ class _HelperState extends State<_Helper> {
             widget.product,
             productPreferences,
             isFullVersion: _isProductExpanded,
+            isRemovable: false,
           ),
         ),
       ),
@@ -123,11 +123,9 @@ class _HelperState extends State<_Helper> {
             shrinkWrap: true,
             children: pageData,
           ),
-          const Positioned(
-            child: Align(
-              alignment: Alignment.bottomCenter,
-              child: NextButton(OnboardingPage.PREFERENCES_PAGE),
-            ),
+          const Align(
+            alignment: Alignment.bottomCenter,
+            child: NextButton(OnboardingPage.PREFERENCES_PAGE),
           ),
         ],
       ),

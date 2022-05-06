@@ -11,8 +11,6 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:smooth_app/database/local_database.dart';
 import 'package:smooth_app/helpers/tracking_database_helper.dart';
 
-// TODO(m123): Check for user consent
-
 /// Helper for logging usage of core features and exceptions
 /// Logging:
 /// - Errors and Problems (sentry)
@@ -25,6 +23,9 @@ import 'package:smooth_app/helpers/tracking_database_helper.dart';
 /// - external links
 class AnalyticsHelper {
   AnalyticsHelper._();
+
+  static bool _crashReports = false;
+  static bool _analyticsReports = false;
 
   static const String _initAction = 'started app';
   static const String _scanAction = 'scanned product';
@@ -58,12 +59,37 @@ class AnalyticsHelper {
             'https://22ec5d0489534b91ba455462d3736680@o241488.ingest.sentry.io/5376745';
         options.sentryClientName =
             'sentry.dart.smoothie/${packageInfo.version}';
+        // To set a uniform sample rate
+        options.tracesSampleRate = 1.0;
+        options.beforeSend = _beforeSend;
       },
       appRunner: appRunner,
     );
   }
 
-  static void initMatomo(final BuildContext context) {
+  static void setCrashReports(final bool crashReports) =>
+      _crashReports = crashReports;
+
+  static void setAnalyticsReports(final bool analyticsReports) =>
+      _analyticsReports = analyticsReports;
+
+  static FutureOr<SentryEvent?> _beforeSend(SentryEvent event,
+      {dynamic hint}) async {
+    if (!_crashReports) {
+      return null;
+    }
+    return event;
+  }
+
+  static void initMatomo(
+    final BuildContext context,
+    final bool screenshotMode,
+  ) {
+    if (screenshotMode) {
+      setCrashReports(false);
+      setAnalyticsReports(false);
+      return;
+    }
     MatomoForever.init(
       'https://analytics.openfoodfacts.org/matomo.php',
       2,
@@ -200,7 +226,11 @@ class AnalyticsHelper {
         },
       );
 
-  static Future<bool> _track(String actionName, Map<String, String> data) {
+  static Future<bool> _track(
+      String actionName, Map<String, String> data) async {
+    if (!_analyticsReports) {
+      return false;
+    }
     final DateTime date = DateTime.now();
     final Map<String, String> addedData = <String, String>{
       'action_name': actionName,
