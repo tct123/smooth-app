@@ -41,7 +41,7 @@ dependencies:
   sentry_flutter: ^6.5.1 # careful with upgrading cf: https://github.com/openfoodfacts/smooth-app/issues/1300
   url_launcher: ^6.1.0
   visibility_detector: ^0.2.2
-  camera: ^0.9.4+20
+  camera: ^0.10.0+3
   percent_indicator: ^4.0.1
   mailto: ^2.0.0
   flutter_native_splash: ^2.1.6
