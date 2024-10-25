@@ -160,7 +160,7 @@ class AppNewsProvider extends ChangeNotifier {
   bool? _prodEnv;
   String? _uriOverride;
 
-  /// [ProductQuery.uriProductHelper] is not synced yet,
+  /// [ProductQuery._uriProductHelper] is not synced yet,
   /// so we have to check it manually
   Future<void> _onPreferencesChanged() async {
     final String jsonURI = _preferences.getDevModeString(
