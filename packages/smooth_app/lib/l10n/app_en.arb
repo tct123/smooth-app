@@ -3108,6 +3108,7 @@
     "user_lists_action_multi_select": "Multi-select",
     "@user_lists_action_multi_select": {
         "description": "The button label for multi-selecting products in a user list"
+    },
     "product_page_compatibility_score_tooltip": "Your compatibility score: {score}%",
     "@product_page_compatibility_score_tooltip": {
         "description": "Message explaining that the score is the compatibility score",
