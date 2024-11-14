@@ -14,6 +14,8 @@ import 'package:smooth_app/pages/product/may_exit_page_helper.dart';
 import 'package:smooth_app/pages/product/owner_field_info.dart';
 import 'package:smooth_app/pages/product/simple_input_page_helpers.dart';
 import 'package:smooth_app/pages/product/simple_input_widget.dart';
+import 'package:smooth_app/themes/smooth_theme_colors.dart';
+import 'package:smooth_app/themes/theme_provider.dart';
 import 'package:smooth_app/widgets/smooth_scaffold.dart';
 import 'package:smooth_app/widgets/will_pop_scope.dart';
 
@@ -111,8 +113,17 @@ class _SimpleInputPageState extends State<SimpleInputPage> {
             title: titles.join(', '),
             product: widget.product,
           ),
+          backgroundColor: context.lightTheme()
+              ? Theme.of(context)
+                  .extension<SmoothColorsThemeExtension>()!
+                  .primaryLight
+              : null,
           body: Padding(
-            padding: const EdgeInsets.all(SMALL_SPACE),
+            padding: const EdgeInsetsDirectional.only(
+              top: SMALL_SPACE,
+              start: SMALL_SPACE,
+              end: SMALL_SPACE,
+            ),
             child: Scrollbar(
               child: ListView(children: simpleInputs),
             ),
