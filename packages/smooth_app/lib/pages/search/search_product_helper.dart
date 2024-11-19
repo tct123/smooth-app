@@ -32,7 +32,10 @@ class SearchProductHelper extends SearchHelper {
       appLocalizations.search;
 
   @override
-  Widget getAdditionalFilter() => _ProductTypeFilter(this);
+  Widget? getAdditionalFilter() =>
+      UserPreferences.getUserPreferencesSync().searchProductTypeFilterVisible
+          ? _ProductTypeFilter(this)
+          : null;
 
   @override
   void search(
@@ -119,7 +122,10 @@ class SearchProductHelper extends SearchHelper {
           localDatabase: localDatabase,
           productQuery: KeywordsProductQuery(
             value,
-            productType: _productType,
+            productType: UserPreferences.getUserPreferencesSync()
+                    .searchProductTypeFilterVisible
+                ? ProductType.food
+                : _productType,
           ),
           context: context,
           editableAppBarTitle: false,
