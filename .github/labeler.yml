@@ -11,6 +11,10 @@ Assets cache:
 - changed-files:
   - any-glob-to-any-file: 'packages/smooth_app/assets/cache/**/*.md'
 
+navigation:
+- changed-files:
+  - any-glob-to-any-file: 'packages/smooth_app/lib/widgets/smooth_navigation_bar.dart'
+
 🔁 Background tasks:
 - changed-files:
   - any-glob-to-any-file: 'packages/smooth_app/lib/background/background_task_manager.dart'
