@@ -309,5 +309,5 @@ tagline:
 🖼️ Photos - Photo manager:
 - changed-files:
   - any-glob-to-any-file: 'packages/smooth_app/lib/pages/image/product_image_gallery_other_view.dart'
-    - any-glob-to-any-file: 'packages/smooth_app/lib/pages/image/product_image_other_page.dart'
-    - any-glob-to-any-file: 'packages/smooth_app/lib/pages/product/gallery_view/product_image_gallery_view.dart'
+  - any-glob-to-any-file: 'packages/smooth_app/lib/pages/image/product_image_other_page.dart'
+  - any-glob-to-any-file: 'packages/smooth_app/lib/pages/product/gallery_view/product_image_gallery_view.dart'
