@@ -305,3 +305,9 @@ tagline:
   - any-glob-to-any-file: 'packages/smooth_app/lib/data_models/news_feed/newsfeed_json.dart'
   - any-glob-to-any-file: 'packages/smooth_app/lib/data_models/news_feed/newsfeed_model.dart'
   - any-glob-to-any-file: 'packages/smooth_app/lib/data_models/news_feed/newsfeed_provider.dart'
+
+🖼️ Photos - Photo manager:
+- changed-files:
+  - any-glob-to-any-file: 'packages/smooth_app/lib/pages/image/product_image_gallery_other_view.dart'
+    - any-glob-to-any-file: 'packages/smooth_app/lib/pages/image/product_image_other_page.dart'
+    - any-glob-to-any-file: 'packages/smooth_app/lib/pages/product/gallery_view/product_image_gallery_view.dart'
