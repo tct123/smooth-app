@@ -276,7 +276,6 @@
     "sign_up_page_email_already_exists": "již existuje, přihlaste se k účtu nebo zkuste jiný e-mail.",
     "sign_up_page_provide_valid_email": "Zadejte platnou e-mailovou adresu.",
     "sign_up_page_server_busy": "Velmi se omlouváme, máme technické potíže s vytvořením vašeho účtu. Prosím zkuste to znovu později.",
-    "@Settings": {},
     "settingsTitle": "Nastavení",
     "@settingsTitle": {
         "description": "The title of the Settings page"
@@ -499,7 +498,7 @@
     "@search": {
         "description": "Hint text of a search text input field"
     },
-    "search_store": "Search for a store",
+    "search_store": "Vyhledat obchod",
     "@search_store": {
         "description": "Hint text of a search store text input field"
     },
@@ -520,7 +519,7 @@
     "@front_photo": {
         "description": "Button label: For adding a picture of the front of a product"
     },
-    "outdated_image_accessibility_label": "{imageType} (this image may be outdated)",
+    "outdated_image_accessibility_label": "{imageType} (tento obrázek může být zastaralý)",
     "@outdated_image_accessibility_label": {
         "description": "Accessibility label for images that are outdated (image type may be front/ingredients/nutrition…)",
         "placeholders": {
@@ -682,9 +681,9 @@
         "description": "Button at the end of new product page, that takes you to completed product"
     },
     "hey_incomplete_product_message": "Klepnutím odpovězte na 3 otázky HNED k výpočtu Nutri-Score, Eco-Score & Ultra-processing (NOVA)!",
-    "hey_incomplete_product_message_beauty": "Tap now to answer 2 questions to help analyze this cosmetic!",
-    "hey_incomplete_product_message_pet_food": "Tap now to answer 3 questions to help analyze this pet food product!",
-    "hey_incomplete_product_message_product": "Tap now to help complete this product!",
+    "hey_incomplete_product_message_beauty": "Klepnutím nyní odpovězte na 2 otázky, které vám pomohou analyzovat tuto kosmetiku!",
+    "hey_incomplete_product_message_pet_food": "Klepnutím nyní odpovězte na 3 otázky, které vám pomohou analyzovat toto krmivo pro domácí zvířata!",
+    "hey_incomplete_product_message_product": "Klepnutím nyní pomůžete dokončit tento produkt!",
     "nutritional_facts_photo_uploaded": "Fotografie nutričních údajů byla nahrána",
     "@nutritional_facts_photo_uploaded": {},
     "recycling_photo_button_label": "Informační fotografie o recyklaci",
@@ -750,6 +749,10 @@
     "nutrition_page_invalid_number": "Neplatné číslo",
     "nutrition_page_update_running": "Aktualizace produktu na serveru…",
     "nutrition_page_update_done": "Produkt aktualizován!",
+    "nutrition_page_take_serving_size_from_product_quantity": "Use the product quantity as serving size",
+    "@nutrition_page_take_serving_size_from_product_quantity": {
+        "description": "Button label: Use the product quantity as serving size (nutrition page)"
+    },
     "more_photos": "Další zajímavé fotky",
     "@more_photos": {},
     "view_more_photo_button": "Zobrazit všechny existující fotografie tohoto produktu",
@@ -784,7 +787,43 @@
             }
         }
     },
-    "product_image_outdated": "This image may be outdated",
+    "product_image_outdated": "Tento obrázek může být zastaralý",
+    "product_image_action_replace_photo": "Nahradit fotku ({type})",
+    "@product_image_action_replace_photo": {
+        "description": "Action on the photo gallery to replace an existing picture",
+        "placeholders": {
+            "type": {
+                "type": "String",
+                "description": "The type of the photo (eg: ingredients)"
+            }
+        }
+    },
+    "product_image_action_add_photo": "Přidat fotku ({type})",
+    "@product_image_action_add_photo": {
+        "description": "Action on the photo gallery to add a photo (eg: ingredients)",
+        "placeholders": {
+            "type": {
+                "type": "String",
+                "description": "The type of the photo (eg: ingredients)"
+            }
+        }
+    },
+    "product_image_action_take_new_picture": "Zachytit nový",
+    "@product_image_action_take_new_picture": {
+        "description": "Replace the existing picture with a new one"
+    },
+    "product_image_action_take_picture": "Vyfotit",
+    "@product_image_action_take_picture": {
+        "description": "Take a picture (eg: for ingredients) when there is no one"
+    },
+    "product_image_action_from_gallery": "Vyberte z galerie telefonu",
+    "@product_image_action_from_gallery": {
+        "description": "Replace the existing picture with one from the device's gallery"
+    },
+    "product_image_action_choose_existing_photo": "Vybrat z fotografií produktu",
+    "@product_image_action_choose_existing_photo": {
+        "description": "Replace the existing picture with one from the product's photos"
+    },
     "homepage_main_card_logo_description": "Vítejte v Open Food Facts",
     "@homepage_main_card_logo_description": {
         "description": "Description for accessibility of the Open Food Facts logo on the homepage"
@@ -830,14 +869,29 @@
             }
         }
     },
+    "product_tags_title": "Štítky produktu",
+    "@product_tags_title": {
+        "description": "The title for showing product tags, aka folksonomy data"
+    },
+    "no_product_tags_found_message": "Nebyly nalezeny žádné štítky. Śtítky lze použít pro lepší seskupení podobných produktů. Klepnutím přidáte.",
+    "@no_product_tags_found_message": {
+        "description": "Message to show if there are no product tags found"
+    },
+    "add_tag": "Přidat štítek",
+    "edit_tag": "Upravit štítek",
+    "remove_tag": "Odebrat štítek",
+    "tag_key": "Klíč",
+    "tag_value": "Hodnota",
+    "invalid_key_format": "Neplatný formát klíče. Musí být malá písmena a žádné mezery.",
+    "@invalid_key_format": {
+        "description": "Message to show if the key value for a new product tag is invalid. This logic is identical to whats being validated in the folksonomy api"
+    },
     "product_internet_error": "Nelze načíst informace o tomto produktu kvůli chybě sítě.",
     "cached_results_from": "Zobrazit výsledky z:",
     "@cached_results_from": {
         "description": "Cached results from: x time ago (time ago should not be added to the string)"
     },
     "@Product Addition": {},
-    "added_product_thanks": "Děkujeme za přidání tohoto produktu!",
-    "@added_product_thanks": {},
     "product_search_same_category": "Porovnat s kategorií",
     "@product_search_same_category": {
         "description": "Button looking for the other products within the same category. Less than 30 characters"
@@ -846,7 +900,7 @@
     "@product_search_same_category_short": {
         "description": "Button looking for the other products within the same category. Just the verb compare"
     },
-    "product_search_same_category_error": "This feature can only be used for products with a category.\n\nPlease edit the product to add a category.",
+    "product_search_same_category_error": "Tuto funkci lze použít pouze pro produkty s kategorií.\n\nPro přidání kategorie prosím upravte produkt.",
     "@product_search_same_category_error": {
         "description": "Button looking for the other products within the same category. Just the verb compare"
     },
@@ -999,9 +1053,28 @@
             "count": {}
         }
     },
-    "compare_products_mode": "Porovnejte produkty",
+    "multiselect_title": "{count,plural, =0{No selected product} =1{One selected product} other{{count} selected products}}",
+    "@multiselect_title": {
+        "description": "Page title with the number of selected items",
+        "placeholders": {
+            "count": {}
+        }
+    },
+    "compare_products_mode": "Porovnat vybrané produkty",
     "@compare_products_mode": {
         "description": "Button to switch to 'compare products mode'"
+    },
+    "delete_products_mode": "Odstranit vybrané produkty",
+    "@delete_products_mode": {
+        "description": "Button to switch to 'delete products'"
+    },
+    "select_all_products_mode": "Vybrat všechny produkty",
+    "@select_all_products_mode": {
+        "description": "Button to switch to 'select all products'"
+    },
+    "select_none_products_mode": "Zrušit výběr",
+    "@select_none_products_mode": {
+        "description": "Button to switch to 'select no products'"
     },
     "compare_products_appbar_title": "Porovnejte produkty",
     "@compare_products_appbar_title": {
@@ -1339,10 +1412,6 @@
             }
         }
     },
-    "edit_product_form_item_barcode": "Čárový kód",
-    "@edit_product_form_item_barcode": {
-        "description": "Product edition - Barcode"
-    },
     "edit_product_form_item_details_title": "Základní detaily",
     "@edit_product_form_item_details_title": {
         "description": "Product edition - Basic Details - Title"
@@ -1620,7 +1689,7 @@
     "@user_list_name_error_same": {
         "description": "Validation error about the renamed name that is the same as the initial list name"
     },
-    "user_list_name_input_hint": "Name of the list",
+    "user_list_name_input_hint": "Název seznamu",
     "@user_list_name_input_hint": {
         "description": "A hint to indicate that the user should input a name of a list"
     },
@@ -1795,16 +1864,16 @@
         }
     },
     "product_type_label_food": "Jídlo",
-    "product_type_label_beauty": "Personal care",
+    "product_type_label_beauty": "Osobní péče",
     "product_type_label_pet_food": "Zvířecí krmivo",
     "product_type_label_product": "Ostatní",
-    "product_type_selection_title": "Product type",
-    "product_type_selection_subtitle": "Select the type of this product",
-    "product_type_selection_empty": "You need to select a product type first!",
+    "product_type_selection_title": "Typ produktu",
+    "product_type_selection_subtitle": "Vyberte typ tohoto produktu",
+    "product_type_selection_empty": "Nejprve musíte vybrat typ produktu!",
     "@product_type_selection_empty": {
         "description": "Error message about product type that needs to be set"
     },
-    "product_type_selection_already": "You cannot change the product type ({productType})!",
+    "product_type_selection_already": "Nelze změnit typ produktu ({productType})!",
     "@product_type_selection_already": {
         "description": "Error message about product type that cannot be set again",
         "placeholders": {
@@ -1816,13 +1885,13 @@
     "prices_app_dev_mode_flag": "Zástupce pro aplikaci Ceny na produktové stránce",
     "prices_app_button": "Přejít do aplikace Ceny",
     "prices_generic_title": "Ceny",
-    "prices_add_n_prices": "{count,plural, =1{Add a price} other{App {count} prices}}",
+    "prices_add_n_prices": "{count,plural, =1{Add a price} other{Add {count} prices}}",
     "prices_send_n_prices": "{count,plural, =1{Send the price} other{Send {count} prices}}",
     "prices_add_an_item": "Přidat položku",
     "prices_add_a_price": "Přidat cenu",
     "prices_add_a_receipt": "Přidat účtenku",
     "prices_add_price_tags": "Přidejte cenovky",
-    "prices_barcode_already": "This barcode ({barcode}) is already in the list!",
+    "prices_barcode_already": "Tento čárový kód ({barcode}) je již v seznamu!",
     "@prices_barcode_already": {
         "description": "Error message about barcode being already there",
         "placeholders": {
@@ -1842,7 +1911,7 @@
             }
         }
     },
-    "prices_barcode_enter": "Enter the Barcode",
+    "prices_barcode_enter": "Zadejte čárový kód",
     "prices_barcode_reader_action": "Čtečka čárových kódů",
     "prices_view_prices": "Zobrazit ceny",
     "prices_product_accessibility_summary": "{count,plural, =1{1 price} other{{count} prices}} for {product}",
@@ -1955,7 +2024,7 @@
     "prices_location_subtitle": "Obchod",
     "prices_location_find": "Najít obchod",
     "prices_location_mandatory": "Musíte vybrat obchod!",
-    "prices_location_search_broader": "Couldn't find what you were looking for? Let's try a broader search!",
+    "prices_location_search_broader": "Nenašli jste to, co jste hledali? Pojďme zkusit širší vyhledávání!",
     "prices_proof_subtitle": "Doklad",
     "prices_proof_find": "Vybrat doklad",
     "prices_proof_receipt": "Účtenka",
@@ -1978,6 +2047,10 @@
     "dev_mode_section_ui": "Uživatelské rozhraní",
     "dev_mode_section_data": "Údaje",
     "dev_mode_section_experimental_features": "Experimentální funkce",
+    "dev_preferences_show_folksonomy_title": "Exclude Folksonomy",
+    "@dev_preferences_show_folksonomy_title": {
+        "description": "Title for switch toggle to show or hide folksonomy, product tags on product details page"
+    },
     "dev_mode_hide_ecoscore_title": "Vyloučit Eco-Score",
     "@dev_mode_hide_ecoscore_title": {
         "description": "User dev preferences - Disable Ecoscore - Title"
@@ -2139,8 +2212,12 @@
     "@edit_photo_select_existing_button_label": {
         "description": "Edit 'select existing image' button label"
     },
-    "edit_photo_select_existing_all_label": "Existující obrázky",
+    "edit_photo_select_existing_all_label": "Existující obrázky pro tento produkt",
     "@edit_photo_select_existing_all_label": {
+        "description": "Page title"
+    },
+    "edit_photo_select_existing_all_subtitle": "Vyberte obrázek kliknutím na něj",
+    "@edit_photo_select_existing_all_subtitle": {
         "description": "Page title"
     },
     "edit_photo_select_existing_download_label": "Načítání existujících obrázků…",
@@ -2318,7 +2395,7 @@
             }
         }
     },
-    "share_product_text_beauty": "Have a look at this product on Open Beauty Facts: {url}",
+    "share_product_text_beauty": "Podívejte se na tento produkt na Open Beauty Facts: {url}",
     "@share_product_text_beauty": {
         "description": "The content which is send, when sharing a 'beauty' product",
         "placeholders": {
@@ -2327,7 +2404,7 @@
             }
         }
     },
-    "share_product_text_pet_food": "Have a look at this product on Open PetFood Facts: {url}",
+    "share_product_text_pet_food": "Podívejte se na tento produkt na Open PetFood Facts: {url}",
     "@share_product_text_pet_food": {
         "description": "The content which is send, when sharing a 'pet food' product",
         "placeholders": {
@@ -2336,7 +2413,7 @@
             }
         }
     },
-    "share_product_text_product": "Have a look at this product on Open Products Facts: {url}",
+    "share_product_text_product": "Podívejte se na tento produkt na Open Food Facts: {url}",
     "@share_product_text_product": {
         "description": "The content which is send, when sharing a 'products' product",
         "placeholders": {
@@ -2392,6 +2469,11 @@
         "description": "Label for expanding nutrition facts table in application setting"
     },
     "expand_ingredients_body": "Nechte panel ingrediencí rozbalený",
+    "search_product_filter_visibility_title": "Zobrazit filtr ve vyhledávání",
+    "search_product_filter_visibility_subtitle": "Vyberte vyhledávací stránku: Open Food Facts, Open Beauty Facts, Open Pet Food Facts nebo Open Products Facts",
+    "@search_product_filter_visibility_subtitle": {
+        "description": "Label for showing the product type filter in the search bar"
+    },
     "no_internet_connection": "Žádné připojení k Internetu",
     "@no_internet_connection": {
         "description": "Message when there is no internet connection"
@@ -2560,7 +2642,7 @@
     "@user_picture_source_remember": {
         "description": "Checkbox label when select a picture source"
     },
-    "user_picture_source_ask": "Ask each time",
+    "user_picture_source_ask": "Pokaždé se zeptat",
     "@user_picture_source_ask": {
         "description": "Choice of asking the picture source every time"
     },
@@ -2587,6 +2669,18 @@
     "app_rating_dialog_title_enjoying_positive_actions": "Jasně!",
     "not_really": "Ani ne",
     "app_rating_dialog_title_not_enjoying_app": "To nás moc mrzí! Můžete nám dát vědět, co se stalo?",
+    "owner_field_info_title": "Hodnoty poskytnuté výrobcem",
+    "@owner_field_info_title": {
+        "description": "Title of the 'producer provided' info list-tile"
+    },
+    "owner_field_info_message": "Tímto logem upozorňujeme na údaje, které poskytuje výrobce a které nemusí být upravitelné.",
+    "@owner_field_info_message": {
+        "description": "Title of the 'producer provided' info list-tile"
+    },
+    "owner_field_info_close_button": "Close this info",
+    "@owner_field_info_close_button": {
+        "description": "The owner info may be shown in a closeable dialog. This is the label of the button (used on a long press event and for the accessibility label)."
+    },
     "edit_packagings_title": "Součásti obalu",
     "@edit_packagings_title": {
         "description": "Title of the structured packagings page"
@@ -3053,23 +3147,36 @@
     "@prices_feedback_form": {
         "description": "A button to send feedback about the prices feature"
     },
-    "menu_button_list_actions": "Select an action",
+    "menu_button_list_actions": "Vyberte akci",
     "@menu_button_list_actions": {
         "description": "Button to select an action in a list (eg: Share, Delete, …)"
     },
-    "error_loading_photo": "Error loading photo",
+    "error_loading_photo": "Chyba při načítání fotografie",
     "@error_loading_photo": {
         "description": "Error message when loading a photo fails to load"
+    },
+    "photo_viewer_action_use_picture_as": "Použít jako…",
+    "@photo_viewer_action_use_picture_as": {
+        "description": "An action to use the current picture to be used as front/ingredients…"
+    },
+    "photo_viewer_use_picture_as_title": "Použít tento obrázek jako… ({language})",
+    "@photo_viewer_use_picture_as": {
+        "description": "The title of a dialog to use the current picture as front/ingredients…",
+        "placeholders": {
+            "language": {
+                "type": "String"
+            }
+        }
     },
     "photo_viewer_details_button": "Podrobnosti",
     "@photo_viewer_details_button": {
         "description": "Button to show details of the photo"
     },
-    "photo_viewer_details_button_accessibility_label": "Details of this photo",
+    "photo_viewer_details_button_accessibility_label": "Detaily této fotografie",
     "@photo_viewer_details_button_accessibility_label": {
         "description": "Accessibility label for the Details button on a photo"
     },
-    "photo_viewer_details_title": "Details of the photo",
+    "photo_viewer_details_title": "Detaily fotografie",
     "@photo_viewer_details_title": {
         "description": "Title of the photo details dialog"
     },
@@ -3077,11 +3184,11 @@
     "@photo_viewer_details_contributor_title": {
         "description": "Label for the author of a photo"
     },
-    "photo_viewer_details_size_title": "Size",
+    "photo_viewer_details_size_title": "Velikost",
     "@photo_viewer_details_size_title": {
         "description": "Label for the size of a photo"
     },
-    "photo_viewer_details_size_value": "{width} x {height} pixels",
+    "photo_viewer_details_size_value": "{width} x {height} pixelů",
     "@photo_viewer_details_size_value": {
         "description": "Value for the size of a photo",
         "placeholders": {
@@ -3101,8 +3208,151 @@
     "@photo_viewer_details_url_title": {
         "description": "Label for the link of a photo"
     },
-    "product_page_compatibility_score": "Compatible",
+    "product_page_compatibility_score": "Kompatibilní",
     "@product_page_compatibility_score": {
         "description": "Compatibility score on top of the product page. The sentence is \"100%\" Compatible"
-    }
+    },
+    "user_lists_action_multi_select": "Hromadný výběr",
+    "@user_lists_action_multi_select": {
+        "description": "The button label for multi-selecting products in a user list"
+    },
+    "product_page_compatibility_score_tooltip": "Vaše skóre kompatibility: {score}%",
+    "@product_page_compatibility_score_tooltip": {
+        "description": "Message explaining that the score is the compatibility score",
+        "placeholders": {
+            "score": {
+                "type": "String"
+            }
+        }
+    },
+    "product_page_image_front_accessibility_label": "Přední obrázek",
+    "@product_page_image_front_accessibility_label": {
+        "description": "Accessibility label for the image on the product page"
+    },
+    "product_page_image_front_outdated_message": "Tento obrázek může být zastaralý",
+    "@product_page_image_front_outdated_message": {
+        "description": "Small message to indicate that the image may be outdated"
+    },
+    "product_page_image_front_outdated_message_accessibility_label": "Přední obrázek (tento obrázek může být zastaralý)",
+    "@product_page_image_front_outdated_message_accessibility_label": {
+        "description": "Accessibility label for the image on the product page when it may be outdated"
+    },
+    "product_page_image_error": "Obrázek nelze načíst!",
+    "@product_page_image_error": {
+        "description": "Small message that will be displayed above the picture (please keep it short)"
+    },
+    "product_page_image_error_accessibility_label": "Nelze načíst přední obrázek (chyba sítě?)",
+    "@product_page_image_error_accessibility_label": {
+        "description": "Accessibility label for the image on the product page when it fails to load"
+    },
+    "product_page_image_no_image_available": "Žádný obrázek!",
+    "@product_page_image_no_image_available": {
+        "description": "Small message that will be displayed above the picture (please keep it short) when there is no image available on the database. A line break is not mandatory."
+    },
+    "product_page_image_no_image_available_accessibility_label": "K tomuto produktu není k dispozici žádný obrázek",
+    "@product_page_image_no_image_available_accessibility_label": {
+        "description": "Accessibility label for the image on the product page when there is no image available on the database"
+    },
+    "product_page_action_bar_settings_accessibility_label": "Změňte pořadí nebo skryjte akce",
+    "@product_page_action_bar_settings_accessibility_label": {
+        "description": "Accessibility label for the Settings icon in the action bar (= bottom bar) on the product page"
+    },
+    "product_page_action_bar_setting_modal_title": "Upravit akce",
+    "@product_page_action_bar_setting_modal_title": {
+        "description": "Title for the modal allowing to show and reorder actions"
+    },
+    "product_page_action_bar_item_move_up": "Posunout nahoru",
+    "@product_page_action_bar_item_move_up": {
+        "description": "Accessibility label to move up an action"
+    },
+    "product_page_action_bar_item_move_down": "Posunout dolů",
+    "@product_page_action_bar_item_move_down": {
+        "description": "Accessibility label to move down an action"
+    },
+    "product_page_action_bar_item_enable": "Povolit akci",
+    "@product_page_action_bar_item_enable": {
+        "description": "Accessibility label to enable action (= make it visible)"
+    },
+    "product_page_action_bar_item_disable": "Zakázat akci",
+    "@product_page_action_bar_item_disable": {
+        "description": "Accessibility label to disable action (= make it invisible)"
+    },
+    "product_add_a_language": "Přidat jazyk",
+    "@product_add_a_language": {
+        "description": "Button to add a language (eg: for photos) to a product"
+    },
+    "barcode_accessibility_label": "Čárový kód {barcode}",
+    "@barcode_accessibility_label": {
+        "description": "Accessibility label for a barcode image",
+        "placeholders": {
+            "barcode": {
+                "type": "String"
+            }
+        }
+    },
+    "carousel_close_tooltip": "Odstranit tento produkt z karuselu",
+    "@carousel_close_tooltip": {
+        "description": "A message explaining the goal of the Close button on a card of the carousel"
+    },
+    "carousel_unsupported_header": "Nepodporovaný čárový kód!",
+    "@carousel_unsupported_header": {
+        "description": "A label on top of the carousel card when the barcode is not supported by the app"
+    },
+    "carousel_unsupported_title": "Jejda!",
+    "carousel_unsupported_text": "Naskenovaný čárový kód není podporován Open Food Facts!",
+    "carousel_error_header": "Chyba!",
+    "@carousel_error_header": {
+        "description": "A label on top of the carousel card when there is an error (mainly network issues)"
+    },
+    "carousel_error_title": "It's a bummer!",
+    "carousel_error_text_1": "Nepodařilo se nám stáhnout informace o tomto čárovém kódu:",
+    "carousel_error_text_2": "Zkontrolujte prosím své internetové připojení nebo klikněte na toto tlačítko:",
+    "@carousel_error_text_2": {
+        "description": "Please keep the ** syntax to make the text bold"
+    },
+    "carousel_error_button": "Opakovat",
+    "carousel_unknown_product_header": "Neznámý produkt",
+    "@carousel_unknown_product_header": {
+        "description": "A label on top of the carousel card when the product is not in the database (= it needs to be created)"
+    },
+    "carousel_unknown_product_title": "Gratulujeme!\nNašli jste __vzácný drahokam!__",
+    "@carousel_unknown_product_title": {
+        "description": "Please keep the __ syntax to underline the text"
+    },
+    "carousel_unknown_product_text": "Naše společně tvořená databáze obsahuje více než **3 miliony produktů**, ale tento čárový kód neexistuje: ",
+    "@carousel_unknown_product_text": {
+        "description": "Please keep the ** syntax to make the text bold"
+    },
+    "carousel_unknown_product_button": "Přidat výrobek",
+    "carousel_loading_header": "Načítání informací...",
+    "@carousel_loading_header": {
+        "description": "A label on top of the carousel card when data about the product is loading"
+    },
+    "carousel_loading_title": "Právě jste naskenovali produkt s následujícím čárovým kódem:",
+    "carousel_loading_text": "Hledáme ho v naší databázi více než **3 milionů produktů!**",
+    "@carousel_loading_text": {
+        "description": "Please keep the ** syntax to make the text bold"
+    },
+    "product_type_subtitle_food": "Zelenina, ovoce, mražené potraviny…",
+    "@product_type_subtitle_food": {
+        "description": "Example of products for food category"
+    },
+    "product_type_subtitle_beauty": "Make-up, mýdla, zubní pasty…",
+    "@product_type_subtitle_beauty": {
+        "description": "Example of products for beauty category"
+    },
+    "product_type_subtitle_pet_food": "Krmivo pro psy, kočky…",
+    "@product_type_subtitle_pet_food": {
+        "description": "Example of products for pet food category"
+    },
+    "product_type_subtitle_product": "Smartphony, nábytek…",
+    "@product_type_subtitle_product": {
+        "description": "Example of products for other categories"
+    },
+    "photo_field_front": "Fotografie produktu",
+    "photo_field_ingredients": "Fotografie ingrediencí",
+    "photo_field_nutrition": "Fotografie výživových údajů",
+    "photo_field_packaging": "Informační foto balení",
+    "photo_already_exists": "Tato fotografie již existuje",
+    "photo_missing": "Tato fotografie chybí"
 }

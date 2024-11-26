@@ -2212,7 +2212,7 @@
     "@edit_photo_select_existing_button_label": {
         "description": "Edit 'select existing image' button label"
     },
-    "edit_photo_select_existing_all_label": "Existing images for this product",
+    "edit_photo_select_existing_all_label": "Existing images",
     "@edit_photo_select_existing_all_label": {
         "description": "Page title"
     },
@@ -3253,7 +3253,7 @@
     "@product_page_image_no_image_available_accessibility_label": {
         "description": "Accessibility label for the image on the product page when there is no image available on the database"
     },
-        "product_page_action_bar_settings_accessibility_label": "Reorder or hide actions",
+    "product_page_action_bar_settings_accessibility_label": "Reorder or hide actions",
     "@product_page_action_bar_settings_accessibility_label": {
         "description": "Accessibility label for the Settings icon in the action bar (= bottom bar) on the product page"
     },
@@ -3334,19 +3334,19 @@
         "description": "Please keep the ** syntax to make the text bold"
     },
     "product_type_subtitle_food": "Vegetables, fruits, frozen food…",
-    "@product_type_subtitle_food" : {
+    "@product_type_subtitle_food": {
         "description": "Example of products for food category"
     },
     "product_type_subtitle_beauty": "Makeup, soaps, toothpastes…",
-    "@product_type_subtitle_beauty" : {
+    "@product_type_subtitle_beauty": {
         "description": "Example of products for beauty category"
     },
     "product_type_subtitle_pet_food": "Food for dogs, cats…",
-    "@product_type_subtitle_pet_food" : {
+    "@product_type_subtitle_pet_food": {
         "description": "Example of products for pet food category"
     },
     "product_type_subtitle_product": "Smartphones, furniture…",
-    "@product_type_subtitle_product" : {
+    "@product_type_subtitle_product": {
         "description": "Example of products for other categories"
     },
     "photo_field_front": "Product photo",
