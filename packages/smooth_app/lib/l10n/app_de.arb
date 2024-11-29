@@ -3277,6 +3277,14 @@
     "@product_page_action_bar_item_disable": {
         "description": "Accessibility label to disable action (= make it invisible)"
     },
+    "product_page_pending_operations_banner_title": "Ihre Änderungen werden hochgeladen ...",
+    "@product_page_pending_operations_banner_title": {
+        "description": "When a product has pending edits (being sent to the server), there is a message on the product page (here is the title of the message)."
+    },
+    "product_page_pending_operations_banner_message": "Die auf dieser Seite angezeigten Daten **enthalten noch nicht Ihre Änderungen**.\nBitte warten Sie ein paar Sekunden ...",
+    "@product_page_pending_operations_banner_message": {
+        "description": "When a product has pending edits (being sent to the server), there is a message on the product page. Please keep the ** syntax to make the text bold."
+    },
     "product_add_a_language": "Sprache hinzufügen",
     "@product_add_a_language": {
         "description": "Button to add a language (eg: for photos) to a product"
@@ -3354,5 +3362,6 @@
     "photo_field_nutrition": "Foto der Nährwertangaben",
     "photo_field_packaging": "Foto der Verpackungsinformation",
     "photo_already_exists": "Dieses Foto bereits vorhanden",
-    "photo_missing": "Dieses Foto fehlt"
+    "photo_missing": "Dieses Foto fehlt",
+    "date": "Datum"
 }

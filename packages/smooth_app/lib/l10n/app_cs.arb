@@ -749,7 +749,7 @@
     "nutrition_page_invalid_number": "Neplatné číslo",
     "nutrition_page_update_running": "Aktualizace produktu na serveru…",
     "nutrition_page_update_done": "Produkt aktualizován!",
-    "nutrition_page_take_serving_size_from_product_quantity": "Use the product quantity as serving size",
+    "nutrition_page_take_serving_size_from_product_quantity": "Použít množství produktu jako velikost porce",
     "@nutrition_page_take_serving_size_from_product_quantity": {
         "description": "Button label: Use the product quantity as serving size (nutrition page)"
     },
@@ -2047,7 +2047,7 @@
     "dev_mode_section_ui": "Uživatelské rozhraní",
     "dev_mode_section_data": "Údaje",
     "dev_mode_section_experimental_features": "Experimentální funkce",
-    "dev_preferences_show_folksonomy_title": "Exclude Folksonomy",
+    "dev_preferences_show_folksonomy_title": "Vyloučit uživatelské přidávání štítků",
     "@dev_preferences_show_folksonomy_title": {
         "description": "Title for switch toggle to show or hide folksonomy, product tags on product details page"
     },
@@ -2677,7 +2677,7 @@
     "@owner_field_info_message": {
         "description": "Title of the 'producer provided' info list-tile"
     },
-    "owner_field_info_close_button": "Close this info",
+    "owner_field_info_close_button": "Zavřete tyto informace",
     "@owner_field_info_close_button": {
         "description": "The owner info may be shown in a closeable dialog. This is the label of the button (used on a long press event and for the accessibility label)."
     },
@@ -3277,6 +3277,14 @@
     "@product_page_action_bar_item_disable": {
         "description": "Accessibility label to disable action (= make it invisible)"
     },
+    "product_page_pending_operations_banner_title": "Uploading your edits…",
+    "@product_page_pending_operations_banner_title": {
+        "description": "When a product has pending edits (being sent to the server), there is a message on the product page (here is the title of the message)."
+    },
+    "product_page_pending_operations_banner_message": "The data displayed on this page **does not yet reflect your modifications**.\nPlease wait a few seconds…",
+    "@product_page_pending_operations_banner_message": {
+        "description": "When a product has pending edits (being sent to the server), there is a message on the product page. Please keep the ** syntax to make the text bold."
+    },
     "product_add_a_language": "Přidat jazyk",
     "@product_add_a_language": {
         "description": "Button to add a language (eg: for photos) to a product"
@@ -3354,5 +3362,6 @@
     "photo_field_nutrition": "Fotografie výživových údajů",
     "photo_field_packaging": "Informační foto balení",
     "photo_already_exists": "Tato fotografie již existuje",
-    "photo_missing": "Tato fotografie chybí"
+    "photo_missing": "Tato fotografie chybí",
+    "date": "Datum"
 }

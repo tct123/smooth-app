@@ -3277,6 +3277,14 @@
     "@product_page_action_bar_item_disable": {
         "description": "Accessibility label to disable action (= make it invisible)"
     },
+    "product_page_pending_operations_banner_title": "Завантаження ваших змін…",
+    "@product_page_pending_operations_banner_title": {
+        "description": "When a product has pending edits (being sent to the server), there is a message on the product page (here is the title of the message)."
+    },
+    "product_page_pending_operations_banner_message": "Дані, відображені на цій сторінці, **ще не відображають ваших змін**.\nЗачекайте кілька секунд…",
+    "@product_page_pending_operations_banner_message": {
+        "description": "When a product has pending edits (being sent to the server), there is a message on the product page. Please keep the ** syntax to make the text bold."
+    },
     "product_add_a_language": "Додати мову",
     "@product_add_a_language": {
         "description": "Button to add a language (eg: for photos) to a product"
@@ -3354,5 +3362,6 @@
     "photo_field_nutrition": "Фото харчування",
     "photo_field_packaging": "Фото з інформацією про упакування",
     "photo_already_exists": "Це фото вже існує",
-    "photo_missing": "Немає цього фото"
+    "photo_missing": "Немає цього фото",
+    "date": "Дата"
 }
