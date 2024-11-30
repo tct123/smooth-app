@@ -237,7 +237,7 @@ class _ImageGalleryLanguagesProvider
   Product? product;
 
   void attachProduct(final Product product) {
-    if (product != this.product) {
+    if (!equalsProduct(product)) {
       this.product = product;
       refreshLanguages(initial: true);
     }
@@ -310,6 +310,33 @@ class _ImageGalleryLanguagesProvider
       selectedLanguage: value.selectedLanguage,
       hasNewLanguage: false,
     );
+  }
+
+  bool equalsProduct(Product product) {
+    if (this.product == null) {
+      return false;
+    }
+
+    return product.barcode == this.product!.barcode &&
+        product.productType == this.product!.productType &&
+        product.imageFrontUrl == this.product!.imageFrontUrl &&
+        product.imageFrontSmallUrl == this.product!.imageFrontSmallUrl &&
+        product.imageIngredientsUrl == this.product!.imageIngredientsUrl &&
+        product.imageIngredientsSmallUrl ==
+            this.product!.imageIngredientsSmallUrl &&
+        product.imageNutritionUrl == this.product!.imageNutritionUrl &&
+        product.imageNutritionSmallUrl ==
+            this.product!.imageNutritionSmallUrl &&
+        product.imagePackagingUrl == this.product!.imagePackagingUrl &&
+        product.imagePackagingSmallUrl ==
+            this.product!.imagePackagingSmallUrl &&
+        const ListEquality<ProductImage>()
+            .equals(product.selectedImages, this.product!.selectedImages) &&
+        const ListEquality<ProductImage>()
+            .equals(product.images, this.product!.images) &&
+        product.lastImage == this.product!.lastImage &&
+        const ListEquality<String>()
+            .equals(product.lastImageDates, this.product!.lastImageDates);
   }
 }
 
