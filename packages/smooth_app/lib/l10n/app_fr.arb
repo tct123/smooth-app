@@ -869,22 +869,22 @@
             }
         }
     },
-    "product_tags_title": "Mots clés du produit",
+    "product_tags_title": "Product properties",
     "@product_tags_title": {
-        "description": "The title for showing product tags, aka folksonomy data"
+        "description": "The title for showing product properties, aka folksonomy data"
     },
-    "no_product_tags_found_message": "Aucune étiquette trouvée. Les étiquettes peuvent être utilisées pour mieux regrouper des produits similaires. Appuyez pour ajouter.",
+    "no_product_tags_found_message": "No product properties found. Properties can be used to describe products in more details, in a flexible way. Tap to add.",
     "@no_product_tags_found_message": {
-        "description": "Message to show if there are no product tags found"
+        "description": "Message to show if there are no product properties found"
     },
-    "add_tag": "Ajouter une étiquette",
-    "edit_tag": "Modifier l'étiquette",
-    "remove_tag": "Supprimer l'étiquette",
-    "tag_key": "Clé",
+    "add_tag": "Add property",
+    "edit_tag": "Edit property",
+    "remove_tag": "Remove property",
+    "tag_key": "Property",
     "tag_value": "Valeur",
-    "invalid_key_format": "Format de clé non valide. Doit être en minuscules et sans espaces.",
+    "invalid_key_format": "Invalid property format. It must be lowercase and without any spaces.",
     "@invalid_key_format": {
-        "description": "Message to show if the key value for a new product tag is invalid. This logic is identical to whats being validated in the folksonomy api"
+        "description": "Message to show if the property's value for a new product property is invalid. This logic is identical to whats being validated in the Folksonomy API"
     },
     "product_internet_error": "Impossible de récupérer les informations sur ce produit en raison d'une erreur réseau.",
     "cached_results_from": "Résultats mis en cache depuis :",
@@ -1053,7 +1053,7 @@
             "count": {}
         }
     },
-    "multiselect_title": "{count,plural, one {}=0{Aucun produit sélectionné} =1{Un produit sélectionné} other{{count} produits sélectionnés}}",
+    "multiselect_title": "{count,plural, =0{Aucun produit sélectionné} =1{Un produit sélectionné} other{{count} produits sélectionnés}}",
     "@multiselect_title": {
         "description": "Page title with the number of selected items",
         "placeholders": {
@@ -1885,7 +1885,7 @@
     "prices_app_dev_mode_flag": "Raccourci vers l'application Prix sur la page produit",
     "prices_app_button": "Accéder à l'application Prix",
     "prices_generic_title": "Prix",
-    "prices_add_n_prices": "{count,plural, one {}=1{Ajouter un prix} other{Ajouter {count} prix}}",
+    "prices_add_n_prices": "{count,plural, =1{Ajouter un prix} other{Ajouter {count} prix}}",
     "prices_send_n_prices": "{count,plural, =1{Envoyer le prix} other{Envoyer {count} prix}}",
     "prices_add_an_item": "Ajouter un article",
     "prices_add_a_price": "Ajouter un prix",
@@ -1914,7 +1914,7 @@
     "prices_barcode_enter": "Saisie du code-barres",
     "prices_barcode_reader_action": "Lecteur de code-barres",
     "prices_view_prices": "Voir les prix",
-    "prices_product_accessibility_summary": "{count,plural, one {}=1{1 prix} other{{count} prix}} pour {product}",
+    "prices_product_accessibility_summary": "{count,plural, =1{1 prix} other{{count} prix}} pour {product}",
     "@prices_product_accessibility_summary": {
         "description": "A card summarizing the number of prices for a product",
         "placeholders": {

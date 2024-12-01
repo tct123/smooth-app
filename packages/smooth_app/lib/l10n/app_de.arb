@@ -869,22 +869,22 @@
             }
         }
     },
-    "product_tags_title": "Produkt-Schlagwörter",
+    "product_tags_title": "Produkteigenschaften",
     "@product_tags_title": {
-        "description": "The title for showing product tags, aka folksonomy data"
+        "description": "The title for showing product properties, aka folksonomy data"
     },
-    "no_product_tags_found_message": "Keine Schlagwörter gefunden. Schlagwörter können verwendet werden, um ähnliche Produkte besser zu gruppieren. Zum Hinzufügen, bitte antippen.",
+    "no_product_tags_found_message": "Keine Produkteigenschaften gefunden. Eigenschaften können verwendet werden, um Produkte auf flexible Art und Weise detaillierter zu beschreiben. Antippen zum Hinzufügen.",
     "@no_product_tags_found_message": {
-        "description": "Message to show if there are no product tags found"
+        "description": "Message to show if there are no product properties found"
     },
-    "add_tag": "Schlagwort hinzufügen",
-    "edit_tag": "Schlagwort bearbeiten",
-    "remove_tag": "Schlagwort entfernen",
-    "tag_key": "Schlüssel",
+    "add_tag": "Eigenschaft hinzufügen",
+    "edit_tag": "Eigenschaft bearbeiten",
+    "remove_tag": "Eigenschaft entfernen",
+    "tag_key": "Eigenschaft",
     "tag_value": "Wert",
-    "invalid_key_format": "Ungültiges Schlüsselformat. Nur Kleinbuchstaben erlaubt und darf keine Leerzeichen enthalten.",
+    "invalid_key_format": "Ungültiges Eigenschaftsformat. Nur in Kleinbuchstaben und ohne Leerzeichen.",
     "@invalid_key_format": {
-        "description": "Message to show if the key value for a new product tag is invalid. This logic is identical to whats being validated in the folksonomy api"
+        "description": "Message to show if the property's value for a new product property is invalid. This logic is identical to whats being validated in the Folksonomy API"
     },
     "product_internet_error": "Informationen über dieses Produkt können aufgrund eines Netzwerkfehlers nicht abgerufen werden.",
     "cached_results_from": "Ergebnisse anzeigen von:",
@@ -1053,7 +1053,7 @@
             "count": {}
         }
     },
-    "multiselect_title": "{count,plural, one {}=0{Kein Produkt ausgewählt} =1{Ein Produkt ausgewählt} other{{count} Produkte ausgewählt}}",
+    "multiselect_title": "{count,plural, =0{Kein Produkt ausgewählt} =1{Ein Produkt ausgewählt} other{{count} Produkte ausgewählt}}",
     "@multiselect_title": {
         "description": "Page title with the number of selected items",
         "placeholders": {
