@@ -243,6 +243,7 @@ Product scan carousel:
   - any-glob-to-any-file: 'packages/smooth_app/lib/pages/scan/carousel/scan_carousel.dart'
 
 autocomplete:
+- changed-files:
   - any-glob-to-any-file: 'packages/smooth_app/lib/pages/input/smooth_autocomplete_text_field.dart'
 
 ✏️ Editing:
