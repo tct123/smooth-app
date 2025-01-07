@@ -20,6 +20,7 @@ class LanguageSelector extends StatelessWidget {
     this.foregroundColor,
     this.icon,
     this.padding,
+    this.borderRadius,
     this.product,
   });
 
@@ -33,8 +34,9 @@ class LanguageSelector extends StatelessWidget {
   final OpenFoodFactsLanguage? displayedLanguage;
 
   final Color? foregroundColor;
-  final IconData? icon;
+  final Widget? icon;
   final EdgeInsetsGeometry? padding;
+  final BorderRadius? borderRadius;
 
   /// Product from which we can extract the languages that matter.
   final Product? product;
@@ -74,7 +76,7 @@ class LanguageSelector extends StatelessWidget {
           }
           await setLanguage(language);
         },
-        borderRadius: ANGULAR_BORDER_RADIUS,
+        borderRadius: borderRadius ?? ANGULAR_BORDER_RADIUS,
         child: Padding(
           padding: const EdgeInsets.symmetric(
             vertical: SMALL_SPACE,
@@ -103,9 +105,11 @@ class LanguageSelector extends StatelessWidget {
                   ),
                 ),
               ),
-              Icon(
-                icon ?? Icons.arrow_drop_down,
-                color: foregroundColor,
+              IconTheme(
+                data: IconThemeData(
+                  color: foregroundColor,
+                ),
+                child: icon ?? const Icon(Icons.arrow_drop_down),
               ),
             ],
           ),

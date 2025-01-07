@@ -4,6 +4,7 @@ import 'package:openfoodfacts/openfoodfacts.dart';
 import 'package:smooth_app/generic_lib/bottom_sheets/smooth_bottom_sheet.dart';
 import 'package:smooth_app/generic_lib/design_constants.dart';
 import 'package:smooth_app/generic_lib/widgets/smooth_card.dart';
+import 'package:smooth_app/generic_lib/widgets/smooth_snackbar.dart';
 import 'package:smooth_app/helpers/collections_helper.dart';
 import 'package:smooth_app/helpers/haptic_feedback_helper.dart';
 import 'package:smooth_app/pages/product/explanation_widget.dart';
@@ -11,9 +12,6 @@ import 'package:smooth_app/pages/product/owner_field_info.dart';
 import 'package:smooth_app/pages/product/simple_input_page_helpers.dart';
 import 'package:smooth_app/pages/product/simple_input_text_field.dart';
 import 'package:smooth_app/resources/app_icons.dart' as icons;
-import 'package:smooth_app/themes/smooth_theme.dart';
-import 'package:smooth_app/themes/smooth_theme_colors.dart';
-import 'package:smooth_app/themes/theme_provider.dart';
 
 /// Simple input widget: we have a list of terms, we add, we remove.
 class SimpleInputWidget extends StatefulWidget {
@@ -60,8 +58,6 @@ class _SimpleInputWidgetState extends State<SimpleInputWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final SmoothColorsThemeExtension extension =
-        context.extension<SmoothColorsThemeExtension>();
     final AppLocalizations appLocalizations = AppLocalizations.of(context);
     final String? explanations =
         widget.helper.getAddExplanations(appLocalizations);
@@ -119,8 +115,21 @@ class _SimpleInputWidgetState extends State<SimpleInputWidget> {
                         widget.helper.getTypeLabel(appLocalizations)),
                     child: IconButton(
                       onPressed: _onAddItem,
-                      icon: const Icon(Icons.add_circle),
-                      splashRadius: 20,
+                      splashRadius: 20.0,
+                      icon: ListenableBuilder(
+                        listenable: widget.controller,
+                        builder: (
+                          BuildContext context,
+                          _,
+                        ) =>
+                            Icon(
+                          Icons.add_circle,
+                          color: IconTheme.of(context).color?.withValues(
+                                alpha:
+                                    widget.controller.text.isEmpty ? 0.7 : 1.0,
+                              ),
+                        ),
+                      ),
                     ),
                   )
                 ],
@@ -176,39 +185,41 @@ class _SimpleInputWidgetState extends State<SimpleInputWidget> {
       ],
     );
 
-    if (widget.displayTitle) {
-      return SmoothCardWithRoundedHeader(
-        leading: widget.helper.getIcon(),
-        title: widget.helper.getTitle(appLocalizations),
-        trailing: explanations != null
-            ? _ExplanationTitleIcon(
-                text: explanations,
-                type: widget.helper.getTitle(appLocalizations),
-              )
-            : null,
-        titlePadding: explanations != null
-            ? const EdgeInsetsDirectional.only(
-                top: SMALL_SPACE,
-                bottom: SMALL_SPACE,
-                start: LARGE_SPACE,
-                end: SMALL_SPACE,
-              )
-            : null,
-        child: child,
-      );
-    } else {
-      return SmoothCard(
-        margin: EdgeInsets.zero,
-        padding: const EdgeInsetsDirectional.only(
-          top: MEDIUM_SPACE,
-        ),
-        color: context.darkTheme() ? extension.primaryUltraBlack : null,
-        child: child,
-      );
-    }
+    return SmoothCardWithRoundedHeader(
+      leading: widget.helper.getIcon(),
+      title: widget.helper.getTitle(appLocalizations),
+      trailing: explanations != null && widget.displayTitle
+          ? _ExplanationTitleIcon(
+              text: explanations,
+              type: widget.helper.getTitle(appLocalizations),
+            )
+          : null,
+      titlePadding: explanations != null
+          ? const EdgeInsetsDirectional.only(
+              top: SMALL_SPACE,
+              bottom: SMALL_SPACE,
+              start: LARGE_SPACE,
+              end: SMALL_SPACE,
+            )
+          : null,
+      child: child,
+    );
   }
 
   void _onAddItem() {
+    if (widget.controller.text.trim().isEmpty) {
+      final AppLocalizations appLocalizations = AppLocalizations.of(context);
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SmoothFloatingSnackbar.error(
+          context: context,
+          text: appLocalizations.edit_product_form_item_error_empty,
+        ),
+      );
+
+      return;
+    }
+
     if (widget.helper.addItemsFromController(widget.controller)) {
       // Add new items to the top of our list
       final Iterable<String> newTerms = widget.helper.terms.diff(_localTerms);
