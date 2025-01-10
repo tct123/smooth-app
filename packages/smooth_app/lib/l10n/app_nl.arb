@@ -528,7 +528,7 @@
     },
     "ingredients": "Ingrediënten",
     "@ingredients": {},
-    "ingredients_editing_instructions": "Bewaar de originele volgorde. Vermeld het percentage indien gespecificeerd. Scheid met een komma of koppelteken, gebruik haakjes voor ingrediënten van een ingrediënt en geef allergenen aan tussen onderstrepingstekens.",
+    "ingredients_editing_instructions": "Behoud de originele volgorde. Geef het percentage aan indien gespecificeerd. Scheid met een komma of koppelteken en gebruik haakjes voor ingrediënten van een ingrediënt.",
     "ingredients_editing_error": "Kan de ingrediënten niet opslaan.",
     "ingredients_editing_image_error": "Kan geen afbeelding voor de nieuwe ingrediënten ophalen.",
     "ingredients_editing_title": "Ingrediënten bewerken",
@@ -562,7 +562,7 @@
     "@add_product_information_button_label": {},
     "new_product": "Nieuw Product",
     "@new_product": {},
-    "new_product_found_title": "New product found!",
+    "new_product_found_title": "Nieuw product gevonden!",
     "@new_product_found_title": {
         "description": "Title of a dialog that informs the user that a barcode doesn't exist in the database"
     },
@@ -579,7 +579,7 @@
     "@new_product_leave_message": {
         "description": "Alert dialog message when a user landed on the 'add new product' page, didn't input anything and tried to leave the page."
     },
-    "new_product_dialog_description": "Please take photos of the packaging to add this product to our common database",
+    "new_product_dialog_description": "Neem foto's van de verpakking om dit product toe te voegen aan onze gemeenschappelijke database",
     "@new_product_dialog_description": {
         "description": "Please keep it short, like less than 100 characters. Explanatory text of the dialog when the user searched for an unknown barcode."
     },
@@ -661,9 +661,9 @@
     "categories_added": "Categorieën toegevoegd",
     "new_product_title_nutriscore": "Bereken de Nutri-Score",
     "new_product_subtitle_nutriscore": "Help ons door minimaal een categorie en voedingswaarden in te vullen",
-    "new_product_title_environmental_score": "Compute the Green Score",
-    "new_product_subtitle_environmental_score": "Get it by filling at least a category",
-    "new_product_additional_environmental_score": "Make Green Score computation more precise with origins, packaging & more",
+    "new_product_title_environmental_score": "Bereken de Green-Score",
+    "new_product_subtitle_environmental_score": "Ontvang het door ten minste één categorie in te vullen",
+    "new_product_additional_environmental_score": "Maak Green-Score-berekening nauwkeuriger met oorsprong, verpakking en meer",
     "new_product_title_nova": "Bereken het voedselverwerkingsniveau (NOVA)",
     "new_product_subtitle_nova": "Krijg het door het invullen van de voedselcategorie en ingrediënten",
     "new_product_desc_nova_unknown": "Voedselverwerkingsniveau onbekend",
@@ -793,6 +793,11 @@
         }
     },
     "product_image_outdated": "Deze afbeelding is mogelijk verouderd",
+    "product_image_outdated_explanations_title": "Deze afbeelding is mogelijk verouderd",
+    "product_image_outdated_explanations_content": "This image was taken more than a year ago.\n**Please check that's it's still up-to-date**.\n\nThis is **just a warning**. If the content is still the same, you can ignore this message.",
+    "@product_image_outdated_explanations_content": {
+        "description": "Please keep the ** syntax to make the text bold"
+    },
     "product_image_action_replace_photo": "Foto vervangen ({type})",
     "@product_image_action_replace_photo": {
         "description": "Action on the photo gallery to replace an existing picture",
@@ -1103,18 +1108,6 @@
     "@hint_knowledge_panel_message": {
         "description": "Hint popup indicating the card is clickable during onboarding"
     },
-    "consent_analytics_title": "Stuur anonieme analyses",
-    "@consent_analytics_title": {
-        "description": "Title for the consent analytics UI Page"
-    },
-    "consent_analytics_body1": "Help de vrijwilligers van Open Food Facts om de app te verbeteren. U beslist of u anonieme analyses wilt indienen.",
-    "@conset_analytics_body1": {
-        "description": "first paragraph for the consent analytics UI Page"
-    },
-    "consent_analytics_body2": "Als u van gedachten verandert, kan deze optie op elk moment in de instellingen worden aan- en uitgeschakeld.",
-    "@consent_analytics_body2": {
-        "description": "second paragraph for the consent analytics UI Page"
-    },
     "permissions_page_title": "Cameratoegang",
     "@permissions_page_title": {
         "description": "Title for the camera permission's page (onboarding)"
@@ -1400,6 +1393,10 @@
     "@permission_photo_denied": {
         "description": "When the camera/photo permission is denied by user"
     },
+    "show_product_pictures": "Toon productafbeeldingen",
+    "@show_product_pictures": {
+        "description": "Button to show a list of product pictures"
+    },
     "edit_product_label": "Bewerk product",
     "@edit_product_label": {
         "description": "Edit product button label"
@@ -1407,6 +1404,19 @@
     "edit_product_label_short": "Bewerken",
     "@edit_product_label_short": {
         "description": "Edit product button short label (only the verb)"
+    },
+    "edit_product_form_item_help": "Hoe voer ik \"{value}\" in?",
+    "@edit_product_form_item_help": {
+        "description": "Help text for the input field. Eg 'How to enter stores?'",
+        "placeholders": {
+            "value": {
+                "type": "String"
+            }
+        }
+    },
+    "edit_product_form_item_error_empty": "Please enter a non-empty value!",
+    "@edit_product_form_item_error_empty": {
+        "description": "Error message when the user tries to submit an empty value"
     },
     "edit_product_form_item_add_action": "Voeg een nieuw(e) {itemType} toe",
     "description": "Tooltip om te laten zien wanneer de gebruiker lang op de (+) knop drukt",
@@ -1449,7 +1459,7 @@
     "@edit_product_form_item_labels_subtitle": {
         "description": "Product edition - Labels - SubTitle"
     },
-    "edit_product_form_item_labels_hint": "keurmerk",
+    "edit_product_form_item_labels_hint": "Voer een label in (bijv.: NutriScore)",
     "@edit_product_form_item_labels_hint": {
         "description": "Product edition - Labels - input textfield hint"
     },
@@ -1461,7 +1471,7 @@
     "@edit_product_form_item_stores_title": {
         "description": "Product edition - Stores - Title"
     },
-    "edit_product_form_item_stores_hint": "winkel",
+    "edit_product_form_item_stores_hint": "Voer een winkel in",
     "@edit_product_form_item_stores_hint": {
         "description": "Product edition - Stores - input textfield hint"
     },
@@ -1473,7 +1483,7 @@
     "@edit_product_form_item_origins_title": {
         "description": "Product edition - Origins - Title"
     },
-    "edit_product_form_item_origins_hint": "Voer een oorsprong in",
+    "edit_product_form_item_origins_hint": "Voer een herkomst in (bijv. Duitsland)",
     "@edit_product_form_item_origins_hint": {
         "description": "Product edition - Origins - input textfield hint"
     },
@@ -1493,7 +1503,7 @@
     "@edit_product_form_item_countries_title": {
         "description": "Product edition - Countries - Title"
     },
-    "edit_product_form_item_countries_hint": "Voer een land in",
+    "edit_product_form_item_countries_hint": "Voer een land in (bijv. Duitsland)",
     "@edit_product_form_item_countries_hint": {
         "description": "Product edition - Countries - input textfield hint"
     },
@@ -1509,7 +1519,7 @@
     "@edit_product_form_item_emb_codes_title": {
         "description": "Product edition - Traceability codes - Title"
     },
-    "edit_product_form_item_emb_codes_hint": "EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522",
+    "edit_product_form_item_emb_codes_hint": "Input a code (eg: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522…)",
     "@edit_product_form_item_emb_codes_hint": {
         "description": "Product edition - Traceability Codes - input textfield hint"
     },
@@ -1529,7 +1539,7 @@
     "@edit_product_form_item_categories_hint": {
         "description": "Product edition - Categories - input textfield hint"
     },
-    "edit_product_form_item_categories_type": "categorie",
+    "edit_product_form_item_categories_type": "Input a category (eg: Orange juice)",
     "@edit_product_form_item_categories_type": {
         "description": "Product edition - Categories - input textfield type"
     },
@@ -1571,6 +1581,22 @@
     "@edit_product_form_save": {
         "description": "Product edition - Nutrition facts - Save button"
     },
+    "edit_product_ingredients_photo_title": "Foto van de ingrediëntenlijst",
+    "@edit_product_ingredients_photo_title": {
+        "description": "Product edition - Ingredients - Title"
+    },
+    "edit_product_ingredients_list_title": "Lijst van ingrediënten",
+    "@edit_product_ingredients_list_title": {
+        "description": "Product edition - Ingredients - Title"
+    },
+    "edit_product_packaging_photo_title": "Verpakkingsfoto",
+    "@edit_product_packaging_photo_title": {
+        "description": "Product edition - Packaging - Title"
+    },
+    "edit_product_packaging_list_title": "Verpakkingslijst",
+    "@edit_product_packaging_list_title": {
+        "description": "Product edition - Packaging - Title"
+    },
     "no_data_available": "Geen gegevens beschikbaar",
     "@no_data_available": {
         "description": "When there are no data to display"
@@ -1585,6 +1611,10 @@
     "edit_ingredients_extract_ingredients_btn_text": "Detecteer de ingrediënten op de foto",
     "@edit_ingredients_extract_ingredients_btn_text": {
         "description": "Ingredients edition - Extract ingredients"
+    },
+    "edit_ingredients_extract_ingredients_btn_text_short": "Extract ingrediënten",
+    "@edit_ingredients_extract_ingredients_btn_text_short": {
+        "description": "Ingredients edition - Extract ingredients (short label)"
     },
     "edit_ingredients_extracting_ingredients_btn_text": "Detecteer de ingrediënten\nop de foto",
     "@edit_ingredients_extracting_ingredients_btn_text": {
@@ -1610,6 +1640,10 @@
     "@edit_packaging_extract_btn_text": {
         "description": "Packaging edition - OCR-Extract packaging"
     },
+    "edit_packaging_extract_btn_text_short": "Extract packaging",
+    "@edit_packaging_extract_btn_text_short": {
+        "description": "Packaging edition - OCR-Extract packaging (short label)"
+    },
     "edit_packaging_extracting_btn_text": "Detecteer de verpakking op de foto",
     "@edit_packaging_extracting_btn_text": {
         "description": "Packaging edition - OCR-Extracting packaging"
@@ -1633,6 +1667,14 @@
     "edit_ocr_extract_failed": "Detecteren van tekst in afbeelding mislukt.",
     "@edit_ocr_extract_failed": {
         "description": "OCR extraction - message for failed"
+    },
+    "edit_ocr_extract_disabled_title": "Geen afbeelding!",
+    "@edit_ocr_extract_disabled_title": {
+        "description": "OCR extraction - title for disabled"
+    },
+    "edit_ocr_extract_disabled_message": "Om de tekstextractiefunctie te kunnen gebruiken, moet u eerst een foto maken.",
+    "@edit_ocr_extract_disabled_message": {
+        "description": "OCR extraction - message for disabled"
     },
     "user_list_dialog_new_title": "Nieuwe lijst met producten",
     "@user_list_dialog_new_title": {
@@ -2300,9 +2342,13 @@
     "basic_details": "Basisdetails",
     "product_name": "Productnaam",
     "add_basic_details_product_name_error": "Voer de productnaam in",
+    "add_basic_details_product_name_hint": "Input the name of the product (eg: Nutella)",
     "brand_name": "Merknaam",
+    "brand_names": "Merknaam",
     "add_basic_details_brand_name_error": "Vul a. u. b. de merknaam in",
+    "add_basic_details_brand_names_hint": "Input brands (eg: Ferrero)",
     "quantity": "Hoeveelheid en gewicht",
+    "add_basic_details_quantity_hint": "Voer het gewicht in en indien nodig de hoeveelheid (bijv.: 4x100g)",
     "barcode": "Streepjescode",
     "barcode_barcode": "Streepjescode: {barcode}",
     "@barcode_barcode": {
@@ -3087,14 +3133,14 @@
     "nutriscore_unknown_new_formula": "Onbekende Nutri-Score (Nieuwe berekening)",
     "nutriscore_not_applicable": "Nutri-Score is niet van toepassing",
     "nutriscore_not_applicable_new_formula": "Nutri-Score is niet van toepassing (Nieuwe berekening)",
-    "environmental_score_generic": "Green Score",
-    "environmental_score_a": "Green Score A",
-    "environmental_score_b": "Green Score B",
-    "environmental_score_c": "Green Score C",
-    "environmental_score_d": "Green Score D",
-    "environmental_score_e": "Green Score E",
-    "environmental_score_unknown": "Unknown Green Score",
-    "environmental_score_not_applicable": "Green Score is not applicable",
+    "environmental_score_generic": "Green-Score",
+    "environmental_score_a": "Green-Score A",
+    "environmental_score_b": "Green-Score B",
+    "environmental_score_c": "Green -Score C",
+    "environmental_score_d": "Green-Score D",
+    "environmental_score_e": "Green-Score E",
+    "environmental_score_unknown": "Onbekende Green-Score",
+    "environmental_score_not_applicable": "Green-Score is niet van toepassing",
     "nova_group_generic": "Ultra-verwerking - NOVA-groepen",
     "nova_group_1": "NOVA Groep 1",
     "nova_group_2": "NOVA Groep 2",
@@ -3468,8 +3514,25 @@
     "@photo_rotate_right": {
         "description": "Button to rotate a photo to the right"
     },
-    "photo_undo_action": "Undo the previous action",
+    "photo_undo_action": "Vorige actie ongedaan maken",
     "@photo_undo_action": {
         "description": "Button to undo the previous action on a photo"
+    },
+    "knowledge_panel_world_map_accessibility_label": "Een wereldkaart van {location}",
+    "@knowledge_panel_world_map_accessibility_label": {
+        "description": "Accessibility label for the world map in the knowledge panel",
+        "placeholders": {
+            "location": {
+                "type": "String"
+            }
+        }
+    },
+    "open_street_map_contributor_attribution": "OpenStreetMap bijdragers",
+    "@open_street_map_contributor_attribution": {
+        "description": "Attribution for OpenStreetMap contributors"
+    },
+    "not_applicable_short": "n.v.t.",
+    "@not_applicable_short": {
+        "description": "Acronym for Not Applicable"
     }
 }

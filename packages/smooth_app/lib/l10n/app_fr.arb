@@ -562,7 +562,7 @@
     "@add_product_information_button_label": {},
     "new_product": "Nouveau produit",
     "@new_product": {},
-    "new_product_found_title": "New product found!",
+    "new_product_found_title": "Nouveau produit trouvé !",
     "@new_product_found_title": {
         "description": "Title of a dialog that informs the user that a barcode doesn't exist in the database"
     },
@@ -793,7 +793,7 @@
         }
     },
     "product_image_outdated": "Cette image peut être obsolète",
-    "product_image_outdated_explanations_title": "Cette image peut-être obsolète",
+    "product_image_outdated_explanations_title": "Cette image peut être obsolète",
     "product_image_outdated_explanations_content": "Cette image a été prise il y a plus d'un an.\n**Merci de vérifier qu'elle est toujours d'actualité**.\n\nIl s'agit **uniquement d'une alerte**. Si le contenu n'a pas changé, vous pouvez ignorer ce message.",
     "@product_image_outdated_explanations_content": {
         "description": "Please keep the ** syntax to make the text bold"
@@ -1107,18 +1107,6 @@
     "hint_knowledge_panel_message": "Vous pouvez appuyer sur n'importe quelle partie de la carte pour obtenir plus d'informations sur ce que vous voyez. Essayez dès maintenant !",
     "@hint_knowledge_panel_message": {
         "description": "Hint popup indicating the card is clickable during onboarding"
-    },
-    "consent_analytics_title": "Partager anonymement les statistiques",
-    "@consent_analytics_title": {
-        "description": "Title for the consent analytics UI Page"
-    },
-    "consent_analytics_body1": "Aidez les bénévoles d'Open Food Facts à améliorer l'application. C'est vous qui décidez d'envoyer des données analytiques anonymes.",
-    "@conset_analytics_body1": {
-        "description": "first paragraph for the consent analytics UI Page"
-    },
-    "consent_analytics_body2": "Si vous changez d'avis, cette option peut être activée et désactivée à tout moment depuis les paramètres.",
-    "@consent_analytics_body2": {
-        "description": "second paragraph for the consent analytics UI Page"
     },
     "permissions_page_title": "Accès à la caméra",
     "@permissions_page_title": {
@@ -1551,7 +1539,7 @@
     "@edit_product_form_item_categories_title": {
         "description": "Product edition - Categories - Title"
     },
-    "edit_product_form_item_categories_hint": "Saisir une catégorie (ex : Biscuits)",
+    "edit_product_form_item_categories_hint": "catégorie",
     "@edit_product_form_item_categories_hint": {
         "description": "Product edition - Categories - input textfield hint"
     },
@@ -3155,8 +3143,8 @@
     "environmental_score_c": "Green-Score C",
     "environmental_score_d": "Green-Score D",
     "environmental_score_e": "Green-Score E",
-    "environmental_score_unknown": "Unknown Green Score",
-    "environmental_score_not_applicable": "Green Score is not applicable",
+    "environmental_score_unknown": "Green Score inconnu",
+    "environmental_score_not_applicable": "Green Score non applicable",
     "nova_group_generic": "Groupe NOVA",
     "nova_group_1": "Groupe NOVA 1",
     "nova_group_2": "Groupe NOVA 2",
@@ -3530,9 +3518,22 @@
     "@photo_rotate_right": {
         "description": "Button to rotate a photo to the right"
     },
-    "photo_undo_action": "Undo the previous action",
+    "photo_undo_action": "Annuler l'action précédente",
     "@photo_undo_action": {
         "description": "Button to undo the previous action on a photo"
+    },
+    "knowledge_panel_world_map_accessibility_label": "Une carte de {location}",
+    "@knowledge_panel_world_map_accessibility_label": {
+        "description": "Accessibility label for the world map in the knowledge panel",
+        "placeholders": {
+            "location": {
+                "type": "String"
+            }
+        }
+    },
+    "open_street_map_contributor_attribution": "Contributeurs OpenStreetMap",
+    "@open_street_map_contributor_attribution": {
+        "description": "Attribution for OpenStreetMap contributors"
     },
     "not_applicable_short": "N/A",
     "@not_applicable_short": {

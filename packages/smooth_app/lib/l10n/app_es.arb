@@ -528,7 +528,7 @@
     },
     "ingredients": "Ingredientes",
     "@ingredients": {},
-    "ingredients_editing_instructions": "Mantén el orden original. Indica el porcentaje cuando se especifique. Separa los ingredientes con una coma o guion, introduce entre paréntesis los componentes de un ingrediente y señala los alérgenos con guiones bajos.",
+    "ingredients_editing_instructions": "Keep the original order. Indicate the percentage when specified. Separate with a comma or hyphen and use parentheses for ingredients of an ingredient.",
     "ingredients_editing_error": "Error al guardar los ingredientes.",
     "ingredients_editing_image_error": "No se ha podido obtener una nueva imagen de los ingredientes.",
     "ingredients_editing_title": "Editar ingredientes",
@@ -793,6 +793,11 @@
         }
     },
     "product_image_outdated": "This image may be outdated",
+    "product_image_outdated_explanations_title": "This image may be outdated",
+    "product_image_outdated_explanations_content": "This image was taken more than a year ago.\n**Please check that's it's still up-to-date**.\n\nThis is **just a warning**. If the content is still the same, you can ignore this message.",
+    "@product_image_outdated_explanations_content": {
+        "description": "Please keep the ** syntax to make the text bold"
+    },
     "product_image_action_replace_photo": "Replace photo ({type})",
     "@product_image_action_replace_photo": {
         "description": "Action on the photo gallery to replace an existing picture",
@@ -1103,18 +1108,6 @@
     "@hint_knowledge_panel_message": {
         "description": "Hint popup indicating the card is clickable during onboarding"
     },
-    "consent_analytics_title": "Enviar análisis anónimos",
-    "@consent_analytics_title": {
-        "description": "Title for the consent analytics UI Page"
-    },
-    "consent_analytics_body1": "Ayuda al equipo de voluntariado a mejorar la aplicación. La decisión de enviar analíticas de forma anónima es tuya.",
-    "@conset_analytics_body1": {
-        "description": "first paragraph for the consent analytics UI Page"
-    },
-    "consent_analytics_body2": "En cualquier caso, recuerda que si cambias de opinión, puedes activar y desactivar esta opción desde la configuración cuando quieras.",
-    "@consent_analytics_body2": {
-        "description": "second paragraph for the consent analytics UI Page"
-    },
     "permissions_page_title": "Acceso a la cámara",
     "@permissions_page_title": {
         "description": "Title for the camera permission's page (onboarding)"
@@ -1400,6 +1393,10 @@
     "@permission_photo_denied": {
         "description": "When the camera/photo permission is denied by user"
     },
+    "show_product_pictures": "Mostrar imágenes del producto",
+    "@show_product_pictures": {
+        "description": "Button to show a list of product pictures"
+    },
     "edit_product_label": "Editar producto",
     "@edit_product_label": {
         "description": "Edit product button label"
@@ -1407,6 +1404,19 @@
     "edit_product_label_short": "Editar",
     "@edit_product_label_short": {
         "description": "Edit product button short label (only the verb)"
+    },
+    "edit_product_form_item_help": "How to enter \"{value}\"?",
+    "@edit_product_form_item_help": {
+        "description": "Help text for the input field. Eg 'How to enter stores?'",
+        "placeholders": {
+            "value": {
+                "type": "String"
+            }
+        }
+    },
+    "edit_product_form_item_error_empty": "¡Por favor ingrese un valor!",
+    "@edit_product_form_item_error_empty": {
+        "description": "Error message when the user tries to submit an empty value"
     },
     "edit_product_form_item_add_action": "Añadir un nuevo {itemType}",
     "description": "Indicación que aparece cuando el usuario pulsa durante mucho tiempo el botón (+)",
@@ -1449,7 +1459,7 @@
     "@edit_product_form_item_labels_subtitle": {
         "description": "Product edition - Labels - SubTitle"
     },
-    "edit_product_form_item_labels_hint": "sello",
+    "edit_product_form_item_labels_hint": "Ingrese una etiqueta (por ejemplo: NutriScore)",
     "@edit_product_form_item_labels_hint": {
         "description": "Product edition - Labels - input textfield hint"
     },
@@ -1461,7 +1471,7 @@
     "@edit_product_form_item_stores_title": {
         "description": "Product edition - Stores - Title"
     },
-    "edit_product_form_item_stores_hint": "tienda",
+    "edit_product_form_item_stores_hint": "Ingrese una tienda",
     "@edit_product_form_item_stores_hint": {
         "description": "Product edition - Stores - input textfield hint"
     },
@@ -1473,7 +1483,7 @@
     "@edit_product_form_item_origins_title": {
         "description": "Product edition - Origins - Title"
     },
-    "edit_product_form_item_origins_hint": "Indicar un origen",
+    "edit_product_form_item_origins_hint": "Ingrese un origen (por ejemplo: Alemania)",
     "@edit_product_form_item_origins_hint": {
         "description": "Product edition - Origins - input textfield hint"
     },
@@ -1493,7 +1503,7 @@
     "@edit_product_form_item_countries_title": {
         "description": "Product edition - Countries - Title"
     },
-    "edit_product_form_item_countries_hint": "Indicar país",
+    "edit_product_form_item_countries_hint": "Ingrese un país (por ejemplo: Alemania)",
     "@edit_product_form_item_countries_hint": {
         "description": "Product edition - Countries - input textfield hint"
     },
@@ -1509,7 +1519,7 @@
     "@edit_product_form_item_emb_codes_title": {
         "description": "Product edition - Traceability codes - Title"
     },
-    "edit_product_form_item_emb_codes_hint": "EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANTE 522",
+    "edit_product_form_item_emb_codes_hint": "Ingrese un código (por ejemplo EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANTE 522...)",
     "@edit_product_form_item_emb_codes_hint": {
         "description": "Product edition - Traceability Codes - input textfield hint"
     },
@@ -1529,7 +1539,7 @@
     "@edit_product_form_item_categories_hint": {
         "description": "Product edition - Categories - input textfield hint"
     },
-    "edit_product_form_item_categories_type": "categoría",
+    "edit_product_form_item_categories_type": "Ingrese una categoría (por ejemplo: jugo de naranja)",
     "@edit_product_form_item_categories_type": {
         "description": "Product edition - Categories - input textfield type"
     },
@@ -1571,6 +1581,22 @@
     "@edit_product_form_save": {
         "description": "Product edition - Nutrition facts - Save button"
     },
+    "edit_product_ingredients_photo_title": "Foto de los ingredientes",
+    "@edit_product_ingredients_photo_title": {
+        "description": "Product edition - Ingredients - Title"
+    },
+    "edit_product_ingredients_list_title": "de la lista de ingredientes;",
+    "@edit_product_ingredients_list_title": {
+        "description": "Product edition - Ingredients - Title"
+    },
+    "edit_product_packaging_photo_title": "Foto del embalaje",
+    "@edit_product_packaging_photo_title": {
+        "description": "Product edition - Packaging - Title"
+    },
+    "edit_product_packaging_list_title": "Lista del embalaje",
+    "@edit_product_packaging_list_title": {
+        "description": "Product edition - Packaging - Title"
+    },
     "no_data_available": "Sin datos disponibles",
     "@no_data_available": {
         "description": "When there are no data to display"
@@ -1585,6 +1611,10 @@
     "edit_ingredients_extract_ingredients_btn_text": "Extract ingredients from the photo",
     "@edit_ingredients_extract_ingredients_btn_text": {
         "description": "Ingredients edition - Extract ingredients"
+    },
+    "edit_ingredients_extract_ingredients_btn_text_short": "Extraer ingredientes",
+    "@edit_ingredients_extract_ingredients_btn_text_short": {
+        "description": "Ingredients edition - Extract ingredients (short label)"
     },
     "edit_ingredients_extracting_ingredients_btn_text": "Extracting ingredients\nfrom the photo",
     "@edit_ingredients_extracting_ingredients_btn_text": {
@@ -1610,6 +1640,10 @@
     "@edit_packaging_extract_btn_text": {
         "description": "Packaging edition - OCR-Extract packaging"
     },
+    "edit_packaging_extract_btn_text_short": "Extracto del embalaje",
+    "@edit_packaging_extract_btn_text_short": {
+        "description": "Packaging edition - OCR-Extract packaging (short label)"
+    },
     "edit_packaging_extracting_btn_text": "Extracting packaging from the photo",
     "@edit_packaging_extracting_btn_text": {
         "description": "Packaging edition - OCR-Extracting packaging"
@@ -1633,6 +1667,14 @@
     "edit_ocr_extract_failed": "Error al detectar texto en la imagen.",
     "@edit_ocr_extract_failed": {
         "description": "OCR extraction - message for failed"
+    },
+    "edit_ocr_extract_disabled_title": "Sin imagen!",
+    "@edit_ocr_extract_disabled_title": {
+        "description": "OCR extraction - title for disabled"
+    },
+    "edit_ocr_extract_disabled_message": "Para poder utilizar la función de extracción de texto, primero debe tomar una foto.",
+    "@edit_ocr_extract_disabled_message": {
+        "description": "OCR extraction - message for disabled"
     },
     "user_list_dialog_new_title": "Nueva lista de productos",
     "@user_list_dialog_new_title": {
@@ -2300,9 +2342,13 @@
     "basic_details": "Detalles básicos",
     "product_name": "Nombre del producto",
     "add_basic_details_product_name_error": "Por favor, introduce el nombre del producto",
+    "add_basic_details_product_name_hint": "Ingrese el nombre del producto (por ejemplo: Nutella)",
     "brand_name": "Nombre de la marca",
+    "brand_names": "Nombres de la marca",
     "add_basic_details_brand_name_error": "Por favor, introduce el nombre de la marca",
+    "add_basic_details_brand_names_hint": "Ingrese las marcas (por ejemplo Ferrero)",
     "quantity": "Cantidad y peso",
+    "add_basic_details_quantity_hint": "Ingrese el peso y si es necesario la cantidad (por ejemplo: 4x100g)",
     "barcode": "Código de barras",
     "barcode_barcode": "Código de barras: {barcode}",
     "@barcode_barcode": {
@@ -3471,5 +3517,22 @@
     "photo_undo_action": "Deshacer la acción anterior",
     "@photo_undo_action": {
         "description": "Button to undo the previous action on a photo"
+    },
+    "knowledge_panel_world_map_accessibility_label": "Un mapa mundial de {location}",
+    "@knowledge_panel_world_map_accessibility_label": {
+        "description": "Accessibility label for the world map in the knowledge panel",
+        "placeholders": {
+            "location": {
+                "type": "String"
+            }
+        }
+    },
+    "open_street_map_contributor_attribution": "Colaboradores de OpenStreetMap",
+    "@open_street_map_contributor_attribution": {
+        "description": "Attribution for OpenStreetMap contributors"
+    },
+    "not_applicable_short": "N/D",
+    "@not_applicable_short": {
+        "description": "Acronym for Not Applicable"
     }
 }

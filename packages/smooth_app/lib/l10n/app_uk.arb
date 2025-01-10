@@ -528,7 +528,7 @@
     },
     "ingredients": "Інгредієнти",
     "@ingredients": {},
-    "ingredients_editing_instructions": "Зберігайте оригінальне замовлення. Укажіть відсоток, якщо зазначено. Розділяйте комами або дефісом, використовуйте дужки для інгредієнтів інгредієнта та вказуйте алергени між підкресленням.",
+    "ingredients_editing_instructions": "Зберігайте оригінальне замовлення. Вкажіть відсоток. Розділяйте комами або дефісом і використовуйте дужки для інгредієнтів інгредієнта.",
     "ingredients_editing_error": "Не вдалося зберегти інгредієнти.",
     "ingredients_editing_image_error": "Не вдалося отримати зображення нових інгредієнтів.",
     "ingredients_editing_title": "Редагувати інгредієнти",
@@ -793,6 +793,11 @@
         }
     },
     "product_image_outdated": "Це зображення може бути застарілим",
+    "product_image_outdated_explanations_title": "Це зображення може бути застарілим",
+    "product_image_outdated_explanations_content": "This image was taken more than a year ago.\n**Please check that's it's still up-to-date**.\n\nThis is **just a warning**. If the content is still the same, you can ignore this message.",
+    "@product_image_outdated_explanations_content": {
+        "description": "Please keep the ** syntax to make the text bold"
+    },
     "product_image_action_replace_photo": "Замінити фото ({type})",
     "@product_image_action_replace_photo": {
         "description": "Action on the photo gallery to replace an existing picture",
@@ -1103,18 +1108,6 @@
     "@hint_knowledge_panel_message": {
         "description": "Hint popup indicating the card is clickable during onboarding"
     },
-    "consent_analytics_title": "Проттььои",
-    "@consent_analytics_title": {
-        "description": "Title for the consent analytics UI Page"
-    },
-    "consent_analytics_body1": "Допоможіть волонтерам Open Food Facts покращити додаток. Ви самі вирішуєте чи подавати анонімну аналітику.",
-    "@conset_analytics_body1": {
-        "description": "first paragraph for the consent analytics UI Page"
-    },
-    "consent_analytics_body2": "Якщо ви передумаєте, цю опцію можна будь-коли ввімкнути або вимкнути в налаштуваннях.",
-    "@consent_analytics_body2": {
-        "description": "second paragraph for the consent analytics UI Page"
-    },
     "permissions_page_title": "Доступ до камери",
     "@permissions_page_title": {
         "description": "Title for the camera permission's page (onboarding)"
@@ -1400,6 +1393,10 @@
     "@permission_photo_denied": {
         "description": "When the camera/photo permission is denied by user"
     },
+    "show_product_pictures": "Показати фотографії продукту",
+    "@show_product_pictures": {
+        "description": "Button to show a list of product pictures"
+    },
     "edit_product_label": "Редагувати товар",
     "@edit_product_label": {
         "description": "Edit product button label"
@@ -1407,6 +1404,19 @@
     "edit_product_label_short": "Редагувати",
     "@edit_product_label_short": {
         "description": "Edit product button short label (only the verb)"
+    },
+    "edit_product_form_item_help": "Як ввести \"{value}\"?",
+    "@edit_product_form_item_help": {
+        "description": "Help text for the input field. Eg 'How to enter stores?'",
+        "placeholders": {
+            "value": {
+                "type": "String"
+            }
+        }
+    },
+    "edit_product_form_item_error_empty": "Будь ласка, введіть непорожнє значення!",
+    "@edit_product_form_item_error_empty": {
+        "description": "Error message when the user tries to submit an empty value"
     },
     "edit_product_form_item_add_action": "Додати новий {itemType}",
     "description": "Підказка, яка показується, коли користувач довго натискає кнопку (+)",
@@ -1449,7 +1459,7 @@
     "@edit_product_form_item_labels_subtitle": {
         "description": "Product edition - Labels - SubTitle"
     },
-    "edit_product_form_item_labels_hint": "етикетка",
+    "edit_product_form_item_labels_hint": "Введіть мітку (наприклад, NutriScore)",
     "@edit_product_form_item_labels_hint": {
         "description": "Product edition - Labels - input textfield hint"
     },
@@ -1461,7 +1471,7 @@
     "@edit_product_form_item_stores_title": {
         "description": "Product edition - Stores - Title"
     },
-    "edit_product_form_item_stores_hint": "магазин",
+    "edit_product_form_item_stores_hint": "Введіть магазин",
     "@edit_product_form_item_stores_hint": {
         "description": "Product edition - Stores - input textfield hint"
     },
@@ -1473,7 +1483,7 @@
     "@edit_product_form_item_origins_title": {
         "description": "Product edition - Origins - Title"
     },
-    "edit_product_form_item_origins_hint": "Введіть джерело",
+    "edit_product_form_item_origins_hint": "Введіть походження (наприклад, Німеччина)",
     "@edit_product_form_item_origins_hint": {
         "description": "Product edition - Origins - input textfield hint"
     },
@@ -1493,7 +1503,7 @@
     "@edit_product_form_item_countries_title": {
         "description": "Product edition - Countries - Title"
     },
-    "edit_product_form_item_countries_hint": "Введіть країну",
+    "edit_product_form_item_countries_hint": "Введіть країну (наприклад, Німеччина)",
     "@edit_product_form_item_countries_hint": {
         "description": "Product edition - Countries - input textfield hint"
     },
@@ -1509,7 +1519,7 @@
     "@edit_product_form_item_emb_codes_title": {
         "description": "Product edition - Traceability codes - Title"
     },
-    "edit_product_form_item_emb_codes_hint": "EMB 53062, FR 62.448.034 CE, 84 R 20, 33 РАХУНОК 522",
+    "edit_product_form_item_emb_codes_hint": "Введіть код (наприклад: EMB 53062, FR 62.448.034 CE, 84 R 20, 33 RECOLTANT 522…)",
     "@edit_product_form_item_emb_codes_hint": {
         "description": "Product edition - Traceability Codes - input textfield hint"
     },
@@ -1529,7 +1539,7 @@
     "@edit_product_form_item_categories_hint": {
         "description": "Product edition - Categories - input textfield hint"
     },
-    "edit_product_form_item_categories_type": "категорія",
+    "edit_product_form_item_categories_type": "Введіть категорію (наприклад, апельсиновий сік)",
     "@edit_product_form_item_categories_type": {
         "description": "Product edition - Categories - input textfield type"
     },
@@ -1571,6 +1581,22 @@
     "@edit_product_form_save": {
         "description": "Product edition - Nutrition facts - Save button"
     },
+    "edit_product_ingredients_photo_title": "Фото інгредієнтів",
+    "@edit_product_ingredients_photo_title": {
+        "description": "Product edition - Ingredients - Title"
+    },
+    "edit_product_ingredients_list_title": "Список інгредієнтів",
+    "@edit_product_ingredients_list_title": {
+        "description": "Product edition - Ingredients - Title"
+    },
+    "edit_product_packaging_photo_title": "Фото упаковки",
+    "@edit_product_packaging_photo_title": {
+        "description": "Product edition - Packaging - Title"
+    },
+    "edit_product_packaging_list_title": "Пакувальний лист",
+    "@edit_product_packaging_list_title": {
+        "description": "Product edition - Packaging - Title"
+    },
     "no_data_available": "Немає даних",
     "@no_data_available": {
         "description": "When there are no data to display"
@@ -1585,6 +1611,10 @@
     "edit_ingredients_extract_ingredients_btn_text": "Видобути інгредієнти з фото",
     "@edit_ingredients_extract_ingredients_btn_text": {
         "description": "Ingredients edition - Extract ingredients"
+    },
+    "edit_ingredients_extract_ingredients_btn_text_short": "Вилучити інгредієнти",
+    "@edit_ingredients_extract_ingredients_btn_text_short": {
+        "description": "Ingredients edition - Extract ingredients (short label)"
     },
     "edit_ingredients_extracting_ingredients_btn_text": "Отримання інгредієнтів із зображення",
     "@edit_ingredients_extracting_ingredients_btn_text": {
@@ -1610,6 +1640,10 @@
     "@edit_packaging_extract_btn_text": {
         "description": "Packaging edition - OCR-Extract packaging"
     },
+    "edit_packaging_extract_btn_text_short": "Розпакування пакунків",
+    "@edit_packaging_extract_btn_text_short": {
+        "description": "Packaging edition - OCR-Extract packaging (short label)"
+    },
     "edit_packaging_extracting_btn_text": "Вилучення пакунка з фотографії",
     "@edit_packaging_extracting_btn_text": {
         "description": "Packaging edition - OCR-Extracting packaging"
@@ -1633,6 +1667,14 @@
     "edit_ocr_extract_failed": "Не вдалося опізнати текст зі світлини.",
     "@edit_ocr_extract_failed": {
         "description": "OCR extraction - message for failed"
+    },
+    "edit_ocr_extract_disabled_title": "Немає картинки!",
+    "@edit_ocr_extract_disabled_title": {
+        "description": "OCR extraction - title for disabled"
+    },
+    "edit_ocr_extract_disabled_message": "Щоб скористатися функцією вилучення тексту, потрібно спочатку зробити фото.",
+    "@edit_ocr_extract_disabled_message": {
+        "description": "OCR extraction - message for disabled"
     },
     "user_list_dialog_new_title": "Новий список продуктів",
     "@user_list_dialog_new_title": {
@@ -1890,7 +1932,7 @@
     "prices_app_dev_mode_flag": "Ярлик програми «Ціни» на сторінці продукту",
     "prices_app_button": "Перейдіть у додаток Ціни",
     "prices_generic_title": "Ціни",
-    "prices_add_n_prices": "{count,plural, =1{Add a price} other{Add {count} prices}}",
+    "prices_add_n_prices": "{count,plural, =1{Додайте ціну} other{Додайте {count} цін}}",
     "prices_send_n_prices": "{count,plural, one {Надіслати{count} ціну} few {Надіслати {count} ціни} many {Надіслати {count} цін}=1{Надіслати ціну} other{Надіслати {count} ціни}}",
     "prices_add_an_item": "Додати елемент",
     "prices_add_a_price": "Додати ціну",
@@ -2100,7 +2142,7 @@
     "dev_mode_section_ui": "Інтерфейс користувача",
     "dev_mode_section_data": "Дані",
     "dev_mode_section_experimental_features": "Експериментальні функції",
-    "dev_preferences_show_folksonomy_title": "Exclude Folksonomy",
+    "dev_preferences_show_folksonomy_title": "Виключити фольксономію",
     "@dev_preferences_show_folksonomy_title": {
         "description": "Title for switch toggle to show or hide folksonomy, product tags on product details page"
     },
@@ -2300,9 +2342,13 @@
     "basic_details": "Основні деталі",
     "product_name": "Назва продукту",
     "add_basic_details_product_name_error": "Будь ласка, введіть назву продукту",
+    "add_basic_details_product_name_hint": "Введіть назву продукту (наприклад, Nutella)",
     "brand_name": "Назва бренду",
+    "brand_names": "Торгові марки",
     "add_basic_details_brand_name_error": "Будь ласка, введіть назву бренду",
+    "add_basic_details_brand_names_hint": "Введіть бренди (наприклад, Ferrero)",
     "quantity": "Кількість і вага",
+    "add_basic_details_quantity_hint": "Введіть вагу та, якщо необхідно, кількість (наприклад, 4x100 г)",
     "barcode": "Код товару",
     "barcode_barcode": "Штрих-код: {barcode}",
     "@barcode_barcode": {
@@ -3471,5 +3517,22 @@
     "photo_undo_action": "Скасувати попередню дію",
     "@photo_undo_action": {
         "description": "Button to undo the previous action on a photo"
+    },
+    "knowledge_panel_world_map_accessibility_label": "Карта світу {location}",
+    "@knowledge_panel_world_map_accessibility_label": {
+        "description": "Accessibility label for the world map in the knowledge panel",
+        "placeholders": {
+            "location": {
+                "type": "String"
+            }
+        }
+    },
+    "open_street_map_contributor_attribution": "Учасники OpenStreetMap",
+    "@open_street_map_contributor_attribution": {
+        "description": "Attribution for OpenStreetMap contributors"
+    },
+    "not_applicable_short": "Н/Д",
+    "@not_applicable_short": {
+        "description": "Acronym for Not Applicable"
     }
 }
