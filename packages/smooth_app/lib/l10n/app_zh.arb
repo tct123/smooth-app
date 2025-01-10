@@ -744,6 +744,7 @@
     "score_add_missing_product_labels": "添加缺失的产品标签",
     "score_add_missing_product_origins": "添加缺失的产品来源",
     "score_add_missing_product_stores": "添加缺失的产品来源商店",
+    "score_add_missing_product_brands": "Add missing product brands",
     "score_update_nutrition_facts": "更新營養成分",
     "nutrition_page_title": "營養成分",
     "nutrition_page_unspecified": "產品未具體標明營養成分",
@@ -1225,10 +1226,6 @@
     "@onboarding_welcome_loading_dialog_title": {
         "description": "Title for the onboarding loading dialog"
     },
-    "onboarding_welcome_loading_error": "好像没有您的语言的示例产品",
-    "@onboarding_welcome_loading_error": {
-        "description": "Seems like there is no example product in your language"
-    },
     "product_list_your_ranking": "你的排名",
     "@product_list_your_ranking": {
         "description": "Your ranking screen title"
@@ -1417,6 +1414,10 @@
     "edit_product_form_item_error_empty": "Please enter a non-empty value!",
     "@edit_product_form_item_error_empty": {
         "description": "Error message when the user tries to submit an empty value"
+    },
+    "edit_product_form_item_error_existing": "This value is already there!",
+    "@edit_product_form_item_error_existing": {
+        "description": "Error message when the user tries to re-submit an existing value"
     },
     "edit_product_form_item_add_action": "添加新的 {itemType}",
     "description": "当用户长按 (+) 按钮时显示的工具提示",

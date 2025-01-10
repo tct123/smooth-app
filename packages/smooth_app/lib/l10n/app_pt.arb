@@ -744,6 +744,7 @@
     "score_add_missing_product_labels": "Adicionar rótulos que faltam de produtos",
     "score_add_missing_product_origins": "Adicionar origens que faltam de produtos",
     "score_add_missing_product_stores": "Adicionar lojas que faltam de produtos",
+    "score_add_missing_product_brands": "Add missing product brands",
     "score_update_nutrition_facts": "Atualizar dados nutricionais",
     "nutrition_page_title": "Informações nutricionais",
     "nutrition_page_unspecified": "A informação nutricional não é está presente no produto",
@@ -1225,10 +1226,6 @@
     "@onboarding_welcome_loading_dialog_title": {
         "description": "Title for the onboarding loading dialog"
     },
-    "onboarding_welcome_loading_error": "Parece que não há nenhum exemplo de produto no seu idioma",
-    "@onboarding_welcome_loading_error": {
-        "description": "Seems like there is no example product in your language"
-    },
     "product_list_your_ranking": "A sua classificação",
     "@product_list_your_ranking": {
         "description": "Your ranking screen title"
@@ -1417,6 +1414,10 @@
     "edit_product_form_item_error_empty": "Please enter a non-empty value!",
     "@edit_product_form_item_error_empty": {
         "description": "Error message when the user tries to submit an empty value"
+    },
+    "edit_product_form_item_error_existing": "This value is already there!",
+    "@edit_product_form_item_error_existing": {
+        "description": "Error message when the user tries to re-submit an existing value"
     },
     "edit_product_form_item_add_action": "Adicionar um novo {itemType}",
     "description": "Dica a mostrar quando o utilizador prime longamente o botão (+)",

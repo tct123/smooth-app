@@ -744,6 +744,7 @@
     "score_add_missing_product_labels": "Voeg ontbrekende productlabels toe",
     "score_add_missing_product_origins": "Voeg ontbrekende productherkomsten toe",
     "score_add_missing_product_stores": "Voeg ontbrekende productwinkels toe",
+    "score_add_missing_product_brands": "Add missing product brands",
     "score_update_nutrition_facts": "Voedingswaarden bijwerken",
     "nutrition_page_title": "Voedingswaarden",
     "nutrition_page_unspecified": "De voedingswaarden zijn niet op het product vermeld",
@@ -1225,10 +1226,6 @@
     "@onboarding_welcome_loading_dialog_title": {
         "description": "Title for the onboarding loading dialog"
     },
-    "onboarding_welcome_loading_error": "Het lijkt erop dat er geen voorbeeldproduct is in uw taal",
-    "@onboarding_welcome_loading_error": {
-        "description": "Seems like there is no example product in your language"
-    },
     "product_list_your_ranking": "Jouw ranking",
     "@product_list_your_ranking": {
         "description": "Your ranking screen title"
@@ -1417,6 +1414,10 @@
     "edit_product_form_item_error_empty": "Please enter a non-empty value!",
     "@edit_product_form_item_error_empty": {
         "description": "Error message when the user tries to submit an empty value"
+    },
+    "edit_product_form_item_error_existing": "This value is already there!",
+    "@edit_product_form_item_error_existing": {
+        "description": "Error message when the user tries to re-submit an existing value"
     },
     "edit_product_form_item_add_action": "Voeg een nieuw(e) {itemType} toe",
     "description": "Tooltip om te laten zien wanneer de gebruiker lang op de (+) knop drukt",
