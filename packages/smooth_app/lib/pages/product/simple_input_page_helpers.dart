@@ -120,6 +120,12 @@ abstract class AbstractSimpleInputPageHelper extends ChangeNotifier {
   ) =>
       null;
 
+  /// Text capitalization for the text field.
+  TextCapitalization? getTextCapitalization() => null;
+
+  /// Allow emojis in the text field.
+  bool getAllowEmojis() => false;
+
   /// Typical extra widget for the "add other pics" button.
   @protected
   Widget getExtraPhotoWidget(
@@ -128,9 +134,11 @@ abstract class AbstractSimpleInputPageHelper extends ChangeNotifier {
     final String title,
   ) =>
       Padding(
-        padding: const EdgeInsets.symmetric(
-          vertical: SMALL_SPACE,
-          horizontal: SMALL_SPACE,
+        padding: const EdgeInsetsDirectional.only(
+          top: 0,
+          start: SMALL_SPACE,
+          end: SMALL_SPACE,
+          bottom: SMALL_SPACE,
         ),
         child: addPanelButton(
           title,
@@ -171,7 +179,9 @@ abstract class AbstractSimpleInputPageHelper extends ChangeNotifier {
     if (input.isEmpty) {
       return <String>[];
     }
-    return input.split(separator);
+    return input.split(separator.trim()).map((String e) => e.trim()).toList(
+          growable: false,
+        );
   }
 
   /// Returns the current language.
@@ -428,6 +438,9 @@ class SimpleInputPageEmbCodeHelper extends AbstractSimpleInputPageHelper {
         product,
         AppLocalizations.of(context).add_emb_photo_button_label,
       );
+
+  @override
+  TextCapitalization getTextCapitalization() => TextCapitalization.characters;
 }
 
 /// Implementation for "Labels" of an [AbstractSimpleInputPageHelper].
