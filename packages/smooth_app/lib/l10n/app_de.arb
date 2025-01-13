@@ -1563,6 +1563,18 @@
     "@edit_product_form_item_ingredients_title": {
         "description": "Product edition - Ingredients - Title (note: this section was previously called Ingredients & Origins)"
     },
+    "edit_product_form_item_ingredients_pinch_to_zoom_tooltip": "Vergrößern und Verkleinern indem du den Bildschirm mit zwei Fingern zusammen- oder auseinanderziehst",
+    "@edit_product_form_item_ingredients_pinch_to_zoom_tooltip": {
+        "description": "Product edition - Ingredients - Pinch to zoom icon explanation"
+    },
+    "edit_product_form_item_ingredients_pinch_to_zoom_title": "Foto vergrößern und verkleinern",
+    "@edit_product_form_item_ingredients_pinch_to_zoom_title": {
+        "description": "Product edition - Ingredients - Pinch to zoom explanation title"
+    },
+    "edit_product_form_item_ingredients_pinch_to_zoom_message": "Mit der **Pinch-to-Zoom-Geste** können Sie das Foto vergrößern oder verkleinern:",
+    "@edit_product_form_item_ingredients_pinch_to_zoom_message": {
+        "description": "Product edition - Ingredients - Pinch to zoom explanation message"
+    },
     "edit_product_form_item_add_valid_item_tooltip": "Hinzufügen",
     "edit_product_form_item_add_invalid_item_tooltip": "Bitte zuerst einen Text eingeben",
     "edit_product_form_item_remove_item_tooltip": "Entfernen",
@@ -2604,15 +2616,10 @@
     },
     "clipboard_barcode_copy": "Strichcode in die Zwischenablage kopieren",
     "@clipboard_barcode_copied": {
-        "description": "Snackbar label after clipboard copy",
-        "placeholders": {
-            "barcode": {
-                "type": "String",
-                "description": "barcode"
-            }
-        }
+        "description": "Snackbar label after clipboard copy"
     },
     "clipboard_barcode_copied": "Strichcode „{barcode}“ in die Zwischenablage kopiert!",
+    "open_product_website": "Dieses Produkt auf der Website öffnen",
     "language_picker_label": "Ihre Sprache",
     "@language_picker_label": {
         "description": "Choose Application Language"
@@ -3535,5 +3542,13 @@
     "not_applicable_short": "Keine Angaben",
     "@not_applicable_short": {
         "description": "Acronym for Not Applicable"
-    }
+    },
+    "knowledge_panel_warning_text": "Warnhinweis",
+    "@knowledge_panel_warning_text": {
+        "description": "Warning text at the beginning of a sentence in the knowledge panel (you can find this word on the NutriScore KP of 3033491279300)"
+    },
+    "knowledge_panel_nutriscore_banner_incorrect_score_title": "Warum ist dieser Nutri-Score ein anderer als der auf der Verpackung angegebene?",
+    "knowledge_panel_nutriscore_banner_incorrect_score_message": "Es gibt zwei mögliche Erklärungen:\nDie Liste der Zutaten und/oder die Nährwertangaben sind nicht aktuell.\n\nWir bieten die „Neue Berechnung“ des Nutri-Score (oder V2) an. Bitte überprüfen Sie, ob sich das Banner „Neue Berechnung“ auf der Verpackung befindet.",
+    "knowledge_panel_nutriscore_banner_incorrect_score_button1": "Zutaten prüfen",
+    "knowledge_panel_nutriscore_banner_incorrect_score_button2": "Nährwertangaben prüfen"
 }

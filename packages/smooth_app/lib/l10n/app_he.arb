@@ -744,7 +744,7 @@
     "score_add_missing_product_labels": "הוספת תוויות מוצר חסרות",
     "score_add_missing_product_origins": "הוספת מקורות מוצר חסרים",
     "score_add_missing_product_stores": "הוספת חנויות מוצר חסרות",
-    "score_add_missing_product_brands": "Add missing product brands",
+    "score_add_missing_product_brands": "הוספת מותגי מוצרים חסרים",
     "score_update_nutrition_facts": "עדכון העובדות התזונתיות",
     "nutrition_page_title": "מפרט תזונתי",
     "nutrition_page_unspecified": "העובדות התזונתיות לא מופיעות על המוצר",
@@ -795,7 +795,7 @@
     },
     "product_image_outdated": "יכול להיות שהתמונה הזאת לא עדכנית",
     "product_image_outdated_explanations_title": "יכול להיות שהתמונה הזאת לא עדכנית",
-    "product_image_outdated_explanations_content": "This image was taken more than a year ago.\n**Please check that's it's still up-to-date**.\n\nThis is **just a warning**. If the content is still the same, you can ignore this message.",
+    "product_image_outdated_explanations_content": "התמונה הזאת צולמה לפני יותר משנה.\n**נא לבדוק שהיא עדיין עדכנית**.\n\nזוהי **רק אזהרה**. אם התוכן עדיין זהה, אפשר להתעלם מההודעה הזאת.",
     "@product_image_outdated_explanations_content": {
         "description": "Please keep the ** syntax to make the text bold"
     },
@@ -1415,7 +1415,7 @@
     "@edit_product_form_item_error_empty": {
         "description": "Error message when the user tries to submit an empty value"
     },
-    "edit_product_form_item_error_existing": "This value is already there!",
+    "edit_product_form_item_error_existing": "הערך הזה כבר נמצא במקום!",
     "@edit_product_form_item_error_existing": {
         "description": "Error message when the user tries to re-submit an existing value"
     },
@@ -1563,6 +1563,18 @@
     "@edit_product_form_item_ingredients_title": {
         "description": "Product edition - Ingredients - Title (note: this section was previously called Ingredients & Origins)"
     },
+    "edit_product_form_item_ingredients_pinch_to_zoom_tooltip": "Zoom in and out by pinching the screen",
+    "@edit_product_form_item_ingredients_pinch_to_zoom_tooltip": {
+        "description": "Product edition - Ingredients - Pinch to zoom icon explanation"
+    },
+    "edit_product_form_item_ingredients_pinch_to_zoom_title": "Zoom in and out the photo",
+    "@edit_product_form_item_ingredients_pinch_to_zoom_title": {
+        "description": "Product edition - Ingredients - Pinch to zoom explanation title"
+    },
+    "edit_product_form_item_ingredients_pinch_to_zoom_message": "Using the **Pinch-to-zoom gesture**, you can zoom in or out the photo:",
+    "@edit_product_form_item_ingredients_pinch_to_zoom_message": {
+        "description": "Product edition - Ingredients - Pinch to zoom explanation message"
+    },
     "edit_product_form_item_add_valid_item_tooltip": "הוספה",
     "edit_product_form_item_add_invalid_item_tooltip": "נא למלא טקסט תחילה",
     "edit_product_form_item_remove_item_tooltip": "הסרה",
@@ -1590,11 +1602,11 @@
     "@edit_product_ingredients_list_title": {
         "description": "Product edition - Ingredients - Title"
     },
-    "edit_product_packaging_photo_title": "Packaging photo",
+    "edit_product_packaging_photo_title": "תמונת אריזה",
     "@edit_product_packaging_photo_title": {
         "description": "Product edition - Packaging - Title"
     },
-    "edit_product_packaging_list_title": "Packaging list",
+    "edit_product_packaging_list_title": "רשימת אריזה",
     "@edit_product_packaging_list_title": {
         "description": "Product edition - Packaging - Title"
     },
@@ -1641,7 +1653,7 @@
     "@edit_packaging_extract_btn_text": {
         "description": "Packaging edition - OCR-Extract packaging"
     },
-    "edit_packaging_extract_btn_text_short": "Extract packaging",
+    "edit_packaging_extract_btn_text_short": "חילוץ אריזה",
     "@edit_packaging_extract_btn_text_short": {
         "description": "Packaging edition - OCR-Extract packaging (short label)"
     },
@@ -1669,11 +1681,11 @@
     "@edit_ocr_extract_failed": {
         "description": "OCR extraction - message for failed"
     },
-    "edit_ocr_extract_disabled_title": "No picture!",
+    "edit_ocr_extract_disabled_title": "אין תמונה!",
     "@edit_ocr_extract_disabled_title": {
         "description": "OCR extraction - title for disabled"
     },
-    "edit_ocr_extract_disabled_message": "In order to use the text extraction feature, you must first take a photo.",
+    "edit_ocr_extract_disabled_message": "כדי להשתמש ביכולת חילוץ הטקסט, יש לצלם תחילה.",
     "@edit_ocr_extract_disabled_message": {
         "description": "OCR extraction - message for disabled"
     },
@@ -2604,15 +2616,10 @@
     },
     "clipboard_barcode_copy": "העתקת ברקוד ללוח הגזירים",
     "@clipboard_barcode_copied": {
-        "description": "Snackbar label after clipboard copy",
-        "placeholders": {
-            "barcode": {
-                "type": "String",
-                "description": "barcode"
-            }
-        }
+        "description": "Snackbar label after clipboard copy"
     },
     "clipboard_barcode_copied": "הברקוד {barcode} הועתק ללוח הגזירים!",
+    "open_product_website": "פתיחת המוצר הזה באתר",
     "language_picker_label": "השפה שלך",
     "@language_picker_label": {
         "description": "Choose Application Language"
@@ -3532,8 +3539,16 @@
     "@open_street_map_contributor_attribution": {
         "description": "Attribution for OpenStreetMap contributors"
     },
-    "not_applicable_short": "N/A",
+    "not_applicable_short": "לא זמין",
     "@not_applicable_short": {
         "description": "Acronym for Not Applicable"
-    }
+    },
+    "knowledge_panel_warning_text": "אזהרה",
+    "@knowledge_panel_warning_text": {
+        "description": "Warning text at the beginning of a sentence in the knowledge panel (you can find this word on the NutriScore KP of 3033491279300)"
+    },
+    "knowledge_panel_nutriscore_banner_incorrect_score_title": "למה ה־Nutri-Score הזה שונה מזה שעל האריזה?",
+    "knowledge_panel_nutriscore_banner_incorrect_score_message": "יש שני הסברים אפשריים:\nרשימת הרכיבים ו/או העובדות התזונתיות לא עדכניים.\n\nאנו מספקים את ה„חישוב החדש” של Nutri-Score (או V2/גרסה 2). נא לבדוק שמופיע הכיתוב „חישוב חדש/New calculation” על האריזה.",
+    "knowledge_panel_nutriscore_banner_incorrect_score_button1": "בדיקת הרכיבים",
+    "knowledge_panel_nutriscore_banner_incorrect_score_button2": "בדיקת העובדות התזונתיות"
 }
