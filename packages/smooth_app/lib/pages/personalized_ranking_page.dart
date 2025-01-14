@@ -16,6 +16,7 @@ import 'package:smooth_app/helpers/product_compatibility_helper.dart';
 import 'package:smooth_app/pages/product/common/loading_status.dart';
 import 'package:smooth_app/pages/product/common/product_list_item_simple.dart';
 import 'package:smooth_app/pages/product_list_user_dialog_helper.dart';
+import 'package:smooth_app/resources/app_icons.dart';
 import 'package:smooth_app/widgets/smooth_app_bar.dart';
 import 'package:smooth_app/widgets/smooth_menu_button.dart';
 import 'package:smooth_app/widgets/smooth_scaffold.dart';
@@ -106,6 +107,7 @@ class _PersonalizedRankingPageState extends State<PersonalizedRankingPage>
                 SmoothPopupMenuItem<String>(
                   value: 'add_to_list',
                   label: appLocalizations.user_list_button_add_product,
+                  icon: const AddToList.symbol().icon,
                 ),
               ];
             },
@@ -200,12 +202,21 @@ class _PersonalizedRankingPageState extends State<PersonalizedRankingPage>
   ) {
     final ProductCompatibilityHelper helper =
         ProductCompatibilityHelper.status(status);
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(SMALL_SPACE),
-        child: Text(
-          helper.getHeaderText(appLocalizations),
-          style: Theme.of(context).textTheme.titleMedium,
+    return SizedBox(
+      width: double.infinity,
+      child: ColoredBox(
+        color: helper.getColor(context),
+        child: Padding(
+          padding: const EdgeInsets.all(MEDIUM_SPACE),
+          child: Text(
+            helper.getHeaderText(appLocalizations),
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 15.0,
+                  color: Colors.white,
+                ),
+          ),
         ),
       ),
     );
@@ -220,7 +231,6 @@ class _PersonalizedRankingPageState extends State<PersonalizedRankingPage>
         direction: DismissDirection.endToStart,
         background: Container(
           alignment: AlignmentDirectional.centerEnd,
-          margin: const EdgeInsets.symmetric(vertical: 14.0),
           color: RED_COLOR,
           padding: const EdgeInsetsDirectional.only(end: 30.0),
           child: const Icon(
