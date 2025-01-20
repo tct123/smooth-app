@@ -239,7 +239,7 @@
     "sign_up_page_email_error_empty": "L'email è obbligatoria",
     "sign_up_page_email_error_invalid": "Email non valida",
     "sign_up_page_username_hint": "Nome utente: Visibile pubblicamente",
-    "sign_up_page_username_error_empty": "È necessario inserire un nome utente",
+    "sign_up_page_username_error_empty": "Inserisci un nome utente",
     "sign_up_page_username_error_invalid": "Inserisci un nome utente valido",
     "sign_up_page_username_description": "Il nome utente non può contenere spazi, maiuscole o caratteri speciali.",
     "sign_up_page_username_length_invalid": "Il nome utente non può superare {value} caratteri",
@@ -522,6 +522,10 @@
     "@label_refresh": {
         "description": "Refresh the cached product"
     },
+    "label_reload": "Reload",
+    "@label_reload": {
+        "description": "Reload a page"
+    },
     "image": "Immagine",
     "front_photo": "Foto frontale",
     "@front_photo": {
@@ -533,6 +537,10 @@
         "placeholders": {
             "imageType": {}
         }
+    },
+    "outdated_image_short_label": "may be outdated",
+    "@outdated_image_short_label": {
+        "description": "A label for outdated images"
     },
     "ingredients": "Ingredienti",
     "@ingredients": {},
@@ -622,6 +630,10 @@
     "crop_page_action_local_failed_message": "Non riusciamo a elaborare localmente l'immagine, prima di inviarla al nostro server. Ti preghiamo di riprovare più tardi o di contattarci se il problema persiste.",
     "@crop_page_action_local_message": {
         "description": "The save of the picture locally failed - error dialog message"
+    },
+    "crop_page_action_retake": "Retake a photo",
+    "@crop_page_action_retake": {
+        "description": "Button which allows users to retake a photo."
     },
     "crop_page_too_small_image_title": "L'immagine è troppo piccola!",
     "@crop_page_too_small_image_title": {
@@ -843,6 +855,24 @@
     "@product_image_action_choose_existing_photo": {
         "description": "Replace the existing picture with one from the product's photos"
     },
+    "product_image_details_label": "Information about the photo",
+    "@product_image_details_label": {
+        "description": "Label for the photo details"
+    },
+    "product_image_details_from_producer": "From the producer",
+    "@product_image_details_from_producer": {
+        "description": "Text to indicate that the image was taken by the producer"
+    },
+    "product_image_details_contributor": "Contributore",
+    "@product_image_details_contributor": {
+        "description": "The name of the contributor (and also the owner field) who uploaded the image"
+    },
+    "product_image_details_contributor_producer": "Contributor (producer)",
+    "product_image_details_date": "Data",
+    "@product_image_details_date": {
+        "description": "Text to indicate the date of the image is unknown"
+    },
+    "product_image_details_date_unknown": "Sconosciuto",
     "homepage_main_card_logo_description": "Benvenuti in Open Food Facts",
     "@homepage_main_card_logo_description": {
         "description": "Description for accessibility of the Open Food Facts logo on the homepage"
@@ -1448,14 +1478,33 @@
     "@edit_product_form_item_error_existing": {
         "description": "Error message when the user tries to re-submit an existing value"
     },
-    "edit_product_form_item_add_action": "Aggiungi un nuovo {itemType}",
-    "description": "Descrizione del comando per mostrare quando l'utente preme a lungo il pulsante (+)",
-    "@edit_product_form_item_add_action": {
-        "placeholders": {
-            "itemType": {
-                "type": "String"
-            }
-        }
+    "edit_product_form_item_add_action_brand": "Aggiungi una nuova marca",
+    "@edit_product_form_item_add_action_brand": {
+        "description": "Tooltip to show when the user long presses the (+) button on a brand"
+    },
+    "edit_product_form_item_add_action_label": "Aggiungi nuova etichetta",
+    "@edit_product_form_item_add_action_label": {
+        "description": "Tooltip to show when the user long presses the (+) button on a label"
+    },
+    "edit_product_form_item_add_action_store": "Aggiungi un nuovo negozio",
+    "@edit_product_form_item_add_action_store": {
+        "description": "Tooltip to show when the user long presses the (+) button on a store"
+    },
+    "edit_product_form_item_add_action_origin": "Aggiungi una nuova origine",
+    "@edit_product_form_item_add_action_origin": {
+        "description": "Tooltip to show when the user long presses the (+) button on an origin"
+    },
+    "edit_product_form_item_add_action_emb_code": "Aggiungi un nuovo codice di tracciabilità",
+    "@edit_product_form_item_add_action_emb_code": {
+        "description": "Tooltip to show when the user long presses the (+) button on a traceability code"
+    },
+    "edit_product_form_item_add_action_country": "Aggiungi un nuovo Paese",
+    "@edit_product_form_item_add_action_country": {
+        "description": "Tooltip to show when the user long presses the (+) button on a country"
+    },
+    "edit_product_form_item_add_action_category": "Aggiungi una nuova categoria",
+    "@edit_product_form_item_add_action_category": {
+        "description": "Tooltip to show when the user long presses the (+) button on a category"
     },
     "edit_product_form_item_details_title": "Informazioni base",
     "@edit_product_form_item_details_title": {
@@ -2180,6 +2229,37 @@
     "prices_privacy_warning_title": "Avviso sulla privacy",
     "prices_privacy_warning_message": "I prezzi saranno pubblici, insieme al negozio a cui si riferiscono.\nQuesto potrebbe permettere alle persone che conoscono il tuo pseudonimo di Open Food Facts di:\n* dedurre in quale zona vivi\n* sapere cosa stai comprando\nSe ti senti a disagio con ciò, cambia il tuo pseudonimo, oppure crea un nuovo account di Open Food Facts e accedi all'app con esso.",
     "prices_unknown_product": "Prodotto sconosciuto",
+    "prices_currency_change_proposal_title": "Change the currency?",
+    "prices_currency_change_proposal_message": "Your current currency is **{currency}**. Would you like to change it to **{newCurrency}**?",
+    "@prices_currency_change_proposal_message": {
+        "description": "Message to ask the user if they want to change the currency",
+        "placeholders": {
+            "currency": {
+                "type": "String"
+            },
+            "newCurrency": {
+                "type": "String"
+            }
+        }
+    },
+    "prices_currency_change_proposal_action_approve": "Yes, use {newCurrency}",
+    "@prices_currency_change_proposal_action_approve": {
+        "description": "Button to approve the currency change",
+        "placeholders": {
+            "newCurrency": {
+                "type": "String"
+            }
+        }
+    },
+    "prices_currency_change_proposal_action_cancel": "No, keep {currency}",
+    "@prices_currency_change_proposal_action_cancel": {
+        "description": "Button to cancel the currency change",
+        "placeholders": {
+            "currency": {
+                "type": "String"
+            }
+        }
+    },
     "@prices_unknown_product": {
         "description": "Very small text, in the context of prices, to say that the product is unknown"
     },
@@ -2662,6 +2742,14 @@
     "@language_picker_label": {
         "description": "Choose Application Language"
     },
+    "country_picker_label": "Il tuo paese",
+    "@country_picker_label": {
+        "description": "Choose Application Country"
+    },
+    "currency_picker_label": "Your currency",
+    "@currency_picker_label": {
+        "description": "Choose Application Country"
+    },
     "help_with_openfoodfacts": "Aiuto con OpenFoodFacts",
     "@help_with_openfoodfacts": {
         "description": "Label for the email title"
@@ -2704,7 +2792,7 @@
     },
     "scan_header_compare_button_valid_state_tooltip": "Clicca per confrontare i prodotti che hai scansionato",
     "@scan_header_compare_button_valid_state_tooltip": {
-        "description": "Tooltip (message visible with a long-press) on the Compare button on top of the scanner, when there is at least two prodiucts"
+        "description": "Tooltip (message visible with a long-press) on the Compare button on top of the scanner, when there is at least two products"
     },
     "scan_product_loading": "Hai scansionato il\ncodice a barre:",
     "@scan_product_loading": {
@@ -2749,6 +2837,10 @@
                 "type": "int"
             }
         }
+    },
+    "portion_calculator_computation_error": "Missing data. Calculation could not be performed.",
+    "@portion_calculator_computation_error": {
+        "description": "Error message to explain that the computation of the portion calculator failed."
     },
     "portion_calculator_result_title": "Valori nutrizionali per {grams} g (o ml)",
     "@portion_calculator_result_title": {
