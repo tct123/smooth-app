@@ -22,6 +22,7 @@ import 'package:smooth_app/pages/prices/price_model.dart';
 import 'package:smooth_app/pages/prices/price_proof_card.dart';
 import 'package:smooth_app/pages/product/common/product_refresher.dart';
 import 'package:smooth_app/pages/product/may_exit_page_helper.dart';
+import 'package:smooth_app/resources/app_icons.dart' as app_icons;
 import 'package:smooth_app/themes/smooth_theme.dart';
 import 'package:smooth_app/themes/smooth_theme_colors.dart';
 import 'package:smooth_app/themes/theme_provider.dart';
@@ -236,23 +237,89 @@ class _ProductPriceAddPageState extends State<ProductPriceAddPage>
 
   Future<bool?> _doesAcceptWarning({required final bool justInfo}) async {
     final AppLocalizations appLocalizations = AppLocalizations.of(context);
-    return showDialog<bool>(
+    const Color color = Color(0xFFB81D1D);
+    final SmoothColorsThemeExtension extension =
+        context.extension<SmoothColorsThemeExtension>();
+    return showSmoothListOfChoicesModalSheet<bool>(
+      safeArea: true,
       context: context,
-      builder: (final BuildContext context) => SmoothAlertDialog(
-        title: appLocalizations.prices_privacy_warning_title,
-        actionsAxis: Axis.vertical,
-        body: Text(appLocalizations.prices_privacy_warning_message),
-        positiveAction: SmoothActionButton(
-          text: appLocalizations.okay,
-          onPressed: () => Navigator.of(context).pop(true),
+      headerBackgroundColor: color,
+      header: Padding(
+        padding: const EdgeInsetsDirectional.symmetric(
+          horizontal: LARGE_SPACE,
+          vertical: MEDIUM_SPACE,
         ),
-        negativeAction: justInfo
-            ? null
-            : SmoothActionButton(
-                text: appLocalizations.cancel,
-                onPressed: () => Navigator.of(context).pop(),
-              ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            TextWithBoldParts(
+              text: appLocalizations.prices_privacy_warning_main_message,
+              textStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                    fontWeight: FontWeight.w600,
+                  ),
+            ),
+            _buildBulletPoint(
+              appLocalizations.prices_privacy_warning_message_bullet_1,
+              context,
+            ),
+            const SizedBox(height: MEDIUM_SPACE),
+            _buildBulletPoint(
+              appLocalizations.prices_privacy_warning_message_bullet_2,
+              context,
+            ),
+            const SizedBox(height: MEDIUM_SPACE),
+            Text(
+              appLocalizations.prices_privacy_warning_sub_message,
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                    fontWeight: FontWeight.w600,
+                  ),
+            ),
+          ],
+        ),
       ),
+      labels: <String>[
+        appLocalizations.i_accept,
+        appLocalizations.i_refuse,
+      ],
+      values: <bool>[
+        true,
+        false,
+      ],
+      prefixIcons: <Widget>[
+        Icon(Icons.check_circle_rounded, color: extension.success),
+        Icon(Icons.cancel_rounded, color: extension.error),
+      ],
+      title: appLocalizations.prices_privacy_warning_title,
+    );
+  }
+
+  Widget _buildBulletPoint(String text, BuildContext context) {
+    const double defaultIconSize = 7.0;
+    const double radius = 10.0;
+    final SmoothColorsThemeExtension extension =
+        context.extension<SmoothColorsThemeExtension>();
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        const SizedBox(width: MEDIUM_SPACE),
+        CircleAvatar(
+          radius: radius,
+          backgroundColor: extension.greyLight,
+          child: const app_icons.Arrow.right(
+            color: Colors.white,
+            size: defaultIconSize,
+          ),
+        ),
+        const SizedBox(width: SMALL_SPACE),
+        Expanded(
+          child: Text(
+            text,
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                  fontWeight: FontWeight.w600,
+                ),
+          ),
+        ),
+      ],
     );
   }
 
