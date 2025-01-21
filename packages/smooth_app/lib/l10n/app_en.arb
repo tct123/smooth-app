@@ -3597,5 +3597,9 @@
                 "type": "String"
             }
         }
-    }
+    },
+    "for_me": "For me",
+    "website": "Website",
+    "prices": "Prices",
+    "folksonomy": "Folksonomy"
 }

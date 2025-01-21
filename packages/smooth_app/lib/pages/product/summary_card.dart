@@ -144,67 +144,15 @@ class _SummaryCardState extends State<SummaryCard> with UpToDateMixin {
       child: ClipRRect(
         borderRadius: ROUNDED_BORDER_RADIUS,
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Expanded(
-              child: buildProductSmoothCard(
-                body: Padding(
-                  padding: widget.contentPadding ?? SMOOTH_CARD_PADDING,
-                  child: _buildSummaryCardContent(context),
-                ),
-                borderRadius: const BorderRadius.vertical(top: ROUNDED_RADIUS),
-                margin: EdgeInsets.zero,
+            buildProductSmoothCard(
+              body: Padding(
+                padding: widget.contentPadding ?? SMOOTH_CARD_PADDING,
+                child: _buildSummaryCardContent(context),
               ),
-            ),
-            Container(
-              width: double.infinity,
-              padding: widget.buttonPadding ??
-                  const EdgeInsets.symmetric(
-                    vertical: SMALL_SPACE,
-                  ),
-              decoration: BoxDecoration(
-                color: context.lightTheme()
-                    ? themeExtension.primaryDark
-                    : themeExtension.primarySemiDark,
-                borderRadius:
-                    const BorderRadius.vertical(bottom: ROUNDED_RADIUS),
-              ),
-              child: Padding(
-                padding: const EdgeInsetsDirectional.only(
-                  start: SMALL_SPACE,
-                  end: SMALL_SPACE,
-                  bottom: 2.0,
-                ),
-                child: FittedBox(
-                  fit: BoxFit.scaleDown,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        AppLocalizations.of(context).tap_for_more,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 15.0,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      const SizedBox(
-                        width: BALANCED_SPACE,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: themeExtension.orange,
-                        ),
-                        padding: const EdgeInsets.all(VERY_SMALL_SPACE),
-                        child: const icons.Arrow.right(
-                          color: Colors.white,
-                          size: 12.0,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              borderRadius: const BorderRadius.vertical(top: ROUNDED_RADIUS),
+              margin: EdgeInsets.zero,
             ),
           ],
         ),
@@ -310,6 +258,7 @@ class _SummaryCardState extends State<SummaryCard> with UpToDateMixin {
     }
 
     final Widget child = Column(
+      mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         ProductTitleCard(
           upToDateProduct,
