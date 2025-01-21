@@ -13,6 +13,14 @@ class Add extends AppIcon {
     super.semanticLabel,
     super.key,
   }) : super._(_IconsFont.add);
+
+  const Add.circled({
+    super.color,
+    super.size,
+    super.shadow,
+    super.semanticLabel,
+    super.key,
+  }) : super._(_IconsFont.add_circled);
 }
 
 class AddPrice extends AppIcon {
@@ -796,6 +804,16 @@ class Fish extends AppIcon {
   }) : super._(_IconsFont.fish);
 }
 
+class Flag extends AppIcon {
+  const Flag({
+    super.color,
+    super.size,
+    super.shadow,
+    super.semanticLabel,
+    super.key,
+  }) : super._(_IconsFont.flag);
+}
+
 class Fruit extends AppIcon {
   const Fruit({
     super.color,
@@ -1508,6 +1526,24 @@ class Warning extends AppIcon {
     super.semanticLabel,
     super.key,
   }) : super._(_IconsFont.warning);
+}
+
+class Weight extends AppIcon {
+  const Weight({
+    super.color,
+    super.size,
+    super.shadow,
+    super.semanticLabel,
+    super.key,
+  }) : super._(_IconsFont.weight);
+
+  const Weight.alt({
+    super.color,
+    super.size,
+    super.shadow,
+    super.semanticLabel,
+    super.key,
+  }) : super._(_IconsFont.weight_alt);
 }
 
 abstract class AppIcon extends StatelessWidget {
