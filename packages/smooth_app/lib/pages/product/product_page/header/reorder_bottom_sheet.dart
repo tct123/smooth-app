@@ -180,6 +180,7 @@ void showSmoothReorderBottomSheet<T>(
   BuildContext context, {
   required List<ReorderableItem<T>> items,
   required ValueChanged<List<ReorderableItem<T>>> onReorder,
+  ValueChanged<ReorderableItem<T>>? onVisibilityToggle,
   required LabelBuilder<T> labelBuilder,
   String title = 'Reorder Items',
 }) {
@@ -189,6 +190,7 @@ void showSmoothReorderBottomSheet<T>(
     builder: (_) => ReorderBottomSheet<T>(
       items: items,
       onReorder: onReorder,
+      onVisibilityToggle: onVisibilityToggle,
       labelBuilder: labelBuilder,
       title: title,
     ),

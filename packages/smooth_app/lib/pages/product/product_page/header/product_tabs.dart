@@ -126,7 +126,7 @@ class ProductTabBar extends StatelessWidget {
             Text(AppLocalizations.of(context).for_me),
         builder: (Product p) => Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: <Widget>[
             SmoothSimpleButton(
               onPressed: () {
                 showSmoothReorderBottomSheet<ProductTab>(
