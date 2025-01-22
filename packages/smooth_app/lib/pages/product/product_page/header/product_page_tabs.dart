@@ -3,6 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:openfoodfacts/openfoodfacts.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_app/data_models/preferences/user_preferences.dart';
+import 'package:smooth_app/generic_lib/bottom_sheets/smooth_bottom_sheet.dart';
 import 'package:smooth_app/generic_lib/buttons/smooth_simple_button.dart';
 import 'package:smooth_app/knowledge_panel/knowledge_panels_builder.dart';
 import 'package:smooth_app/pages/folksonomy/folksonomy_card.dart';
@@ -10,102 +11,76 @@ import 'package:smooth_app/pages/preferences/user_preferences_dev_mode.dart';
 import 'package:smooth_app/pages/prices/prices_card.dart';
 import 'package:smooth_app/pages/product/product_page/header/reorder_bottom_sheet.dart';
 import 'package:smooth_app/pages/product/website_card.dart';
-import 'package:smooth_app/themes/smooth_theme.dart';
-import 'package:smooth_app/themes/smooth_theme_colors.dart';
+import 'package:smooth_app/widgets/smooth_tabbar.dart';
 
-class ProductTab {
-  ProductTab({
+class ProductPageTab {
+  const ProductPageTab({
     required this.labelBuilder,
     required this.builder,
   });
 
-  final Widget Function(BuildContext) labelBuilder;
+  final String Function(BuildContext) labelBuilder;
   final Widget Function(Product) builder;
 }
 
-class ProductTabBar extends StatelessWidget {
-  const ProductTabBar({
+class ProductPageTabBar extends StatelessWidget {
+  const ProductPageTabBar({
     required this.tabController,
     required this.tabs,
   });
 
   final TabController tabController;
-  final List<ProductTab> tabs;
+  final List<ProductPageTab> tabs;
 
   @override
   Widget build(BuildContext context) {
-    final SmoothColorsThemeExtension themeExtension =
-        context.extension<SmoothColorsThemeExtension>();
-
     return SliverPersistentHeader(
-      delegate: TabBarDelegate(
-        TabBar(
-          controller: tabController,
-          isScrollable: true,
-          tabs: tabs
-              .map((ProductTab tab) => Tab(
-                    child: tab.labelBuilder(context),
-                  ))
-              .toList(growable: false),
-          labelColor: Theme.of(context).primaryColor,
-          labelStyle: const TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 15.0,
-          ),
-          unselectedLabelStyle: const TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 15.0,
-          ),
-          overlayColor: WidgetStateProperty.all(
-            themeExtension.primaryLight,
-          ),
-          dividerColor: themeExtension.primaryNormal,
-          automaticIndicatorColorAdjustment: false,
-          indicatorSize: TabBarIndicatorSize.tab,
-          indicator: BoxDecoration(
-            border: Border(
-              bottom: BorderSide(
-                color: Theme.of(context).primaryColor,
-                width: 3.0,
-              ),
-            ),
-            color: themeExtension.primaryLight,
-          ),
-          tabAlignment: TabAlignment.start,
-        ),
+      delegate: _TabBarDelegate(
+        PreferredSize(
+            preferredSize: const Size.fromHeight(SmoothTabBar.TAB_BAR_HEIGHT),
+            child: SmoothTabBar<ProductPageTab>(
+              tabController: tabController,
+              items: tabs.map((ProductPageTab tab) {
+                return SmoothTabBarItem<ProductPageTab>(
+                  label: tab.labelBuilder(context),
+                  value: tab,
+                );
+              }).toList(),
+              onTabChanged: (ProductPageTab tab) {},
+            )),
       ),
       pinned: true,
     );
   }
 
-  static List<ProductTab> extractTabsFromProduct({
+  static List<ProductPageTab> extractTabsFromProduct({
     required BuildContext context,
     required Product product,
   }) {
-    final List<ProductTab> tabs = <ProductTab>[];
+    final List<ProductPageTab> tabs = <ProductPageTab>[];
 
     final List<KnowledgePanelElement> roots =
         KnowledgePanelsBuilder.getRootPanelElements(product);
     for (final KnowledgePanelElement root in roots) {
-      final List<Widget> children = KnowledgePanelsBuilder.getChildren(
+      List<Widget> children = KnowledgePanelsBuilder.getChildren(
         context,
         panelElement: root,
         product: product,
         onboardingMode: false,
       );
 
+      final KnowledgePanelTitle knowledgePanelTitle =
+          children.first as KnowledgePanelTitle;
+
+      children = children.sublist(1);
+
       tabs.add(
-        ProductTab(
-          labelBuilder: (BuildContext c) =>
-              Text((children.first as KnowledgePanelTitle).title),
-          builder: (Product p) => ListView(
+        ProductPageTab(
+          labelBuilder: (BuildContext c) => knowledgePanelTitle.title,
+          builder: (Product p) => ListView.builder(
             padding: EdgeInsets.zero,
-            children: KnowledgePanelsBuilder.getChildren(
-              context,
-              panelElement: root,
-              product: p,
-              onboardingMode: false,
-            ).sublist(1),
+            itemCount: children.length - 1,
+            itemBuilder: (BuildContext context, int index) => children[index],
           ),
         ),
       );
@@ -114,45 +89,40 @@ class ProductTabBar extends StatelessWidget {
     return _addHardCodedTabs(context, product, tabs);
   }
 
-  static List<ProductTab> _addHardCodedTabs(
+  static List<ProductPageTab> _addHardCodedTabs(
     BuildContext context,
     Product product,
-    List<ProductTab> tabs,
+    List<ProductPageTab> tabs,
   ) {
     tabs.insert(
       0,
-      ProductTab(
+      ProductPageTab(
         labelBuilder: (BuildContext c) =>
-            Text(AppLocalizations.of(context).for_me),
+            AppLocalizations.of(c).product_page_tab_for_me,
         builder: (Product p) => Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             SmoothSimpleButton(
               onPressed: () {
-                showSmoothReorderBottomSheet<ProductTab>(
+                showSmoothReorderBottomSheet<ProductPageTab>(
                   context,
-                  items: tabs.map((ProductTab tab) {
-                    return ReorderableItem<ProductTab>(data: tab);
+                  items: tabs.map((ProductPageTab tab) {
+                    return tab;
                   }).toList(),
-                  onReorder:
-                      (List<ReorderableItem<ProductTab>> reorderedItems) {
+                  onReorder: (List<ProductPageTab> reorderedItems) {
                     tabs.clear();
-                    tabs.addAll(
-                      reorderedItems.map((ReorderableItem<ProductTab> item) {
-                        return item.data;
-                      }).toList(),
-                    );
+                    tabs.addAll(reorderedItems);
                   },
                   labelBuilder: (
                     BuildContext context,
-                    ReorderableItem<ProductTab> item,
+                    ProductPageTab item,
                     int index,
                   ) {
                     return DefaultTextStyle.merge(
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
-                      child: item.data.labelBuilder(context),
+                      child: Text(item.labelBuilder(context)),
                     );
                   },
                 );
@@ -163,11 +133,11 @@ class ProductTabBar extends StatelessWidget {
         ),
       ),
     );
-    if (product.website != null && product.website!.trim().isNotEmpty) {
+    if (product.website?.trim().isNotEmpty == true) {
       tabs.add(
-        ProductTab(
+        ProductPageTab(
           labelBuilder: (BuildContext c) =>
-              Text(AppLocalizations.of(context).website),
+              AppLocalizations.of(c).product_page_tab_website,
           builder: (Product p) => ListView(
             padding: EdgeInsets.zero,
             children: <Widget>[
@@ -178,9 +148,9 @@ class ProductTabBar extends StatelessWidget {
       );
     }
     tabs.add(
-      ProductTab(
+      ProductPageTab(
         labelBuilder: (BuildContext c) =>
-            Text(AppLocalizations.of(context).prices),
+            AppLocalizations.of(c).product_page_tab_prices,
         builder: (Product p) => ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
@@ -194,9 +164,9 @@ class ProductTabBar extends StatelessWidget {
             UserPreferencesDevMode.userPreferencesFlagHideFolksonomy) ==
         false) {
       tabs.add(
-        ProductTab(
+        ProductPageTab(
           labelBuilder: (BuildContext c) =>
-              Text(AppLocalizations.of(context).folksonomy),
+              AppLocalizations.of(c).product_page_tab_folksonomy,
           builder: (Product p) => ListView(
             padding: EdgeInsets.zero,
             children: <Widget>[FolksonomyCard(p)],
@@ -207,18 +177,39 @@ class ProductTabBar extends StatelessWidget {
 
     return tabs;
   }
+
+  static void showSmoothReorderBottomSheet<T>(
+    BuildContext context, {
+    required List<T> items,
+    required ValueChanged<List<T>> onReorder,
+    ValueChanged<T>? onVisibilityToggle,
+    required LabelBuilder<T> labelBuilder,
+    String title = 'Reorder Items',
+  }) {
+    showSmoothModalSheet(
+      context: context,
+      minHeight: 0.6,
+      builder: (_) => ReorderBottomSheet<T>(
+        items: items,
+        onReorder: onReorder,
+        onVisibilityToggle: onVisibilityToggle,
+        labelBuilder: labelBuilder,
+        title: title,
+      ),
+    );
+  }
 }
 
-class TabBarDelegate extends SliverPersistentHeaderDelegate {
-  TabBarDelegate(this.tabBar);
+class _TabBarDelegate extends SliverPersistentHeaderDelegate {
+  _TabBarDelegate(this.tabBar);
 
-  final TabBar tabBar;
+  final PreferredSizeWidget tabBar;
 
   @override
   double get minExtent => tabBar.preferredSize.height;
 
   @override
-  double get maxExtent => tabBar.preferredSize.height;
+  double get maxExtent => minExtent;
 
   @override
   Widget build(
@@ -233,7 +224,7 @@ class TabBarDelegate extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  bool shouldRebuild(covariant TabBarDelegate oldDelegate) {
+  bool shouldRebuild(covariant _TabBarDelegate oldDelegate) {
     return tabBar != oldDelegate.tabBar;
   }
 }

@@ -12,7 +12,7 @@ import 'package:smooth_app/database/dao_product_list.dart';
 import 'package:smooth_app/database/local_database.dart';
 import 'package:smooth_app/helpers/product_compatibility_helper.dart';
 import 'package:smooth_app/pages/product/product_page/footer/new_product_footer.dart';
-import 'package:smooth_app/pages/product/product_page/header/product_tabs.dart';
+import 'package:smooth_app/pages/product/product_page/header/product_page_tabs.dart';
 import 'package:smooth_app/pages/product/product_page/new_product_header.dart';
 import 'package:smooth_app/pages/product/product_page/new_product_page_loading_indicator.dart';
 import 'package:smooth_app/pages/product/product_questions_widget.dart';
@@ -46,7 +46,7 @@ class ProductPageState extends State<ProductPage>
   final ScrollController _scrollController = ScrollController();
 
   late final TabController _tabController;
-  late List<ProductTab> _tabs;
+  late List<ProductPageTab> _tabs;
 
   late ProductPreferences _productPreferences;
   bool _keepRobotoffQuestionsAlive = true;
@@ -63,7 +63,7 @@ class ProductPageState extends State<ProductPage>
     initUpToDate(widget.product, localDatabase);
     DaoProductLastAccess(localDatabase).put(barcode);
 
-    _tabs = ProductTabBar.extractTabsFromProduct(
+    _tabs = ProductPageTabBar.extractTabsFromProduct(
       context: context,
       product: upToDateProduct,
     );
@@ -135,7 +135,7 @@ class ProductPageState extends State<ProductPage>
               SliverToBoxAdapter(
                 child: SummaryCard(upToDateProduct, _productPreferences),
               ),
-              ProductTabBar(
+              ProductPageTabBar(
                 tabController: _tabController,
                 tabs: _tabs,
               ),
@@ -144,7 +144,7 @@ class ProductPageState extends State<ProductPage>
           body: TabBarView(
             controller: _tabController,
             children: _tabs
-                .map((ProductTab tab) => tab.builder(upToDateProduct))
+                .map((ProductPageTab tab) => tab.builder(upToDateProduct))
                 .toList(),
           ),
         ),
