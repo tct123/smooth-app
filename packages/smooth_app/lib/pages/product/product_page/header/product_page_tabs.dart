@@ -78,7 +78,7 @@ class ProductPageTabBar extends StatelessWidget {
         ProductPageTab(
           labelBuilder: (BuildContext c) => knowledgePanelTitle.title,
           builder: (Product p) => ListView.builder(
-            padding: EdgeInsets.zero,
+            padding: EdgeInsetsDirectional.zero,
             itemCount: children.length - 1,
             itemBuilder: (BuildContext context, int index) => children[index],
           ),
@@ -139,7 +139,7 @@ class ProductPageTabBar extends StatelessWidget {
           labelBuilder: (BuildContext c) =>
               AppLocalizations.of(c).product_page_tab_website,
           builder: (Product p) => ListView(
-            padding: EdgeInsets.zero,
+            padding: EdgeInsetsDirectional.zero,
             children: <Widget>[
               WebsiteCard(p.website!),
             ],
@@ -152,7 +152,7 @@ class ProductPageTabBar extends StatelessWidget {
         labelBuilder: (BuildContext c) =>
             AppLocalizations.of(c).product_page_tab_prices,
         builder: (Product p) => ListView(
-          padding: EdgeInsets.zero,
+          padding: EdgeInsetsDirectional.zero,
           children: <Widget>[
             PricesCard(p),
           ],
@@ -168,7 +168,7 @@ class ProductPageTabBar extends StatelessWidget {
           labelBuilder: (BuildContext c) =>
               AppLocalizations.of(c).product_page_tab_folksonomy,
           builder: (Product p) => ListView(
-            padding: EdgeInsets.zero,
+            padding: EdgeInsetsDirectional.zero,
             children: <Widget>[FolksonomyCard(p)],
           ),
         ),

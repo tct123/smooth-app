@@ -81,7 +81,7 @@ class ReorderBottomSheet<T> extends StatelessWidget {
                               key: ValueKey<T>(item.data),
                               margin: const EdgeInsetsDirectional.only(
                                   bottom: MEDIUM_SPACE),
-                              padding: const EdgeInsets.all(12.0),
+                              padding: const EdgeInsetsDirectional.all(12.0),
                               decoration: BoxDecoration(
                                 color: item.visible
                                     ? theme.primaryMedium
