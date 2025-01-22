@@ -522,6 +522,10 @@
     "@label_refresh": {
         "description": "Refresh the cached product"
     },
+    "label_reload": "Перезавантажити",
+    "@label_reload": {
+        "description": "Reload a page"
+    },
     "image": "Зображення",
     "front_photo": "Фото переднього плану",
     "@front_photo": {
@@ -533,6 +537,10 @@
         "placeholders": {
             "imageType": {}
         }
+    },
+    "outdated_image_short_label": "може бути застарілим",
+    "@outdated_image_short_label": {
+        "description": "A label for outdated images"
     },
     "ingredients": "Інгредієнти",
     "@ingredients": {},
@@ -622,6 +630,10 @@
     "crop_page_action_local_failed_message": "Ми не можемо обробити зображення локально перед надсиланням на наш сервер. Спробуйте пізніше або зв’яжіться з нами, якщо проблема не зникне.",
     "@crop_page_action_local_message": {
         "description": "The save of the picture locally failed - error dialog message"
+    },
+    "crop_page_action_retake": "Повторити фото",
+    "@crop_page_action_retake": {
+        "description": "Button which allows users to retake a photo."
     },
     "crop_page_too_small_image_title": "Зрбраження занадто маленьке!",
     "@crop_page_too_small_image_title": {
@@ -843,6 +855,24 @@
     "@product_image_action_choose_existing_photo": {
         "description": "Replace the existing picture with one from the product's photos"
     },
+    "product_image_details_label": "Інформація про фото",
+    "@product_image_details_label": {
+        "description": "Label for the photo details"
+    },
+    "product_image_details_from_producer": "Від виробника",
+    "@product_image_details_from_producer": {
+        "description": "Text to indicate that the image was taken by the producer"
+    },
+    "product_image_details_contributor": "Учасник",
+    "@product_image_details_contributor": {
+        "description": "The name of the contributor (and also the owner field) who uploaded the image"
+    },
+    "product_image_details_contributor_producer": "Автор (продюсер)",
+    "product_image_details_date": "Дата",
+    "@product_image_details_date": {
+        "description": "Text to indicate the date of the image is unknown"
+    },
+    "product_image_details_date_unknown": "Невідомий",
     "homepage_main_card_logo_description": "Вітаємо в Open Food Facts",
     "@homepage_main_card_logo_description": {
         "description": "Description for accessibility of the Open Food Facts logo on the homepage"
@@ -1448,14 +1478,33 @@
     "@edit_product_form_item_error_existing": {
         "description": "Error message when the user tries to re-submit an existing value"
     },
-    "edit_product_form_item_add_action": "Додати новий {itemType}",
-    "description": "Підказка, яка показується, коли користувач довго натискає кнопку (+)",
-    "@edit_product_form_item_add_action": {
-        "placeholders": {
-            "itemType": {
-                "type": "String"
-            }
-        }
+    "edit_product_form_item_add_action_brand": "Додати новий бренд",
+    "@edit_product_form_item_add_action_brand": {
+        "description": "Tooltip to show when the user long presses the (+) button on a brand"
+    },
+    "edit_product_form_item_add_action_label": "Додати нову мітку",
+    "@edit_product_form_item_add_action_label": {
+        "description": "Tooltip to show when the user long presses the (+) button on a label"
+    },
+    "edit_product_form_item_add_action_store": "Додати новий магазин",
+    "@edit_product_form_item_add_action_store": {
+        "description": "Tooltip to show when the user long presses the (+) button on a store"
+    },
+    "edit_product_form_item_add_action_origin": "Додати нове джерело",
+    "@edit_product_form_item_add_action_origin": {
+        "description": "Tooltip to show when the user long presses the (+) button on an origin"
+    },
+    "edit_product_form_item_add_action_emb_code": "Додати новий код трасування",
+    "@edit_product_form_item_add_action_emb_code": {
+        "description": "Tooltip to show when the user long presses the (+) button on a traceability code"
+    },
+    "edit_product_form_item_add_action_country": "Додати нову країну",
+    "@edit_product_form_item_add_action_country": {
+        "description": "Tooltip to show when the user long presses the (+) button on a country"
+    },
+    "edit_product_form_item_add_action_category": "Додати нову категорію",
+    "@edit_product_form_item_add_action_category": {
+        "description": "Tooltip to show when the user long presses the (+) button on a category"
     },
     "edit_product_form_item_details_title": "Основні деталі",
     "@edit_product_form_item_details_title": {
@@ -1608,6 +1657,14 @@
     "edit_product_form_item_add_valid_item_tooltip": "Додати",
     "edit_product_form_item_add_invalid_item_tooltip": "Будь ласка, введіть слово",
     "edit_product_form_item_remove_item_tooltip": "Видалити",
+    "edit_product_form_item_save_edit_item_tooltip": "Зберегти ваше редагування",
+    "@edit_product_form_item_save_edit_item_tooltip": {
+        "description": "The user can edit an existing item. This action will save the change."
+    },
+    "edit_product_form_item_cancel_edit_item_tooltip": "Скасувати редагування",
+    "@edit_product_form_item_cancel_edit_item_tooltip": {
+        "description": "The user can edit an existing item. This action will cancel the change (and return to the initial value)."
+    },
     "edit_product_form_item_packaging_title": "Інструкція з перероблювання",
     "@edit_product_form_item_packaging_title": {
         "description": "Product edition - Packaging - Title"
@@ -1976,7 +2033,7 @@
     "prices_app_button": "Перейдіть у додаток Ціни",
     "prices_generic_title": "Ціни",
     "prices_add_n_prices": "{count,plural, =1{Додайте ціну} other{Додайте {count} цін}}",
-    "prices_send_n_prices": "{count,plural, one {Надіслати{count} ціну} few {Надіслати {count} ціни} many {Надіслати {count} цін}=1{Надіслати ціну} other{Надіслати {count} ціни}}",
+    "prices_send_n_prices": "{count,plural, =1{Надіслати{count} ціну} few {Надіслати {count} ціни} many {Надіслати {count} цін}=1{Надіслати ціну} other{Надіслати {count} ціни}}",
     "prices_add_an_item": "Додати елемент",
     "prices_add_a_price": "Додати ціну",
     "prices_add_a_receipt": "Додати чек",
@@ -2172,6 +2229,37 @@
     "prices_privacy_warning_title": "Попередження про конфіденційність",
     "prices_privacy_warning_message": "Ціни будуть публічними разом із магазином, до якого вони відносяться.\nЦе може дозволити людям, які знають ваш псевдонім в Open Food Facts,:\n* припустити, в якій місцевості ви живете\n* дізнатися, що ви купуєте\nЯкщо вам це неприємно, будь ласка, змініть свій псевдонім або створіть новий обліковий запис Open Food Facts і увійдіть в застосунок з ним.",
     "prices_unknown_product": "Невідомий продукт",
+    "prices_currency_change_proposal_title": "Change the currency?",
+    "prices_currency_change_proposal_message": "Your current currency is **{currency}**. Would you like to change it to **{newCurrency}**?",
+    "@prices_currency_change_proposal_message": {
+        "description": "Message to ask the user if they want to change the currency",
+        "placeholders": {
+            "currency": {
+                "type": "String"
+            },
+            "newCurrency": {
+                "type": "String"
+            }
+        }
+    },
+    "prices_currency_change_proposal_action_approve": "Yes, use {newCurrency}",
+    "@prices_currency_change_proposal_action_approve": {
+        "description": "Button to approve the currency change",
+        "placeholders": {
+            "newCurrency": {
+                "type": "String"
+            }
+        }
+    },
+    "prices_currency_change_proposal_action_cancel": "No, keep {currency}",
+    "@prices_currency_change_proposal_action_cancel": {
+        "description": "Button to cancel the currency change",
+        "placeholders": {
+            "currency": {
+                "type": "String"
+            }
+        }
+    },
     "@prices_unknown_product": {
         "description": "Very small text, in the context of prices, to say that the product is unknown"
     },
@@ -2654,6 +2742,14 @@
     "@language_picker_label": {
         "description": "Choose Application Language"
     },
+    "country_picker_label": "Ваша країна",
+    "@country_picker_label": {
+        "description": "Choose Application Country"
+    },
+    "currency_picker_label": "Ваша валюта",
+    "@currency_picker_label": {
+        "description": "Choose Application Country"
+    },
     "help_with_openfoodfacts": "Допомога з OpenFoodFacts",
     "@help_with_openfoodfacts": {
         "description": "Label for the email title"
@@ -2696,7 +2792,7 @@
     },
     "scan_header_compare_button_valid_state_tooltip": "Натисніть щоб порівняти проскановані продукти",
     "@scan_header_compare_button_valid_state_tooltip": {
-        "description": "Tooltip (message visible with a long-press) on the Compare button on top of the scanner, when there is at least two prodiucts"
+        "description": "Tooltip (message visible with a long-press) on the Compare button on top of the scanner, when there is at least two products"
     },
     "scan_product_loading": "Ви відсканували\nштрих-коду:",
     "@scan_product_loading": {
@@ -2741,6 +2837,10 @@
                 "type": "int"
             }
         }
+    },
+    "portion_calculator_computation_error": "Відсутні дані. Не вдалося виконати розрахунок.",
+    "@portion_calculator_computation_error": {
+        "description": "Error message to explain that the computation of the portion calculator failed."
     },
     "portion_calculator_result_title": "Харчова цінність {grams} г (або мл)",
     "@portion_calculator_result_title": {
