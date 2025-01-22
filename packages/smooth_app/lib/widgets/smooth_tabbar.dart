@@ -123,13 +123,11 @@ class _SmoothTabBarState<T> extends State<SmoothTabBar<T>> {
 
 class SmoothTabBarItem<T> {
   const SmoothTabBarItem({
-    this.label,
-    this.labelBuilder,
+    required this.label,
     required this.value,
-  }) : assert((label != null && label.length > 0) || labelBuilder != null);
+  }) : assert(label.length > 0);
 
-  final String? label;
-  final WidgetBuilder? labelBuilder;
+  final String label;
   final T value;
 }
 
@@ -150,9 +148,7 @@ class _SmoothTab<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     final Widget child;
     if (leading == null && trailing == null) {
-      child = item.labelBuilder != null
-          ? item.labelBuilder!(context)
-          : Text(item.label!);
+      child = Text(item.label);
     } else {
       child = IconTheme(
         data: IconThemeData(
