@@ -2,7 +2,7 @@ import 'dart:io';
 import 'dart:math' as math;
 
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Listener;
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:openfoodfacts/openfoodfacts.dart';
 import 'package:provider/provider.dart';
@@ -10,6 +10,7 @@ import 'package:smooth_app/data_models/preferences/user_preferences.dart';
 import 'package:smooth_app/database/dao_string_list.dart';
 import 'package:smooth_app/database/local_database.dart';
 import 'package:smooth_app/generic_lib/design_constants.dart';
+import 'package:smooth_app/generic_lib/duration_constants.dart';
 import 'package:smooth_app/generic_lib/widgets/language_priority.dart';
 import 'package:smooth_app/generic_lib/widgets/languages_selector.dart';
 import 'package:smooth_app/generic_lib/widgets/smooth_card.dart';
@@ -17,6 +18,7 @@ import 'package:smooth_app/generic_lib/widgets/smooth_text_form_field.dart';
 import 'package:smooth_app/helpers/paint_helper.dart';
 import 'package:smooth_app/helpers/provider_helper.dart';
 import 'package:smooth_app/pages/input/debounced_text_editing_controller.dart';
+import 'package:smooth_app/pages/preferences/user_preferences_languages_list.dart';
 import 'package:smooth_app/pages/product/gallery_view/product_image_gallery_view.dart';
 import 'package:smooth_app/pages/product/multilingual_helper.dart';
 import 'package:smooth_app/pages/product/owner_field_info.dart';
@@ -24,7 +26,11 @@ import 'package:smooth_app/resources/app_icons.dart' as icons;
 import 'package:smooth_app/themes/smooth_theme.dart';
 import 'package:smooth_app/themes/smooth_theme_colors.dart';
 import 'package:smooth_app/themes/theme_provider.dart';
+import 'package:smooth_app/widgets/smooth_explanation_banner.dart';
+import 'package:smooth_app/widgets/smooth_text.dart';
+import 'package:smooth_app/widgets/widget_height.dart';
 
+/// Widget to edit the product name in multiple languages
 class AddProductNameInputWidget extends StatefulWidget {
   const AddProductNameInputWidget({
     required this.product,
@@ -63,9 +69,10 @@ class _AddProductNameInputWidgetState extends State<AddProductNameInputWidget> {
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            const _ProductNameAddNewLanguage(),
             if (widget.product.hasOwnerField(ProductField.NAME_IN_LANGUAGES))
               const OwnerFieldSmoothCardIcon(),
+            const _ProductNameAddNewLanguage(),
+            const _ProductNameExplanation(),
           ],
         ),
         contentPadding: EdgeInsets.zero,
@@ -110,11 +117,14 @@ class _AddProductNameInputWidgetState extends State<AddProductNameInputWidget> {
               _,
             ) {
               final int count = _collapsed
-                  ? math.min(value.productNames.length, MIN_COLLAPSED_COUNT)
+                  ? math.min(
+                      value.productNames.length - value.addedLanguages.length,
+                      MIN_COLLAPSED_COUNT)
                   : value.productNames.length;
 
-              final bool collapsed =
-                  _collapsed && value.productNames.length > MIN_COLLAPSED_COUNT;
+              final bool collapsed = _collapsed &&
+                  value.productNames.length - value.addedLanguages.length >
+                      MIN_COLLAPSED_COUNT;
 
               return Column(
                 children: <Widget>[
@@ -131,7 +141,9 @@ class _AddProductNameInputWidgetState extends State<AddProductNameInputWidget> {
                           },
                         ),
                       ),
-                  if (value.addedLanguages.isNotEmpty && _collapsed)
+                  if (value.addedLanguages.isNotEmpty &&
+                      _collapsed) ...<Widget>[
+                    const _ProductNameNewTranslationWarning(),
                     ...value.productNames
                         .sublist(value.productNames.length -
                             value.addedLanguages.length)
@@ -148,6 +160,7 @@ class _AddProductNameInputWidgetState extends State<AddProductNameInputWidget> {
                             },
                           ),
                         ),
+                  ],
                   if (collapsed)
                     _ProductNameCollapsedSection(
                       onTap: () => setState(() {
@@ -250,7 +263,7 @@ class _ProductNameInputWidgetState extends State<_ProductNameInputWidget> {
         padding: const EdgeInsetsDirectional.only(
           top: BALANCED_SPACE,
           start: 11.0,
-          end: VERY_SMALL_SPACE,
+          end: 8.0,
         ),
         child: IconButtonTheme(
           data: const IconButtonThemeData(
@@ -268,18 +281,23 @@ class _ProductNameInputWidgetState extends State<_ProductNameInputWidget> {
               children: <Widget>[
                 AspectRatio(
                   aspectRatio: 1.0,
-                  child: CircleAvatar(
-                    backgroundColor: lightTheme
-                        ? extension.primaryMedium
-                        : extension.primarySemiDark,
-                    child: AutoSizeText(
-                      widget.productName.language.offTag.toUpperCase(),
-                      style: TextStyle(
-                        color: lightTheme
-                            ? extension.primaryDark
-                            : extension.primaryLight,
-                        fontWeight: FontWeight.w700,
-                        fontSize: 17.0,
+                  child: Tooltip(
+                    message: Languages().getNameInEnglish(
+                      widget.productName.language,
+                    ),
+                    child: CircleAvatar(
+                      backgroundColor: lightTheme
+                          ? extension.primaryMedium
+                          : extension.primarySemiDark,
+                      child: AutoSizeText(
+                        widget.productName.language.offTag.toUpperCase(),
+                        style: TextStyle(
+                          color: lightTheme
+                              ? extension.primaryDark
+                              : extension.primaryLight,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 17.0,
+                        ),
                       ),
                     ),
                   ),
@@ -357,12 +375,14 @@ class _ProductNameCollapsedSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final SmoothColorsThemeExtension extension =
         context.extension<SmoothColorsThemeExtension>();
+    final bool lightTheme = context.lightTheme();
 
     final _ProductNameEditorProviderState state =
         context.watch<ProductNameEditorProvider>().value;
     final int count = state.productNames.length -
-        _AddProductNameInputWidgetState.MIN_COLLAPSED_COUNT +
-        state.addedLanguages.length;
+        (math.min(state.productNames.length,
+                _AddProductNameInputWidgetState.MIN_COLLAPSED_COUNT) +
+            state.addedLanguages.length);
 
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -381,7 +401,9 @@ class _ProductNameCollapsedSection extends StatelessWidget {
                 bottomLeft: ROUNDED_RADIUS,
                 bottomRight: ROUNDED_RADIUS,
               ),
-              color: extension.primaryLight,
+              color: lightTheme
+                  ? extension.primaryLight
+                  : extension.primarySemiDark,
             ),
             child: InkWell(
               onTap: onTap,
@@ -394,7 +416,9 @@ class _ProductNameCollapsedSection extends StatelessWidget {
                   vertical: SMALL_SPACE,
                 ),
                 child: icons.AppIconTheme(
-                  color: extension.greyLight,
+                  color: lightTheme
+                      ? extension.greyMedium
+                      : extension.primaryLight,
                   size: 8.0,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -410,7 +434,9 @@ class _ProductNameCollapsedSection extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 15.0,
                           fontStyle: FontStyle.italic,
-                          color: extension.primaryDark,
+                          color: lightTheme
+                              ? extension.primaryDark
+                              : extension.primaryMedium,
                         ),
                       ),
                       const SizedBox(width: MEDIUM_SPACE),
@@ -424,6 +450,208 @@ class _ProductNameCollapsedSection extends StatelessWidget {
         ),
       ],
     );
+  }
+}
+
+class _ProductNameExplanation extends StatelessWidget {
+  const _ProductNameExplanation();
+
+  @override
+  Widget build(BuildContext context) {
+    final AppLocalizations appLocalizations = AppLocalizations.of(context);
+
+    return ExplanationTitleIcon(
+      title: appLocalizations.add_basic_details_product_name_help_title,
+      margin: EdgeInsets.zero,
+      padding: EdgeInsets.zero,
+      safeArea: false,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          ExplanationBodyInfo(
+            text: appLocalizations.add_basic_details_product_name_help_info1,
+          ),
+          ExplanationGoodExamplesContainer(
+            items: <String>[
+              appLocalizations
+                  .add_basic_details_product_name_help_good_examples_1,
+              appLocalizations
+                  .add_basic_details_product_name_help_good_examples_2,
+            ],
+          ),
+          const SizedBox(height: SMALL_SPACE),
+          ExplanationBadExamplesContainer(
+            items: <String>[
+              appLocalizations
+                  .add_basic_details_product_name_help_bad_examples_1_example,
+              appLocalizations
+                  .add_basic_details_product_name_help_bad_examples_2_example,
+            ],
+            explanations: <String>[
+              appLocalizations
+                  .add_basic_details_product_name_help_bad_examples_1_explanation,
+              appLocalizations
+                  .add_basic_details_product_name_help_bad_examples_2_explanation,
+            ],
+          ),
+          const SizedBox(height: VERY_LARGE_SPACE),
+          ExplanationBodyInfo(
+            text: appLocalizations.add_basic_details_product_name_help_info2,
+            icon: false,
+            safeArea: true,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _ProductNameNewTranslationWarning extends StatefulWidget {
+  const _ProductNameNewTranslationWarning();
+
+  @override
+  State<_ProductNameNewTranslationWarning> createState() =>
+      _ProductNameNewTranslationWarningState();
+}
+
+class _ProductNameNewTranslationWarningState
+    extends State<_ProductNameNewTranslationWarning>
+    with SingleTickerProviderStateMixin {
+  /// Animation to hide the banner
+  AnimationController? _controller;
+  Animation<double>? _animation;
+  Size? _size;
+
+  @override
+  Widget build(BuildContext context) {
+    if (!context.watch<UserPreferences>().showInputProductNameBanner()) {
+      return EMPTY_WIDGET;
+    }
+
+    final SmoothColorsThemeExtension extension =
+        context.extension<SmoothColorsThemeExtension>();
+    final bool lightTheme = context.lightTheme();
+
+    double? height;
+    if (_size != null && _animation != null) {
+      height = _size!.height - _animation!.value;
+    } else {
+      height = _size?.height;
+    }
+
+    return SizedBox(
+      width: _size?.width,
+      height: height,
+      child: MeasureSize(
+        onChange: (Size size) {
+          if (size != _size && _controller == null) {
+            _size = size;
+          }
+        },
+        child: Padding(
+          padding: const EdgeInsetsDirectional.only(top: MEDIUM_SPACE),
+          child: Container(
+            color: lightTheme ? extension.greyLight : extension.primaryDark,
+            child: ClipRRect(
+              child: Stack(
+                children: <Widget>[
+                  PositionedDirectional(
+                    bottom: 0.0,
+                    start: 0.0,
+                    child: ExcludeSemantics(
+                      child: Transform.translate(
+                        offset: const Offset(-12.0, 07.0),
+                        child: icons.Warning(
+                          size: 55.0,
+                          color: lightTheme
+                              ? extension.greyMedium
+                              : extension.primaryTone,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsetsDirectional.only(
+                      start: 62.0,
+                      top: 9.0,
+                      bottom: BALANCED_SPACE,
+                      end: 17.0,
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Expanded(
+                          child: TextWithBoldParts(
+                            text: AppLocalizations.of(context)
+                                .add_basic_details_product_name_warning_translations,
+                            textStyle: const TextStyle(height: 1.6),
+                          ),
+                        ),
+                        const SizedBox(width: VERY_SMALL_SPACE),
+                        DecoratedBox(
+                          decoration: ShapeDecoration(
+                            shape: const CircleBorder(),
+                            color: lightTheme
+                                ? extension.greyMedium
+                                : extension.primaryTone,
+                          ),
+                          child: Material(
+                            type: MaterialType.transparency,
+                            child: Tooltip(
+                              message: MaterialLocalizations.of(context)
+                                  .closeButtonTooltip,
+                              child: InkWell(
+                                customBorder: const CircleBorder(),
+                                onTap: _startAnimation,
+                                child: const Padding(
+                                  padding:
+                                      EdgeInsetsDirectional.all(SMALL_SPACE),
+                                  child: icons.Close(
+                                    size: 10.0,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  void _startAnimation() {
+    if (_size == null) {
+      return;
+    }
+
+    _controller = AnimationController(
+      duration: SmoothAnimationsDuration.medium,
+      vsync: this,
+    )
+      ..addListener(() => setState(() {}))
+      ..addStatusListener((final AnimationStatus status) {
+        if (status == AnimationStatus.completed) {
+          context.read<UserPreferences>().hideInputProductNameBanner();
+        }
+      });
+    _animation = Tween<double>(begin: 0.0, end: _size!.height).animate(
+      CurvedAnimation(curve: Curves.easeInOutCubic, parent: _controller!),
+    );
+    _controller!.forward();
+  }
+
+  @override
+  void dispose() {
+    _controller?.dispose();
+    super.dispose();
   }
 }
 
