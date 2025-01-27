@@ -104,7 +104,8 @@ History:
 ⚙️🥗 Food preferences:
 - changed-files:
   - any-glob-to-any-file: 'packages/smooth_app/lib/widgets/attribute_button.dart'
-
+  - any-glob-to-any-file: 'packages/smooth_app/lib/pages/preferences/user_preferences_attribute_group.dart'
+  
 🤗 Onboarding:
 - changed-files:
   - any-glob-to-any-file: 'packages/smooth_app/lib/pages/onboarding/**/*'
@@ -254,6 +255,7 @@ autocomplete:
   - any-glob-to-any-file: 'packages/smooth_app/lib/pages/product/simple_input_page.dart'
   - any-glob-to-any-file: 'packages/smooth_app/lib/pages/product/simple_input_page_helpers.dart'
   - any-glob-to-any-file: 'packages/smooth_app/lib/pages/product/simple_input_text_field.dart'
+  - any-glob-to-any-file: 'packages/smooth_app/lib/pages/product/nutrition_page/widgets/edit_product_image_viewer.dart'
 
 ✏️ Editing - Nutrition input:
 - changed-files:
@@ -264,7 +266,6 @@ autocomplete:
   - any-glob-to-any-file: 'packages/smooth_app/lib/pages/product/nutrition_page/widgets/nutrition_availability_container.dart'
   - any-glob-to-any-file: 'packages/smooth_app/lib/pages/product/nutrition_page/widgets/nutrition_container_helper.dart'
   - any-glob-to-any-file: 'packages/smooth_app/lib/pages/product/nutrition_page/widgets/nutrition_facts_editor.dart'
-  - any-glob-to-any-file: 'packages/smooth_app/lib/pages/product/nutrition_page/widgets/nutrition_image_viewer.dart'
   - any-glob-to-any-file: 'packages/smooth_app/lib/pages/product/nutrition_page/widgets/nutrition_serving_size.dart'
   - any-glob-to-any-file: 'packages/smooth_app/lib/pages/product/nutrition_page/widgets/nutrition_serving_switch.dart'
 

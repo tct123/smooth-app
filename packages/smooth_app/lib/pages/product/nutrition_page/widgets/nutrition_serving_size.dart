@@ -5,9 +5,9 @@ import 'package:provider/provider.dart';
 import 'package:smooth_app/generic_lib/design_constants.dart';
 import 'package:smooth_app/generic_lib/widgets/smooth_card.dart';
 import 'package:smooth_app/generic_lib/widgets/smooth_text_form_field.dart';
-import 'package:smooth_app/pages/product/simple_input_widget.dart';
 import 'package:smooth_app/query/product_query.dart';
 import 'package:smooth_app/resources/app_animations.dart';
+import 'package:smooth_app/widgets/smooth_explanation_banner.dart';
 
 /// A toggle to indicate whether a product has nutrition facts.
 class NutritionServingSize extends StatelessWidget {
@@ -42,12 +42,12 @@ class NutritionServingSize extends StatelessWidget {
               end: 4.0,
               bottom: 4.5,
             ),
-            trailing: ExplanationTitleIcon(
+            trailing: ExplanationTitleIcon.text(
               title: appLocalizations.nutrition_page_serving_size,
               text: appLocalizations.nutrition_page_serving_size_explanation,
             ),
             contentPadding: const EdgeInsetsDirectional.only(
-              start: LARGE_SPACE,
+              start: MEDIUM_SPACE,
               end: MEDIUM_SPACE,
               top: SMALL_SPACE,
               bottom: SMALL_SPACE,

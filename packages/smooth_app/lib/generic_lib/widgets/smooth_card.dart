@@ -118,6 +118,7 @@ class SmoothCardWithRoundedHeader extends StatelessWidget {
     this.titleBackgroundColor,
     this.contentBackgroundColor,
     this.borderRadius,
+    this.includeShadow = true,
     super.key,
   });
 
@@ -133,20 +134,23 @@ class SmoothCardWithRoundedHeader extends StatelessWidget {
   final Color? titleBackgroundColor;
   final Color? contentBackgroundColor;
   final BorderRadius? borderRadius;
+  final bool includeShadow;
 
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
       decoration: BoxDecoration(
         borderRadius: borderRadius ?? ROUNDED_BORDER_RADIUS,
-        boxShadow: const <BoxShadow>[
-          BoxShadow(
-            color: Color(0x03000000),
-            blurRadius: 2.0,
-            spreadRadius: 0.0,
-            offset: Offset(0.0, 2.0),
-          ),
-        ],
+        boxShadow: includeShadow
+            ? const <BoxShadow>[
+                BoxShadow(
+                  color: Color(0x10000000),
+                  blurRadius: 2.0,
+                  spreadRadius: 0.0,
+                  offset: Offset(0.0, 2.0),
+                ),
+              ]
+            : null,
       ),
       child: Column(
         children: <Widget>[
@@ -209,6 +213,10 @@ class SmoothCardWithRoundedHeaderTop extends StatelessWidget {
         painter: _SmoothCardWithRoundedHeaderBackgroundPainter(
           color: color,
           radius: borderRadius?.topRight ?? ROUNDED_RADIUS,
+          shadowElevation:
+              SmoothCardWithRoundedHeaderTopShadowProvider.of(context)
+                      ?.shadow ??
+                  0.0,
         ),
         child: Padding(
           padding: titlePadding ??
@@ -282,6 +290,30 @@ class SmoothCardWithRoundedHeaderTop extends StatelessWidget {
   }
 }
 
+class SmoothCardWithRoundedHeaderTopShadowProvider extends InheritedWidget {
+  const SmoothCardWithRoundedHeaderTopShadowProvider({
+    required this.shadow,
+    required super.child,
+    super.key,
+  });
+
+  final double shadow;
+
+  static SmoothCardWithRoundedHeaderTopShadowProvider? of(
+      BuildContext context) {
+    final SmoothCardWithRoundedHeaderTopShadowProvider? result =
+        context.dependOnInheritedWidgetOfExactType<
+            SmoothCardWithRoundedHeaderTopShadowProvider>();
+    return result;
+  }
+
+  @override
+  bool updateShouldNotify(
+      SmoothCardWithRoundedHeaderTopShadowProvider oldWidget) {
+    return oldWidget.shadow != shadow;
+  }
+}
+
 class SmoothCardWithRoundedHeaderBody extends StatelessWidget {
   const SmoothCardWithRoundedHeaderBody({
     required this.child,
@@ -320,10 +352,12 @@ class _SmoothCardWithRoundedHeaderBackgroundPainter extends CustomPainter {
   _SmoothCardWithRoundedHeaderBackgroundPainter({
     required Color color,
     required this.radius,
+    required this.shadowElevation,
   }) : _paint = Paint()..color = color;
 
   final Radius radius;
   final Paint _paint;
+  final double shadowElevation;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -355,6 +389,14 @@ class _SmoothCardWithRoundedHeaderBackgroundPainter extends CustomPainter {
       )
       ..close();
 
+    if (shadowElevation > 0.0) {
+      canvas.drawShadow(
+        path,
+        Colors.black.withValues(alpha: shadowElevation),
+        2.0,
+        false,
+      );
+    }
     canvas.drawPath(path, _paint);
   }
 
@@ -362,7 +404,7 @@ class _SmoothCardWithRoundedHeaderBackgroundPainter extends CustomPainter {
   bool shouldRepaint(
     _SmoothCardWithRoundedHeaderBackgroundPainter oldDelegate,
   ) =>
-      false;
+      shadowElevation != oldDelegate.shadowElevation;
 
   @override
   bool shouldRebuildSemantics(

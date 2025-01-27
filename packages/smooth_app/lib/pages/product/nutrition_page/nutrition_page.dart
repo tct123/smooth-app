@@ -18,21 +18,21 @@ import 'package:smooth_app/helpers/product_cards_helper.dart';
 import 'package:smooth_app/helpers/ui_helpers.dart';
 import 'package:smooth_app/pages/input/unfocus_field_when_tap_outside.dart';
 import 'package:smooth_app/pages/product/common/product_buttons.dart';
+import 'package:smooth_app/pages/product/edit_product_image_viewer.dart';
 import 'package:smooth_app/pages/product/may_exit_page_helper.dart';
 import 'package:smooth_app/pages/product/nutrition_page/widgets/nutrition_add_nutrient_button.dart';
 import 'package:smooth_app/pages/product/nutrition_page/widgets/nutrition_availability_container.dart';
 import 'package:smooth_app/pages/product/nutrition_page/widgets/nutrition_container_helper.dart';
 import 'package:smooth_app/pages/product/nutrition_page/widgets/nutrition_facts_editor.dart';
-import 'package:smooth_app/pages/product/nutrition_page/widgets/nutrition_image_viewer.dart';
 import 'package:smooth_app/pages/product/nutrition_page/widgets/nutrition_serving_size.dart';
 import 'package:smooth_app/pages/product/nutrition_page/widgets/nutrition_serving_switch.dart';
 import 'package:smooth_app/pages/product/simple_input_number_field.dart';
-import 'package:smooth_app/pages/product/simple_input_widget.dart';
 import 'package:smooth_app/pages/text_field_helper.dart';
 import 'package:smooth_app/query/product_query.dart';
 import 'package:smooth_app/resources/app_icons.dart';
 import 'package:smooth_app/themes/smooth_theme_colors.dart';
 import 'package:smooth_app/themes/theme_provider.dart';
+import 'package:smooth_app/widgets/smooth_explanation_banner.dart';
 import 'package:smooth_app/widgets/smooth_scaffold.dart';
 import 'package:smooth_app/widgets/will_pop_scope.dart';
 
@@ -120,32 +120,35 @@ class _NutritionPageLoadedState extends State<NutritionPageLoaded>
                   title: appLocalizations.nutrition_page_title,
                   product: upToDateProduct,
                   actions: <Widget>[
-                    IconButton(
-                      icon: const Icon(Icons.image_rounded),
-                      tooltip: ImageField.NUTRITION
-                          .getProductImageButtonText(appLocalizations),
-                      onPressed: () {
-                        if (TransientFile.fromProduct(
-                          upToDateProduct,
-                          ImageField.NUTRITION,
-                          ProductQuery.getLanguage(),
-                        ).isImageAvailable()) {
-                          setState(() {
-                            _imageVisible = !_imageVisible;
-                          });
-                        } else {
-                          ImageField.NUTRITION.openDetails(
-                            context,
+                    if (!_imageVisible)
+                      IconButton(
+                        icon: const Icon(Icons.image_rounded),
+                        tooltip: ImageField.NUTRITION
+                            .getProductImageButtonText(appLocalizations),
+                        onPressed: () {
+                          if (TransientFile.fromProduct(
                             upToDateProduct,
-                            widget.isLoggedInMandatory,
-                          );
-                        }
-                      },
-                    ),
+                            ImageField.NUTRITION,
+                            ProductQuery.getLanguage(),
+                          ).isImageAvailable()) {
+                            setState(() {
+                              _imageVisible = !_imageVisible;
+                            });
+                          } else {
+                            ImageField.NUTRITION.openDetails(
+                              context,
+                              upToDateProduct,
+                              widget.isLoggedInMandatory,
+                            );
+                          }
+                        },
+                      ),
                   ]),
               body: Column(
                 children: <Widget>[
-                  NutritionImageViewer(
+                  EditProductImageViewer(
+                    imageField: ImageField.NUTRITION,
+                    language: ProductQuery.getLanguage(),
                     visible: _imageVisible,
                     onClose: () => setState(() => _imageVisible = false),
                   ),
@@ -372,20 +375,15 @@ class _NutritionPageBodyState extends State<_NutritionPageBody> {
       }
 
       widgets.add(
-        Padding(
-          padding: const EdgeInsetsDirectional.only(
-            start: VERY_LARGE_SPACE,
-            end: MEDIUM_SPACE,
-          ),
-          child: ChangeNotifierProvider<TextEditingControllerWithHistory>.value(
-            value: controllers[nutrient]!,
-            child: NutrientRow(
-              nutritionContainer,
-              decimalNumberFormat,
-              orderedNutrient,
-              i,
-              i == displayableNutrients.length - 1,
-            ),
+        ChangeNotifierProvider<TextEditingControllerWithHistory>.value(
+          value: controllers[nutrient]!,
+          child: NutrientRow(
+            nutritionContainer: nutritionContainer,
+            decimalNumberFormat: decimalNumberFormat,
+            orderedNutrient: orderedNutrient,
+            position: i,
+            isLast: i == displayableNutrients.length - 1,
+            highlighted: _nutrientToHighlight == orderedNutrient,
           ),
         ),
       );
@@ -422,7 +420,7 @@ class _NutritionPageBodyState extends State<_NutritionPageBody> {
                 setState(() => _nutrientToHighlight = nutrient);
               },
             ),
-            ExplanationTitleIcon(
+            ExplanationTitleIcon.text(
               title:
                   appLocalizations.edit_product_form_item_nutrition_facts_title,
               text: appLocalizations
