@@ -9,7 +9,6 @@ import 'package:smooth_app/knowledge_panel/knowledge_panels_builder.dart';
 import 'package:smooth_app/pages/folksonomy/folksonomy_card.dart';
 import 'package:smooth_app/pages/preferences/user_preferences_dev_mode.dart';
 import 'package:smooth_app/pages/prices/prices_card.dart';
-import 'package:smooth_app/pages/product/product_page/header/reorder_bottom_sheet.dart';
 import 'package:smooth_app/pages/product/website_card.dart';
 import 'package:smooth_app/widgets/smooth_tabbar.dart';
 
@@ -20,7 +19,7 @@ class ProductPageTab {
   });
 
   final String Function(BuildContext) labelBuilder;
-  final Widget Function(Product) builder;
+  final Widget Function(BuildContext, Product) builder;
 }
 
 class ProductPageTabBar extends StatelessWidget {
@@ -45,8 +44,8 @@ class ProductPageTabBar extends StatelessWidget {
                   label: tab.labelBuilder(context),
                   value: tab,
                 );
-              }).toList(),
-              onTabChanged: (ProductPageTab tab) {},
+              }).toList(growable: false),
+              onTabChanged: (_) {},
             )),
       ),
       pinned: true,
@@ -76,8 +75,8 @@ class ProductPageTabBar extends StatelessWidget {
 
       tabs.add(
         ProductPageTab(
-          labelBuilder: (BuildContext c) => knowledgePanelTitle.title,
-          builder: (Product p) => ListView.builder(
+          labelBuilder: (_) => knowledgePanelTitle.title,
+          builder: (_, __) => ListView.builder(
             padding: EdgeInsetsDirectional.zero,
             itemCount: children.length - 1,
             itemBuilder: (BuildContext context, int index) => children[index],
@@ -97,9 +96,9 @@ class ProductPageTabBar extends StatelessWidget {
     tabs.insert(
       0,
       ProductPageTab(
-        labelBuilder: (BuildContext c) =>
-            AppLocalizations.of(c).product_page_tab_for_me,
-        builder: (Product p) => Row(
+        labelBuilder: (BuildContext context) =>
+            AppLocalizations.of(context).product_page_tab_for_me,
+        builder: (BuildContext context, __) => Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             SmoothSimpleButton(
@@ -108,26 +107,29 @@ class ProductPageTabBar extends StatelessWidget {
                   context,
                   items: tabs.map((ProductPageTab tab) {
                     return tab;
-                  }).toList(),
+                  }).toList(growable: false),
                   onReorder: (List<ProductPageTab> reorderedItems) {
-                    tabs.clear();
-                    tabs.addAll(reorderedItems);
+                    tabs
+                      ..clear()
+                      ..addAll(reorderedItems);
                   },
                   labelBuilder: (
                     BuildContext context,
                     ProductPageTab item,
                     int index,
                   ) {
-                    return DefaultTextStyle.merge(
+                    return Text(
+                      item.labelBuilder(context),
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
-                      child: Text(item.labelBuilder(context)),
                     );
                   },
+                  title: AppLocalizations.of(context).product_page_reorder_tabs,
                 );
               },
-              child: const Text('Reorder tabs'),
+              child:
+                  Text(AppLocalizations.of(context).product_page_reorder_tabs),
             ),
           ],
         ),
@@ -136,12 +138,12 @@ class ProductPageTabBar extends StatelessWidget {
     if (product.website?.trim().isNotEmpty == true) {
       tabs.add(
         ProductPageTab(
-          labelBuilder: (BuildContext c) =>
-              AppLocalizations.of(c).product_page_tab_website,
-          builder: (Product p) => ListView(
+          labelBuilder: (BuildContext context) =>
+              AppLocalizations.of(context).product_page_tab_website,
+          builder: (_, Product product) => ListView(
             padding: EdgeInsetsDirectional.zero,
             children: <Widget>[
-              WebsiteCard(p.website!),
+              WebsiteCard(product.website!),
             ],
           ),
         ),
@@ -149,12 +151,12 @@ class ProductPageTabBar extends StatelessWidget {
     }
     tabs.add(
       ProductPageTab(
-        labelBuilder: (BuildContext c) =>
-            AppLocalizations.of(c).product_page_tab_prices,
-        builder: (Product p) => ListView(
+        labelBuilder: (BuildContext context) =>
+            AppLocalizations.of(context).product_page_tab_prices,
+        builder: (_, Product product) => ListView(
           padding: EdgeInsetsDirectional.zero,
           children: <Widget>[
-            PricesCard(p),
+            PricesCard(product),
           ],
         ),
       ),
@@ -165,38 +167,17 @@ class ProductPageTabBar extends StatelessWidget {
         false) {
       tabs.add(
         ProductPageTab(
-          labelBuilder: (BuildContext c) =>
-              AppLocalizations.of(c).product_page_tab_folksonomy,
-          builder: (Product p) => ListView(
+          labelBuilder: (BuildContext context) =>
+              AppLocalizations.of(context).product_page_tab_folksonomy,
+          builder: (_, Product product) => ListView(
             padding: EdgeInsetsDirectional.zero,
-            children: <Widget>[FolksonomyCard(p)],
+            children: <Widget>[FolksonomyCard(product)],
           ),
         ),
       );
     }
 
     return tabs;
-  }
-
-  static void showSmoothReorderBottomSheet<T>(
-    BuildContext context, {
-    required List<T> items,
-    required ValueChanged<List<T>> onReorder,
-    ValueChanged<T>? onVisibilityToggle,
-    required LabelBuilder<T> labelBuilder,
-    String title = 'Reorder Items',
-  }) {
-    showSmoothModalSheet(
-      context: context,
-      minHeight: 0.6,
-      builder: (_) => ReorderBottomSheet<T>(
-        items: items,
-        onReorder: onReorder,
-        onVisibilityToggle: onVisibilityToggle,
-        labelBuilder: labelBuilder,
-        title: title,
-      ),
-    );
   }
 }
 
@@ -217,7 +198,7 @@ class _TabBarDelegate extends SliverPersistentHeaderDelegate {
     double shrinkOffset,
     bool overlapsContent,
   ) {
-    return Container(
+    return ColoredBox(
       color: Theme.of(context).scaffoldBackgroundColor,
       child: tabBar,
     );

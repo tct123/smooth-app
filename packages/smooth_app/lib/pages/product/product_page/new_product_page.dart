@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:matomo_tracker/matomo_tracker.dart';
 import 'package:openfoodfacts/openfoodfacts.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
+import 'package:smooth_app/data_models/preferences/user_preferences.dart';
 import 'package:smooth_app/data_models/product_list.dart';
 import 'package:smooth_app/data_models/product_preferences.dart';
 import 'package:smooth_app/data_models/up_to_date_changes.dart';
@@ -10,13 +12,23 @@ import 'package:smooth_app/data_models/up_to_date_mixin.dart';
 import 'package:smooth_app/database/dao_product_last_access.dart';
 import 'package:smooth_app/database/dao_product_list.dart';
 import 'package:smooth_app/database/local_database.dart';
+import 'package:smooth_app/generic_lib/buttons/smooth_large_button_with_icon.dart';
+import 'package:smooth_app/generic_lib/design_constants.dart';
 import 'package:smooth_app/helpers/product_compatibility_helper.dart';
+import 'package:smooth_app/pages/folksonomy/folksonomy_card.dart';
+import 'package:smooth_app/pages/preferences/user_preferences_dev_mode.dart';
+import 'package:smooth_app/pages/prices/prices_card.dart';
+import 'package:smooth_app/pages/product/common/product_refresher.dart';
 import 'package:smooth_app/pages/product/product_page/footer/new_product_footer.dart';
 import 'package:smooth_app/pages/product/product_page/header/product_page_tabs.dart';
 import 'package:smooth_app/pages/product/product_page/new_product_header.dart';
 import 'package:smooth_app/pages/product/product_page/new_product_page_loading_indicator.dart';
 import 'package:smooth_app/pages/product/product_questions_widget.dart';
+import 'package:smooth_app/pages/product/reorderable_knowledge_panel_page.dart';
+import 'package:smooth_app/pages/product/reordered_knowledge_panel_cards.dart';
+import 'package:smooth_app/pages/product/standard_knowledge_panel_cards.dart';
 import 'package:smooth_app/pages/product/summary_card.dart';
+import 'package:smooth_app/pages/product/website_card.dart';
 import 'package:smooth_app/pages/scan/carousel/scan_carousel_manager.dart';
 import 'package:smooth_app/widgets/smooth_scaffold.dart';
 import 'package:smooth_app/widgets/widget_height.dart';
@@ -97,6 +109,11 @@ class ProductPageState extends State<ProductPage>
     final bool hasPendingOperations = UpToDateChanges(localDatabase)
         .hasNotTerminatedOperations(upToDateProduct.barcode!);
 
+    final UserPreferences userPreferences = context.watch<UserPreferences>();
+    final bool useTabView = userPreferences.getFlag(
+            UserPreferencesDevMode.userPreferencesFlagUseProductTabs) ??
+        false;
+
     return MultiProvider(
       providers: <SingleChildWidget>[
         Provider<Product>.value(value: upToDateProduct),
@@ -125,7 +142,7 @@ class ProductPageState extends State<ProductPage>
               SliverAppBar(
                 floating: false,
                 pinned: true,
-                leading: const SizedBox(),
+                leading: EMPTY_WIDGET,
                 leadingWidth: 0.0,
                 titleSpacing: 0.0,
                 title: ProductHeader(
@@ -133,20 +150,32 @@ class ProductPageState extends State<ProductPage>
                 ),
               ),
               SliverToBoxAdapter(
-                child: SummaryCard(upToDateProduct, _productPreferences),
+                child: HeroMode(
+                  enabled: widget.withHeroAnimation &&
+                      widget.heroTag?.isNotEmpty == true,
+                  child: SummaryCard(upToDateProduct, _productPreferences),
+                ),
               ),
-              ProductPageTabBar(
-                tabController: _tabController,
-                tabs: _tabs,
-              ),
+              if (useTabView)
+                ProductPageTabBar(
+                  tabController: _tabController,
+                  tabs: _tabs,
+                ),
             ];
           },
-          body: TabBarView(
-            controller: _tabController,
-            children: _tabs
-                .map((ProductPageTab tab) => tab.builder(upToDateProduct))
-                .toList(),
-          ),
+          body: useTabView
+              ? TabBarView(
+                  controller: _tabController,
+                  children: _tabs
+                      .map(
+                        (ProductPageTab tab) => tab.builder(
+                          context,
+                          upToDateProduct,
+                        ),
+                      )
+                      .toList(growable: false),
+                )
+              : _buildOldLayout(userPreferences),
         ),
         bottomNavigationBar: Column(
           mainAxisSize: MainAxisSize.min,
@@ -169,25 +198,76 @@ class ProductPageState extends State<ProductPage>
         ),
       ),
     );
+  }
 
-    // TODO(primael): Decide where to move these cards with new tab view
-    /* if (userPreferences.getFlag(
-              UserPreferencesDevMode.userPreferencesFlagUserOrderedKP) ??
-          false)
-        Padding(
-          padding: const EdgeInsets.all(SMALL_SPACE),
-          child: SmoothLargeButtonWithIcon(
-            text: appLocalizations.reorder_attribute_action,
-            leadingIcon: const Icon(Icons.sort),
-            onPressed: () async => Navigator.push(
-              context,
-              MaterialPageRoute<void>(
-                builder: (_) =>
-                    ReorderableKnowledgePanelPage(upToDateProduct),
+  Widget _buildOldLayout(
+    UserPreferences userPreferences,
+  ) {
+    final AppLocalizations appLocalizations = AppLocalizations.of(context);
+
+    return RefreshIndicator(
+      onRefresh: () async => ProductRefresher().fetchAndRefresh(
+        barcode: barcode,
+        context: context,
+      ),
+      child: ListView(
+        padding: const EdgeInsets.only(
+          bottom: LARGE_SPACE,
+        ),
+        children: <Widget>[
+          if (userPreferences.getFlag(
+                  UserPreferencesDevMode.userPreferencesFlagUserOrderedKP) ??
+              false)
+            ReorderedKnowledgePanelCards(upToDateProduct)
+          else
+            StandardKnowledgePanelCards(upToDateProduct),
+          // TODO(monsieurtanuki): include website in reordered knowledge panels
+          if (upToDateProduct.website != null &&
+              upToDateProduct.website!.trim().isNotEmpty)
+            WebsiteCard(upToDateProduct.website!),
+          PricesCard(upToDateProduct),
+          if (userPreferences.getFlag(
+                  UserPreferencesDevMode.userPreferencesFlagHideFolksonomy) ==
+              false)
+            FolksonomyCard(upToDateProduct),
+          if (userPreferences.getFlag(
+                  UserPreferencesDevMode.userPreferencesFlagUserOrderedKP) ??
+              false)
+            Padding(
+              padding: const EdgeInsets.all(SMALL_SPACE),
+              child: SmoothLargeButtonWithIcon(
+                text: appLocalizations.reorder_attribute_action,
+                leadingIcon: const Icon(Icons.sort),
+                onPressed: () async => Navigator.push(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (_) =>
+                        ReorderableKnowledgePanelPage(upToDateProduct),
+                  ),
+                ),
               ),
             ),
-          ),
-        ), */
+          if (userPreferences.getFlag(
+                  UserPreferencesDevMode.userPreferencesFlagUserOrderedKP) ??
+              false)
+            Padding(
+              padding: const EdgeInsets.all(SMALL_SPACE),
+              child: SmoothLargeButtonWithIcon(
+                text: appLocalizations.reorder_attribute_action,
+                leadingIcon: const Icon(Icons.sort),
+                onPressed: () async => Navigator.push(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (_) =>
+                        ReorderableKnowledgePanelPage(upToDateProduct),
+                  ),
+                ),
+              ),
+            ),
+          if (bottomPadding > 0) SizedBox(height: bottomPadding),
+        ],
+      ),
+    );
   }
 
   Future<void> _updateLocalDatabaseWithProductHistory(

@@ -19,7 +19,9 @@ class ReorderBottomSheet<T> extends StatelessWidget {
     required this.labelBuilder,
     this.onVisibilityToggle,
     required this.title,
-  }) : _items = items.map((T data) => _ReorderableItem<T>(data: data)).toList();
+  }) : _items = items
+            .map((T data) => _ReorderableItem<T>(data: data))
+            .toList(growable: false);
 
   final List<_ReorderableItem<T>> _items;
   final ValueChanged<List<T>> onReorder;
@@ -45,7 +47,7 @@ class ReorderBottomSheet<T> extends StatelessWidget {
             builder: (_, ScrollController scrollController) {
               return ClipRRect(
                 borderRadius: const BorderRadius.vertical(top: ROUNDED_RADIUS),
-                child: Container(
+                child: DecoratedBox(
                   decoration: BoxDecoration(
                     color: Theme.of(context).canvasColor,
                     borderRadius: const BorderRadius.vertical(
@@ -55,8 +57,8 @@ class ReorderBottomSheet<T> extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      const SmoothModalSheetHeader(
-                        title: 'Reorder tabs',
+                      SmoothModalSheetHeader(
+                        title: title,
                       ),
                       Expanded(
                         child: ReorderableListView.builder(
@@ -80,8 +82,10 @@ class ReorderBottomSheet<T> extends StatelessWidget {
                             return Container(
                               key: ValueKey<T>(item.data),
                               margin: const EdgeInsetsDirectional.only(
-                                  bottom: MEDIUM_SPACE),
-                              padding: const EdgeInsetsDirectional.all(12.0),
+                                bottom: MEDIUM_SPACE,
+                              ),
+                              padding:
+                                  const EdgeInsetsDirectional.all(MEDIUM_SPACE),
                               decoration: BoxDecoration(
                                 color: item.visible
                                     ? theme.primaryMedium
@@ -123,7 +127,7 @@ class ReorderBottomSheet<T> extends StatelessWidget {
                             provider.reorder(oldIndex, newIndex);
                             onReorder(provider.items
                                 .map((_ReorderableItem<T> item) => item.data)
-                                .toList());
+                                .toList(growable: false));
                           },
                         ),
                       ),
@@ -143,7 +147,7 @@ class _ReorderableItem<T> {
   _ReorderableItem({required this.data, this.visible = true});
 
   final T data;
-  bool visible;
+  final bool visible;
 
   _ReorderableItem<T> copyWith({bool? visible}) {
     return _ReorderableItem<T>(
