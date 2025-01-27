@@ -94,9 +94,7 @@ class ReorderBottomSheet<T> extends StatelessWidget {
                                     Container(
                                       decoration: BoxDecoration(
                                         shape: BoxShape.circle,
-                                        color: SmoothColorsThemeExtension
-                                                .defaultValues()
-                                            .primarySemiDark,
+                                        color: theme.primarySemiDark,
                                       ),
                                       child: IconButton(
                                         visualDensity: VisualDensity.compact,
@@ -114,9 +112,7 @@ class ReorderBottomSheet<T> extends StatelessWidget {
                                   const Spacer(),
                                   Icon(
                                     Icons.drag_handle,
-                                    color: SmoothColorsThemeExtension
-                                            .defaultValues()
-                                        .primaryDark,
+                                    color: theme.primaryDark,
                                   ),
                                 ],
                               ),
