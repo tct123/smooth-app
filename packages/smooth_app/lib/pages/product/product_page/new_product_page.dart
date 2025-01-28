@@ -30,6 +30,9 @@ import 'package:smooth_app/pages/product/standard_knowledge_panel_cards.dart';
 import 'package:smooth_app/pages/product/summary_card.dart';
 import 'package:smooth_app/pages/product/website_card.dart';
 import 'package:smooth_app/pages/scan/carousel/scan_carousel_manager.dart';
+import 'package:smooth_app/themes/smooth_theme.dart';
+import 'package:smooth_app/themes/smooth_theme_colors.dart';
+import 'package:smooth_app/themes/theme_provider.dart';
 import 'package:smooth_app/widgets/smooth_scaffold.dart';
 import 'package:smooth_app/widgets/widget_height.dart';
 
@@ -130,57 +133,109 @@ class ProductPageState extends State<ProductPage>
           value: _scrollController,
         ),
       ],
-      child: SmoothScaffold(
-        contentBehindStatusBar: true,
-        spaceBehindStatusBar: false,
-        changeStatusBarBrightness: false,
-        statusBarBackgroundColor: Colors.transparent,
-        body: NestedScrollView(
-          controller: _scrollController,
-          headerSliverBuilder: (BuildContext context, bool value) {
-            return <Widget>[
-              SliverAppBar(
-                floating: false,
-                pinned: true,
-                leading: EMPTY_WIDGET,
-                leadingWidth: 0.0,
-                titleSpacing: 0.0,
-                title: ProductHeader(
-                  backButtonType: widget.backButton,
-                ),
+      child: useTabView
+          ? _buildTabLayout(hasPendingOperations)
+          : _buildOldLayout(userPreferences, hasPendingOperations),
+    );
+  }
+
+  Widget _buildTabLayout(bool hasPendingOperations) {
+    return SmoothScaffold(
+      contentBehindStatusBar: true,
+      spaceBehindStatusBar: false,
+      changeStatusBarBrightness: false,
+      statusBarBackgroundColor: Colors.transparent,
+      body: NestedScrollView(
+        controller: _scrollController,
+        headerSliverBuilder: (BuildContext context, bool value) {
+          return <Widget>[
+            SliverAppBar(
+              floating: false,
+              pinned: true,
+              leading: EMPTY_WIDGET,
+              leadingWidth: 0.0,
+              titleSpacing: 0.0,
+              title: ProductHeader(
+                backButtonType: widget.backButton,
               ),
-              SliverToBoxAdapter(
-                child: HeroMode(
-                  enabled: widget.withHeroAnimation &&
-                      widget.heroTag?.isNotEmpty == true,
-                  child: SummaryCard(upToDateProduct, _productPreferences),
-                ),
+            ),
+            SliverToBoxAdapter(
+              child: HeroMode(
+                enabled: widget.withHeroAnimation &&
+                    widget.heroTag?.isNotEmpty == true,
+                child: SummaryCard(upToDateProduct, _productPreferences),
               ),
-              if (useTabView)
-                ProductPageTabBar(
-                  tabController: _tabController,
-                  tabs: _tabs,
+            ),
+            ProductPageTabBar(
+              tabController: _tabController,
+              tabs: _tabs,
+            ),
+          ];
+        },
+        body: TabBarView(
+          controller: _tabController,
+          children: _tabs
+              .map(
+                (ProductPageTab tab) => tab.builder(
+                  context,
+                  upToDateProduct,
                 ),
-            ];
-          },
-          body: useTabView
-              ? TabBarView(
-                  controller: _tabController,
-                  children: _tabs
-                      .map(
-                        (ProductPageTab tab) => tab.builder(
-                          context,
-                          upToDateProduct,
-                        ),
-                      )
-                      .toList(growable: false),
-                )
-              : _buildOldLayout(userPreferences),
+              )
+              .toList(growable: false),
         ),
-        bottomNavigationBar: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            MeasureSize(
+      ),
+      bottomNavigationBar: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          MeasureSize(
+            onChange: (Size size) {
+              if (size.height != bottomPadding) {
+                setState(() => bottomPadding = size.height);
+              }
+            },
+            child: hasPendingOperations
+                ? const ProductPageLoadingIndicator()
+                : KeepQuestionWidgetAlive(
+                    keepWidgetAlive: _keepRobotoffQuestionsAlive,
+                    child: ProductQuestionsWidget(upToDateProduct),
+                  ),
+          ),
+          const ProductFooter(),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildOldLayout(
+    UserPreferences userPreferences,
+    bool hasPendingOperations,
+  ) {
+    final SmoothColorsThemeExtension themeExtension =
+        context.extension<SmoothColorsThemeExtension>();
+
+    return SmoothScaffold(
+      contentBehindStatusBar: true,
+      spaceBehindStatusBar: false,
+      changeStatusBarBrightness: false,
+      statusBarBackgroundColor: Colors.transparent,
+      backgroundColor:
+          !context.darkTheme() ? themeExtension.primaryLight : null,
+      body: Stack(
+        children: <Widget>[
+          _buildProductBody(context, bottomPadding),
+          Positioned(
+            left: 0.0,
+            right: 0.0,
+            top: 0.0,
+            child: ProductHeader(
+              backButtonType: widget.backButton,
+            ),
+          ),
+          Positioned(
+            left: 0.0,
+            right: 0.0,
+            bottom: 0.0,
+            child: MeasureSize(
               onChange: (Size size) {
                 if (size.height != bottomPadding) {
                   setState(() => bottomPadding = size.height);
@@ -193,79 +248,87 @@ class ProductPageState extends State<ProductPage>
                       child: ProductQuestionsWidget(upToDateProduct),
                     ),
             ),
-            const ProductFooter(),
-          ],
-        ),
+          ),
+        ],
       ),
+      bottomNavigationBar: const ProductFooter(),
     );
   }
 
-  Widget _buildOldLayout(
-    UserPreferences userPreferences,
-  ) {
+  Widget _buildProductBody(BuildContext context, double bottomPadding) {
     final AppLocalizations appLocalizations = AppLocalizations.of(context);
+    final UserPreferences userPreferences = context.watch<UserPreferences>();
 
-    return RefreshIndicator(
-      onRefresh: () async => ProductRefresher().fetchAndRefresh(
-        barcode: barcode,
-        context: context,
-      ),
-      child: ListView(
-        padding: const EdgeInsets.only(
-          bottom: LARGE_SPACE,
+    return SafeArea(
+      child: RefreshIndicator(
+        onRefresh: () async => ProductRefresher().fetchAndRefresh(
+          barcode: barcode,
+          context: context,
         ),
-        children: <Widget>[
-          if (userPreferences.getFlag(
-                  UserPreferencesDevMode.userPreferencesFlagUserOrderedKP) ??
-              false)
-            ReorderedKnowledgePanelCards(upToDateProduct)
-          else
-            StandardKnowledgePanelCards(upToDateProduct),
-          // TODO(monsieurtanuki): include website in reordered knowledge panels
-          if (upToDateProduct.website != null &&
-              upToDateProduct.website!.trim().isNotEmpty)
-            WebsiteCard(upToDateProduct.website!),
-          PricesCard(upToDateProduct),
-          if (userPreferences.getFlag(
-                  UserPreferencesDevMode.userPreferencesFlagHideFolksonomy) ==
-              false)
-            FolksonomyCard(upToDateProduct),
-          if (userPreferences.getFlag(
-                  UserPreferencesDevMode.userPreferencesFlagUserOrderedKP) ??
-              false)
+        child: ListView(
+          // /!\ Smart Dart
+          // `physics: const AlwaysScrollableScrollPhysics()`
+          // means that we will always scroll, even if it's pointless.
+          // Why do we need to? For the RefreshIndicator, that wouldn't be
+          // triggered on a ListView smaller than the screen
+          // (as there will be no scroll).
+          physics: const AlwaysScrollableScrollPhysics(),
+          controller: _scrollController,
+          padding: const EdgeInsets.only(
+            top: kToolbarHeight + LARGE_SPACE,
+            bottom: LARGE_SPACE,
+          ),
+          children: <Widget>[
             Padding(
-              padding: const EdgeInsets.all(SMALL_SPACE),
-              child: SmoothLargeButtonWithIcon(
-                text: appLocalizations.reorder_attribute_action,
-                leadingIcon: const Icon(Icons.sort),
-                onPressed: () async => Navigator.push(
-                  context,
-                  MaterialPageRoute<void>(
-                    builder: (_) =>
-                        ReorderableKnowledgePanelPage(upToDateProduct),
-                  ),
+              padding: const EdgeInsets.symmetric(
+                horizontal: SMALL_SPACE,
+              ),
+              child: HeroMode(
+                enabled: widget.withHeroAnimation &&
+                    widget.heroTag?.isNotEmpty == true,
+                child: SummaryCard(
+                  upToDateProduct,
+                  _productPreferences,
+                  heroTag: widget.heroTag,
+                  isFullVersion: true,
                 ),
               ),
             ),
-          if (userPreferences.getFlag(
-                  UserPreferencesDevMode.userPreferencesFlagUserOrderedKP) ??
-              false)
-            Padding(
-              padding: const EdgeInsets.all(SMALL_SPACE),
-              child: SmoothLargeButtonWithIcon(
-                text: appLocalizations.reorder_attribute_action,
-                leadingIcon: const Icon(Icons.sort),
-                onPressed: () async => Navigator.push(
-                  context,
-                  MaterialPageRoute<void>(
-                    builder: (_) =>
-                        ReorderableKnowledgePanelPage(upToDateProduct),
+            if (userPreferences.getFlag(
+                    UserPreferencesDevMode.userPreferencesFlagUserOrderedKP) ??
+                false)
+              ReorderedKnowledgePanelCards(upToDateProduct)
+            else
+              StandardKnowledgePanelCards(upToDateProduct),
+            // TODO(monsieurtanuki): include website in reordered knowledge panels
+            if (upToDateProduct.website != null &&
+                upToDateProduct.website!.trim().isNotEmpty)
+              WebsiteCard(upToDateProduct.website!),
+            PricesCard(upToDateProduct),
+            if (userPreferences.getFlag(
+                    UserPreferencesDevMode.userPreferencesFlagHideFolksonomy) ==
+                false)
+              FolksonomyCard(upToDateProduct),
+            if (userPreferences.getFlag(
+                    UserPreferencesDevMode.userPreferencesFlagUserOrderedKP) ??
+                false)
+              Padding(
+                padding: const EdgeInsets.all(SMALL_SPACE),
+                child: SmoothLargeButtonWithIcon(
+                  text: appLocalizations.reorder_attribute_action,
+                  leadingIcon: const Icon(Icons.sort),
+                  onPressed: () async => Navigator.push(
+                    context,
+                    MaterialPageRoute<void>(
+                      builder: (_) =>
+                          ReorderableKnowledgePanelPage(upToDateProduct),
+                    ),
                   ),
                 ),
               ),
-            ),
-          if (bottomPadding > 0) SizedBox(height: bottomPadding),
-        ],
+            if (bottomPadding > 0) SizedBox(height: bottomPadding),
+          ],
+        ),
       ),
     );
   }
