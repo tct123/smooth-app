@@ -92,6 +92,7 @@ class UserPreferences extends ChangeNotifier {
   static const String _TAG_SEARCH_SHOW_PRODUCT_TYPE_FILTER =
       '_search_show_product_type_filter';
   static const String _TAG_PRODUCT_PAGE_ACTIONS = '_product_page_actions';
+  static const String _TAG_PRODUCT_PAGE_TABS = '_product_page_tabs';
 
   /// Camera preferences
 
@@ -541,6 +542,19 @@ class UserPreferences extends ChangeNotifier {
       value
           .map((ProductFooterActionBar action) => action.key)
           .toList(growable: false),
+    );
+    notifyListeners();
+  }
+
+  List<String> get productPageTabs =>
+      _sharedPreferences.getStringList(_TAG_PRODUCT_PAGE_TABS) ?? <String>[];
+
+  Future<void> setProductPageTabs(
+    final List<String> value,
+  ) async {
+    await _sharedPreferences.setStringList(
+      _TAG_PRODUCT_PAGE_TABS,
+      value,
     );
     notifyListeners();
   }

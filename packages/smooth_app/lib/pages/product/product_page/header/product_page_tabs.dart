@@ -14,10 +14,12 @@ import 'package:smooth_app/widgets/smooth_tabbar.dart';
 
 class ProductPageTab {
   const ProductPageTab({
+    required this.id,
     required this.labelBuilder,
     required this.builder,
   });
 
+  final String id;
   final String Function(BuildContext) labelBuilder;
   final Widget Function(BuildContext, Product) builder;
 }
@@ -61,6 +63,11 @@ class ProductPageTabBar extends StatelessWidget {
     final List<KnowledgePanelElement> roots =
         KnowledgePanelsBuilder.getRootPanelElements(product);
     for (final KnowledgePanelElement root in roots) {
+      final String? id = root.panelElement?.panelId;
+      if (id == null) {
+        continue;
+      }
+
       List<Widget> children = KnowledgePanelsBuilder.getChildren(
         context,
         panelElement: root,
@@ -75,6 +82,7 @@ class ProductPageTabBar extends StatelessWidget {
 
       tabs.add(
         ProductPageTab(
+          id: id,
           labelBuilder: (_) => knowledgePanelTitle.title,
           builder: (_, __) => ListView.builder(
             padding: EdgeInsetsDirectional.zero,
@@ -85,7 +93,25 @@ class ProductPageTabBar extends StatelessWidget {
       );
     }
 
-    return _addHardCodedTabs(context, product, tabs);
+    _addHardCodedTabs(context, product, tabs);
+
+    final List<String> order = context.read<UserPreferences>().productPageTabs;
+
+    if (order.isNotEmpty) {
+      tabs.sort((ProductPageTab a, ProductPageTab b) {
+        final int indexA = order.indexOf(a.id);
+        final int indexB = order.indexOf(b.id);
+        if (indexA < 0) {
+          return 1;
+        }
+        if (indexB < 0) {
+          return -1;
+        }
+        return indexA - indexB;
+      });
+    }
+
+    return tabs;
   }
 
   static List<ProductPageTab> _addHardCodedTabs(
@@ -96,6 +122,7 @@ class ProductPageTabBar extends StatelessWidget {
     tabs.insert(
       0,
       ProductPageTab(
+        id: 'for_me',
         labelBuilder: (BuildContext context) =>
             AppLocalizations.of(context).product_page_tab_for_me,
         builder: (BuildContext context, __) => Row(
@@ -109,6 +136,10 @@ class ProductPageTabBar extends StatelessWidget {
                     return tab;
                   }).toList(growable: false),
                   onReorder: (List<ProductPageTab> reorderedItems) {
+                    context.read<UserPreferences>().setProductPageTabs(
+                            reorderedItems.map((ProductPageTab tab) {
+                          return tab.id;
+                        }).toList(growable: false));
                     tabs
                       ..clear()
                       ..addAll(reorderedItems);
@@ -138,6 +169,7 @@ class ProductPageTabBar extends StatelessWidget {
     if (product.website?.trim().isNotEmpty == true) {
       tabs.add(
         ProductPageTab(
+          id: 'website',
           labelBuilder: (BuildContext context) =>
               AppLocalizations.of(context).product_page_tab_website,
           builder: (_, Product product) => ListView(
@@ -151,6 +183,7 @@ class ProductPageTabBar extends StatelessWidget {
     }
     tabs.add(
       ProductPageTab(
+        id: 'prices',
         labelBuilder: (BuildContext context) =>
             AppLocalizations.of(context).product_page_tab_prices,
         builder: (_, Product product) => ListView(
@@ -167,6 +200,7 @@ class ProductPageTabBar extends StatelessWidget {
         false) {
       tabs.add(
         ProductPageTab(
+          id: 'folksonomy',
           labelBuilder: (BuildContext context) =>
               AppLocalizations.of(context).product_page_tab_folksonomy,
           builder: (_, Product product) => ListView(

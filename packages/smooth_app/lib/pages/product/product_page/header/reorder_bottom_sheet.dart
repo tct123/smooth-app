@@ -21,7 +21,7 @@ class ReorderBottomSheet<T> extends StatelessWidget {
     required this.title,
   }) : _items = items
             .map((T data) => _ReorderableItem<T>(data: data))
-            .toList(growable: false);
+            .toList(growable: true);
 
   final List<_ReorderableItem<T>> _items;
   final ValueChanged<List<T>> onReorder;
