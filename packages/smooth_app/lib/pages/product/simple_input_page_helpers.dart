@@ -9,6 +9,8 @@ import 'package:smooth_app/pages/image_crop_page.dart';
 import 'package:smooth_app/pages/product/multilingual_helper.dart';
 import 'package:smooth_app/query/product_query.dart';
 import 'package:smooth_app/resources/app_icons.dart' as icons;
+import 'package:smooth_app/themes/theme_provider.dart';
+import 'package:smooth_app/widgets/smooth_explanation_banner.dart';
 
 /// Abstract helper for Simple Input Page.
 ///
@@ -101,7 +103,11 @@ abstract class AbstractSimpleInputPageHelper extends ChangeNotifier {
   String getAddTooltip(final AppLocalizations appLocalizations);
 
   /// Returns additional examples about the "add" text field.
-  String? getAddExplanations(final AppLocalizations appLocalizations) => null;
+  String? getAddExplanationsTitle(final AppLocalizations appLocalizations) =>
+      null;
+
+  /// Returns additional examples about the "add" text field.
+  WidgetBuilder? getAddExplanationsContent() => null;
 
   /// Stamp to identify similar updates on the same product.
   BackgroundTaskDetailsStamp getStamp();
@@ -290,6 +296,60 @@ class SimpleInputPageBrandsHelper extends AbstractSimpleInputPageHelper {
       appLocalizations.edit_product_form_item_add_action_brand;
 
   @override
+  String? getAddExplanationsTitle(AppLocalizations appLocalizations) =>
+      appLocalizations.add_basic_details_product_brand_help_title;
+
+  @override
+  WidgetBuilder? getAddExplanationsContent() => (BuildContext context) {
+        final AppLocalizations appLocalizations = AppLocalizations.of(context);
+        return Column(
+          children: <Widget>[
+            ExplanationBodyInfo(
+              text: appLocalizations.add_basic_details_product_brand_help_info1,
+              icon: false,
+            ),
+            ExplanationTextContainer(
+              title: appLocalizations
+                  .add_basic_details_product_brand_help_info2_title,
+              items: <ExplanationTextContainerContent>[
+                ExplanationTextContainerContentText(
+                  text: appLocalizations
+                      .add_basic_details_product_brand_help_info2_content,
+                ),
+              ],
+            ),
+            ExplanationTextContainer(
+              title: appLocalizations
+                  .add_basic_details_product_brand_help_info3_title,
+              items: <ExplanationTextContainerContent>[
+                ExplanationTextContainerContentItem(
+                  text: appLocalizations
+                      .add_basic_details_product_brand_help_info3_item1_text,
+                  example: appLocalizations
+                      .add_basic_details_product_brand_help_info3_item1_explanation,
+                ),
+                ExplanationTextContainerContentItem(
+                  text: appLocalizations
+                      .add_basic_details_product_brand_help_info3_item2_text,
+                  example: appLocalizations
+                      .add_basic_details_product_brand_help_info3_item2_explanation,
+                ),
+              ],
+            ),
+            const SizedBox(height: MEDIUM_SPACE),
+            ExplanationGoodExamplesContainer(
+              items: <String>[
+                appLocalizations
+                    .add_basic_details_product_brand_help_good_examples_1,
+                appLocalizations
+                    .add_basic_details_product_brand_help_good_examples_2,
+              ],
+            ),
+          ],
+        );
+      };
+
+  @override
   TextCapitalization? getTextCapitalization() => TextCapitalization.sentences;
 
   @override
@@ -369,6 +429,35 @@ class SimpleInputPageStoreHelper extends AbstractSimpleInputPageHelper {
       appLocalizations.edit_product_form_item_stores_type;
 
   @override
+  String? getAddExplanationsTitle(AppLocalizations appLocalizations) =>
+      appLocalizations.edit_product_form_item_stores_explanation_title;
+
+  @override
+  @override
+  WidgetBuilder? getAddExplanationsContent() => (BuildContext context) {
+        final AppLocalizations appLocalizations = AppLocalizations.of(context);
+
+        return Column(
+          children: <Widget>[
+            ExplanationBodyInfo(
+              text: appLocalizations
+                  .edit_product_form_item_stores_explanation_info1,
+            ),
+            ExplanationGoodExamplesContainer(
+              items: <String>[
+                appLocalizations
+                    .edit_product_form_item_stores_explanation_good_examples_1,
+                appLocalizations
+                    .edit_product_form_item_stores_explanation_good_examples_2,
+                appLocalizations
+                    .edit_product_form_item_stores_explanation_good_examples_3,
+              ],
+            ),
+          ],
+        );
+      };
+
+  @override
   TagType? getTagType() => null;
 
   @override
@@ -414,10 +503,31 @@ class SimpleInputPageOriginHelper extends AbstractSimpleInputPageHelper {
       appLocalizations.edit_product_form_item_origins_type;
 
   @override
-  String? getAddExplanations(final AppLocalizations appLocalizations) =>
-      '${appLocalizations.edit_product_form_item_origins_explainer_1}'
-      '\n'
-      '${appLocalizations.edit_product_form_item_origins_explainer_2}';
+  String? getAddExplanationsTitle(AppLocalizations appLocalizations) =>
+      appLocalizations.edit_product_form_item_origins_explanation_title;
+
+  @override
+  WidgetBuilder? getAddExplanationsContent() => (BuildContext context) {
+        final AppLocalizations appLocalizations = AppLocalizations.of(context);
+
+        return Column(
+          children: <Widget>[
+            ExplanationBodyInfo(
+              text: appLocalizations
+                  .edit_product_form_item_origins_explanation_info1,
+              icon: false,
+            ),
+            ExplanationGoodExamplesContainer(
+              items: <String>[
+                appLocalizations
+                    .edit_product_form_item_origins_explanation_good_examples_1,
+                appLocalizations
+                    .edit_product_form_item_origins_explanation_good_examples_2,
+              ],
+            ),
+          ],
+        );
+      };
 
   @override
   TagType? getTagType() => TagType.ORIGINS;
@@ -474,8 +584,68 @@ class SimpleInputPageEmbCodeHelper extends AbstractSimpleInputPageHelper {
       appLocalizations.edit_product_form_item_emb_codes_type;
 
   @override
-  String getAddExplanations(final AppLocalizations appLocalizations) =>
-      appLocalizations.edit_product_form_item_emb_codes_explanations;
+  String? getAddExplanationsTitle(AppLocalizations appLocalizations) =>
+      appLocalizations.edit_product_form_item_emb_help_title;
+
+  @override
+  WidgetBuilder? getAddExplanationsContent() => (BuildContext context) {
+        final AppLocalizations appLocalizations = AppLocalizations.of(context);
+
+        return Column(
+          children: <Widget>[
+            ExplanationBodyInfo(
+              text: appLocalizations.edit_product_form_item_emb_help_info1,
+              icon: false,
+            ),
+            ExplanationTextContainer(
+              title:
+                  appLocalizations.edit_product_form_item_emb_help_info2_title,
+              items: <ExplanationTextContainerContent>[
+                ExplanationTextContainerContentItem(
+                  text: appLocalizations
+                      .edit_product_form_item_emb_help_info2_item1_text,
+                  example: appLocalizations
+                      .edit_product_form_item_emb_help_info2_item1_explanation,
+                  visualExamplePosition:
+                      ExplanationVisualExamplePosition.afterTitle,
+                  visualExample: Container(
+                    width: 104.0,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color:
+                            context.lightTheme() ? Colors.black : Colors.white,
+                        width: 1.0,
+                      ),
+                      borderRadius: const BorderRadius.all(
+                        Radius.elliptical(100, 50),
+                      ),
+                    ),
+                    padding: const EdgeInsetsDirectional.symmetric(
+                      vertical: VERY_SMALL_SPACE,
+                    ),
+                    child: Text(
+                      appLocalizations
+                          .edit_product_form_item_emb_help_info2_item1_example,
+                      textAlign: TextAlign.center,
+                      textScaler: TextScaler.noScaling,
+                      style: const TextStyle(
+                        fontSize: 12.0,
+                        height: 1.2,
+                      ),
+                    ),
+                  ),
+                ),
+                ExplanationTextContainerContentItem(
+                  text: appLocalizations
+                      .edit_product_form_item_emb_help_info2_item2_text,
+                  example: appLocalizations
+                      .edit_product_form_item_emb_help_info2_item2_explanation,
+                ),
+              ],
+            ),
+          ],
+        );
+      };
 
   @override
   TagType? getTagType() => TagType.EMB_CODES;
@@ -548,6 +718,40 @@ class SimpleInputPageLabelHelper extends AbstractSimpleInputPageHelper {
       appLocalizations.edit_product_form_item_labels_type;
 
   @override
+  String? getAddExplanationsTitle(AppLocalizations appLocalizations) =>
+      appLocalizations.edit_product_form_item_labels_explanation_title;
+
+  @override
+  @override
+  WidgetBuilder? getAddExplanationsContent() => (BuildContext context) {
+        final AppLocalizations appLocalizations = AppLocalizations.of(context);
+
+        return Column(
+          children: <Widget>[
+            ExplanationBodyInfo(
+              text: appLocalizations
+                  .edit_product_form_item_labels_explanation_info1,
+              icon: false,
+            ),
+            ExplanationGoodExamplesContainer(
+              items: <String>[
+                appLocalizations
+                    .edit_product_form_item_labels_explanation_good_examples_1,
+                appLocalizations
+                    .edit_product_form_item_labels_explanation_good_examples_2,
+                appLocalizations
+                    .edit_product_form_item_labels_explanation_good_examples_3,
+                appLocalizations
+                    .edit_product_form_item_labels_explanation_good_examples_4,
+                appLocalizations
+                    .edit_product_form_item_labels_explanation_good_examples_5,
+              ],
+            ),
+          ],
+        );
+      };
+
+  @override
   TagType? getTagType() => TagType.LABELS;
 
   @override
@@ -606,12 +810,41 @@ class SimpleInputPageCategoryHelper extends AbstractSimpleInputPageHelper {
       appLocalizations.score_add_missing_product_category;
 
   @override
-  String? getAddExplanations(final AppLocalizations appLocalizations) =>
-      '${appLocalizations.edit_product_form_item_categories_explainer_1}'
-      '\n'
-      '${appLocalizations.edit_product_form_item_categories_explainer_2}'
-      '\n'
-      '${appLocalizations.edit_product_form_item_categories_explainer_3}';
+  String? getAddExplanationsTitle(AppLocalizations appLocalizations) =>
+      appLocalizations.edit_product_form_item_categories_explanation_title;
+
+  @override
+  WidgetBuilder? getAddExplanationsContent() => (BuildContext context) {
+        final AppLocalizations appLocalizations = AppLocalizations.of(context);
+
+        return Column(
+          children: <Widget>[
+            ExplanationBodyInfo(
+              text: appLocalizations
+                  .edit_product_form_item_categories_explanation_info1,
+              icon: false,
+            ),
+            ExplanationTextContainer(
+              title: appLocalizations
+                  .edit_product_form_item_categories_explanation_info2_title,
+              items: <ExplanationTextContainerContent>[
+                ExplanationTextContainerContentText(
+                  text: appLocalizations
+                      .edit_product_form_item_categories_explanation_info2_content,
+                ),
+              ],
+            ),
+            ExplanationGoodExamplesContainer(
+              items: <String>[
+                appLocalizations
+                    .edit_product_form_item_categories_explanation_good_examples_1,
+                appLocalizations
+                    .edit_product_form_item_categories_explanation_good_examples_2,
+              ],
+            ),
+          ],
+        );
+      };
 
   @override
   String getAddHint(final AppLocalizations appLocalizations) =>
@@ -684,11 +917,18 @@ class SimpleInputPageCountryHelper extends AbstractSimpleInputPageHelper {
 
   @override
   String getTypeLabel(AppLocalizations appLocalizations) =>
-      appLocalizations.edit_product_form_item_countries_type;
+      appLocalizations.edit_product_form_item_countries_explanations_title;
 
   @override
-  String getAddExplanations(final AppLocalizations appLocalizations) =>
-      appLocalizations.edit_product_form_item_countries_explanations;
+  @override
+  WidgetBuilder? getAddExplanationsContent() => (BuildContext context) {
+        final AppLocalizations appLocalizations = AppLocalizations.of(context);
+        return ExplanationBodyInfo(
+          text: appLocalizations
+              .edit_product_form_item_countries_explanations_info1,
+          safeArea: true,
+        );
+      };
 
   @override
   TagType? getTagType() => TagType.COUNTRIES;
