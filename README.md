@@ -22,6 +22,7 @@
 <img alt="app showcase" height='175' src="https://user-images.githubusercontent.com/1689815/168430524-3adc923a-1ce3-4233-9af5-02e9d49a76ca.png" align="left" hspace="1" vspace="1">
 
 - Smooth-app is developed in parallel to the [openfoodfacts-dart](https://github.com/openfoodfacts/openfoodfacts-dart) plugin, which provides a high level interface with the Open Food Facts API and [openfoodfacts_flutter_lints](https://github.com/openfoodfacts/openfoodfacts_flutter_lints) which provides specific linting
+- We also have [smooth-app_assets](https://github.com/openfoodfacts/smooth-app_assets) to host assets used by the app (currently the tagline)
 - Every new interaction with the API should be implemented in the plugin in order to provide these new features to other developers.
 - We support desktop platforms (Linux, macOS and Windows), but **only for development**
 
