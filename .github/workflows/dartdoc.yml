@@ -34,14 +34,6 @@ jobs:
               uses: JamesIves/github-pages-deploy-action@v4.7.3	
               with:
                 BRANCH: gh-pages
-                FOLDER: packages/smooth_app/docs/
-            - name: Deploy scanner documentation to Github Pages
-              uses: JamesIves/github-pages-deploy-action@v4.7.3	
-              with:
-                BRANCH: gh-pages
-                FOLDER: packages/smooth_app/docs/	
-            - name: Deploy API documentation to Github Pages
-              uses: JamesIves/github-pages-deploy-action@v4.7.3	
-              with:
-                BRANCH: gh-pages
-                FOLDER: packages/smooth_app/docs/api/	
+                FOLDER: gh_pages/
+#Deploy scanner documentation to Github Pages
+#Deploy API documentation to Github Pages
