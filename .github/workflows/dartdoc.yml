@@ -7,9 +7,9 @@ jobs:
     deploy-pages:
         name: Deploy to GitHub Pages
         runs-on: ubuntu-latest
-      #  defaults:
-       #   run:
-        #    working-directory: ./packages/smooth_app
+        defaults:
+          run:
+            working-directory: ./packages/smooth_app
         steps:
             - name: Checkout code	
               uses: actions/checkout@v4	
