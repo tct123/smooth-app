@@ -946,7 +946,7 @@
   "@product_image_details_from_producer": {
     "description": "Text to indicate that the image was taken by the producer"
   },
-  "product_image_details_contributor": "Contributore",
+  "product_image_details_contributor": "Collaboratori",
   "@product_image_details_contributor": {
     "description": "The name of the contributor who uploaded the image"
   },
@@ -2399,6 +2399,7 @@
       }
     }
   },
+  "prices_entry_menu_open_product_prices": "Visualizza tutti i prezzi per questo prodotto",
   "prices_entry_menu_open_proof": "Visualizza la prova",
   "prices_entry_menu_my_prices": "Visualizza i miei altri prezzi",
   "prices_entry_menu_author_prices": "Visualizza altri prezzi dell'autore",
@@ -3944,7 +3945,7 @@
   "@photo_viewer_details_title": {
     "description": "Title of the photo details dialog"
   },
-  "photo_viewer_details_contributor_title": "Contributore",
+  "photo_viewer_details_contributor_title": "Collaboratori",
   "@photo_viewer_details_contributor_title": {
     "description": "Label for the author of a photo"
   },
