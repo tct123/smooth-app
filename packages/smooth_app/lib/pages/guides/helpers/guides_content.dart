@@ -320,7 +320,7 @@ class GuidesTitleContainer extends StatelessWidget {
   }) : assert(title.length > 0);
 
   final Widget child;
-  final AppIcon icon;
+  final Widget icon;
   final String title;
 
   @override
@@ -333,7 +333,7 @@ class GuidesTitleContainer extends StatelessWidget {
         end: GuidesParagraph._HORIZONTAL_PADDING - 2.0,
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         spacing: 15.0,
         children: <Widget>[
           _GuidesTextTitle(title: title, icon: icon),
@@ -353,7 +353,7 @@ class GuidesTitleWithText extends StatelessWidget {
   });
 
   final String title;
-  final AppIcon icon;
+  final Widget icon;
   final String text;
 
   @override
@@ -379,7 +379,7 @@ class GuidesTitleWithBulletPoints extends StatelessWidget {
   });
 
   final String title;
-  final AppIcon icon;
+  final Widget icon;
   final List<String> bulletPoints;
   final BulletPointType type;
 
@@ -441,7 +441,7 @@ class _GuidesTextTitle extends StatelessWidget {
     : assert(title.length > 0);
 
   final String title;
-  final AppIcon icon;
+  final Widget icon;
 
   @override
   Widget build(BuildContext context) {
@@ -494,6 +494,7 @@ class GuidesContainer extends StatelessWidget {
     this.color,
     this.margin,
     this.padding,
+    this.onTap,
     super.key,
   });
 
@@ -502,6 +503,7 @@ class GuidesContainer extends StatelessWidget {
   final Color? color;
   final EdgeInsetsGeometry? margin;
   final EdgeInsetsGeometry? padding;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -516,25 +518,27 @@ class GuidesContainer extends StatelessWidget {
             start: GuidesParagraph._HORIZONTAL_PADDING,
             end: GuidesParagraph._HORIZONTAL_PADDING,
           ),
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          color:
-              color ??
-              (context.lightTheme()
-                  ? colors.primaryMedium
-                  : colors.primaryUltraBlack),
+      child: Material(
+        color:
+            color ??
+            (context.lightTheme()
+                ? colors.primaryMedium
+                : colors.primaryUltraBlack),
+        borderRadius: BorderRadius.circular(20.0),
+        child: InkWell(
           borderRadius: BorderRadius.circular(20.0),
-        ),
-        child: Padding(
-          padding:
-              padding ??
-              const EdgeInsetsDirectional.only(
-                top: 14.0,
-                bottom: SMALL_SPACE,
-                start: MEDIUM_SPACE,
-                end: MEDIUM_SPACE,
-              ),
-          child: child,
+          onTap: onTap,
+          child: Padding(
+            padding:
+                padding ??
+                const EdgeInsetsDirectional.only(
+                  top: 14.0,
+                  bottom: SMALL_SPACE,
+                  start: MEDIUM_SPACE,
+                  end: MEDIUM_SPACE,
+                ),
+            child: child,
+          ),
         ),
       ),
     );
@@ -648,11 +652,13 @@ class GuidesCaptionContainer extends StatelessWidget {
   const GuidesCaptionContainer({
     required this.caption,
     required this.child,
+    this.onTap,
     super.key,
   }) : assert(caption.length > 0);
 
   final String caption;
   final Widget child;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -661,6 +667,7 @@ class GuidesCaptionContainer extends StatelessWidget {
       image: true,
       excludeSemantics: true,
       child: GuidesContainer(
+        onTap: onTap,
         child: Column(
           spacing: 5.0,
           children: <Widget>[
@@ -686,6 +693,7 @@ class GuidesImage extends StatelessWidget {
     required this.caption,
     this.desiredWidthPercent,
     this.desiredHeightPercent,
+    this.onTap,
     super.key,
   }) : assert(caption.length > 0),
        assert(
@@ -701,10 +709,12 @@ class GuidesImage extends StatelessWidget {
   final double? desiredWidthPercent;
   final double? desiredHeightPercent;
   final String caption;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     return GuidesCaptionContainer(
+      onTap: onTap,
       caption: caption,
       child: _ImageFromAssets(
         imagePath: imagePath,
