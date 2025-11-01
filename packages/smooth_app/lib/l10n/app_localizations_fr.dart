@@ -4453,7 +4453,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get guide_greenscore_bonuses_penalties_intro =>
-      'To reward better products within a category, we then apply **bonuses & penalties based on several criterion**:';
+      'Pour récompenser les meilleurs produits d\'une catégorie, on applique ensuite des **bonus et des pénalités basés sur plusieurs critères** :';
 
   @override
   String get guide_greenscore_bonuses_penalties_arg1_title =>
@@ -4461,7 +4461,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get guide_greenscore_bonuses_penalties_arg1_text =>
-      'A **bonus** is awarded to products that have an **official label, a label or a certification that guarantees environmental benefits** (organic, fair trade, HVE, Label Rouge, Bleu Blanc Cœur, MSC/ASC).';
+      'Un **bonus** est accordé aux produits qui possèdent un **label officiel, un label ou une certification qui garantit des avantages environnementaux** (bio, commerce équitable, HVE, Label Rouge, Bleu Blanc Cœur, MSC/ASC).';
 
   @override
   String get guide_greenscore_bonuses_penalties_arg2_title =>
@@ -4469,7 +4469,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get guide_greenscore_bonuses_penalties_arg2_text =>
-      'A **bonus** is awarded based on the origin of the ingredients. This bonus takes into account the **impact on transportation** and also the **environmental policy** of each producer\'s country.';
+      'Un **bonus** est attribué en fonction de l\'origine des ingrédients. Ce bonus tient compte de l\'impact **sur les transports** ainsi que de la **politique environnementale** du pays de chaque producteur.';
 
   @override
   String get guide_greenscore_bonuses_penalties_arg3_title =>
@@ -4477,7 +4477,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get guide_greenscore_bonuses_penalties_arg3_text =>
-      'A **penalty** is given to products that contain ingredients that have significant **negative impacts on biodiversity and ecosystems**, such as palm oil, the production of which is responsible for massive deforestation.';
+      'Un **malus** est appliqué aux produits contenant des ingrédients ayant des **impacts négatifs importants sur la biodiversité et les écosystèmes**, comme l\'huile de palme, dont la production est responsable d\'une déforestation massive.';
 
   @override
   String get guide_greenscore_bonuses_penalties_arg4_title => 'Emballage';
@@ -4500,7 +4500,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get guide_greenscore_transparency_arg1_title =>
-      'How citizens can help?';
+      'Comment les citoyens peuvent-ils aider ?';
 
   @override
   String get guide_greenscore_transparency_arg1_text =>
@@ -4684,15 +4684,16 @@ class AppLocalizationsFr extends AppLocalizations {
   String get guide_open_food_facts_tips_title => 'Tips for taking great photos';
 
   @override
-  String get guide_open_food_facts_tips_arg1_title => 'Don’ts';
+  String get guide_open_food_facts_tips_arg1_title =>
+      'Ce qu\'il ne faut pas faire';
 
   @override
   String get guide_open_food_facts_tips_arg1_text1 =>
-      'Avoid shadows and glare.';
+      'Évitez les ombres et les reflets.';
 
   @override
   String get guide_open_food_facts_tips_arg1_text2 =>
-      'No blurry or out-of-focus text.';
+      'Aucun texte flou ou hors focus.';
 
   @override
   String get guide_open_food_facts_tips_arg1_text3 =>
@@ -4734,11 +4735,11 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get guide_open_food_facts_scores_arg3_title =>
-      'A score for the planet';
+      'Un score pour la planète';
 
   @override
   String get guide_open_food_facts_share_link =>
-      'https://en.openfoodfacts.org/openfoodfacts';
+      'https://fr.openfoodfacts.org/openfoodfacts';
 
   @override
   String get guide_open_pet_food_facts_title =>
@@ -4773,15 +4774,16 @@ class AppLocalizationsFr extends AppLocalizations {
       'Tips for taking great photos';
 
   @override
-  String get guide_open_pet_food_facts_tips_arg1_title => 'Don’ts';
+  String get guide_open_pet_food_facts_tips_arg1_title =>
+      'Ce qu\'il ne faut pas faire';
 
   @override
   String get guide_open_pet_food_facts_tips_arg1_text1 =>
-      'Avoid shadows and glare.';
+      'Évitez les ombres et les reflets.';
 
   @override
   String get guide_open_pet_food_facts_tips_arg1_text2 =>
-      'No blurry or out-of-focus text.';
+      'Aucun texte flou ou hors focus.';
 
   @override
   String get guide_open_pet_food_facts_tips_arg1_text3 =>
@@ -4853,15 +4855,16 @@ class AppLocalizationsFr extends AppLocalizations {
       'Tips for taking great photos';
 
   @override
-  String get guide_open_beauty_facts_tips_arg1_title => 'Don’ts';
+  String get guide_open_beauty_facts_tips_arg1_title =>
+      'Ce qu\'il ne faut pas faire';
 
   @override
   String get guide_open_beauty_facts_tips_arg1_text1 =>
-      'Avoid shadows and glare.';
+      'Évitez les ombres et les reflets.';
 
   @override
   String get guide_open_beauty_facts_tips_arg1_text2 =>
-      'No blurry or out-of-focus text.';
+      'Aucun texte flou ou hors focus.';
 
   @override
   String get guide_open_beauty_facts_tips_arg1_text3 =>
