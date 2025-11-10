@@ -1749,7 +1749,7 @@
   "@edit_product_form_item_origins_explanation_good_examples_2": {
     "description": "Product edition - Origins - input explainer, part 2"
   },
-  "edit_product_form_item_countries_title": "Country",
+  "edit_product_form_item_countries_title": "بلد",
   "@edit_product_form_item_countries_title": {
     "description": "Product edition - Countries - Title"
   },
@@ -4539,7 +4539,7 @@
     "description": "Label of the prices tab on the product page"
   },
   "prices_explanation_card_title": "لماذا الاسعار؟",
-  "prices_explanation_card_line1": "**Open Prices** is a project to collect and share prices of products around the world 🌍. Open Prices is developed and maintained by Open Food Facts.",
+  "prices_explanation_card_line1": "**الأسعار المفتوحة** مشروع لجمع ومشاركة أسعار المنتجات حول العالم 🌍. تم تطوير \"الأسعار المفتوحة\" وصيانتها بواسطة Open Food Facts.",
   "explanation_card_learn_more_button": "لمعرفة المزيد",
   "product_page_tab_folksonomy": "Folksonomy",
   "@product_page_tab_folksonomy": {
@@ -5425,12 +5425,36 @@
       }
     }
   },
+  "item_count_with_total_string": "{count} من {total} عناصر",
+  "@item_count_with_total_string": {
+    "description": "Item count showing current number of items and total items",
+    "placeholders": {
+      "count": {
+        "type": "String",
+        "description": "Current number of items loaded"
+      },
+      "total": {
+        "type": "String",
+        "description": "Total number of items available"
+      }
+    }
+  },
   "item_count": "{count} عناصر",
   "@item_count": {
     "description": "Item count showing only current number of items when total is unknown",
     "placeholders": {
       "count": {
         "type": "int",
+        "description": "Current number of items loaded"
+      }
+    }
+  },
+  "item_count_string": "{count} عناصر",
+  "@item_count_string": {
+    "description": "Item count showing only current number of items when total is unknown",
+    "placeholders": {
+      "count": {
+        "type": "String",
         "description": "Current number of items loaded"
       }
     }
@@ -5575,7 +5599,7 @@
   "location_map_details_street": "Street",
   "location_map_details_city": "City",
   "location_map_details_postcode": "Postcode",
-  "location_map_details_country": "Country",
+  "location_map_details_country": "بلد",
   "location_map_details_coordinates": "Coordinates",
   "location_map_details_osm_id": "OSM ID"
 }
