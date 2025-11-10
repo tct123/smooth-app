@@ -202,6 +202,7 @@
   "@forgot_password": {
     "description": "Button label: Opens a page where a password reset e-mail can be requested"
   },
+  "forgot_password_question": "Parolanızı mı unuttunuz?",
   "view_profile": "Profili görüntüle",
   "@view_profile": {
     "description": "Button label: For to show your account"
@@ -689,7 +690,7 @@
   "nutritional_facts_input_button_label": "Besin değerleri gir",
   "nutritional_facts_added": "Besin değerleri eklendi",
   "categories_added": "Kategoriler eklendi",
-  "new_product_title_nutriscore": "Compute the Nutri-Score",
+  "new_product_title_nutriscore": "Nutri-Score'u hesaplayın",
   "new_product_subtitle_nutriscore": "Gıda kategorisini ve besin değerlerini doldurarak alın",
   "new_product_title_environmental_score": "Green-Score'u hesapla",
   "new_product_subtitle_environmental_score": "En azından bir kategoriyi doldurarak bunu elde edin",
@@ -1018,9 +1019,11 @@
   "edit_tag": "Özelliği düzenle",
   "remove_tag": "Özelliği Kaldır",
   "tag_key": "Özellik",
+  "tag_keys": "Özellikler",
   "tag_key_uneditable": "Özellik (düzenlenemez)",
   "tag_key_input_hint": "Bir özellik girin",
   "tag_value": "Değer",
+  "tag_values": "Değerler",
   "tag_value_input_hint": "Bir değer girin",
   "tag_key_item": "Özellik:",
   "tag_value_item": "Değer:",
@@ -1368,6 +1371,10 @@
   "onboarding_welcome_loading_dialog_title": "İlk örnek ürününüz yükleniyor",
   "@onboarding_welcome_loading_dialog_title": {
     "description": "Title for the onboarding loading dialog"
+  },
+  "onboarding_welcome_warning": "Üzgünüz, bu bizim örnek ürünümüz, düzenleyemezsiniz :)",
+  "@onboarding_welcome_warning": {
+    "description": "Warning message displayed in the rare cases when the users try to edit the onboarding example product"
   },
   "product_list_your_ranking": "Sıralamanız",
   "@product_list_your_ranking": {
@@ -4531,10 +4538,16 @@
   "@product_page_tab_prices": {
     "description": "Label of the prices tab on the product page"
   },
+  "prices_explanation_card_title": "Neden fiyatlar?",
+  "prices_explanation_card_line1": "**Open Prices**, dünya genelindeki ürünlerin fiyatlarını toplayıp paylaşmayı amaçlayan bir projedir 🌍. Open Prices, Open Food Facts tarafından geliştirilip yönetilmektedir.",
+  "explanation_card_learn_more_button": "Daha fazla bilgi edin",
   "product_page_tab_folksonomy": "Halkbilimi",
   "@product_page_tab_folksonomy": {
     "description": "Label of the folksonomy tab on the product page"
   },
+  "folksonomy_explanation_card_title": "Folksonominin nitelikleri nelerdir?",
+  "folksonomy_explanation_card_line1": "Nitelikler **anahtar-değer** tabanlıdır.",
+  "folksonomy_explanation_card_line2": "Bu özellikler, katkıda bulunanlar tarafından her türlü kullanım için oluşturulup dosyalanır.",
   "folksonomy_action_external_link_title": "Open external link",
   "@folksonomy_action_external_link_title": {
     "description": "Label of the 'open external link' action on a folksonomy entry"
@@ -5294,7 +5307,7 @@
   "@preferences_prices_newest_title": {
     "description": "Title for newest prices tile"
   },
-  "preferences_prices_newest_subtitle": "Latest prices added by the Open Prices community",
+  "preferences_prices_newest_subtitle": "Open Prices topluluğu tarafından eklenen en son fiyatlar",
   "@preferences_prices_newest_subtitle": {
     "description": "Subtitle for newest prices tile"
   },
@@ -5346,7 +5359,7 @@
   "@preferences_page_contribute_project_title": {
     "description": "Title for the contribute to project navigation tile"
   },
-  "preferences_page_contribute_project_subtitle": "Simple ways to help Open Food Facts",
+  "preferences_page_contribute_project_subtitle": "Open Food Factsne yardımcı olmanın basit yolları",
   "@preferences_page_contribute_project_subtitle": {
     "description": "Subtitle for the contribute to project navigation tile"
   },

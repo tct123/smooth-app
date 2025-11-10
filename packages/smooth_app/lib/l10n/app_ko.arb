@@ -202,6 +202,7 @@
   "@forgot_password": {
     "description": "Button label: Opens a page where a password reset e-mail can be requested"
   },
+  "forgot_password_question": "비밀번호를 잊으셨나요?",
   "view_profile": "프로필 보기",
   "@view_profile": {
     "description": "Button label: For to show your account"
@@ -1018,9 +1019,11 @@
   "edit_tag": "Edit property",
   "remove_tag": "Remove property",
   "tag_key": "Property",
+  "tag_keys": "속성",
   "tag_key_uneditable": "Property (uneditable)",
   "tag_key_input_hint": "Input a property",
   "tag_value": "값",
+  "tag_values": "Values",
   "tag_value_input_hint": "Input a value",
   "tag_key_item": "Property:",
   "tag_value_item": "Value:",
@@ -1056,11 +1059,11 @@
   "@product_improvement_add_category": {
     "description": "Message for ProductImprovement.ADD_CATEGORY"
   },
-  "product_improvement_add_nutrition_facts": "Add nutrition facts to calculate the Nutri-Score.",
+  "product_improvement_add_nutrition_facts": "영양 성분을 추가하여 영양 점수 계산",
   "@product_improvement_add_nutrition_facts": {
     "description": "Message for ProductImprovement.ADD_NUTRITION_FACTS"
   },
-  "product_improvement_add_nutrition_facts_and_category": "Add nutrition facts and a category to calculate the Nutri-Score.",
+  "product_improvement_add_nutrition_facts_and_category": "영양 성분을 추가하여 영양 점수 계산",
   "@product_improvement_add_nutrition_facts_and_category": {
     "description": "Message for ProductImprovement.ADD_NUTRITION_FACTS_AND_CATEGORY"
   },
@@ -1368,6 +1371,10 @@
   "onboarding_welcome_loading_dialog_title": "첫 예시 상품 불러오는 중",
   "@onboarding_welcome_loading_dialog_title": {
     "description": "Title for the onboarding loading dialog"
+  },
+  "onboarding_welcome_warning": "죄송합니다. 이는 예시 제품이기 때문에 편집할 수 없습니다 :)",
+  "@onboarding_welcome_warning": {
+    "description": "Warning message displayed in the rare cases when the users try to edit the onboarding example product"
   },
   "product_list_your_ranking": "내 순위",
   "@product_list_your_ranking": {
@@ -4531,10 +4538,16 @@
   "@product_page_tab_prices": {
     "description": "Label of the prices tab on the product page"
   },
+  "prices_explanation_card_title": "왜 가격인가?",
+  "prices_explanation_card_line1": "**Open Prices**는 전 세계 제품 가격을 수집하고 공유하는 프로젝트입니다. 🌍 Open Prices는 오픈 푸드 팩츠에서 개발 및 관리합니다.",
+  "explanation_card_learn_more_button": "더보기",
   "product_page_tab_folksonomy": "Folksonomy",
   "@product_page_tab_folksonomy": {
     "description": "Label of the folksonomy tab on the product page"
   },
+  "folksonomy_explanation_card_title": "Folksonomy 속성은 무엇인가요?",
+  "folksonomy_explanation_card_line1": "속성은 **키-값** 기반입니다.",
+  "folksonomy_explanation_card_line2": "이러한 속성은 기여자에 의해 어떤 용도로든 생성되고 보관됩니다.",
   "folksonomy_action_external_link_title": "Open external link",
   "@folksonomy_action_external_link_title": {
     "description": "Label of the 'open external link' action on a folksonomy entry"
@@ -5294,7 +5307,7 @@
   "@preferences_prices_newest_title": {
     "description": "Title for newest prices tile"
   },
-  "preferences_prices_newest_subtitle": "Latest prices added by the Open Prices community",
+  "preferences_prices_newest_subtitle": "Open Price 커뮤니티에서 추가한 최신 가격",
   "@preferences_prices_newest_subtitle": {
     "description": "Subtitle for newest prices tile"
   },

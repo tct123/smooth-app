@@ -202,6 +202,7 @@
   "@forgot_password": {
     "description": "Button label: Opens a page where a password reset e-mail can be requested"
   },
+  "forgot_password_question": "هل نسيت كلمة السر؟",
   "view_profile": "عرض الصفحة الشخصية",
   "@view_profile": {
     "description": "Button label: For to show your account"
@@ -1018,9 +1019,11 @@
   "edit_tag": "Edit property",
   "remove_tag": "Remove property",
   "tag_key": "Property",
+  "tag_keys": "ملكيات",
   "tag_key_uneditable": "Property (uneditable)",
   "tag_key_input_hint": "Input a property",
   "tag_value": "القيمة",
+  "tag_values": "Values",
   "tag_value_input_hint": "Input a value",
   "tag_key_item": "Property:",
   "tag_value_item": "Value:",
@@ -1368,6 +1371,10 @@
   "onboarding_welcome_loading_dialog_title": "Loading your first example product",
   "@onboarding_welcome_loading_dialog_title": {
     "description": "Title for the onboarding loading dialog"
+  },
+  "onboarding_welcome_warning": "عذراً، هذا هو منتجنا المثال، لا يمكنك تعديله :)",
+  "@onboarding_welcome_warning": {
+    "description": "Warning message displayed in the rare cases when the users try to edit the onboarding example product"
   },
   "product_list_your_ranking": "ترتيبك هو",
   "@product_list_your_ranking": {
@@ -3829,7 +3836,7 @@
   "environmental_score_e_new": "النتيجة الخضراء E",
   "environmental_score_unknown_new": "نتيجة خضراء غير معروفة",
   "environmental_score_not_applicable_new": "لا ينطبق Green-Score",
-  "nova_group_generic_new": "Ultra-processed foods - NOVA groups",
+  "nova_group_generic_new": "الأطعمة فائقة المعالجة - مجموعة نوفا",
   "nova_group_1": "NOVA Group 1",
   "nova_group_2": "NOVA Group 2",
   "nova_group_3": "NOVA Group 3",
@@ -4531,10 +4538,16 @@
   "@product_page_tab_prices": {
     "description": "Label of the prices tab on the product page"
   },
+  "prices_explanation_card_title": "لماذا الاسعار؟",
+  "prices_explanation_card_line1": "**Open Prices** is a project to collect and share prices of products around the world 🌍. Open Prices is developed and maintained by Open Food Facts.",
+  "explanation_card_learn_more_button": "لمعرفة المزيد",
   "product_page_tab_folksonomy": "Folksonomy",
   "@product_page_tab_folksonomy": {
     "description": "Label of the folksonomy tab on the product page"
   },
+  "folksonomy_explanation_card_title": "ما هي سمات Folksonomy؟",
+  "folksonomy_explanation_card_line1": "السمات تعتمد على **المفتاح والقيمة**.",
+  "folksonomy_explanation_card_line2": "يتم إنشاء هذه الخصائص وتسجيلها بواسطة المساهمين لأي نوع من الاستخدامات.",
   "folksonomy_action_external_link_title": "Open external link",
   "@folksonomy_action_external_link_title": {
     "description": "Label of the 'open external link' action on a folksonomy entry"
@@ -5294,7 +5307,7 @@
   "@preferences_prices_newest_title": {
     "description": "Title for newest prices tile"
   },
-  "preferences_prices_newest_subtitle": "Latest prices added by the Open Prices community",
+  "preferences_prices_newest_subtitle": "أحدث الأسعار المضافة من قبل مجتمع Open Prices",
   "@preferences_prices_newest_subtitle": {
     "description": "Subtitle for newest prices tile"
   },
@@ -5346,7 +5359,7 @@
   "@preferences_page_contribute_project_title": {
     "description": "Title for the contribute to project navigation tile"
   },
-  "preferences_page_contribute_project_subtitle": "Simple ways to help Open Food Facts",
+  "preferences_page_contribute_project_subtitle": "طرق بسيطة للمساعدة في Open Food Facts",
   "@preferences_page_contribute_project_subtitle": {
     "description": "Subtitle for the contribute to project navigation tile"
   },

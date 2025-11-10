@@ -202,6 +202,7 @@
   "@forgot_password": {
     "description": "Button label: Opens a page where a password reset e-mail can be requested"
   },
+  "forgot_password_question": "Zapomniałeś hasła?",
   "view_profile": "Zobacz profil",
   "@view_profile": {
     "description": "Button label: For to show your account"
@@ -1018,9 +1019,11 @@
   "edit_tag": "Edytuj właściwość",
   "remove_tag": "Usuń właściwość",
   "tag_key": "Właściwość",
+  "tag_keys": "Właściwości",
   "tag_key_uneditable": "Właściwość (nieedytowalna)",
   "tag_key_input_hint": "Wprowadź właściwość",
   "tag_value": "Wartość",
+  "tag_values": "Values",
   "tag_value_input_hint": "Wprowadź wartość",
   "tag_key_item": "Właściwość:",
   "tag_value_item": "Wartość:",
@@ -1368,6 +1371,10 @@
   "onboarding_welcome_loading_dialog_title": "Ładowanie pierwszego przykładowego produktu",
   "@onboarding_welcome_loading_dialog_title": {
     "description": "Title for the onboarding loading dialog"
+  },
+  "onboarding_welcome_warning": "Przepraszamy, to nasz przykładowy produkt, nie możesz go edytować :)",
+  "@onboarding_welcome_warning": {
+    "description": "Warning message displayed in the rare cases when the users try to edit the onboarding example product"
   },
   "product_list_your_ranking": "Twój ranking",
   "@product_list_your_ranking": {
@@ -4531,10 +4538,16 @@
   "@product_page_tab_prices": {
     "description": "Label of the prices tab on the product page"
   },
+  "prices_explanation_card_title": "Dlaczego ceny?",
+  "prices_explanation_card_line1": "**Open Prices** to projekt mający na celu zbieranie i udostępnianie cen produktów na całym świecie. 🌍. Open Prices jest rozwijany i utrzymywany przez Open Food Facts.",
+  "explanation_card_learn_more_button": "Dowiedz się więcej",
   "product_page_tab_folksonomy": "Folksonomy",
   "@product_page_tab_folksonomy": {
     "description": "Label of the folksonomy tab on the product page"
   },
+  "folksonomy_explanation_card_title": "Czym są atrybuty folksonomii?",
+  "folksonomy_explanation_card_line1": "Atrybuty są oparte na **parametrach klucz-wartość**.",
+  "folksonomy_explanation_card_line2": "Właściwości te są tworzone i archiwizowane przez współpracowników w celu dowolnego wykorzystania.",
   "folksonomy_action_external_link_title": "Open external link",
   "@folksonomy_action_external_link_title": {
     "description": "Label of the 'open external link' action on a folksonomy entry"
@@ -5346,7 +5359,7 @@
   "@preferences_page_contribute_project_title": {
     "description": "Title for the contribute to project navigation tile"
   },
-  "preferences_page_contribute_project_subtitle": "Simple ways to help Open Food Facts",
+  "preferences_page_contribute_project_subtitle": "Proste sposoby na pomoc w otwarciu Food Facts",
   "@preferences_page_contribute_project_subtitle": {
     "description": "Subtitle for the contribute to project navigation tile"
   },

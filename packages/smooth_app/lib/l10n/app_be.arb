@@ -202,6 +202,7 @@
   "@forgot_password": {
     "description": "Button label: Opens a page where a password reset e-mail can be requested"
   },
+  "forgot_password_question": "Забыліся пароль?",
   "view_profile": "Паглядзець профіль",
   "@view_profile": {
     "description": "Button label: For to show your account"
@@ -1018,9 +1019,11 @@
   "edit_tag": "Edit property",
   "remove_tag": "Remove property",
   "tag_key": "Property",
+  "tag_keys": "Уласцівасці",
   "tag_key_uneditable": "Property (uneditable)",
   "tag_key_input_hint": "Input a property",
   "tag_value": "Value",
+  "tag_values": "Values",
   "tag_value_input_hint": "Input a value",
   "tag_key_item": "Property:",
   "tag_value_item": "Value:",
@@ -1052,15 +1055,15 @@
   "@product_search_same_category_error": {
     "description": "Button looking for the other products within the same category. Just the verb compare"
   },
-  "product_improvement_add_category": "Add a category to calculate the Nutri-Score.",
+  "product_improvement_add_category": "Дадайце катэгорыю для разліку Nutri-Score.",
   "@product_improvement_add_category": {
     "description": "Message for ProductImprovement.ADD_CATEGORY"
   },
-  "product_improvement_add_nutrition_facts": "Add nutrition facts to calculate the Nutri-Score.",
+  "product_improvement_add_nutrition_facts": "Дадаць звесткі аб пажыўнасці для разліку Nutri-ацэнкі.",
   "@product_improvement_add_nutrition_facts": {
     "description": "Message for ProductImprovement.ADD_NUTRITION_FACTS"
   },
-  "product_improvement_add_nutrition_facts_and_category": "Add nutrition facts and a category to calculate the Nutri-Score.",
+  "product_improvement_add_nutrition_facts_and_category": "Дадайце інфармацыю пра харчовую каштоўнасць і катэгорыю, каб разлічыць Nutri-Score.",
   "@product_improvement_add_nutrition_facts_and_category": {
     "description": "Message for ProductImprovement.ADD_NUTRITION_FACTS_AND_CATEGORY"
   },
@@ -1368,6 +1371,10 @@
   "onboarding_welcome_loading_dialog_title": "Загружаецца ваш першы прыклад прадукту",
   "@onboarding_welcome_loading_dialog_title": {
     "description": "Title for the onboarding loading dialog"
+  },
+  "onboarding_welcome_warning": "Прабачце, гэта наш прыклад прадукту, вы не можаце яго рэдагаваць :)",
+  "@onboarding_welcome_warning": {
+    "description": "Warning message displayed in the rare cases when the users try to edit the onboarding example product"
   },
   "product_list_your_ranking": "Ваш рэйтынг",
   "@product_list_your_ranking": {
@@ -4531,10 +4538,16 @@
   "@product_page_tab_prices": {
     "description": "Label of the prices tab on the product page"
   },
+  "prices_explanation_card_title": "Чаму цэны?",
+  "prices_explanation_card_line1": "**Open Prices** — гэта праект па зборы і абмене цэнамі на тавары па ўсім свеце 🌍. Open Prices распрацаваны і падтрымліваецца Open Food Facts.",
+  "explanation_card_learn_more_button": "Даведацца больш",
   "product_page_tab_folksonomy": "Folksonomy",
   "@product_page_tab_folksonomy": {
     "description": "Label of the folksonomy tab on the product page"
   },
+  "folksonomy_explanation_card_title": "Якія атрыбуты ўяўляюць сабой фолксаномія?",
+  "folksonomy_explanation_card_line1": "Атрыбуты заснаваны на **пары ключ-значэнне**.",
+  "folksonomy_explanation_card_line2": "Гэтыя ўласцівасці ствараюцца і захоўваюцца ўдзельнікамі для любога выкарыстання.",
   "folksonomy_action_external_link_title": "Open external link",
   "@folksonomy_action_external_link_title": {
     "description": "Label of the 'open external link' action on a folksonomy entry"

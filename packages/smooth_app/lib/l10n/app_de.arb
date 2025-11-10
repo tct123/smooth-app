@@ -202,6 +202,7 @@
   "@forgot_password": {
     "description": "Button label: Opens a page where a password reset e-mail can be requested"
   },
+  "forgot_password_question": "Passwort vergessen?",
   "view_profile": "Profil anzeigen",
   "@view_profile": {
     "description": "Button label: For to show your account"
@@ -394,7 +395,7 @@
   "@contribute_translate_text": {},
   "contribute_translate_text_2": "Übersetzungen sind eine der Hauptaufgaben des Projekts",
   "@contribute_translate_text_2": {},
-  "contribute_join_skill_pool": "Contribute your skills to Open Food Facts. Join the skill pool!",
+  "contribute_join_skill_pool": "Tragen Sie mit Ihren Fähigkeiten zu Open Food Facts bei. Treten Sie dem Kompetenzpool bei!",
   "contribute_share_header": "Teilen Sie Open Food Facts mit Ihren Freunden",
   "@contribute_share_header": {},
   "contribute_share_content": "Ich möchte Ihnen die App OpenFoodFacts vorstellen, mit der Sie die Gesundheits- und Umweltauswirkungen Ihrer Lebensmittel auf personalisierte Weise ermitteln können. Es funktioniert durch das Einlesen der Barcodes auf den Verpackungen. Es ist kostenlos, erfordert keine Registrierung und Sie können sogar dazu beitragen, die Zahl der entschlüsselten Produkte zu erhöhen. Hier ist der Link, über den Sie die Software für Ihr Handy erhalten: https://openfoodfacts.app",
@@ -1018,9 +1019,11 @@
   "edit_tag": "Eigenschaft bearbeiten",
   "remove_tag": "Eigenschaft entfernen",
   "tag_key": "Eigenschaft",
+  "tag_keys": "Eigenschaften",
   "tag_key_uneditable": "Eigenschaft (nicht bearbeitbar)",
   "tag_key_input_hint": "Eigenschaft eingeben",
   "tag_value": "Wert",
+  "tag_values": "Werte",
   "tag_value_input_hint": "Wert eingeben",
   "tag_key_item": "Eigenschaft:",
   "tag_value_item": "Wert:",
@@ -1368,6 +1371,10 @@
   "onboarding_welcome_loading_dialog_title": "Ihr erstes Beispielprodukt wird geladen",
   "@onboarding_welcome_loading_dialog_title": {
     "description": "Title for the onboarding loading dialog"
+  },
+  "onboarding_welcome_warning": "Tut mir leid, das ist nur ein Beispielprodukt, Sie können es nicht bearbeiten.",
+  "@onboarding_welcome_warning": {
+    "description": "Warning message displayed in the rare cases when the users try to edit the onboarding example product"
   },
   "product_list_your_ranking": "Ihr Ranking",
   "@product_list_your_ranking": {
@@ -4531,10 +4538,16 @@
   "@product_page_tab_prices": {
     "description": "Label of the prices tab on the product page"
   },
+  "prices_explanation_card_title": "Warum Preise?",
+  "prices_explanation_card_line1": "**Open Prices** ist ein Projekt zur Erfassung und Verbreitung von Produktpreisen weltweit 🌍. Open Prices wird von Open Food Facts entwickelt und betreut.",
+  "explanation_card_learn_more_button": "Erfahren Sie mehr",
   "product_page_tab_folksonomy": "Folksonomy",
   "@product_page_tab_folksonomy": {
     "description": "Label of the folksonomy tab on the product page"
   },
+  "folksonomy_explanation_card_title": "Was sind Folksonomie-Attribute?",
+  "folksonomy_explanation_card_line1": "Attribute basieren auf **Schlüssel-Wert-Paaren**.",
+  "folksonomy_explanation_card_line2": "Diese Eigenschaften werden von Mitwirkenden für jegliche Art von Nutzung erstellt und abgelegt.",
   "folksonomy_action_external_link_title": "Open external link",
   "@folksonomy_action_external_link_title": {
     "description": "Label of the 'open external link' action on a folksonomy entry"

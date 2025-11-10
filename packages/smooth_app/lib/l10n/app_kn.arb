@@ -202,6 +202,7 @@
   "@forgot_password": {
     "description": "Button label: Opens a page where a password reset e-mail can be requested"
   },
+  "forgot_password_question": "ಪಾಸ್ವರ್ಡ್ ಮರೆತಿರಾ?",
   "view_profile": "View profile",
   "@view_profile": {
     "description": "Button label: For to show your account"
@@ -1018,9 +1019,11 @@
   "edit_tag": "Edit property",
   "remove_tag": "Remove property",
   "tag_key": "Property",
+  "tag_keys": "ಗುಣಲಕ್ಷಣಗಳು",
   "tag_key_uneditable": "Property (uneditable)",
   "tag_key_input_hint": "Input a property",
   "tag_value": "Value",
+  "tag_values": "Values",
   "tag_value_input_hint": "Input a value",
   "tag_key_item": "Property:",
   "tag_value_item": "Value:",
@@ -1368,6 +1371,10 @@
   "onboarding_welcome_loading_dialog_title": "Loading your first example product",
   "@onboarding_welcome_loading_dialog_title": {
     "description": "Title for the onboarding loading dialog"
+  },
+  "onboarding_welcome_warning": "ಕ್ಷಮಿಸಿ, ಇದು ನಮ್ಮ ಉದಾಹರಣೆ ಉತ್ಪನ್ನ, ನೀವು ಇದನ್ನು ಸಂಪಾದಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ :)",
+  "@onboarding_welcome_warning": {
+    "description": "Warning message displayed in the rare cases when the users try to edit the onboarding example product"
   },
   "product_list_your_ranking": "Your ranking",
   "@product_list_your_ranking": {
@@ -4145,7 +4152,7 @@
   "guide_open_prices_scrapping_paragraph2": "Price scraping is a considered option in a future version of Open Prices, but it would be done by Open Prices itself so that we can have a proof of the price based on the HTML page.",
   "guide_open_prices_retailers_title": "I'm a retailer and I want to contribute prices. How can I do that?",
   "guide_open_prices_retailers_paragraph1": "You can contribute prices by using our API.\nIf you want to contribute prices at scale, please get in touch with us at prices@openfoodfacts.org.",
-  "guide_open_prices_share_link": "https://prices.openfoodfacts.org/about ಬಗ್ಗೆ",
+  "guide_open_prices_share_link": "https://prices.openfoodfacts.org/about",
   "guide_open_products_facts_title": "Welcome to Open Products Facts!",
   "@guide_open_products_facts_title": {
     "description": "The title of the guide (please don't forget the use of non-breaking spaces)"
@@ -4531,10 +4538,16 @@
   "@product_page_tab_prices": {
     "description": "Label of the prices tab on the product page"
   },
+  "prices_explanation_card_title": "ಬೆಲೆಗಳು ಏಕೆ?",
+  "prices_explanation_card_line1": "**ಓಪನ್ ಪ್ರೈಸಸ್** ಎಂಬುದು ಪ್ರಪಂಚದಾದ್ಯಂತದ ಉತ್ಪನ್ನಗಳ ಬೆಲೆಗಳನ್ನು ಸಂಗ್ರಹಿಸಿ ಹಂಚಿಕೊಳ್ಳುವ ಯೋಜನೆಯಾಗಿದೆ 🌍. ಓಪನ್ ಪ್ರೈಸಸ್ ಅನ್ನು Open Food Facts ಅಭಿವೃದ್ಧಿಪಡಿಸಿದೆ ಮತ್ತು ನಿರ್ವಹಿಸುತ್ತದೆ.",
+  "explanation_card_learn_more_button": "Learn more",
   "product_page_tab_folksonomy": "Folksonomy",
   "@product_page_tab_folksonomy": {
     "description": "Label of the folksonomy tab on the product page"
   },
+  "folksonomy_explanation_card_title": "ಫೋಕ್ಸೊನಮಿಯ ಗುಣಲಕ್ಷಣಗಳು ಯಾವುವು?",
+  "folksonomy_explanation_card_line1": "ಗುಣಲಕ್ಷಣಗಳು **ಕೀ-ಮೌಲ್ಯ** ಆಧಾರಿತವಾಗಿವೆ.",
+  "folksonomy_explanation_card_line2": "ಈ ಗುಣಲಕ್ಷಣಗಳನ್ನು ಯಾವುದೇ ರೀತಿಯ ಬಳಕೆಗಾಗಿ ಕೊಡುಗೆದಾರರು ರಚಿಸುತ್ತಾರೆ ಮತ್ತು ಸಲ್ಲಿಸುತ್ತಾರೆ.",
   "folksonomy_action_external_link_title": "Open external link",
   "@folksonomy_action_external_link_title": {
     "description": "Label of the 'open external link' action on a folksonomy entry"
@@ -4901,7 +4914,7 @@
   "@preferences_legal_mentions": {
     "description": "Title for the preferences legal mentions card"
   },
-  "preferences_legal_header": "ಓಪನ್ ಫುಡ್ ಫ್ಯಾಕ್ಟ್ಸ್ ಎಂಬುದು ಆಹಾರ ಉತ್ಪನ್ನಗಳ ಡೇಟಾಬೇಸ್ ಆಗಿದೆ **ಎಲ್ಲರಿಂದ, ಎಲ್ಲರಿಗೂ** ತಯಾರಿಸಲ್ಪಟ್ಟಿದೆ.\nಉತ್ತಮ ಆಹಾರ ಆಯ್ಕೆಗಳನ್ನು ಮಾಡಲು ನೀವು ಇದನ್ನು ಬಳಸಬಹುದು, ಮತ್ತು ಇದು **ಓಪನ್ ಡೇಟಾ** ಆಗಿರುವುದರಿಂದ, ಯಾರಾದರೂ ಇದನ್ನು ಯಾವುದೇ ಉದ್ದೇಶಕ್ಕಾಗಿ ಮರುಬಳಕೆ ಮಾಡಬಹುದು**.",
+  "preferences_legal_header": "Open Food Facts ಎಂಬುದು ಆಹಾರ ಉತ್ಪನ್ನಗಳ ಡೇಟಾಬೇಸ್ ಆಗಿದೆ **ಎಲ್ಲರಿಂದ, ಎಲ್ಲರಿಗೂ** ತಯಾರಿಸಲ್ಪಟ್ಟಿದೆ.\nಉತ್ತಮ ಆಹಾರ ಆಯ್ಕೆಗಳನ್ನು ಮಾಡಲು ನೀವು ಇದನ್ನು ಬಳಸಬಹುದು, ಮತ್ತು ಇದು **ಓಪನ್ ಡೇಟಾ** ಆಗಿರುವುದರಿಂದ, ಯಾರಾದರೂ ಇದನ್ನು ಯಾವುದೇ ಉದ್ದೇಶಕ್ಕಾಗಿ ಮರುಬಳಕೆ ಮಾಡಬಹುದು**.",
   "@preferences_legal_header": {
     "description": "This is the same text as the Discover banner on the website. Please keep the ** syntax to make the text bold."
   },
@@ -4965,7 +4978,7 @@
   "@tips_discover_nutriscore": {
     "description": "Title for the tips discover nutriscore header"
   },
-  "preferences_on_off_website_subtitle": "ಓಪನ್ ಫುಡ್ ಫ್ಯಾಕ್ಟ್ಸ್ ವೆಬ್‌ಸೈಟ್‌ನಲ್ಲಿ",
+  "preferences_on_off_website_subtitle": "Open Food Facts ವೆಬ್‌ಸೈಟ್‌ನಲ್ಲಿ",
   "@preferences_on_off_website_subtitle": {
     "description": "Subtitle for preferences tiles leading to the Open Food Facts website"
   },
@@ -5098,7 +5111,7 @@
   "@preferences_faq_faq_title": {
     "description": "Title for FAQ tile"
   },
-  "preferences_faq_off_ngo_title": "ದಿ ಓಪನ್ ಫುಡ್ ಫ್ಯಾಕ್ಟ್ಸ್ NGO",
+  "preferences_faq_off_ngo_title": "ದಿ Open Food Facts NGO",
   "@preferences_faq_off_ngo_title": {
     "description": "Title for Open Food Facts NGO card"
   },
@@ -5122,7 +5135,7 @@
   "@preferences_connect_community_calendar_subtitle": {
     "description": "Subtitle for community calendar tile"
   },
-  "preferences_connect_blog_title": "ದಿ ಓಪನ್ ಫುಡ್ ಫ್ಯಾಕ್ಟ್ಸ್ ಬ್ಲಾಗ್",
+  "preferences_connect_blog_title": "ದಿ Open Food Facts ಬ್ಲಾಗ್",
   "@preferences_connect_blog_title": {
     "description": "Title for blog tile"
   },
@@ -5294,7 +5307,7 @@
   "@preferences_prices_newest_title": {
     "description": "Title for newest prices tile"
   },
-  "preferences_prices_newest_subtitle": "Latest prices added by the Open Prices community",
+  "preferences_prices_newest_subtitle": "ಮುಕ್ತ ಬೆಲೆಗಳ ಸಮುದಾಯದಿಂದ ಸೇರಿಸಲಾದ ಇತ್ತೀಚಿನ ಬೆಲೆಗಳು",
   "@preferences_prices_newest_subtitle": {
     "description": "Subtitle for newest prices tile"
   },
@@ -5346,7 +5359,7 @@
   "@preferences_page_contribute_project_title": {
     "description": "Title for the contribute to project navigation tile"
   },
-  "preferences_page_contribute_project_subtitle": "Simple ways to help Open Food Facts",
+  "preferences_page_contribute_project_subtitle": "ಆಹಾರ ಸಂಗತಿಗಳನ್ನು ತೆರೆಯಲು ಸಹಾಯ ಮಾಡುವ ಸರಳ ಮಾರ್ಗಗಳು",
   "@preferences_page_contribute_project_subtitle": {
     "description": "Subtitle for the contribute to project navigation tile"
   },
@@ -5522,7 +5535,7 @@
   "@preferences_about_app_development_title": {
     "description": "Title for the development preferences card in about app section"
   },
-  "preferences_page_open_food_facts_labs_title": "ಓಪನ್ ಫುಡ್ ಫ್ಯಾಕ್ಟ್ಸ್ ಲ್ಯಾಬ್ಸ್",
+  "preferences_page_open_food_facts_labs_title": "Open Food Facts ಲ್ಯಾಬ್ಸ್",
   "@preferences_page_open_food_facts_labs_title": {
     "description": "Title for the Open Food Facts Labs navigation tile in preferences page"
   },

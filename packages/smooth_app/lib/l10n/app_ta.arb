@@ -185,7 +185,7 @@
   "@sign_in_mandatory": {
     "description": "Error message: for some features like product edits you need to be signed in"
   },
-  "help_improve_country": "Help improve Open Food Facts in your country",
+  "help_improve_country": "உங்கள் நாட்டில் Open Food Facts உண்மைகளை மேம்படுத்த உதவுங்கள்.",
   "@help_improve_country": {
     "description": "label for a tile that is on the contribute tile"
   },
@@ -202,6 +202,7 @@
   "@forgot_password": {
     "description": "Button label: Opens a page where a password reset e-mail can be requested"
   },
+  "forgot_password_question": "கடவுச்சொல்லை மறந்துவிட்டீர்களா?",
   "view_profile": "View profile",
   "@view_profile": {
     "description": "Button label: For to show your account"
@@ -689,7 +690,7 @@
   "nutritional_facts_input_button_label": "Fill nutrition facts",
   "nutritional_facts_added": "Nutrition facts added",
   "categories_added": "Categories added",
-  "new_product_title_nutriscore": "Compute the Nutri-Score",
+  "new_product_title_nutriscore": "நியூட்ரி-ஸ்கோரைக் கணக்கிடுங்கள்",
   "new_product_subtitle_nutriscore": "உணவு வகை மற்றும் ஊட்டச்சத்து மதிப்புகளை நிரப்புவதன் மூலம் அதைப் பெறுங்கள்",
   "new_product_title_environmental_score": "Compute the Green Score",
   "new_product_subtitle_environmental_score": "Get it by filling at least a category",
@@ -1018,9 +1019,11 @@
   "edit_tag": "Edit property",
   "remove_tag": "Remove property",
   "tag_key": "Property",
+  "tag_keys": "பண்புகள்",
   "tag_key_uneditable": "குணம் (திருத்த முடியாதது)",
   "tag_key_input_hint": "ஒரு குணத்தை உள்ளிடவும்",
   "tag_value": "Value",
+  "tag_values": "Values",
   "tag_value_input_hint": "ஒரு மதிப்பை உள்ளிடவும்",
   "tag_key_item": "குணம்:",
   "tag_value_item": "மதிப்பு:",
@@ -1368,6 +1371,10 @@
   "onboarding_welcome_loading_dialog_title": "Loading your first example product",
   "@onboarding_welcome_loading_dialog_title": {
     "description": "Title for the onboarding loading dialog"
+  },
+  "onboarding_welcome_warning": "மன்னிக்கவும், இது எங்கள் உதாரண தயாரிப்பு, நீங்கள் அதைத் திருத்த முடியாது :)",
+  "@onboarding_welcome_warning": {
+    "description": "Warning message displayed in the rare cases when the users try to edit the onboarding example product"
   },
   "product_list_your_ranking": "Your ranking",
   "@product_list_your_ranking": {
@@ -3254,7 +3261,7 @@
   },
   "expand_ingredients_body": "Keep the ingredients panel expanded",
   "search_product_filter_visibility_title": "தேடலில் வடிப்பானைக் காட்டு",
-  "search_product_filter_visibility_subtitle": "Select search site: Open Food Facts, Open Beauty Facts, Open Pet Food Facts or Open Products Facts",
+  "search_product_filter_visibility_subtitle": "தேடல் தளத்தைத் தேர்ந்தெடுக்கவும்: Open Food Facts, திறந்த அழகு உண்மைகள், திறந்த விலங்கு உணவு உண்மைகள் அல்லது திறந்த தயாரிப்புகள் உண்மைகள்",
   "@search_product_filter_visibility_subtitle": {
     "description": "Label for showing the product type filter in the search bar"
   },
@@ -3818,9 +3825,9 @@
   },
   "nutriscore_new_formula_title": "Nutri-Score (New calculation)",
   "nutriscore_unknown": "Unknown Nutri-Score",
-  "nutriscore_unknown_new_formula": "Unknown Nutri-Score (New calculation)",
+  "nutriscore_unknown_new_formula": "தெரியாத நியூட்ரி ஸ்கோர் (புதிய கணக்கீடு)",
   "nutriscore_not_applicable": "Nutri-Score is not applicable",
-  "nutriscore_not_applicable_new_formula": "Nutri-Score is not applicable (New calculation)",
+  "nutriscore_not_applicable_new_formula": "நியூட்ரி-ஸ்கோர் பொருந்தாது (புதிய கணக்கீடு)",
   "environmental_score_generic_new": "பச்சை-ஸ்கோர்",
   "environmental_score_a_new": "பச்சை-மதிப்பெண் A",
   "environmental_score_b_new": "பச்சை-மதிப்பெண் B",
@@ -3829,7 +3836,7 @@
   "environmental_score_e_new": "பச்சை-மதிப்பெண் E",
   "environmental_score_unknown_new": "தெரியாத பச்சை மதிப்பெண்",
   "environmental_score_not_applicable_new": "பச்சை மதிப்பெண் பொருந்தாது.",
-  "nova_group_generic_new": "Ultra-processed foods - NOVA groups",
+  "nova_group_generic_new": "மிகவும் பதப்படுத்தப்பட்ட உணவுகள் - நோவா குழுக்கள்",
   "nova_group_1": "NOVA Group 1",
   "nova_group_2": "NOVA Group 2",
   "nova_group_3": "NOVA Group 3",
@@ -4145,7 +4152,7 @@
   "guide_open_prices_scrapping_paragraph2": "Price scraping is a considered option in a future version of Open Prices, but it would be done by Open Prices itself so that we can have a proof of the price based on the HTML page.",
   "guide_open_prices_retailers_title": "நான் ஒரு சில்லறை விற்பனையாளர், விலைகளைப் பங்களிக்க விரும்புகிறேன். அதை நான் எப்படி செய்வது?",
   "guide_open_prices_retailers_paragraph1": "You can contribute prices by using our API.\nIf you want to contribute prices at scale, please get in touch with us at prices@openfoodfacts.org.",
-  "guide_open_prices_share_link": "https://prices.openfoodfacts.org/about பற்றி",
+  "guide_open_prices_share_link": "https://prices.openfoodfacts.org/about",
   "guide_open_products_facts_title": "Welcome to Open Products Facts!",
   "@guide_open_products_facts_title": {
     "description": "The title of the guide (please don't forget the use of non-breaking spaces)"
@@ -4531,10 +4538,16 @@
   "@product_page_tab_prices": {
     "description": "Label of the prices tab on the product page"
   },
+  "prices_explanation_card_title": "ஏன் விலைகள்?",
+  "prices_explanation_card_line1": "**திறந்த விலைகள்** என்பது உலகம் முழுவதும் உள்ள பொருட்களின் விலைகளைச் சேகரித்துப் பகிர்ந்து கொள்ளும் ஒரு திட்டமாகும் 🌍. திறந்த விலைகள் Open Food Facts உண்மைகளால் உருவாக்கப்பட்டு பராமரிக்கப்படுகின்றன.",
+  "explanation_card_learn_more_button": "மேலும்அறிய",
   "product_page_tab_folksonomy": "Folksonomy",
   "@product_page_tab_folksonomy": {
     "description": "Label of the folksonomy tab on the product page"
   },
+  "folksonomy_explanation_card_title": "ஃபோக்சோனமியின் பண்புக்கூறுகள் என்ன?",
+  "folksonomy_explanation_card_line1": "பண்புக்கூறுகள் **முக்கிய-மதிப்பு** அடிப்படையிலானவை.",
+  "folksonomy_explanation_card_line2": "இந்தப் பண்புகள் பங்களிப்பாளர்களால் எந்தவொரு பயன்பாட்டிற்கும் உருவாக்கப்பட்டு தாக்கல் செய்யப்படுகின்றன.",
   "folksonomy_action_external_link_title": "Open external link",
   "@folksonomy_action_external_link_title": {
     "description": "Label of the 'open external link' action on a folksonomy entry"
@@ -5074,7 +5087,7 @@
   "@preferences_faq_discover_project_title": {
     "description": "Title for discover the project card in FAQ"
   },
-  "preferences_faq_discover_off_title": "திறந்த உணவு உண்மைகளைக் கண்டறியவும்",
+  "preferences_faq_discover_off_title": "Open Food Facts உண்மைகளைக் கண்டறியவும்",
   "@preferences_faq_discover_off_title": {
     "description": "Title for discover Open Food Facts tile"
   },
@@ -5098,7 +5111,7 @@
   "@preferences_faq_faq_title": {
     "description": "Title for FAQ tile"
   },
-  "preferences_faq_off_ngo_title": "திறந்த உணவு உண்மைகள் அரசு சாரா நிறுவனம்",
+  "preferences_faq_off_ngo_title": "Open Food Facts அரசு சாரா நிறுவனம்",
   "@preferences_faq_off_ngo_title": {
     "description": "Title for Open Food Facts NGO card"
   },
@@ -5122,7 +5135,7 @@
   "@preferences_connect_community_calendar_subtitle": {
     "description": "Subtitle for community calendar tile"
   },
-  "preferences_connect_blog_title": "திறந்த உணவு உண்மைகள் வலைப்பதிவு",
+  "preferences_connect_blog_title": "Open Food Facts வலைப்பதிவு",
   "@preferences_connect_blog_title": {
     "description": "Title for blog tile"
   },
@@ -5242,7 +5255,7 @@
   "@preferences_contributions_products_added_title": {
     "description": "Title for new products added tile"
   },
-  "preferences_contributions_new_products_subtitle": "திறந்த உணவு உண்மைகளில் நான் சேர்த்த புதிய தயாரிப்புகள்",
+  "preferences_contributions_new_products_subtitle": "Open Food Facts உண்மைகளில் நான் சேர்த்த புதிய தயாரிப்புகள்",
   "@preferences_contributions_new_products_subtitle": {
     "description": "Subtitle for new products added subtile"
   },
@@ -5294,7 +5307,7 @@
   "@preferences_prices_newest_title": {
     "description": "Title for newest prices tile"
   },
-  "preferences_prices_newest_subtitle": "Latest prices added by the Open Prices community",
+  "preferences_prices_newest_subtitle": "திறந்த விலைகள் சமூகத்தால் சேர்க்கப்பட்ட சமீபத்திய விலைகள்",
   "@preferences_prices_newest_subtitle": {
     "description": "Subtitle for newest prices tile"
   },
@@ -5346,7 +5359,7 @@
   "@preferences_page_contribute_project_title": {
     "description": "Title for the contribute to project navigation tile"
   },
-  "preferences_page_contribute_project_subtitle": "Simple ways to help Open Food Facts",
+  "preferences_page_contribute_project_subtitle": "Open Food Factsக்க உதவும் எளிய வழிகள்",
   "@preferences_page_contribute_project_subtitle": {
     "description": "Subtitle for the contribute to project navigation tile"
   },
@@ -5522,7 +5535,7 @@
   "@preferences_about_app_development_title": {
     "description": "Title for the development preferences card in about app section"
   },
-  "preferences_page_open_food_facts_labs_title": "திறந்த உணவு உண்மைகள் ஆய்வகங்கள்",
+  "preferences_page_open_food_facts_labs_title": "Open Food Facts ஆய்வகங்கள்",
   "@preferences_page_open_food_facts_labs_title": {
     "description": "Title for the Open Food Facts Labs navigation tile in preferences page"
   },
@@ -5530,7 +5543,7 @@
   "@preferences_root_account_title": {
     "description": "Title for the account preferences root"
   },
-  "preferences_contribute_translate_header": "திறந்த உணவு உண்மைகளை உங்கள் மொழியில் கொண்டு வாருங்கள்.",
+  "preferences_contribute_translate_header": "Open Food Facts உண்மைகளை உங்கள் மொழியில் கொண்டு வாருங்கள்.",
   "@preferences_contribute_translate_header": {
     "description": "Button label + pop up window title: Shows information about helping by translating"
   },

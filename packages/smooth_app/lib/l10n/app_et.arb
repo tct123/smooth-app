@@ -202,6 +202,7 @@
   "@forgot_password": {
     "description": "Button label: Opens a page where a password reset e-mail can be requested"
   },
+  "forgot_password_question": "Unustasid parooli?",
   "view_profile": "View profile",
   "@view_profile": {
     "description": "Button label: For to show your account"
@@ -1018,9 +1019,11 @@
   "edit_tag": "Edit property",
   "remove_tag": "Remove property",
   "tag_key": "Property",
+  "tag_keys": "Omadused",
   "tag_key_uneditable": "Property (uneditable)",
   "tag_key_input_hint": "Input a property",
   "tag_value": "Väärtus",
+  "tag_values": "Values",
   "tag_value_input_hint": "Input a value",
   "tag_key_item": "Property:",
   "tag_value_item": "Value:",
@@ -1368,6 +1371,10 @@
   "onboarding_welcome_loading_dialog_title": "Loading your first example product",
   "@onboarding_welcome_loading_dialog_title": {
     "description": "Title for the onboarding loading dialog"
+  },
+  "onboarding_welcome_warning": "Vabandust, see on meie näidis toode, te ei saa seda muuta :)",
+  "@onboarding_welcome_warning": {
+    "description": "Warning message displayed in the rare cases when the users try to edit the onboarding example product"
   },
   "product_list_your_ranking": "Your ranking",
   "@product_list_your_ranking": {
@@ -4531,10 +4538,16 @@
   "@product_page_tab_prices": {
     "description": "Label of the prices tab on the product page"
   },
+  "prices_explanation_card_title": "Miks hinnad?",
+  "prices_explanation_card_line1": "**Open Prices** on projekt, mille eesmärk on koguda ja jagada toodete hindu üle maailma 🌍. Open Pricesi arendab ja haldab Open Food Facts.",
+  "explanation_card_learn_more_button": "Lisateave",
   "product_page_tab_folksonomy": "Folksonomy",
   "@product_page_tab_folksonomy": {
     "description": "Label of the folksonomy tab on the product page"
   },
+  "folksonomy_explanation_card_title": "Mis on folksonoomia atribuudid?",
+  "folksonomy_explanation_card_line1": "Atribuudid on **võtme-väärtuse** põhised.",
+  "folksonomy_explanation_card_line2": "Need omadused loovad ja esitavad kaastöölised mis tahes otstarbeks.",
   "folksonomy_action_external_link_title": "Open external link",
   "@folksonomy_action_external_link_title": {
     "description": "Label of the 'open external link' action on a folksonomy entry"
@@ -5294,7 +5307,7 @@
   "@preferences_prices_newest_title": {
     "description": "Title for newest prices tile"
   },
-  "preferences_prices_newest_subtitle": "Latest prices added by the Open Prices community",
+  "preferences_prices_newest_subtitle": "Open Prices kogukonna lisatud uusimad hinnad",
   "@preferences_prices_newest_subtitle": {
     "description": "Subtitle for newest prices tile"
   },

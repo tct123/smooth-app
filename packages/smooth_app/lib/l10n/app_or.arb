@@ -202,6 +202,7 @@
   "@forgot_password": {
     "description": "Button label: Opens a page where a password reset e-mail can be requested"
   },
+  "forgot_password_question": "ପାସୱାର୍ଡ ଭୁଲି ଯାଇଛନ୍ତି କି?",
   "view_profile": "View profile",
   "@view_profile": {
     "description": "Button label: For to show your account"
@@ -1018,9 +1019,11 @@
   "edit_tag": "Edit property",
   "remove_tag": "Remove property",
   "tag_key": "Property",
+  "tag_keys": "ଗୁଣଧର୍ମସମୂହ",
   "tag_key_uneditable": "Property (uneditable)",
   "tag_key_input_hint": "Input a property",
   "tag_value": "Value",
+  "tag_values": "Values",
   "tag_value_input_hint": "Input a value",
   "tag_key_item": "Property:",
   "tag_value_item": "Value:",
@@ -1368,6 +1371,10 @@
   "onboarding_welcome_loading_dialog_title": "Loading your first example product",
   "@onboarding_welcome_loading_dialog_title": {
     "description": "Title for the onboarding loading dialog"
+  },
+  "onboarding_welcome_warning": "ଦୁଃଖିତ, ଏହା ଆମର ଉଦାହରଣ ଉତ୍ପାଦ, ଆପଣ ଏହାକୁ ସମ୍ପାଦନ କରିପାରିବେ ନାହିଁ :)",
+  "@onboarding_welcome_warning": {
+    "description": "Warning message displayed in the rare cases when the users try to edit the onboarding example product"
   },
   "product_list_your_ranking": "Your ranking",
   "@product_list_your_ranking": {
@@ -4531,10 +4538,16 @@
   "@product_page_tab_prices": {
     "description": "Label of the prices tab on the product page"
   },
+  "prices_explanation_card_title": "ଦାମ କାହିଁକି?",
+  "prices_explanation_card_line1": "**ଓପନ୍ ପ୍ରାଇସେସ୍** ହେଉଛି ସାରା ବିଶ୍ୱରେ ଉତ୍ପାଦଗୁଡ଼ିକର ମୂଲ୍ୟ ସଂଗ୍ରହ ଏବଂ ଅଂଶୀଦାର କରିବା ପାଇଁ ଏକ ପ୍ରକଳ୍ପ 🌍। ଓପନ୍ ପ୍ରାଇସେସ୍ Open Food Facts ଦ୍ୱାରା ବିକଶିତ ଏବଂ ରକ୍ଷଣାବେକ୍ଷଣ କରାଯାଏ।",
+  "explanation_card_learn_more_button": "ଅଧିକ ଜାଣନ୍ତୁ",
   "product_page_tab_folksonomy": "Folksonomy",
   "@product_page_tab_folksonomy": {
     "description": "Label of the folksonomy tab on the product page"
   },
+  "folksonomy_explanation_card_title": "ଫୋକସୋନୋମି ଗୁଣଗୁଡ଼ିକ କ’ଣ?",
+  "folksonomy_explanation_card_line1": "ଗୁଣଗୁଡ଼ିକ **କୀ-ମୂଲ୍ୟ** ଆଧାରିତ।",
+  "folksonomy_explanation_card_line2": "ଏହି ଗୁଣଧର୍ମଗୁଡ଼ିକ ଯେକୌଣସି ପ୍ରକାରର ବ୍ୟବହାର ପାଇଁ ଅବଦାନକାରୀଙ୍କ ଦ୍ୱାରା ସୃଷ୍ଟି ଏବଂ ଦାଖଲ କରାଯାଏ।",
   "folksonomy_action_external_link_title": "Open external link",
   "@folksonomy_action_external_link_title": {
     "description": "Label of the 'open external link' action on a folksonomy entry"
@@ -4901,7 +4914,7 @@
   "@preferences_legal_mentions": {
     "description": "Title for the preferences legal mentions card"
   },
-  "preferences_legal_header": "ଓପନ୍ ଫୁଡ୍ ଫ୍ୟାକ୍ଟସ୍ ହେଉଛି ଏକ ଖାଦ୍ୟ ଉତ୍ପାଦ ଡାଟାବେସ୍ ଯାହା **ସମସ୍ତଙ୍କ ଦ୍ୱାରା, ସମସ୍ତଙ୍କ ପାଇଁ ତିଆରି କରାଯାଇଛି**।\nଆପଣ ଏହାକୁ ଉତ୍ତମ ଖାଦ୍ୟ ପସନ୍ଦ କରିବା ପାଇଁ ବ୍ୟବହାର କରିପାରିବେ, ଏବଂ ଏହା **ଖୋଲା ଡାଟା** ହୋଇଥିବାରୁ, ଯେକେହି **ଯେକୌଣସି ଉଦ୍ଦେଶ୍ୟ ପାଇଁ ଏହାକୁ ପୁନଃବ୍ୟବହାର କରିପାରିବେ**।",
+  "preferences_legal_header": "Open Food Facts ହେଉଛି ଏକ ଖାଦ୍ୟ ଉତ୍ପାଦ ଡାଟାବେସ୍ ଯାହା **ସମସ୍ତଙ୍କ ଦ୍ୱାରା, ସମସ୍ତଙ୍କ ପାଇଁ ତିଆରି କରାଯାଇଛି**।\nଆପଣ ଏହାକୁ ଉତ୍ତମ ଖାଦ୍ୟ ପସନ୍ଦ କରିବା ପାଇଁ ବ୍ୟବହାର କରିପାରିବେ, ଏବଂ ଏହା **ଖୋଲା ଡାଟା** ହୋଇଥିବାରୁ, ଯେକେହି **ଯେକୌଣସି ଉଦ୍ଦେଶ୍ୟ ପାଇଁ ଏହାକୁ ପୁନଃବ୍ୟବହାର କରିପାରିବେ**।",
   "@preferences_legal_header": {
     "description": "This is the same text as the Discover banner on the website. Please keep the ** syntax to make the text bold."
   },
@@ -4965,7 +4978,7 @@
   "@tips_discover_nutriscore": {
     "description": "Title for the tips discover nutriscore header"
   },
-  "preferences_on_off_website_subtitle": "ଓପନ୍ ଫୁଡ୍ ଫ୍ୟାକ୍ଟସ୍ ୱେବସାଇଟରେ",
+  "preferences_on_off_website_subtitle": "Open Food Facts ୱେବସାଇଟରେ",
   "@preferences_on_off_website_subtitle": {
     "description": "Subtitle for preferences tiles leading to the Open Food Facts website"
   },
@@ -5074,7 +5087,7 @@
   "@preferences_faq_discover_project_title": {
     "description": "Title for discover the project card in FAQ"
   },
-  "preferences_faq_discover_off_title": "ଖୋଲା ଖାଦ୍ୟ ତଥ୍ୟ ଆବିଷ୍କାର କରନ୍ତୁ।",
+  "preferences_faq_discover_off_title": "Open Food Facts ଆବିଷ୍କାର କରନ୍ତୁ।",
   "@preferences_faq_discover_off_title": {
     "description": "Title for discover Open Food Facts tile"
   },
@@ -5098,7 +5111,7 @@
   "@preferences_faq_faq_title": {
     "description": "Title for FAQ tile"
   },
-  "preferences_faq_off_ngo_title": "ଦି ଓପନ୍ ଫୁଡ୍ ଫ୍ୟାକ୍ଟସ୍ ଏନଜିଓ",
+  "preferences_faq_off_ngo_title": "ଦି Open Food Facts ଏନଜିଓ",
   "@preferences_faq_off_ngo_title": {
     "description": "Title for Open Food Facts NGO card"
   },
@@ -5122,7 +5135,7 @@
   "@preferences_connect_community_calendar_subtitle": {
     "description": "Subtitle for community calendar tile"
   },
-  "preferences_connect_blog_title": "ଦି ଓପନ୍ ଫୁଡ୍ ଫ୍ୟାକ୍ଟସ୍ ବ୍ଲଗ୍",
+  "preferences_connect_blog_title": "ଦି Open Food Facts ବ୍ଲଗ୍",
   "@preferences_connect_blog_title": {
     "description": "Title for blog tile"
   },
@@ -5294,7 +5307,7 @@
   "@preferences_prices_newest_title": {
     "description": "Title for newest prices tile"
   },
-  "preferences_prices_newest_subtitle": "Latest prices added by the Open Prices community",
+  "preferences_prices_newest_subtitle": "Open Prices ସମ୍ପ୍ରଦାୟ ଦ୍ୱାରା ଯୋଡାଯାଇଥିବା ନବୀନତମ ମୂଲ୍ୟ",
   "@preferences_prices_newest_subtitle": {
     "description": "Subtitle for newest prices tile"
   },
@@ -5346,7 +5359,7 @@
   "@preferences_page_contribute_project_title": {
     "description": "Title for the contribute to project navigation tile"
   },
-  "preferences_page_contribute_project_subtitle": "Simple ways to help Open Food Facts",
+  "preferences_page_contribute_project_subtitle": "ଖାଦ୍ୟ ତଥ୍ୟ ଖୋଲିବାରେ ସାହାଯ୍ୟ କରିବାର ସରଳ ଉପାୟ",
   "@preferences_page_contribute_project_subtitle": {
     "description": "Subtitle for the contribute to project navigation tile"
   },
@@ -5530,7 +5543,7 @@
   "@preferences_root_account_title": {
     "description": "Title for the account preferences root"
   },
-  "preferences_contribute_translate_header": "ଆପଣଙ୍କ ଭାଷାରେ ଖୋଲା ଖାଦ୍ୟ ତଥ୍ୟ ଆଣନ୍ତୁ",
+  "preferences_contribute_translate_header": "ଆପଣଙ୍କ ଭାଷାରେ Open Food Facts ଆଣନ୍ତୁ",
   "@preferences_contribute_translate_header": {
     "description": "Button label + pop up window title: Shows information about helping by translating"
   },

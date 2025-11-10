@@ -202,6 +202,7 @@
   "@forgot_password": {
     "description": "Button label: Opens a page where a password reset e-mail can be requested"
   },
+  "forgot_password_question": "Aţi uitat parola?",
   "view_profile": "Vizualizați profilul",
   "@view_profile": {
     "description": "Button label: For to show your account"
@@ -1018,9 +1019,11 @@
   "edit_tag": "Edit property",
   "remove_tag": "Remove property",
   "tag_key": "Property",
+  "tag_keys": "Proprietăți",
   "tag_key_uneditable": "Property (uneditable)",
   "tag_key_input_hint": "Input a property",
   "tag_value": "Valoare",
+  "tag_values": "Valori",
   "tag_value_input_hint": "Input a value",
   "tag_key_item": "Property:",
   "tag_value_item": "Value:",
@@ -1056,11 +1059,11 @@
   "@product_improvement_add_category": {
     "description": "Message for ProductImprovement.ADD_CATEGORY"
   },
-  "product_improvement_add_nutrition_facts": "Add nutrition facts to calculate the Nutri-Score.",
+  "product_improvement_add_nutrition_facts": "Adăugați informații nutriționale pentru a calcula Scorul Nutrițional.",
   "@product_improvement_add_nutrition_facts": {
     "description": "Message for ProductImprovement.ADD_NUTRITION_FACTS"
   },
-  "product_improvement_add_nutrition_facts_and_category": "Add nutrition facts and a category to calculate the Nutri-Score.",
+  "product_improvement_add_nutrition_facts_and_category": "Adăugați informații nutriționale și o categorie pentru a calcula Scorul Nutrițional.",
   "@product_improvement_add_nutrition_facts_and_category": {
     "description": "Message for ProductImprovement.ADD_NUTRITION_FACTS_AND_CATEGORY"
   },
@@ -1368,6 +1371,10 @@
   "onboarding_welcome_loading_dialog_title": "Se încarcă primul exemplu de produs",
   "@onboarding_welcome_loading_dialog_title": {
     "description": "Title for the onboarding loading dialog"
+  },
+  "onboarding_welcome_warning": "Îmi pare rău, este produsul nostru exemplu, nu îl poți edita :)",
+  "@onboarding_welcome_warning": {
+    "description": "Warning message displayed in the rare cases when the users try to edit the onboarding example product"
   },
   "product_list_your_ranking": "Clasamentul tău",
   "@product_list_your_ranking": {
@@ -3817,9 +3824,9 @@
     }
   },
   "nutriscore_new_formula_title": "Nutri-Score (New calculation)",
-  "nutriscore_unknown": "Unknown Nutri-Score",
+  "nutriscore_unknown": "Scor nutrițional necunoscut",
   "nutriscore_unknown_new_formula": "Unknown Nutri-Score (New calculation)",
-  "nutriscore_not_applicable": "Nutri-Score is not applicable",
+  "nutriscore_not_applicable": "Scorul nutrițional nu se aplică",
   "nutriscore_not_applicable_new_formula": "Nutri-Score is not applicable (New calculation)",
   "environmental_score_generic_new": "Scor Ecologic",
   "environmental_score_a_new": "Green-Score A",
@@ -4531,10 +4538,16 @@
   "@product_page_tab_prices": {
     "description": "Label of the prices tab on the product page"
   },
+  "prices_explanation_card_title": "De ce prețuri?",
+  "prices_explanation_card_line1": "**Open Prices** este un proiect de colectare și partajare a prețurilor produselor din întreaga lume 🌍. Open Prices este dezvoltat și întreținut de Open Food Facts.",
+  "explanation_card_learn_more_button": "Afla mai mult",
   "product_page_tab_folksonomy": "Folksonomy",
   "@product_page_tab_folksonomy": {
     "description": "Label of the folksonomy tab on the product page"
   },
+  "folksonomy_explanation_card_title": "Care sunt atributele folcsonomiei?",
+  "folksonomy_explanation_card_line1": "Atributele sunt bazate pe **cheie-valoare**.",
+  "folksonomy_explanation_card_line2": "Aceste proprietăți sunt create și depuse de contribuitori pentru orice fel de utilizări.",
   "folksonomy_action_external_link_title": "Open external link",
   "@folksonomy_action_external_link_title": {
     "description": "Label of the 'open external link' action on a folksonomy entry"
@@ -5346,7 +5359,7 @@
   "@preferences_page_contribute_project_title": {
     "description": "Title for the contribute to project navigation tile"
   },
-  "preferences_page_contribute_project_subtitle": "Simple ways to help Open Food Facts",
+  "preferences_page_contribute_project_subtitle": "Modalități simple de a ajuta la Open Food Informations",
   "@preferences_page_contribute_project_subtitle": {
     "description": "Subtitle for the contribute to project navigation tile"
   },

@@ -202,6 +202,7 @@
   "@forgot_password": {
     "description": "Button label: Opens a page where a password reset e-mail can be requested"
   },
+  "forgot_password_question": "পাছৱৰ্ড পাহৰিলেনে?",
   "view_profile": "View profile",
   "@view_profile": {
     "description": "Button label: For to show your account"
@@ -1018,9 +1019,11 @@
   "edit_tag": "Edit property",
   "remove_tag": "Remove property",
   "tag_key": "Property",
+  "tag_keys": "ধৰ্ম",
   "tag_key_uneditable": "Property (uneditable)",
   "tag_key_input_hint": "Input a property",
   "tag_value": "Value",
+  "tag_values": "Values",
   "tag_value_input_hint": "Input a value",
   "tag_key_item": "Property:",
   "tag_value_item": "Value:",
@@ -1368,6 +1371,10 @@
   "onboarding_welcome_loading_dialog_title": "Loading your first example product",
   "@onboarding_welcome_loading_dialog_title": {
     "description": "Title for the onboarding loading dialog"
+  },
+  "onboarding_welcome_warning": "ক্ষমা কৰিব, ই আমাৰ উদাহৰণ প্ৰডাক্ট, আপুনি ইয়াক সম্পাদনা কৰিব নোৱাৰে :)",
+  "@onboarding_welcome_warning": {
+    "description": "Warning message displayed in the rare cases when the users try to edit the onboarding example product"
   },
   "product_list_your_ranking": "Your ranking",
   "@product_list_your_ranking": {
@@ -4531,10 +4538,16 @@
   "@product_page_tab_prices": {
     "description": "Label of the prices tab on the product page"
   },
+  "prices_explanation_card_title": "দাম কিয়?",
+  "prices_explanation_card_line1": "**Open Prices** ৰ জৰিয়তে সমগ্ৰ বিশ্বৰ সামগ্ৰীৰ মূল্য সংগ্ৰহ আৰু ভাগ-বতৰা কৰাৰ এক প্ৰকল্প 🌍 । Open Prices সমূহ Open Food Facts ৰ দ্বাৰা বিকশিত আৰু ৰক্ষণাবেক্ষণ কৰা হয়।",
+  "explanation_card_learn_more_button": "Learn more",
   "product_page_tab_folksonomy": "Folksonomy",
   "@product_page_tab_folksonomy": {
     "description": "Label of the folksonomy tab on the product page"
   },
+  "folksonomy_explanation_card_title": "লোকসম্বন্ধৰ বৈশিষ্ট্য কি কি?",
+  "folksonomy_explanation_card_line1": "বৈশিষ্ট্যসমূহ **কী-মান** ভিত্তিক।",
+  "folksonomy_explanation_card_line2": "এই বৈশিষ্ট্যসমূহ যিকোনো ধৰণৰ ব্যৱহাৰৰ বাবে অৱদানকাৰীয়ে সৃষ্টি আৰু ফাইল কৰে।",
   "folksonomy_action_external_link_title": "Open external link",
   "@folksonomy_action_external_link_title": {
     "description": "Label of the 'open external link' action on a folksonomy entry"
@@ -4965,7 +4978,7 @@
   "@tips_discover_nutriscore": {
     "description": "Title for the tips discover nutriscore header"
   },
-  "preferences_on_off_website_subtitle": "মুক্ত খাদ্য তথ্য ৱেবছাইটত",
+  "preferences_on_off_website_subtitle": "মুক্ত Open Food Facts ৱেবছাইটত",
   "@preferences_on_off_website_subtitle": {
     "description": "Subtitle for preferences tiles leading to the Open Food Facts website"
   },
@@ -5098,7 +5111,7 @@
   "@preferences_faq_faq_title": {
     "description": "Title for FAQ tile"
   },
-  "preferences_faq_off_ngo_title": "মুকলি খাদ্য তথ্য এন জি অ’",
+  "preferences_faq_off_ngo_title": "মুকলি Open Food Facts এন জি অ’",
   "@preferences_faq_off_ngo_title": {
     "description": "Title for Open Food Facts NGO card"
   },
@@ -5122,7 +5135,7 @@
   "@preferences_connect_community_calendar_subtitle": {
     "description": "Subtitle for community calendar tile"
   },
-  "preferences_connect_blog_title": "মুক্ত খাদ্য তথ্য ব্লগ",
+  "preferences_connect_blog_title": "মুক্ত Open Food Facts ব্লগ",
   "@preferences_connect_blog_title": {
     "description": "Title for blog tile"
   },
@@ -5294,7 +5307,7 @@
   "@preferences_prices_newest_title": {
     "description": "Title for newest prices tile"
   },
-  "preferences_prices_newest_subtitle": "Latest prices added by the Open Prices community",
+  "preferences_prices_newest_subtitle": "Open Prices সম্প্ৰদায়ে যোগ কৰা শেহতীয়া মূল্যসমূহ",
   "@preferences_prices_newest_subtitle": {
     "description": "Subtitle for newest prices tile"
   },
@@ -5522,7 +5535,7 @@
   "@preferences_about_app_development_title": {
     "description": "Title for the development preferences card in about app section"
   },
-  "preferences_page_open_food_facts_labs_title": "খোলা খাদ্য তথ্য লেব",
+  "preferences_page_open_food_facts_labs_title": "খোলা Open Food Facts লেব",
   "@preferences_page_open_food_facts_labs_title": {
     "description": "Title for the Open Food Facts Labs navigation tile in preferences page"
   },

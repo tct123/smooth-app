@@ -202,6 +202,7 @@
   "@forgot_password": {
     "description": "Button label: Opens a page where a password reset e-mail can be requested"
   },
+  "forgot_password_question": "Ξεχάσατε τον κωδικό πρόσβασης;",
   "view_profile": "Προβολή προφίλ",
   "@view_profile": {
     "description": "Button label: For to show your account"
@@ -1018,9 +1019,11 @@
   "edit_tag": "Επεξεργασία ιδιότητας",
   "remove_tag": "Αφαίρεση ιδιότητας",
   "tag_key": "Ιδιότητα",
+  "tag_keys": "Σκηνικά θέατρου",
   "tag_key_uneditable": "Ιδιότητα (μη επεξεργάσιμο)",
   "tag_key_input_hint": "Εισαγάγετε μια ιδιότητα",
   "tag_value": "Τιμή",
+  "tag_values": "Αξίες",
   "tag_value_input_hint": "Εισαγάγετε μια τιμή",
   "tag_key_item": "Ιδιότητα:",
   "tag_value_item": "Τιμή:",
@@ -1368,6 +1371,10 @@
   "onboarding_welcome_loading_dialog_title": "Φόρτωση του πρώτου παραδείγματος προϊόντος σας",
   "@onboarding_welcome_loading_dialog_title": {
     "description": "Title for the onboarding loading dialog"
+  },
+  "onboarding_welcome_warning": "Λυπούμαστε, είναι το παράδειγμα προϊόντος μας, δεν μπορείτε να το επεξεργαστείτε :)",
+  "@onboarding_welcome_warning": {
+    "description": "Warning message displayed in the rare cases when the users try to edit the onboarding example product"
   },
   "product_list_your_ranking": "Η κατάταξή σας",
   "@product_list_your_ranking": {
@@ -4531,10 +4538,16 @@
   "@product_page_tab_prices": {
     "description": "Label of the prices tab on the product page"
   },
+  "prices_explanation_card_title": "Γιατί τιμές;",
+  "prices_explanation_card_line1": "Το **Open Prices** είναι ένα έργο για τη συλλογή και κοινοποίηση τιμών προϊόντων σε όλο τον κόσμο 🌍. Το Open Prices αναπτύσσεται και συντηρείται από το Open Food Facts.",
+  "explanation_card_learn_more_button": "Μάθετε περισσότερα",
   "product_page_tab_folksonomy": "Folksonomy",
   "@product_page_tab_folksonomy": {
     "description": "Label of the folksonomy tab on the product page"
   },
+  "folksonomy_explanation_card_title": "Ποια είναι τα χαρακτηριστικά της Λαϊκής Προσωπικότητας;",
+  "folksonomy_explanation_card_line1": "Τα χαρακτηριστικά βασίζονται **σε κλειδί-τιμή**.",
+  "folksonomy_explanation_card_line2": "Αυτές οι ιδιότητες δημιουργούνται και καταχωρούνται από τους συνεισφέροντες για κάθε είδους χρήση.",
   "folksonomy_action_external_link_title": "Open external link",
   "@folksonomy_action_external_link_title": {
     "description": "Label of the 'open external link' action on a folksonomy entry"

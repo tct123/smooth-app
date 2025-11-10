@@ -202,6 +202,7 @@
   "@forgot_password": {
     "description": "Button label: Opens a page where a password reset e-mail can be requested"
   },
+  "forgot_password_question": "Glemt adgangskode?",
   "view_profile": "Se profil",
   "@view_profile": {
     "description": "Button label: For to show your account"
@@ -1018,9 +1019,11 @@
   "edit_tag": "Rediger egenskab",
   "remove_tag": "Fjern egenskab",
   "tag_key": "Egenskab",
+  "tag_keys": "Ejendomme",
   "tag_key_uneditable": "Egenskab (ikke-redigerbar)",
   "tag_key_input_hint": "Indtast en egenskab",
   "tag_value": "Værdi",
+  "tag_values": "Værdier",
   "tag_value_input_hint": "Indtast en værdi",
   "tag_key_item": "Egenskab:",
   "tag_value_item": "Værdi:",
@@ -1368,6 +1371,10 @@
   "onboarding_welcome_loading_dialog_title": "Indlæser første eksempelprodukt",
   "@onboarding_welcome_loading_dialog_title": {
     "description": "Title for the onboarding loading dialog"
+  },
+  "onboarding_welcome_warning": "Beklager, det er vores eksempelprodukt, du kan ikke redigere det :)",
+  "@onboarding_welcome_warning": {
+    "description": "Warning message displayed in the rare cases when the users try to edit the onboarding example product"
   },
   "product_list_your_ranking": "Din rangering",
   "@product_list_your_ranking": {
@@ -4028,7 +4035,7 @@
   "@guide_open_food_facts_title": {
     "description": "The title of the guide (please don't forget the use of non-breaking spaces)"
   },
-  "guide_open_food_facts_what_is_open_food_facts_title": "Hvad er OpenFoodFacts?",
+  "guide_open_food_facts_what_is_open_food_facts_title": "Hvad er Open Food Facts?",
   "guide_open_food_facts_what_is_open_food_facts_paragraph1": "Open Food Facts is a **collaborative**, **free**, and **open** database of food products from around the world.",
   "@guide_open_food_facts_what_is_open_food_facts_paragraph1": {
     "description": "Text between asterisks (eg: **My Text**) means text in bold. Please try to keep it."
@@ -4531,10 +4538,16 @@
   "@product_page_tab_prices": {
     "description": "Label of the prices tab on the product page"
   },
+  "prices_explanation_card_title": "Hvorfor priser?",
+  "prices_explanation_card_line1": "**Open Prices** er et projekt til at indsamle og dele priser på produkter fra hele verden 🌍. Open Prices er udviklet og vedligeholdt af Open Food Facts.",
+  "explanation_card_learn_more_button": "Få mere at vide",
   "product_page_tab_folksonomy": "Folksonomy",
   "@product_page_tab_folksonomy": {
     "description": "Label of the folksonomy tab on the product page"
   },
+  "folksonomy_explanation_card_title": "Hvad er Folksonomys attributter?",
+  "folksonomy_explanation_card_line1": "Attributter er **nøgleværdibaserede**.",
+  "folksonomy_explanation_card_line2": "Disse egenskaber oprettes og arkiveres af bidragydere til enhver form for anvendelse.",
   "folksonomy_action_external_link_title": "Open external link",
   "@folksonomy_action_external_link_title": {
     "description": "Label of the 'open external link' action on a folksonomy entry"

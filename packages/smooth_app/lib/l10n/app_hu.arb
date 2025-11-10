@@ -202,6 +202,7 @@
   "@forgot_password": {
     "description": "Button label: Opens a page where a password reset e-mail can be requested"
   },
+  "forgot_password_question": "Elfelejtett jelszó?",
   "view_profile": "Profil megtekintése",
   "@view_profile": {
     "description": "Button label: For to show your account"
@@ -698,7 +699,7 @@
   "new_product_subtitle_nova": "Az élelmiszerkategória és az összetevők kitöltésével megtudhatja",
   "new_product_desc_nova_unknown": "Az élelmiszer-feldolgozottság szintje ismeretlen",
   "new_product_title_pictures": "Új termék",
-  "new_product_title_pictures_details": "Please take the following photos and the Open Food Facts engine can work out the rest!",
+  "new_product_title_pictures_details": "Készítse el az alábbi fotókat, és az OpenFoodFacts motorja elvégzi a többi munkát!",
   "new_product_title_misc": "És pár alapvető adat…",
   "new_product_done_msg": "Köszönjük a közreműködését, {username}!",
   "@new_product_done_msg": {
@@ -1018,9 +1019,11 @@
   "edit_tag": "Tulajdonság szerkesztése",
   "remove_tag": "Tulajdonság eltávolítása",
   "tag_key": "Tulajdonság",
+  "tag_keys": "Tulajdonságok",
   "tag_key_uneditable": "Tulajdonság (nem szerkeszthető)",
   "tag_key_input_hint": "Adjon meg egy tulajdonságot",
   "tag_value": "Érték",
+  "tag_values": "Értékek",
   "tag_value_input_hint": "Adjon meg egy értéket",
   "tag_key_item": "Tulajdonság:",
   "tag_value_item": "Érték:",
@@ -1368,6 +1371,10 @@
   "onboarding_welcome_loading_dialog_title": "Az első példa termék betöltése",
   "@onboarding_welcome_loading_dialog_title": {
     "description": "Title for the onboarding loading dialog"
+  },
+  "onboarding_welcome_warning": "Sajnálom, ez a példatermékünk, nem szerkeszthető :)",
+  "@onboarding_welcome_warning": {
+    "description": "Warning message displayed in the rare cases when the users try to edit the onboarding example product"
   },
   "product_list_your_ranking": "Az Ön helyezése",
   "@product_list_your_ranking": {
@@ -4531,10 +4538,16 @@
   "@product_page_tab_prices": {
     "description": "Label of the prices tab on the product page"
   },
+  "prices_explanation_card_title": "Miért az árak?",
+  "prices_explanation_card_line1": "Az **Open Prices** egy olyan projekt, amelynek célja a világ minden tájáról származó termékek árainak összegyűjtése és megosztása 🌍. Az Open Prices-t az Open Food Facts fejleszti és tartja karban.",
+  "explanation_card_learn_more_button": "További információk",
   "product_page_tab_folksonomy": "Folksonomy",
   "@product_page_tab_folksonomy": {
     "description": "Label of the folksonomy tab on the product page"
   },
+  "folksonomy_explanation_card_title": "Mik a folksonomia attribútumai?",
+  "folksonomy_explanation_card_line1": "Az attribútumok **kulcs-érték** alapúak.",
+  "folksonomy_explanation_card_line2": "Ezeket a tulajdonságokat a közreműködők hozzák létre és iktatják bármilyen felhasználásra.",
   "folksonomy_action_external_link_title": "Open external link",
   "@folksonomy_action_external_link_title": {
     "description": "Label of the 'open external link' action on a folksonomy entry"
@@ -5294,7 +5307,7 @@
   "@preferences_prices_newest_title": {
     "description": "Title for newest prices tile"
   },
-  "preferences_prices_newest_subtitle": "Latest prices added by the Open Prices community",
+  "preferences_prices_newest_subtitle": "A Open Prices közössége által hozzáadott legújabb árak",
   "@preferences_prices_newest_subtitle": {
     "description": "Subtitle for newest prices tile"
   },

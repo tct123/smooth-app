@@ -202,6 +202,7 @@
   "@forgot_password": {
     "description": "Button label: Opens a page where a password reset e-mail can be requested"
   },
+  "forgot_password_question": "ភ្លេចពាក្យសម្ងាត់?",
   "view_profile": "View profile",
   "@view_profile": {
     "description": "Button label: For to show your account"
@@ -1018,9 +1019,11 @@
   "edit_tag": "Edit property",
   "remove_tag": "Remove property",
   "tag_key": "Property",
+  "tag_keys": "ទ្រព្យសម្បត្តិ",
   "tag_key_uneditable": "Property (uneditable)",
   "tag_key_input_hint": "Input a property",
   "tag_value": "Value",
+  "tag_values": "Values",
   "tag_value_input_hint": "Input a value",
   "tag_key_item": "Property:",
   "tag_value_item": "Value:",
@@ -1368,6 +1371,10 @@
   "onboarding_welcome_loading_dialog_title": "Loading your first example product",
   "@onboarding_welcome_loading_dialog_title": {
     "description": "Title for the onboarding loading dialog"
+  },
+  "onboarding_welcome_warning": "សូមអភ័យទោស វាជាផលិតផលគំរូរបស់យើង អ្នកមិនអាចកែសម្រួលវាបានទេ :)",
+  "@onboarding_welcome_warning": {
+    "description": "Warning message displayed in the rare cases when the users try to edit the onboarding example product"
   },
   "product_list_your_ranking": "Your ranking",
   "@product_list_your_ranking": {
@@ -4531,10 +4538,16 @@
   "@product_page_tab_prices": {
     "description": "Label of the prices tab on the product page"
   },
+  "prices_explanation_card_title": "ហេតុអ្វីបានជាតម្លៃ?",
+  "prices_explanation_card_line1": "**Open Prices** គឺជាគម្រោងប្រមូល និងចែករំលែកតម្លៃផលិតផលជុំវិញពិភពលោក🌍។ Open Pricesត្រូវបានបង្កើត និងរក្សាដោយ Open Food Facts។",
+  "explanation_card_learn_more_button": "Learn more",
   "product_page_tab_folksonomy": "Folksonomy",
   "@product_page_tab_folksonomy": {
     "description": "Label of the folksonomy tab on the product page"
   },
+  "folksonomy_explanation_card_title": "តើគុណលក្ខណៈ Folksonomy ជាអ្វី?",
+  "folksonomy_explanation_card_line1": "គុណលក្ខណៈគឺ **តម្លៃគន្លឹះ** ផ្អែកលើ។",
+  "folksonomy_explanation_card_line2": "លក្ខណៈសម្បត្តិទាំងនេះត្រូវបានបង្កើត និងដាក់ឯកសារដោយអ្នករួមចំណែកសម្រាប់ការប្រើប្រាស់គ្រប់ប្រភេទ។",
   "folksonomy_action_external_link_title": "Open external link",
   "@folksonomy_action_external_link_title": {
     "description": "Label of the 'open external link' action on a folksonomy entry"
@@ -5346,7 +5359,7 @@
   "@preferences_page_contribute_project_title": {
     "description": "Title for the contribute to project navigation tile"
   },
-  "preferences_page_contribute_project_subtitle": "Simple ways to help Open Food Facts",
+  "preferences_page_contribute_project_subtitle": "វិធីសាមញ្ញដើម្បីជួយបើកការពិតអំពីអាហារ",
   "@preferences_page_contribute_project_subtitle": {
     "description": "Subtitle for the contribute to project navigation tile"
   },

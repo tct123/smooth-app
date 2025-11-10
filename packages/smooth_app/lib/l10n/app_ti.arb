@@ -202,6 +202,7 @@
   "@forgot_password": {
     "description": "Button label: Opens a page where a password reset e-mail can be requested"
   },
+  "forgot_password_question": "ፓስዎርድ ረሲዕካ?",
   "view_profile": "View profile",
   "@view_profile": {
     "description": "Button label: For to show your account"
@@ -1018,9 +1019,11 @@
   "edit_tag": "Edit property",
   "remove_tag": "Remove property",
   "tag_key": "Property",
+  "tag_keys": "ኣቕሑት",
   "tag_key_uneditable": "Property (uneditable)",
   "tag_key_input_hint": "Input a property",
   "tag_value": "Value",
+  "tag_values": "Values",
   "tag_value_input_hint": "Input a value",
   "tag_key_item": "Property:",
   "tag_value_item": "Value:",
@@ -1368,6 +1371,10 @@
   "onboarding_welcome_loading_dialog_title": "Loading your first example product",
   "@onboarding_welcome_loading_dialog_title": {
     "description": "Title for the onboarding loading dialog"
+  },
+  "onboarding_welcome_warning": "ይቕሬታ ኣብነት ፍርያትና እዩ፡ ኣርትዖት ክትገብሩ ኣይትኽእሉን ኢኹም :)",
+  "@onboarding_welcome_warning": {
+    "description": "Warning message displayed in the rare cases when the users try to edit the onboarding example product"
   },
   "product_list_your_ranking": "Your ranking",
   "@product_list_your_ranking": {
@@ -3829,7 +3836,7 @@
   "environmental_score_e_new": "ቀጠልያ-ነጥቢ E",
   "environmental_score_unknown_new": "ዘይፍለጥ ቀጠልያ-ነጥቢ",
   "environmental_score_not_applicable_new": "ግሪን-ስኮር ተግባራዊ ኣይኮነን።",
-  "nova_group_generic_new": "Ultra-processed foods - NOVA groups",
+  "nova_group_generic_new": "ኣዝዩ ዝተመስርሑ መግብታት - ጉጅለታት ኖቫ",
   "nova_group_1": "NOVA Group 1",
   "nova_group_2": "NOVA Group 2",
   "nova_group_3": "NOVA Group 3",
@@ -4020,7 +4027,7 @@
   "guide_nova_explanations_arg5_text": "Since 2018, with NutriNet-Santé, the first links between **the consumption of ultra-processed foods and increased risks of cancer, cardiovascular diseases, and diabetes have been highlighted**. Today, more than 90 studies worldwide confirm these findings.\nThe strongest associations relate to **obesity, cardiovascular mortality, and depressive symptoms**. On children, the effects are primarily observed on weight and lipid imbalances.",
   "guide_nova_explanations_arg6_title": "Countries recommend limiting them",
   "guide_nova_explanations_arg6_text": "Some countries use the NOVA groups for their dietary guidelines or goals, for instance:\n\n- **🇧🇷 Brazil**'s dietary guidelines **recommend to limit consumption** of processed food and avoid ultra-processed food.\n\n- **🇫🇷 France**'s public health nutritional policy goals for 2018-2022 aims to **reduce consumption of group 4 ultra-processed foods by 20%**.",
-  "guide_nova_share_link": "https://world.openfoodfacts.org/nova ዝብል ጽሑፍ ኣሎ።",
+  "guide_nova_share_link": "https://world.openfoodfacts.org/nova",
   "@guide_nova_share_link": {
     "comment": "Make sure the link exists before adding a translation"
   },
@@ -4531,10 +4538,16 @@
   "@product_page_tab_prices": {
     "description": "Label of the prices tab on the product page"
   },
+  "prices_explanation_card_title": "ስለምንታይ ዋጋታት?",
+  "prices_explanation_card_line1": "**Open Prices** ኣብ መላእ ዓለም ዝርከቡ ፍርያት ዋጋታት ንምእካብን ንምክፋልን ዝዓለመ ፕሮጀክት 🌍 እዩ። Open Prices ብ Open Food Facts ዝምዕብልን ዝሕሎን እዩ።",
+  "explanation_card_learn_more_button": "Learn more",
   "product_page_tab_folksonomy": "Folksonomy",
   "@product_page_tab_folksonomy": {
     "description": "Label of the folksonomy tab on the product page"
   },
+  "folksonomy_explanation_card_title": "ባህርያት ፎልክሶኖሚ እንታይ እዮም?",
+  "folksonomy_explanation_card_line1": "ባህርያት **ቁልፊ-ዋጋ** ዝተመርኮሱ እዮም።",
+  "folksonomy_explanation_card_line2": "እዞም ንብረታት እዚኦም ንዝኾነ ዓይነት ኣጠቓቕማ ብኣበርከትቲ ዝፍጠሩን ዝቐርቡን እዮም።",
   "folksonomy_action_external_link_title": "Open external link",
   "@folksonomy_action_external_link_title": {
     "description": "Label of the 'open external link' action on a folksonomy entry"
@@ -5294,7 +5307,7 @@
   "@preferences_prices_newest_title": {
     "description": "Title for newest prices tile"
   },
-  "preferences_prices_newest_subtitle": "Latest prices added by the Open Prices community",
+  "preferences_prices_newest_subtitle": "ብማሕበረሰብ Open Prices ዝተወሰኹ ናይ መወዳእታ ዋጋታት",
   "@preferences_prices_newest_subtitle": {
     "description": "Subtitle for newest prices tile"
   },
@@ -5346,7 +5359,7 @@
   "@preferences_page_contribute_project_title": {
     "description": "Title for the contribute to project navigation tile"
   },
-  "preferences_page_contribute_project_subtitle": "Simple ways to help Open Food Facts",
+  "preferences_page_contribute_project_subtitle": "ቀለልቲ መገድታት ንኽፉት ሓቅታት መግቢ ንምሕጋዝ",
   "@preferences_page_contribute_project_subtitle": {
     "description": "Subtitle for the contribute to project navigation tile"
   },

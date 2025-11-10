@@ -202,6 +202,7 @@
   "@forgot_password": {
     "description": "Button label: Opens a page where a password reset e-mail can be requested"
   },
+  "forgot_password_question": "የይለፍ ቃል ረሱ?",
   "view_profile": "View profile",
   "@view_profile": {
     "description": "Button label: For to show your account"
@@ -1018,9 +1019,11 @@
   "edit_tag": "Edit property",
   "remove_tag": "Remove property",
   "tag_key": "Property",
+  "tag_keys": "ንብረቶች",
   "tag_key_uneditable": "Property (uneditable)",
   "tag_key_input_hint": "Input a property",
   "tag_value": "Value",
+  "tag_values": "Values",
   "tag_value_input_hint": "Input a value",
   "tag_key_item": "Property:",
   "tag_value_item": "Value:",
@@ -1368,6 +1371,10 @@
   "onboarding_welcome_loading_dialog_title": "Loading your first example product",
   "@onboarding_welcome_loading_dialog_title": {
     "description": "Title for the onboarding loading dialog"
+  },
+  "onboarding_welcome_warning": "ይቅርታ፣ የእኛ ምሳሌ ምርት ነው፣ እርስዎ ሊያስተካክሉት አይችሉም :)",
+  "@onboarding_welcome_warning": {
+    "description": "Warning message displayed in the rare cases when the users try to edit the onboarding example product"
   },
   "product_list_your_ranking": "Your ranking",
   "@product_list_your_ranking": {
@@ -2656,7 +2663,7 @@
   "@dev_mode_add_demo_cards_language_title": {
     "description": "User dev preferences - Add cards - Title"
   },
-  "dev_mode_openprices_switch_env_title": "Switch between prices.openfoodfacts.org (PROD) and test env",
+  "dev_mode_openprices_switch_env_title": "prices.openfoodfacts.org (PROD) እና test env መካከል ይቀያይሩ",
   "@dev_mode_openprices_switch_env_title": {
     "description": "User dev preferences - Switch server environment (Open Prices) - Title"
   },
@@ -4531,10 +4538,16 @@
   "@product_page_tab_prices": {
     "description": "Label of the prices tab on the product page"
   },
+  "prices_explanation_card_title": "ለምን ዋጋዎች?",
+  "prices_explanation_card_line1": "** Open Prices ** በዓለም ዙሪያ ያሉ ምርቶችን የመሰብሰብ እና የመጋራት ፕሮጀክት ነው 🌍። Open Prices የሚዘጋጀው በክፍት Open Food Facts ነው።",
+  "explanation_card_learn_more_button": "Learn more",
   "product_page_tab_folksonomy": "Folksonomy",
   "@product_page_tab_folksonomy": {
     "description": "Label of the folksonomy tab on the product page"
   },
+  "folksonomy_explanation_card_title": "Folksonomy ባህሪያት ምንድን ናቸው?",
+  "folksonomy_explanation_card_line1": "ባህሪያት **ቁልፍ-እሴት** የተመሰረቱ ናቸው።",
+  "folksonomy_explanation_card_line2": "እነዚህ ንብረቶች ለየትኛውም አይነት አገልግሎት አስተዋፅዖ አበርካቾች የተፈጠሩ እና የተመዘገቡ ናቸው።",
   "folksonomy_action_external_link_title": "Open external link",
   "@folksonomy_action_external_link_title": {
     "description": "Label of the 'open external link' action on a folksonomy entry"
@@ -4901,7 +4914,7 @@
   "@preferences_legal_mentions": {
     "description": "Title for the preferences legal mentions card"
   },
-  "preferences_legal_header": "ክፍት የምግብ እውነታዎች የምግብ ምርቶች ዳታቤዝ ነው **በሁሉም ሰው የተሰራ ለሁሉም**።\nየተሻሉ የምግብ ምርጫዎችን ለማድረግ ሊጠቀሙበት ይችላሉ፣ እና **ክፍት ዳታ** እንደመሆኑ ማንኛውም ሰው ** ለማንኛውም ዓላማ እንደገና ሊጠቀምበት ይችላል**።",
+  "preferences_legal_header": "ክፍት Open Food Facts የምግብ ምርቶች ዳታቤዝ ነው **በሁሉም ሰው የተሰራ ለሁሉም**።\nየተሻሉ የምግብ ምርጫዎችን ለማድረግ ሊጠቀሙበት ይችላሉ፣ እና **ክፍት ዳታ** እንደመሆኑ ማንኛውም ሰው ** ለማንኛውም ዓላማ እንደገና ሊጠቀምበት ይችላል**።",
   "@preferences_legal_header": {
     "description": "This is the same text as the Discover banner on the website. Please keep the ** syntax to make the text bold."
   },
@@ -4965,7 +4978,7 @@
   "@tips_discover_nutriscore": {
     "description": "Title for the tips discover nutriscore header"
   },
-  "preferences_on_off_website_subtitle": "በክፍት የምግብ እውነታዎች ድህረ ገጽ ላይ",
+  "preferences_on_off_website_subtitle": "በክፍት Open Food Facts ድህረ ገጽ ላይ",
   "@preferences_on_off_website_subtitle": {
     "description": "Subtitle for preferences tiles leading to the Open Food Facts website"
   },
@@ -5074,7 +5087,7 @@
   "@preferences_faq_discover_project_title": {
     "description": "Title for discover the project card in FAQ"
   },
-  "preferences_faq_discover_off_title": "ክፍት የምግብ እውነታዎችን ያግኙ",
+  "preferences_faq_discover_off_title": "ክፍት Open Food Factsን ያግኙ",
   "@preferences_faq_discover_off_title": {
     "description": "Title for discover Open Food Facts tile"
   },
@@ -5098,7 +5111,7 @@
   "@preferences_faq_faq_title": {
     "description": "Title for FAQ tile"
   },
-  "preferences_faq_off_ngo_title": "ክፍት የምግብ እውነታዎች መንግሥታዊ ያልሆነ ድርጅት",
+  "preferences_faq_off_ngo_title": "ክፍት Open Food Facts መንግሥታዊ ያልሆነ ድርጅት",
   "@preferences_faq_off_ngo_title": {
     "description": "Title for Open Food Facts NGO card"
   },
@@ -5122,7 +5135,7 @@
   "@preferences_connect_community_calendar_subtitle": {
     "description": "Subtitle for community calendar tile"
   },
-  "preferences_connect_blog_title": "ክፍት የምግብ እውነታዎች ብሎግ",
+  "preferences_connect_blog_title": "ክፍት Open Food Facts ብሎግ",
   "@preferences_connect_blog_title": {
     "description": "Title for blog tile"
   },
@@ -5242,7 +5255,7 @@
   "@preferences_contributions_products_added_title": {
     "description": "Title for new products added tile"
   },
-  "preferences_contributions_new_products_subtitle": "ወደ ክፈት የምግብ እውነታዎች ያከልኳቸው አዳዲስ ምርቶች",
+  "preferences_contributions_new_products_subtitle": "ወደ ክፈት Open Food Facts ያከልኳቸው አዳዲስ ምርቶች",
   "@preferences_contributions_new_products_subtitle": {
     "description": "Subtitle for new products added subtile"
   },
@@ -5294,7 +5307,7 @@
   "@preferences_prices_newest_title": {
     "description": "Title for newest prices tile"
   },
-  "preferences_prices_newest_subtitle": "Latest prices added by the Open Prices community",
+  "preferences_prices_newest_subtitle": "በOpen Prices ማህበረሰብ የታከሉ የቅርብ ጊዜ ዋጋዎች",
   "@preferences_prices_newest_subtitle": {
     "description": "Subtitle for newest prices tile"
   },
@@ -5346,7 +5359,7 @@
   "@preferences_page_contribute_project_title": {
     "description": "Title for the contribute to project navigation tile"
   },
-  "preferences_page_contribute_project_subtitle": "Simple ways to help Open Food Facts",
+  "preferences_page_contribute_project_subtitle": "Open Food Facts የሚረዱ ቀላል መንገዶች",
   "@preferences_page_contribute_project_subtitle": {
     "description": "Subtitle for the contribute to project navigation tile"
   },
@@ -5522,7 +5535,7 @@
   "@preferences_about_app_development_title": {
     "description": "Title for the development preferences card in about app section"
   },
-  "preferences_page_open_food_facts_labs_title": "የምግብ እውነታዎች ቤተሙከራዎችን ይክፈቱ",
+  "preferences_page_open_food_facts_labs_title": "Open Food Facts ቤተሙከራዎችን ይክፈቱ",
   "@preferences_page_open_food_facts_labs_title": {
     "description": "Title for the Open Food Facts Labs navigation tile in preferences page"
   },
@@ -5530,7 +5543,7 @@
   "@preferences_root_account_title": {
     "description": "Title for the account preferences root"
   },
-  "preferences_contribute_translate_header": "ክፍት የምግብ እውነታዎችን ወደ ቋንቋዎ አምጡ",
+  "preferences_contribute_translate_header": "ክፍት Open Food Factsን ወደ ቋንቋዎ አምጡ",
   "@preferences_contribute_translate_header": {
     "description": "Button label + pop up window title: Shows information about helping by translating"
   },

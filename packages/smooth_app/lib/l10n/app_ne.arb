@@ -202,6 +202,7 @@
   "@forgot_password": {
     "description": "Button label: Opens a page where a password reset e-mail can be requested"
   },
+  "forgot_password_question": "पासवर्ड भुल्नु भयो?",
   "view_profile": "View profile",
   "@view_profile": {
     "description": "Button label: For to show your account"
@@ -1018,9 +1019,11 @@
   "edit_tag": "Edit property",
   "remove_tag": "Remove property",
   "tag_key": "Property",
+  "tag_keys": "गुणहरू",
   "tag_key_uneditable": "Property (uneditable)",
   "tag_key_input_hint": "Input a property",
   "tag_value": "Value",
+  "tag_values": "Values",
   "tag_value_input_hint": "Input a value",
   "tag_key_item": "Property:",
   "tag_value_item": "Value:",
@@ -1368,6 +1371,10 @@
   "onboarding_welcome_loading_dialog_title": "Loading your first example product",
   "@onboarding_welcome_loading_dialog_title": {
     "description": "Title for the onboarding loading dialog"
+  },
+  "onboarding_welcome_warning": "माफ गर्नुहोस्, यो हाम्रो उदाहरण उत्पादन हो, तपाईं यसलाई सम्पादन गर्न सक्नुहुन्न :)",
+  "@onboarding_welcome_warning": {
+    "description": "Warning message displayed in the rare cases when the users try to edit the onboarding example product"
   },
   "product_list_your_ranking": "Your ranking",
   "@product_list_your_ranking": {
@@ -4531,10 +4538,16 @@
   "@product_page_tab_prices": {
     "description": "Label of the prices tab on the product page"
   },
+  "prices_explanation_card_title": "किन मूल्यहरू?",
+  "prices_explanation_card_line1": "**ओपन प्राइस** विश्वभरका उत्पादनहरूको मूल्य सङ्कलन र साझेदारी गर्ने परियोजना हो 🌍। ओपन प्राइस ओपन फूड फ्याक्ट्सद्वारा विकसित र मर्मत गरिएको हो।",
+  "explanation_card_learn_more_button": "Learn more",
   "product_page_tab_folksonomy": "Folksonomy",
   "@product_page_tab_folksonomy": {
     "description": "Label of the folksonomy tab on the product page"
   },
+  "folksonomy_explanation_card_title": "फोक्सोनोमीका विशेषताहरू के के हुन्?",
+  "folksonomy_explanation_card_line1": "विशेषताहरू **कुञ्जी-मान** मा आधारित हुन्छन्।",
+  "folksonomy_explanation_card_line2": "यी गुणहरू कुनै पनि प्रकारको प्रयोगको लागि योगदानकर्ताहरूद्वारा सिर्जना र फाइल गरिन्छन्।",
   "folksonomy_action_external_link_title": "Open external link",
   "@folksonomy_action_external_link_title": {
     "description": "Label of the 'open external link' action on a folksonomy entry"
@@ -5122,7 +5135,7 @@
   "@preferences_connect_community_calendar_subtitle": {
     "description": "Subtitle for community calendar tile"
   },
-  "preferences_connect_blog_title": "खुला खाद्य तथ्य ब्लग",
+  "preferences_connect_blog_title": "Open Food Facts ब्लग",
   "@preferences_connect_blog_title": {
     "description": "Title for blog tile"
   },
@@ -5294,7 +5307,7 @@
   "@preferences_prices_newest_title": {
     "description": "Title for newest prices tile"
   },
-  "preferences_prices_newest_subtitle": "Latest prices added by the Open Prices community",
+  "preferences_prices_newest_subtitle": "खुला मूल्य समुदायद्वारा थपिएका नवीनतम मूल्यहरू",
   "@preferences_prices_newest_subtitle": {
     "description": "Subtitle for newest prices tile"
   },
@@ -5346,7 +5359,7 @@
   "@preferences_page_contribute_project_title": {
     "description": "Title for the contribute to project navigation tile"
   },
-  "preferences_page_contribute_project_subtitle": "Simple ways to help Open Food Facts",
+  "preferences_page_contribute_project_subtitle": "खानाको तथ्यहरू खोल्न मद्दत गर्ने सरल तरिकाहरू",
   "@preferences_page_contribute_project_subtitle": {
     "description": "Subtitle for the contribute to project navigation tile"
   },

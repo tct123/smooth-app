@@ -202,6 +202,7 @@
   "@forgot_password": {
     "description": "Button label: Opens a page where a password reset e-mail can be requested"
   },
+  "forgot_password_question": "പാസ്വേഡ് മറന്നോ?",
   "view_profile": "View profile",
   "@view_profile": {
     "description": "Button label: For to show your account"
@@ -1018,9 +1019,11 @@
   "edit_tag": "Edit property",
   "remove_tag": "Remove property",
   "tag_key": "Property",
+  "tag_keys": "പ്രോപ്പർട്ടികൾ",
   "tag_key_uneditable": "Property (uneditable)",
   "tag_key_input_hint": "Input a property",
   "tag_value": "Value",
+  "tag_values": "Values",
   "tag_value_input_hint": "Input a value",
   "tag_key_item": "Property:",
   "tag_value_item": "Value:",
@@ -1368,6 +1371,10 @@
   "onboarding_welcome_loading_dialog_title": "Loading your first example product",
   "@onboarding_welcome_loading_dialog_title": {
     "description": "Title for the onboarding loading dialog"
+  },
+  "onboarding_welcome_warning": "ക്ഷമിക്കണം, ഇത് ഞങ്ങളുടെ ഉദാഹരണ ഉൽപ്പന്നമാണ്, നിങ്ങൾക്ക് ഇത് എഡിറ്റ് ചെയ്യാൻ കഴിയില്ല :)",
+  "@onboarding_welcome_warning": {
+    "description": "Warning message displayed in the rare cases when the users try to edit the onboarding example product"
   },
   "product_list_your_ranking": "Your ranking",
   "@product_list_your_ranking": {
@@ -3829,7 +3836,7 @@
   "environmental_score_e_new": "ഗ്രീൻ-സ്കോർ ഇ",
   "environmental_score_unknown_new": "അജ്ഞാതമായ ഗ്രീൻ-സ്കോർ",
   "environmental_score_not_applicable_new": "ഗ്രീൻ-സ്കോർ ബാധകമല്ല.",
-  "nova_group_generic_new": "Ultra-processed foods - NOVA groups",
+  "nova_group_generic_new": "അൾട്രാ-പ്രോസസ്ഡ് ഭക്ഷണങ്ങൾ - നോവ ഗ്രൂപ്പുകൾ",
   "nova_group_1": "NOVA Group 1",
   "nova_group_2": "NOVA Group 2",
   "nova_group_3": "NOVA Group 3",
@@ -4145,7 +4152,7 @@
   "guide_open_prices_scrapping_paragraph2": "Price scraping is a considered option in a future version of Open Prices, but it would be done by Open Prices itself so that we can have a proof of the price based on the HTML page.",
   "guide_open_prices_retailers_title": "I'm a retailer and I want to contribute prices. How can I do that?",
   "guide_open_prices_retailers_paragraph1": "You can contribute prices by using our API.\nIf you want to contribute prices at scale, please get in touch with us at prices@openfoodfacts.org.",
-  "guide_open_prices_share_link": "https://prices.openfoodfacts.org/about എന്ന വിലാസത്തിൽ ക്ലിക്ക് ചെയ്യുക.",
+  "guide_open_prices_share_link": "https://prices.openfoodfacts.org/about",
   "guide_open_products_facts_title": "Welcome to Open Products Facts!",
   "@guide_open_products_facts_title": {
     "description": "The title of the guide (please don't forget the use of non-breaking spaces)"
@@ -4531,10 +4538,16 @@
   "@product_page_tab_prices": {
     "description": "Label of the prices tab on the product page"
   },
+  "prices_explanation_card_title": "എന്തിനാണ് വിലകൾ?",
+  "prices_explanation_card_line1": "**ഓപ്പൺ പ്രൈസസ്** എന്നത് ലോകമെമ്പാടുമുള്ള ഉൽപ്പന്നങ്ങളുടെ വിലകൾ ശേഖരിച്ച് പങ്കിടുന്നതിനുള്ള ഒരു പ്രോജക്റ്റാണ് 🌍. ഓപ്പൺ ഫുഡ് ഫാക്റ്റ്സ് ആണ് ഓപ്പൺ പ്രൈസസ് വികസിപ്പിക്കുകയും പരിപാലിക്കുകയും ചെയ്യുന്നത്.",
+  "explanation_card_learn_more_button": "Learn more",
   "product_page_tab_folksonomy": "Folksonomy",
   "@product_page_tab_folksonomy": {
     "description": "Label of the folksonomy tab on the product page"
   },
+  "folksonomy_explanation_card_title": "ഫോക്സോണമിയുടെ ഗുണവിശേഷങ്ങൾ എന്തൊക്കെയാണ്?",
+  "folksonomy_explanation_card_line1": "ആട്രിബ്യൂട്ടുകൾ **കീ-മൂല്യം** അടിസ്ഥാനമാക്കിയുള്ളതാണ്.",
+  "folksonomy_explanation_card_line2": "ഏത് തരത്തിലുള്ള ഉപയോഗത്തിനും വേണ്ടി സംഭാവകർ ഈ പ്രോപ്പർട്ടികൾ സൃഷ്ടിക്കുകയും ഫയൽ ചെയ്യുകയും ചെയ്യുന്നു.",
   "folksonomy_action_external_link_title": "Open external link",
   "@folksonomy_action_external_link_title": {
     "description": "Label of the 'open external link' action on a folksonomy entry"
@@ -4901,7 +4914,7 @@
   "@preferences_legal_mentions": {
     "description": "Title for the preferences legal mentions card"
   },
-  "preferences_legal_header": "ഓപ്പൺ ഫുഡ് ഫാക്ട്സ് എന്നത് എല്ലാവർക്കുമായി നിർമ്മിച്ച ഒരു ഭക്ഷ്യ ഉൽപ്പന്ന ഡാറ്റാബേസാണ് **.\nമികച്ച ഭക്ഷണ തിരഞ്ഞെടുപ്പുകൾ നടത്താൻ നിങ്ങൾക്ക് ഇത് ഉപയോഗിക്കാം, കൂടാതെ ഇത് **ഓപ്പൺ ഡാറ്റ** ആയതിനാൽ, ആർക്കും ഏത് ആവശ്യത്തിനും ഇത് വീണ്ടും ഉപയോഗിക്കാം**.",
+  "preferences_legal_header": "Open Food Facts എന്നത് എല്ലാവർക്കുമായി നിർമ്മിച്ച ഒരു ഭക്ഷ്യ ഉൽപ്പന്ന ഡാറ്റാബേസാണ് **.\nമികച്ച ഭക്ഷണ തിരഞ്ഞെടുപ്പുകൾ നടത്താൻ നിങ്ങൾക്ക് ഇത് ഉപയോഗിക്കാം, കൂടാതെ ഇത് **ഓപ്പൺ ഡാറ്റ** ആയതിനാൽ, ആർക്കും ഏത് ആവശ്യത്തിനും ഇത് വീണ്ടും ഉപയോഗിക്കാം**.",
   "@preferences_legal_header": {
     "description": "This is the same text as the Discover banner on the website. Please keep the ** syntax to make the text bold."
   },
@@ -5098,7 +5111,7 @@
   "@preferences_faq_faq_title": {
     "description": "Title for FAQ tile"
   },
-  "preferences_faq_off_ngo_title": "ദി ഓപ്പൺ ഫുഡ് ഫാക്ട്സ് എൻ‌ജി‌ഒ",
+  "preferences_faq_off_ngo_title": "ദി Open Food Facts എൻ‌ജി‌ഒ",
   "@preferences_faq_off_ngo_title": {
     "description": "Title for Open Food Facts NGO card"
   },
@@ -5122,7 +5135,7 @@
   "@preferences_connect_community_calendar_subtitle": {
     "description": "Subtitle for community calendar tile"
   },
-  "preferences_connect_blog_title": "ഓപ്പൺ ഫുഡ് ഫാക്ട്സ് ബ്ലോഗ്",
+  "preferences_connect_blog_title": "Open Food Facts ബ്ലോഗ്",
   "@preferences_connect_blog_title": {
     "description": "Title for blog tile"
   },
@@ -5294,7 +5307,7 @@
   "@preferences_prices_newest_title": {
     "description": "Title for newest prices tile"
   },
-  "preferences_prices_newest_subtitle": "Latest prices added by the Open Prices community",
+  "preferences_prices_newest_subtitle": "ഓപ്പൺ പ്രൈസ് കമ്മ്യൂണിറ്റി ചേർത്ത ഏറ്റവും പുതിയ വിലകൾ",
   "@preferences_prices_newest_subtitle": {
     "description": "Subtitle for newest prices tile"
   },
@@ -5346,7 +5359,7 @@
   "@preferences_page_contribute_project_title": {
     "description": "Title for the contribute to project navigation tile"
   },
-  "preferences_page_contribute_project_subtitle": "Simple ways to help Open Food Facts",
+  "preferences_page_contribute_project_subtitle": "സഹായിക്കാനുള്ള ലളിതമായ വഴികൾ ഭക്ഷണ വസ്തുതകൾ തുറക്കുക",
   "@preferences_page_contribute_project_subtitle": {
     "description": "Subtitle for the contribute to project navigation tile"
   },
@@ -5522,7 +5535,7 @@
   "@preferences_about_app_development_title": {
     "description": "Title for the development preferences card in about app section"
   },
-  "preferences_page_open_food_facts_labs_title": "ഓപ്പൺ ഫുഡ് ഫാക്ട്സ് ലാബുകൾ",
+  "preferences_page_open_food_facts_labs_title": "Open Food Facts ലാബുകൾ",
   "@preferences_page_open_food_facts_labs_title": {
     "description": "Title for the Open Food Facts Labs navigation tile in preferences page"
   },

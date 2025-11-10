@@ -202,6 +202,7 @@
   "@forgot_password": {
     "description": "Button label: Opens a page where a password reset e-mail can be requested"
   },
+  "forgot_password_question": "Ste pozabili geslo?",
   "view_profile": "Ogled profila",
   "@view_profile": {
     "description": "Button label: For to show your account"
@@ -1018,9 +1019,11 @@
   "edit_tag": "Edit property",
   "remove_tag": "Remove property",
   "tag_key": "Property",
+  "tag_keys": "Nepremičnine",
   "tag_key_uneditable": "Property (uneditable)",
   "tag_key_input_hint": "Input a property",
   "tag_value": "Vrednost",
+  "tag_values": "Values",
   "tag_value_input_hint": "Input a value",
   "tag_key_item": "Property:",
   "tag_value_item": "Value:",
@@ -1368,6 +1371,10 @@
   "onboarding_welcome_loading_dialog_title": "Nalaganje prvega primera izdelka",
   "@onboarding_welcome_loading_dialog_title": {
     "description": "Title for the onboarding loading dialog"
+  },
+  "onboarding_welcome_warning": "Žal je to naš primer izdelka, ne morete ga urejati :)",
+  "@onboarding_welcome_warning": {
+    "description": "Warning message displayed in the rare cases when the users try to edit the onboarding example product"
   },
   "product_list_your_ranking": "Vaša razvrstitev",
   "@product_list_your_ranking": {
@@ -4531,10 +4538,16 @@
   "@product_page_tab_prices": {
     "description": "Label of the prices tab on the product page"
   },
+  "prices_explanation_card_title": "Zakaj cene?",
+  "prices_explanation_card_line1": "**Open Prices** je projekt za zbiranje in deljenje cen izdelkov po vsem svetu 🌍. Open Prices razvija in vzdržuje Open Food Facts.",
+  "explanation_card_learn_more_button": "Več o tem",
   "product_page_tab_folksonomy": "Folksonomy",
   "@product_page_tab_folksonomy": {
     "description": "Label of the folksonomy tab on the product page"
   },
+  "folksonomy_explanation_card_title": "Kaj so atributi folksonomije?",
+  "folksonomy_explanation_card_line1": "Atributi temeljijo na **ključih in vrednostih**.",
+  "folksonomy_explanation_card_line2": "Te lastnosti ustvarijo in shranijo sodelavci za kakršno koli uporabo.",
   "folksonomy_action_external_link_title": "Open external link",
   "@folksonomy_action_external_link_title": {
     "description": "Label of the 'open external link' action on a folksonomy entry"
@@ -5122,7 +5135,7 @@
   "@preferences_connect_community_calendar_subtitle": {
     "description": "Subtitle for community calendar tile"
   },
-  "preferences_connect_blog_title": "Blog Odprta dejstva o hrani",
+  "preferences_connect_blog_title": "Blog Open Food Facts",
   "@preferences_connect_blog_title": {
     "description": "Title for blog tile"
   },

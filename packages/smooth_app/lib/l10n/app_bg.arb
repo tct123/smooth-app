@@ -202,6 +202,7 @@
   "@forgot_password": {
     "description": "Button label: Opens a page where a password reset e-mail can be requested"
   },
+  "forgot_password_question": "Забравена парола?",
   "view_profile": "Преглед на профила",
   "@view_profile": {
     "description": "Button label: For to show your account"
@@ -1018,9 +1019,11 @@
   "edit_tag": "Edit property",
   "remove_tag": "Remove property",
   "tag_key": "Property",
+  "tag_keys": "Имоти",
   "tag_key_uneditable": "Property (uneditable)",
   "tag_key_input_hint": "Input a property",
   "tag_value": "Стойност",
+  "tag_values": "Ценности",
   "tag_value_input_hint": "Input a value",
   "tag_key_item": "Property:",
   "tag_value_item": "Value:",
@@ -1368,6 +1371,10 @@
   "onboarding_welcome_loading_dialog_title": "Зареждане на първия ти примерен продукт",
   "@onboarding_welcome_loading_dialog_title": {
     "description": "Title for the onboarding loading dialog"
+  },
+  "onboarding_welcome_warning": "За съжаление, това е нашият примерен продукт, не можете да го редактирате :)",
+  "@onboarding_welcome_warning": {
+    "description": "Warning message displayed in the rare cases when the users try to edit the onboarding example product"
   },
   "product_list_your_ranking": "Твоето класиране",
   "@product_list_your_ranking": {
@@ -4531,10 +4538,16 @@
   "@product_page_tab_prices": {
     "description": "Label of the prices tab on the product page"
   },
+  "prices_explanation_card_title": "Защо цени?",
+  "prices_explanation_card_line1": "**Open Prices** е проект за събиране и споделяне на цени на продукти по целия свят 🌍. Open Prices е разработен и поддържан от Open Food Facts.",
+  "explanation_card_learn_more_button": "Научи повече",
   "product_page_tab_folksonomy": "Folksonomy",
   "@product_page_tab_folksonomy": {
     "description": "Label of the folksonomy tab on the product page"
   },
+  "folksonomy_explanation_card_title": "Какви са атрибутите на фолксономията?",
+  "folksonomy_explanation_card_line1": "Атрибутите са базирани на **ключ-стойност**.",
+  "folksonomy_explanation_card_line2": "Тези свойства се създават и подават от сътрудници за всякакъв вид употреба.",
   "folksonomy_action_external_link_title": "Open external link",
   "@folksonomy_action_external_link_title": {
     "description": "Label of the 'open external link' action on a folksonomy entry"

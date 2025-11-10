@@ -202,6 +202,7 @@
   "@forgot_password": {
     "description": "Button label: Opens a page where a password reset e-mail can be requested"
   },
+  "forgot_password_question": "Quên mật khẩu?",
   "view_profile": "Xem hồ sơ",
   "@view_profile": {
     "description": "Button label: For to show your account"
@@ -689,7 +690,7 @@
   "nutritional_facts_input_button_label": "Thêm vào thông tin dinh dưỡng",
   "nutritional_facts_added": "Thông tin dinh dưỡng đã được thêm",
   "categories_added": "Đã thêm danh mục",
-  "new_product_title_nutriscore": "Compute the Nutri-Score",
+  "new_product_title_nutriscore": "Tính toán Nutri-Score",
   "new_product_subtitle_nutriscore": "Tính điểm bằng cách điền danh mục thực phẩm và các giá trị dinh dưỡng",
   "new_product_title_environmental_score": "Compute the Green Score",
   "new_product_subtitle_environmental_score": "Get it by filling at least a category",
@@ -1018,9 +1019,11 @@
   "edit_tag": "Edit property",
   "remove_tag": "Remove property",
   "tag_key": "Property",
+  "tag_keys": "Của cải",
   "tag_key_uneditable": "Property (uneditable)",
   "tag_key_input_hint": "Input a property",
   "tag_value": "Giá trị",
+  "tag_values": "Giá trị",
   "tag_value_input_hint": "Input a value",
   "tag_key_item": "Property:",
   "tag_value_item": "Value:",
@@ -1052,11 +1055,11 @@
   "@product_search_same_category_error": {
     "description": "Button looking for the other products within the same category. Just the verb compare"
   },
-  "product_improvement_add_category": "Add a category to calculate the Nutri-Score.",
+  "product_improvement_add_category": "Thêm danh mục để tính Điểm dinh dưỡng.",
   "@product_improvement_add_category": {
     "description": "Message for ProductImprovement.ADD_CATEGORY"
   },
-  "product_improvement_add_nutrition_facts": "Add nutrition facts to calculate the Nutri-Score.",
+  "product_improvement_add_nutrition_facts": "Thêm thông tin dinh dưỡng để tính điểm Nutri-Score.",
   "@product_improvement_add_nutrition_facts": {
     "description": "Message for ProductImprovement.ADD_NUTRITION_FACTS"
   },
@@ -1368,6 +1371,10 @@
   "onboarding_welcome_loading_dialog_title": "Đang tải lên sản phẩm mẫu đầu tiên của bạn",
   "@onboarding_welcome_loading_dialog_title": {
     "description": "Title for the onboarding loading dialog"
+  },
+  "onboarding_welcome_warning": "Xin lỗi, đây là sản phẩm mẫu của chúng tôi, bạn không thể chỉnh sửa nó :)",
+  "@onboarding_welcome_warning": {
+    "description": "Warning message displayed in the rare cases when the users try to edit the onboarding example product"
   },
   "product_list_your_ranking": "Xếp hạng của bạn",
   "@product_list_your_ranking": {
@@ -4531,10 +4538,16 @@
   "@product_page_tab_prices": {
     "description": "Label of the prices tab on the product page"
   },
+  "prices_explanation_card_title": "Tại sao lại có giá?",
+  "prices_explanation_card_line1": "**Open Prices** là một dự án thu thập và chia sẻ giá sản phẩm trên toàn thế giới 🌍. Open Prices được phát triển và duy trì bởi Open Food Facts.",
+  "explanation_card_learn_more_button": "Tìm hiểu thêm",
   "product_page_tab_folksonomy": "Folksonomy",
   "@product_page_tab_folksonomy": {
     "description": "Label of the folksonomy tab on the product page"
   },
+  "folksonomy_explanation_card_title": "Thuộc tính Folksonomy là gì?",
+  "folksonomy_explanation_card_line1": "Thuộc tính dựa trên **khóa-giá trị**.",
+  "folksonomy_explanation_card_line2": "Những thuộc tính này được tạo ra và lưu trữ bởi những người đóng góp cho mọi mục đích sử dụng.",
   "folksonomy_action_external_link_title": "Open external link",
   "@folksonomy_action_external_link_title": {
     "description": "Label of the 'open external link' action on a folksonomy entry"
@@ -5346,7 +5359,7 @@
   "@preferences_page_contribute_project_title": {
     "description": "Title for the contribute to project navigation tile"
   },
-  "preferences_page_contribute_project_subtitle": "Simple ways to help Open Food Facts",
+  "preferences_page_contribute_project_subtitle": "Những cách đơn giản để giúp Open Food Facts",
   "@preferences_page_contribute_project_subtitle": {
     "description": "Subtitle for the contribute to project navigation tile"
   },

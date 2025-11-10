@@ -202,6 +202,7 @@
   "@forgot_password": {
     "description": "Button label: Opens a page where a password reset e-mail can be requested"
   },
+  "forgot_password_question": "गुप्तशब्दं विस्मृतवान् वा?",
   "view_profile": "View profile",
   "@view_profile": {
     "description": "Button label: For to show your account"
@@ -1018,9 +1019,11 @@
   "edit_tag": "Edit property",
   "remove_tag": "Remove property",
   "tag_key": "Property",
+  "tag_keys": "गुणाः",
   "tag_key_uneditable": "Property (uneditable)",
   "tag_key_input_hint": "Input a property",
   "tag_value": "Value",
+  "tag_values": "Values",
   "tag_value_input_hint": "Input a value",
   "tag_key_item": "Property:",
   "tag_value_item": "Value:",
@@ -1368,6 +1371,10 @@
   "onboarding_welcome_loading_dialog_title": "Loading your first example product",
   "@onboarding_welcome_loading_dialog_title": {
     "description": "Title for the onboarding loading dialog"
+  },
+  "onboarding_welcome_warning": "क्षम्यतां, अस्माकं उदाहरणं उत्पादम् अस्ति, भवान् सम्पादयितुं न शक्नोति :)",
+  "@onboarding_welcome_warning": {
+    "description": "Warning message displayed in the rare cases when the users try to edit the onboarding example product"
   },
   "product_list_your_ranking": "Your ranking",
   "@product_list_your_ranking": {
@@ -4531,10 +4538,16 @@
   "@product_page_tab_prices": {
     "description": "Label of the prices tab on the product page"
   },
+  "prices_explanation_card_title": "मूल्यानि किमर्थम् ?",
+  "prices_explanation_card_line1": "**Open Prices** इति विश्वस्य उत्पादानाम् मूल्यानि संग्रहीतुं साझां कर्तुं च परियोजना अस्ति 🌍। Open Prices इत्यस्य विकासः, परिपालनं च Open Food Facts इत्यनेन भवति ।",
+  "explanation_card_learn_more_button": "Learn more",
   "product_page_tab_folksonomy": "Folksonomy",
   "@product_page_tab_folksonomy": {
     "description": "Label of the folksonomy tab on the product page"
   },
+  "folksonomy_explanation_card_title": "लोकस्वरशास्त्रस्य विशेषताः के सन्ति ?",
+  "folksonomy_explanation_card_line1": "विशेषताः **कुंजी-मूल्यं** आधारिताः सन्ति ।",
+  "folksonomy_explanation_card_line2": "एते गुणाः योगदातृभिः किमपि प्रकारस्य उपयोगाय निर्मिताः, दाखिलाः च भवन्ति ।",
   "folksonomy_action_external_link_title": "Open external link",
   "@folksonomy_action_external_link_title": {
     "description": "Label of the 'open external link' action on a folksonomy entry"
@@ -5098,7 +5111,7 @@
   "@preferences_faq_faq_title": {
     "description": "Title for FAQ tile"
   },
-  "preferences_faq_off_ngo_title": "द ओपन फूड फैक्ट्स एनजीओ",
+  "preferences_faq_off_ngo_title": "द Open Food Facts एनजीओ",
   "@preferences_faq_off_ngo_title": {
     "description": "Title for Open Food Facts NGO card"
   },

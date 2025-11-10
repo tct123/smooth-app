@@ -202,6 +202,7 @@
   "@forgot_password": {
     "description": "Button label: Opens a page where a password reset e-mail can be requested"
   },
+  "forgot_password_question": "שכחת סיסמה?",
   "view_profile": "הצגת פרופיל",
   "@view_profile": {
     "description": "Button label: For to show your account"
@@ -1018,9 +1019,11 @@
   "edit_tag": "עריכת מאפיין",
   "remove_tag": "הסרת מאפיין",
   "tag_key": "מאפיין",
+  "tag_keys": "נכסים",
   "tag_key_uneditable": "מאפיין (נעול)",
   "tag_key_input_hint": "נא למלא מאפיין",
   "tag_value": "ערך",
+  "tag_values": "ערכים",
   "tag_value_input_hint": "נא למלא ערך",
   "tag_key_item": "מאפיין:",
   "tag_value_item": "ערך:",
@@ -1368,6 +1371,10 @@
   "onboarding_welcome_loading_dialog_title": "מוצר ההדגמה הראשוני שלך נטען",
   "@onboarding_welcome_loading_dialog_title": {
     "description": "Title for the onboarding loading dialog"
+  },
+  "onboarding_welcome_warning": "סליחה, זה מוצר לדוגמה שלנו, אינך יכול לערוך אותו :)",
+  "@onboarding_welcome_warning": {
+    "description": "Warning message displayed in the rare cases when the users try to edit the onboarding example product"
   },
   "product_list_your_ranking": "הדירוג שלך",
   "@product_list_your_ranking": {
@@ -4531,10 +4538,16 @@
   "@product_page_tab_prices": {
     "description": "Label of the prices tab on the product page"
   },
+  "prices_explanation_card_title": "למה מחירים?",
+  "prices_explanation_card_line1": "**Open Prices** is a project to collect and share prices of products around the world 🌍. Open Prices is developed and maintained by Open Food Facts.",
+  "explanation_card_learn_more_button": "מידע נוסף",
   "product_page_tab_folksonomy": "Folksonomy",
   "@product_page_tab_folksonomy": {
     "description": "Label of the folksonomy tab on the product page"
   },
+  "folksonomy_explanation_card_title": "מהם מאפייני פולקסונומיה?",
+  "folksonomy_explanation_card_line1": "מאפיינים מבוססים על **ערך מפתח**.",
+  "folksonomy_explanation_card_line2": "מאפיינים אלה נוצרים ומוגשים על ידי תורמים לכל סוג של שימוש.",
   "folksonomy_action_external_link_title": "פתיחת קישור חיצוני",
   "@folksonomy_action_external_link_title": {
     "description": "Label of the 'open external link' action on a folksonomy entry"
@@ -5346,7 +5359,7 @@
   "@preferences_page_contribute_project_title": {
     "description": "Title for the contribute to project navigation tile"
   },
-  "preferences_page_contribute_project_subtitle": "Simple ways to help Open Food Facts",
+  "preferences_page_contribute_project_subtitle": "דרכים פשוטות לעזור Open Food Facts",
   "@preferences_page_contribute_project_subtitle": {
     "description": "Subtitle for the contribute to project navigation tile"
   },

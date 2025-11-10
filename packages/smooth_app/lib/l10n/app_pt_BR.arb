@@ -202,6 +202,7 @@
   "@forgot_password": {
     "description": "Button label: Opens a page where a password reset e-mail can be requested"
   },
+  "forgot_password_question": "Esqueceu sua senha?",
   "view_profile": "Ver perfil",
   "@view_profile": {
     "description": "Button label: For to show your account"
@@ -1018,9 +1019,11 @@
   "edit_tag": "Editar propriedade",
   "remove_tag": "Remover propriedade",
   "tag_key": "Propriedade",
+  "tag_keys": "Propriedades",
   "tag_key_uneditable": "Propriedade (não editável)",
   "tag_key_input_hint": "Introduza uma propriedade",
   "tag_value": "Valor",
+  "tag_values": "Valores",
   "tag_value_input_hint": "Introduza um valor",
   "tag_key_item": "Propriedade:",
   "tag_value_item": "Valor:",
@@ -1368,6 +1371,10 @@
   "onboarding_welcome_loading_dialog_title": "A carregar o seu primeiro exemplo de produto",
   "@onboarding_welcome_loading_dialog_title": {
     "description": "Title for the onboarding loading dialog"
+  },
+  "onboarding_welcome_warning": "Desculpe, este é um produto de exemplo, você não pode editá-lo :)",
+  "@onboarding_welcome_warning": {
+    "description": "Warning message displayed in the rare cases when the users try to edit the onboarding example product"
   },
   "product_list_your_ranking": "A sua classificação",
   "@product_list_your_ranking": {
@@ -2623,7 +2630,7 @@
   "@prices_unknown_product": {
     "description": "Very small text, in the context of prices, to say that the product is unknown"
   },
-  "prices_menu_know_more": "Know more about Open Prices",
+  "prices_menu_know_more": "Saiba mais sobre preços abertos",
   "@prices_menu_know_more": {
     "description": "Menu item to open the Open Prices guide"
   },
@@ -4020,7 +4027,7 @@
   "guide_nova_explanations_arg5_text": "Desde 2018, com o estudo NutriNet-Santé, foram destacados os primeiros vínculos entre **o consumo de alimentos ultraprocessados e o aumento dos riscos de câncer, doenças cardiovasculares e diabetes**. Hoje, mais de 90 estudos em todo o mundo confirmam essas descobertas.  \nAs associações mais fortes estão relacionadas à **obesidade, mortalidade cardiovascular e sintomas depressivos**. Em crianças, os efeitos são observados principalmente no peso e em desequilíbrios lipídicos.\n",
   "guide_nova_explanations_arg6_title": "Países recomendam limitá-los",
   "guide_nova_explanations_arg6_text": "Alguns países utilizam os grupos NOVA em suas diretrizes ou metas alimentares, por exemplo:\nAs diretrizes alimentares do **🇧🇷 Brasil** **recomendam limitar o consumo** de alimentos processados e evitar os ultraprocessados\n**As metas da política nutricional de saúde pública da **🇫🇷 França** para 2018-2022 visam **reduzir o consumo de alimentos ultraprocessados do grupo 4 em 20%**.",
-  "guide_nova_share_link": "https://pt.openfoodfacts.org/nova",
+  "guide_nova_share_link": "https://world-pt.openfoodfacts.org/nova",
   "@guide_nova_share_link": {
     "comment": "Make sure the link exists before adding a translation"
   },
@@ -4130,53 +4137,53 @@
   "@guide_open_prices_what_is_open_prices_paragraph2": {
     "description": "Text between asterisks (eg: **My Text**) means text in bold. Please try to keep it."
   },
-  "guide_open_prices_how_title": "How does Open Prices work?",
-  "guide_open_prices_how_paragraph1": "**We are crowdsourcing an open-source dataset of prices**. Prices can be added by users via this web app, or via the official Open Food Facts mobile app. Retailers or third-party apps can contribute as well by using our API.",
-  "guide_open_prices_how_arg1_title": "Collect photos of price tags in aisles",
-  "guide_open_prices_how_arg2_title": "Collect photos of receipts",
-  "guide_open_prices_why_title": "Why is Open Food Facts doing this ?",
-  "guide_open_prices_why_paragraph1": "Price information is of paramount importance to understand food systems. It's a key factor in understanding the cost of food and to promote healthier diets. Opening price data is a way to make it easier for researchers, journalists, and citizens to **have a better understanding of how food prices vary geographically and in time**.",
-  "guide_open_prices_why_arg1_title": "Track the evolution of prices over time",
-  "guide_open_prices_why_arg1_text": "See the **evolution of prices**: shrinkflation, cheapflation, we can track them together!",
-  "guide_open_prices_why_arg2_title": "Compare prices near you",
-  "guide_open_prices_why_arg2_text": "As we get more prices, you can spot **the cheapest stores around you**.",
-  "guide_open_prices_scrapping_title": "Did you consider scraping prices from retailers' websites?",
-  "guide_open_prices_scrapping_paragraph1": "For legal and technical reasons, **we don't consider scraping prices from retailers' websites as a valid way to contribute to Open Prices**. We want to make sure that the prices we collect are accurate and up-to-date, and receiving scraped prices from contributors doesn't allow us to do that.",
-  "guide_open_prices_scrapping_paragraph2": "Price scraping is a considered option in a future version of Open Prices, but it would be done by Open Prices itself so that we can have a proof of the price based on the HTML page.",
+  "guide_open_prices_how_title": "Como funciona o Open Prices?",
+  "guide_open_prices_how_paragraph1": "**Estamos coletando dados de um conjunto de dados de preços de código aberto**. Os preços podem ser adicionados pelos usuários através deste aplicativo da Web ou pelo aplicativo móvel Open Food Facts. Varejistas ou aplicativos de terceiros também podem contribuir utilizando nossa API.",
+  "guide_open_prices_how_arg1_title": "Colete fotos das etiquetas de preço nos corredores",
+  "guide_open_prices_how_arg2_title": "Colete fotos de receitas",
+  "guide_open_prices_why_title": "Por que o Open Food Facts está fazendo isso?",
+  "guide_open_prices_why_paragraph1": "Informações sobre preços são de suma importância para compreender os sistemas alimentares. É um fator-chave na compreensão do custo dos alimentos e para promover dietas mais saudáveis. Abrir dados de preços é uma maneira de tornar mais fácil para pesquisadores, jornalistas e cidadãos **terem uma melhor compreensão de como os preços dos alimentos variam geograficamente e ao longo do tempo**.",
+  "guide_open_prices_why_arg1_title": "Acompanhe a evolução dos preços ao longo do tempo",
+  "guide_open_prices_why_arg1_text": "Veja a **evolução dos preços**: reduflação, cheapflação, podemos acompanhá-las juntos!",
+  "guide_open_prices_why_arg2_title": "Compare os preços perto de você",
+  "guide_open_prices_why_arg2_text": "À medida que obtivermos mais preços, você poderá identificar **as lojas mais baratas perto de você**.",
+  "guide_open_prices_scrapping_title": "Você considerou coletar preços dos sites dos varejistas?",
+  "guide_open_prices_scrapping_paragraph1": "Por razões legais e técnicas, **não consideramos a coleta de preços de sites de varejistas como uma forma válida de contribuir com o Open Prices**. Queremos ter certeza de que os preços que coletamos são precisos e atualizados, e receber preços coletados de contribuidores não nos permite fazer isso.",
+  "guide_open_prices_scrapping_paragraph2": "A coleta de preços é uma opção considerada em uma versão futura do Open Prices, mas ela seria feita pelo próprio Open Prices para podermos ter uma prova do preço com base na página HTML.",
   "guide_open_prices_retailers_title": "Sou um varejista e quero contribuir com preços. Como posso fazer isso?",
-  "guide_open_prices_retailers_paragraph1": "You can contribute prices by using our API.\nIf you want to contribute prices at scale, please get in touch with us at prices@openfoodfacts.org.",
+  "guide_open_prices_retailers_paragraph1": "Você pode contribuir com os preços utilizando nossa API.\nSe você quiser contribuir com preços em escala, entre em contato conosco em prices@openfoodfacts.org.",
   "guide_open_prices_share_link": "https://prices.openfoodfacts.org/about",
-  "guide_open_products_facts_title": "Welcome to Open Products Facts!",
+  "guide_open_products_facts_title": "Bem-vindo ao Open Products Facts!",
   "@guide_open_products_facts_title": {
     "description": "The title of the guide (please don't forget the use of non-breaking spaces)"
   },
-  "guide_open_products_facts_what_is_open_products_facts_title": "What is Open Products Facts?",
-  "guide_open_products_facts_what_is_open_products_facts_paragraph1": "Open Products Facts is a massive, open database for **any product with a barcode, which is not food, cosmetic or pet food**.",
+  "guide_open_products_facts_what_is_open_products_facts_title": "O que é o Open Products Facts?",
+  "guide_open_products_facts_what_is_open_products_facts_paragraph1": "O Open Products Facts é um enorme banco de dados aberto para **qualquer produto com código de barras, exceto alimentos, cosméticos e ração para animais de estimação**.",
   "@guide_open_products_facts_what_is_open_products_facts_paragraph1": {
     "description": "Text between asterisks (eg: **My Text**) means text in bold. Please try to keep it."
   },
-  "guide_open_products_facts_what_is_open_products_facts_paragraph2": "From **electronics** to **toys**, and **clothes** to **cleaning supplies**, if it has a barcode, it can be added. This project aims to create an \"Internet of Things\" for everyday objects, making information about them universally accessible.",
+  "guide_open_products_facts_what_is_open_products_facts_paragraph2": "De **eletrônicos** a **brinquedos**, e de **roupas** a **produtos de limpeza**, se tiver um código de barras, pode ser adicionado. Este projeto visa criar uma \"Internet das Coisas\" para objetos do cotidiano, tornando as informações sobre eles universalmente acessíveis.",
   "@guide_open_products_facts_what_is_open_products_facts_paragraph2": {
     "description": "Text between asterisks (eg: **My Text**) means text in bold. Please try to keep it."
   },
-  "guide_open_products_facts_features_title": "Features of Open Products Facts",
-  "guide_open_products_facts_features_text": "Open Products Facts aims to provide consumers to **extend the life of objects** by providing the circular solutions to maintain, **repair**, **recycle** their objects or give them a new owner.",
-  "guide_open_products_facts_features_arg1_title": "Carbon footprints for some products",
-  "guide_open_products_facts_features_arg1_text": "**Impact CO2** by French Environment Authority ADEME provides the **carbon impact** of many categories, make sure to categorize products precisely.",
-  "guide_open_products_facts_features_arg2_title": "Reparability index for many products",
-  "guide_open_products_facts_features_arg2_text": "Whenever a French reparability index is available, we’ll display it. Moreover, **you can start collecting the variables using the Folksonomy Engine**; so that we can recompute it ourselves in the future, even in countries where it’s not available.",
-  "guide_open_products_facts_features_arg3_title": "Find ways to donate/resell your product",
-  "guide_open_products_facts_features_arg3_text": "We provide links to **third party circular friendly services** that help you get the kind of product you’re looking for, as a second hand product, to be more gentle on planetary resources.\nNote that we’re not paid to do that, and that the system only works as an example for two websites in France. You can help expand this system by documenting more sites on the wiki.",
-  "guide_open_products_facts_information_title": "What information is useful?",
-  "guide_open_products_facts_information_text": "For such a wide range of items, **the data we collect is flexible**. To do that, **we created the Folksonomy Engine**.",
-  "guide_open_products_facts_folksonomy_title": "The Folksonomy Engine",
-  "guide_open_products_facts_folksonomy_paragraph1": "The Folksonomy Engine is a tool to help you complete products with relevant properties. This helps improve search and discoverability, but also compute and display interesting things in the future.",
-  "guide_open_products_facts_folksonomy_paragraph2": "You can add any keys and values like: **compatibility_with_5G_mobile_network: yes**",
-  "guide_open_products_facts_folksonomy_paragraph3": "You’ll get autosuggestion of possible properties, and you are very welcome to add and document new ones on your favorite kinds of products.",
-  "guide_open_products_facts_share_link": "https://en.openproductsfacts.org/discover",
-  "guide_open_preferences_button_title": "Open food preferences",
-  "guide_coming_soon_button_title": "Coming soon",
-  "guide_learn_more_subtitle": "Tap to learn more",
+  "guide_open_products_facts_features_title": "Recursos do Open Products Facts",
+  "guide_open_products_facts_features_text": "O Open Products Facts tem como objetivo proporcionar aos consumidores a possibilidade de **prolongar a vida útil dos objetos**, oferecendo soluções circulares para a manutenção, **reparo**, **reciclagem** dos seus objetos ou para que eles sejam entregues a um novo proprietário.",
+  "guide_open_products_facts_features_arg1_title": "Pegadas de carbono para alguns produtos",
+  "guide_open_products_facts_features_arg1_text": "**O Impacto de CO2**, da ADEME (Autoridade Francesa do Meio Ambiente), fornece o **impacto de carbono** de diversas categorias. Certifique-se de categorizar os produtos corretamente.",
+  "guide_open_products_facts_features_arg2_title": "Índice de reparabilidade para muitos produtos",
+  "guide_open_products_facts_features_arg2_text": "Sempre que um índice de reparabilidade francês estiver disponível, nós o exibiremos. Além disso, **você pode começar a coletar as variáveis usando o Mecanismo de Folksonomia**, para que possamos recalculá-lo no futuro, mesmo em países onde ele não estiver disponível.",
+  "guide_open_products_facts_features_arg3_title": "Encontre maneiras de doar/revender seu produto",
+  "guide_open_products_facts_features_arg3_text": "Nós fornecemos links para **serviços de terceiros que respeitam a economia circular**, que ajudam você a obter o tipo de produto que procura, como um produto de segunda mão, para ser mais gentil com os recursos do planeta.\nObserve que não somos pagos para fazer isso e que o sistema funciona apenas como um exemplo para dois sites na França. Você pode ajudar a expandir este sistema documentando mais sites na wiki.",
+  "guide_open_products_facts_information_title": "Quais informações são úteis?",
+  "guide_open_products_facts_information_text": "Para uma ampla variedade de itens, **os dados que coletamos são flexíveis**. Para isso, **criamos o Mecanismo de Folksonomia**.",
+  "guide_open_products_facts_folksonomy_title": "O Mecanismo de Folksonomia",
+  "guide_open_products_facts_folksonomy_paragraph1": "O Mecanismo de Folksonomia é uma ferramenta que ajuda a complementar produtos com propriedades relevantes. Isso contribui para melhorar a busca e a visibilidade, além de gerar e exibir informações interessantes no futuro.",
+  "guide_open_products_facts_folksonomy_paragraph2": "Você pode adicionar quaisquer chaves e valores, como: **compatibility_with_5G_mobile_network: yes**",
+  "guide_open_products_facts_folksonomy_paragraph3": "Você receberá sugestões automáticas de possíveis propriedades e poderá adicionar e documentar novas propriedades relacionadas aos seus tipos de produtos favoritos.",
+  "guide_open_products_facts_share_link": "https://world-en.openproductsfacts.org/discover",
+  "guide_open_preferences_button_title": "Abrir preferências alimentares",
+  "guide_coming_soon_button_title": "Em breve",
+  "guide_learn_more_subtitle": "Toque para saber mais",
   "preview_badge": "Pré-visualizar",
   "@preview_badge": {
     "description": "Badge to indicate that the product is in preview mode (Be careful with this translation)"
@@ -4531,15 +4538,21 @@
   "@product_page_tab_prices": {
     "description": "Label of the prices tab on the product page"
   },
+  "prices_explanation_card_title": "Por que os preços?",
+  "prices_explanation_card_line1": "**Open Prices** é um projeto para coletar e compartilhar preços de produtos ao redor do mundo 🌍. O Open Prices é desenvolvido e mantido pelo Open Food Facts.",
+  "explanation_card_learn_more_button": "Saiba mais",
   "product_page_tab_folksonomy": "Folksonomia",
   "@product_page_tab_folksonomy": {
     "description": "Label of the folksonomy tab on the product page"
   },
-  "folksonomy_action_external_link_title": "Open external link",
+  "folksonomy_explanation_card_title": "O que são atributos da Folksonomia?",
+  "folksonomy_explanation_card_line1": "Os atributos são baseados em **chave-valor**.",
+  "folksonomy_explanation_card_line2": "Essas propriedades são criadas e arquivadas por colaboradores para qualquer tipo de uso.",
+  "folksonomy_action_external_link_title": "Abrir link externo",
   "@folksonomy_action_external_link_title": {
     "description": "Label of the 'open external link' action on a folksonomy entry"
   },
-  "folksonomy_action_external_link_warning": "External links may be unsafe. Do you really want to visit it?",
+  "folksonomy_action_external_link_warning": "Links externos podem não ser seguros. Você realmente quer acessá-lo?",
   "@folksonomy_action_external_link_warning": {
     "description": "Warning about the 'open external link' action on a folksonomy entry"
   },
@@ -5078,19 +5091,19 @@
   "@preferences_faq_discover_off_title": {
     "description": "Title for discover Open Food Facts tile"
   },
-  "preferences_faq_discover_obf_title": "Discover Open Beauty Facts",
+  "preferences_faq_discover_obf_title": "Descubra o Open Beauty Facts",
   "@preferences_faq_discover_obf_title": {
     "description": "Title for discover Open Beauty Facts tile"
   },
-  "preferences_faq_discover_opff_title": "Discover Open Pet Food Facts",
+  "preferences_faq_discover_opff_title": "Descubra Open Pet Food Facts",
   "@preferences_faq_discover_opff_title": {
     "description": "Title for discover Open Pet Food Facts tile"
   },
-  "preferences_faq_discover_op_title": "Discover Open Prices",
+  "preferences_faq_discover_op_title": "Descubra o Open Prices",
   "@preferences_faq_discover_op_title": {
     "description": "Title for discover Open Prices tile"
   },
-  "preferences_faq_discover_opf_title": "Discover Open Products Facts",
+  "preferences_faq_discover_opf_title": "Descubra o Open Products Facts",
   "@preferences_faq_discover_opf_title": {
     "description": "Title for discover Open Products Facts tile"
   },
@@ -5557,12 +5570,12 @@
       }
     }
   },
-  "location_map_details_title": "Location details",
+  "location_map_details_title": "Detalhes da localização",
   "location_map_details_name": "Nome",
-  "location_map_details_street": "Street",
-  "location_map_details_city": "City",
-  "location_map_details_postcode": "Postcode",
+  "location_map_details_street": "Rua",
+  "location_map_details_city": "Cidade",
+  "location_map_details_postcode": "Código postal",
   "location_map_details_country": "País",
-  "location_map_details_coordinates": "Coordinates",
-  "location_map_details_osm_id": "OSM ID"
+  "location_map_details_coordinates": "Coordenadas",
+  "location_map_details_osm_id": "ID OSM"
 }

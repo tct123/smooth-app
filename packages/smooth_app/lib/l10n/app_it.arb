@@ -202,6 +202,7 @@
   "@forgot_password": {
     "description": "Button label: Opens a page where a password reset e-mail can be requested"
   },
+  "forgot_password_question": "Ha dimenticato la password?",
   "view_profile": "Visualizza il profilo",
   "@view_profile": {
     "description": "Button label: For to show your account"
@@ -1018,9 +1019,11 @@
   "edit_tag": "Modifica proprietà",
   "remove_tag": "Rimuovi proprietà",
   "tag_key": "Proprietà",
+  "tag_keys": "Proprietà",
   "tag_key_uneditable": "Proprietà (non modificabile)",
   "tag_key_input_hint": "Inserisci una proprietà",
   "tag_value": "Valore",
+  "tag_values": "Valori",
   "tag_value_input_hint": "Inserisci un valore",
   "tag_key_item": "Proprietà:",
   "tag_value_item": "Valore:",
@@ -1368,6 +1371,10 @@
   "onboarding_welcome_loading_dialog_title": "Caricamento del tuo primo prodotto d'esempio",
   "@onboarding_welcome_loading_dialog_title": {
     "description": "Title for the onboarding loading dialog"
+  },
+  "onboarding_welcome_warning": "Spiacenti, è il nostro prodotto di esempio, non puoi modificarlo :)",
+  "@onboarding_welcome_warning": {
+    "description": "Warning message displayed in the rare cases when the users try to edit the onboarding example product"
   },
   "product_list_your_ranking": "La tua posizione",
   "@product_list_your_ranking": {
@@ -4531,10 +4538,16 @@
   "@product_page_tab_prices": {
     "description": "Label of the prices tab on the product page"
   },
+  "prices_explanation_card_title": "Perché i prezzi?",
+  "prices_explanation_card_line1": "**Open Prices** è un progetto per raccogliere e condividere i prezzi dei prodotti in tutto il mondo 🌍. Open Prices è sviluppato e gestito da Open Food Facts.",
+  "explanation_card_learn_more_button": "Ulteriori informazioni",
   "product_page_tab_folksonomy": "Folksonomy",
   "@product_page_tab_folksonomy": {
     "description": "Label of the folksonomy tab on the product page"
   },
+  "folksonomy_explanation_card_title": "Quali sono gli attributi della folksonomia?",
+  "folksonomy_explanation_card_line1": "Gli attributi sono basati su **chiave-valore**.",
+  "folksonomy_explanation_card_line2": "Queste proprietà vengono create e archiviate dai contributori per qualsiasi tipo di utilizzo.",
   "folksonomy_action_external_link_title": "Open external link",
   "@folksonomy_action_external_link_title": {
     "description": "Label of the 'open external link' action on a folksonomy entry"

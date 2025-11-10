@@ -202,6 +202,7 @@
   "@forgot_password": {
     "description": "Button label: Opens a page where a password reset e-mail can be requested"
   },
+  "forgot_password_question": "Калидвожа фаромӯш шуд?",
   "view_profile": "View profile",
   "@view_profile": {
     "description": "Button label: For to show your account"
@@ -1018,9 +1019,11 @@
   "edit_tag": "Edit property",
   "remove_tag": "Remove property",
   "tag_key": "Property",
+  "tag_keys": "Хосиятҳо",
   "tag_key_uneditable": "Property (uneditable)",
   "tag_key_input_hint": "Input a property",
   "tag_value": "Value",
+  "tag_values": "Values",
   "tag_value_input_hint": "Input a value",
   "tag_key_item": "Property:",
   "tag_value_item": "Value:",
@@ -1368,6 +1371,10 @@
   "onboarding_welcome_loading_dialog_title": "Loading your first example product",
   "@onboarding_welcome_loading_dialog_title": {
     "description": "Title for the onboarding loading dialog"
+  },
+  "onboarding_welcome_warning": "Бубахшед, ин маҳсулоти намунавии мост, шумо онро таҳрир карда наметавонед :)",
+  "@onboarding_welcome_warning": {
+    "description": "Warning message displayed in the rare cases when the users try to edit the onboarding example product"
   },
   "product_list_your_ranking": "Your ranking",
   "@product_list_your_ranking": {
@@ -2656,7 +2663,7 @@
   "@dev_mode_add_demo_cards_language_title": {
     "description": "User dev preferences - Add cards - Title"
   },
-  "dev_mode_openprices_switch_env_title": "Switch between prices.openfoodfacts.org (PROD) and test env",
+  "dev_mode_openprices_switch_env_title": "Гузариш байни prices.openfoodfacts.org (PROD) ва env test",
   "@dev_mode_openprices_switch_env_title": {
     "description": "User dev preferences - Switch server environment (Open Prices) - Title"
   },
@@ -4531,10 +4538,16 @@
   "@product_page_tab_prices": {
     "description": "Label of the prices tab on the product page"
   },
+  "prices_explanation_card_title": "Чаро нархҳо?",
+  "prices_explanation_card_line1": "**Open Prices** лоиҳаест барои ҷамъоварӣ ва мубодилаи нархҳои маҳсулот дар саросари ҷаҳон 🌍. Open Prices аз ҷониби Open Food Facts таҳия ва нигоҳ дошта мешаванд.",
+  "explanation_card_learn_more_button": "Learn more",
   "product_page_tab_folksonomy": "Folksonomy",
   "@product_page_tab_folksonomy": {
     "description": "Label of the folksonomy tab on the product page"
   },
+  "folksonomy_explanation_card_title": "Хусусиятҳои фолксономия кадомҳоянд?",
+  "folksonomy_explanation_card_line1": "Аттрибутҳо ба **арзиши калидӣ** асос ёфтаанд.",
+  "folksonomy_explanation_card_line2": "Ин хосиятҳо аз ҷониби саҳмгузорон барои ҳама гуна истифодаҳо сохта ва пешниҳод карда мешаванд.",
   "folksonomy_action_external_link_title": "Open external link",
   "@folksonomy_action_external_link_title": {
     "description": "Label of the 'open external link' action on a folksonomy entry"

@@ -202,6 +202,7 @@
   "@forgot_password": {
     "description": "Button label: Opens a page where a password reset e-mail can be requested"
   },
+  "forgot_password_question": "पासवर्ड विसरलात?",
   "view_profile": "View profile",
   "@view_profile": {
     "description": "Button label: For to show your account"
@@ -1018,9 +1019,11 @@
   "edit_tag": "Edit property",
   "remove_tag": "Remove property",
   "tag_key": "Property",
+  "tag_keys": "गुणधर्म",
   "tag_key_uneditable": "Property (uneditable)",
   "tag_key_input_hint": "Input a property",
   "tag_value": "Value",
+  "tag_values": "Values",
   "tag_value_input_hint": "Input a value",
   "tag_key_item": "Property:",
   "tag_value_item": "Value:",
@@ -1368,6 +1371,10 @@
   "onboarding_welcome_loading_dialog_title": "Loading your first example product",
   "@onboarding_welcome_loading_dialog_title": {
     "description": "Title for the onboarding loading dialog"
+  },
+  "onboarding_welcome_warning": "माफ करा, हे आमचे उदाहरण उत्पादन आहे, तुम्ही ते संपादित करू शकत नाही :)",
+  "@onboarding_welcome_warning": {
+    "description": "Warning message displayed in the rare cases when the users try to edit the onboarding example product"
   },
   "product_list_your_ranking": "Your ranking",
   "@product_list_your_ranking": {
@@ -3829,7 +3836,7 @@
   "environmental_score_e_new": "ग्रीन-स्कोअर ई",
   "environmental_score_unknown_new": "अज्ञात हिरवा-स्कोअर",
   "environmental_score_not_applicable_new": "ग्रीन-स्कोअर लागू नाही.",
-  "nova_group_generic_new": "Ultra-processed foods - NOVA groups",
+  "nova_group_generic_new": "अल्ट्रा-प्रक्रिया केलेले अन्न - नोव्हा गट",
   "nova_group_1": "NOVA Group 1",
   "nova_group_2": "NOVA Group 2",
   "nova_group_3": "NOVA Group 3",
@@ -4531,10 +4538,16 @@
   "@product_page_tab_prices": {
     "description": "Label of the prices tab on the product page"
   },
+  "prices_explanation_card_title": "किंमती का?",
+  "prices_explanation_card_line1": "**Open Prices** हा जगभरातील उत्पादनांच्या किमती गोळा करण्याचा आणि शेअर करण्याचा प्रकल्प आहे 🌍. Open Prices Open Food Facts द्वारे विकसित आणि देखभाल केली जाते.",
+  "explanation_card_learn_more_button": "Learn more",
   "product_page_tab_folksonomy": "Folksonomy",
   "@product_page_tab_folksonomy": {
     "description": "Label of the folksonomy tab on the product page"
   },
+  "folksonomy_explanation_card_title": "फोकसोनोमीचे गुणधर्म काय आहेत?",
+  "folksonomy_explanation_card_line1": "गुणधर्म **की-व्हॅल्यू** वर आधारित आहेत.",
+  "folksonomy_explanation_card_line2": "हे गुणधर्म कोणत्याही प्रकारच्या वापरासाठी योगदानकर्त्यांद्वारे तयार केले जातात आणि दाखल केले जातात.",
   "folksonomy_action_external_link_title": "Open external link",
   "@folksonomy_action_external_link_title": {
     "description": "Label of the 'open external link' action on a folksonomy entry"
@@ -4901,7 +4914,7 @@
   "@preferences_legal_mentions": {
     "description": "Title for the preferences legal mentions card"
   },
-  "preferences_legal_header": "ओपन फूड फॅक्ट्स हा एक अन्न उत्पादनांचा डेटाबेस आहे जो **प्रत्येकाने, प्रत्येकासाठी बनवला आहे**.\nतुम्ही त्याचा वापर चांगल्या अन्न निवडी करण्यासाठी करू शकता आणि तो **ओपन डेटा** असल्याने, कोणीही **कोणत्याही कारणासाठी त्याचा पुन्हा वापर करू शकतो**.",
+  "preferences_legal_header": "Open Food Facts हा एक अन्न उत्पादनांचा डेटाबेस आहे जो **प्रत्येकाने, प्रत्येकासाठी बनवला आहे**.\nतुम्ही त्याचा वापर चांगल्या अन्न निवडी करण्यासाठी करू शकता आणि तो **ओपन डेटा** असल्याने, कोणीही **कोणत्याही कारणासाठी त्याचा पुन्हा वापर करू शकतो**.",
   "@preferences_legal_header": {
     "description": "This is the same text as the Discover banner on the website. Please keep the ** syntax to make the text bold."
   },
@@ -4965,7 +4978,7 @@
   "@tips_discover_nutriscore": {
     "description": "Title for the tips discover nutriscore header"
   },
-  "preferences_on_off_website_subtitle": "ओपन फूड फॅक्ट्स वेबसाइटवर",
+  "preferences_on_off_website_subtitle": "Open Food Facts वेबसाइटवर",
   "@preferences_on_off_website_subtitle": {
     "description": "Subtitle for preferences tiles leading to the Open Food Facts website"
   },
@@ -5098,7 +5111,7 @@
   "@preferences_faq_faq_title": {
     "description": "Title for FAQ tile"
   },
-  "preferences_faq_off_ngo_title": "द ओपन फूड फॅक्ट्स एनजीओ",
+  "preferences_faq_off_ngo_title": "द Open Food Facts एनजीओ",
   "@preferences_faq_off_ngo_title": {
     "description": "Title for Open Food Facts NGO card"
   },
@@ -5122,7 +5135,7 @@
   "@preferences_connect_community_calendar_subtitle": {
     "description": "Subtitle for community calendar tile"
   },
-  "preferences_connect_blog_title": "द ओपन फूड फॅक्ट्स ब्लॉग",
+  "preferences_connect_blog_title": "द Open Food Facts ब्लॉग",
   "@preferences_connect_blog_title": {
     "description": "Title for blog tile"
   },
@@ -5242,7 +5255,7 @@
   "@preferences_contributions_products_added_title": {
     "description": "Title for new products added tile"
   },
-  "preferences_contributions_new_products_subtitle": "ओपन फूड फॅक्ट्स मध्ये मी जोडलेली नवीन उत्पादने",
+  "preferences_contributions_new_products_subtitle": "Open Food Facts मध्ये मी जोडलेली नवीन उत्पादने",
   "@preferences_contributions_new_products_subtitle": {
     "description": "Subtitle for new products added subtile"
   },
@@ -5294,7 +5307,7 @@
   "@preferences_prices_newest_title": {
     "description": "Title for newest prices tile"
   },
-  "preferences_prices_newest_subtitle": "Latest prices added by the Open Prices community",
+  "preferences_prices_newest_subtitle": "Open Prices समुदायाने जोडलेल्या नवीनतम किमती",
   "@preferences_prices_newest_subtitle": {
     "description": "Subtitle for newest prices tile"
   },
@@ -5346,7 +5359,7 @@
   "@preferences_page_contribute_project_title": {
     "description": "Title for the contribute to project navigation tile"
   },
-  "preferences_page_contribute_project_subtitle": "Simple ways to help Open Food Facts",
+  "preferences_page_contribute_project_subtitle": "अन्न तथ्ये उघडण्यास मदत करण्याचे सोपे मार्ग",
   "@preferences_page_contribute_project_subtitle": {
     "description": "Subtitle for the contribute to project navigation tile"
   },
