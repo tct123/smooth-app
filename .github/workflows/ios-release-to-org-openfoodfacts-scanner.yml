@@ -83,6 +83,9 @@ jobs:
       - name: Enable Apple App Store dependency
         run: chmod +x ci/dependencies/app_store/enable_apple_app_store_dependency.sh && ci/dependencies/app_store/enable_apple_app_store_dependency.sh
 
+      - name: Enable Rive dependency
+        run: dart run rive_native:setup --verbose --clean --platform ios
+
       - name: Get dependencies
         run: ci/pub_get.sh
       
