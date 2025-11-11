@@ -513,9 +513,22 @@
   "@search": {
     "description": "Hint text of a search text input field"
   },
+  "search_product_help": "搜索产品\n一个品牌或条形码",
+  "@search_product_help": {
+    "description": "Help text of a search text input field. Please respect the line break."
+  },
+  "search_filter": "搜索筛选器",
+  "@search_filter": {
+    "description": "Title of the OxF selector."
+  },
+  "search_history": "搜索历史",
   "search_store": "搜索商店",
   "@search_store": {
     "description": "Hint text of a search store text input field"
+  },
+  "search_store_help": "提示：添加城市或国家",
+  "@search_store_help": {
+    "description": "Help text of a search store text input field. Please inject a line break if suitable."
   },
   "tap_for_more": "点击获取更多信息",
   "@Product": {},
@@ -3260,11 +3273,6 @@
     "description": "Label for expanding nutrition facts table in application setting"
   },
   "expand_ingredients_body": "保持成分面板扩展",
-  "search_product_filter_visibility_title": "在搜索结果中显示筛选条件",
-  "search_product_filter_visibility_subtitle": "选择搜索网站：Open Food Facts、Open Beauty Facts、Open Pet Food Facts或开放产品真相",
-  "@search_product_filter_visibility_subtitle": {
-    "description": "Label for showing the product type filter in the search bar"
-  },
   "no_internet_connection": "无互联网连接",
   "@no_internet_connection": {
     "description": "Message when there is no internet connection"
