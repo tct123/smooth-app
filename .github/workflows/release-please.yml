@@ -10,7 +10,7 @@ env:
 
 jobs:
   release-please:
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-latest
     if: github.repository_owner == 'openfoodfacts'
     #permissions:
       #contents: read
