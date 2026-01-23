@@ -1,5 +1,6 @@
 {
   "app_name": "Open Food Facts",
+  "open_prices": "Open Prices",
   "sep": "",
   "@sep": {
     "description": "Separator just before a colon (':'). Probably only populated in French and empty in other languages."
@@ -1080,7 +1081,7 @@
   "@product_improvement_add_category": {
     "description": "Message for ProductImprovement.ADD_CATEGORY"
   },
-  "product_improvement_add_nutrition_facts": "Add nutrition facts to calculate the Nutri-Score.",
+  "product_improvement_add_nutrition_facts": "Дадаць звесткі аб пажыўнасці для разліку Nutri-ацэнкі.",
   "@product_improvement_add_nutrition_facts": {
     "description": "Message for ProductImprovement.ADD_NUTRITION_FACTS"
   },
@@ -2299,6 +2300,7 @@
   "product_type_label_beauty": "Асабістая гігіена",
   "product_type_label_pet_food": "Корм для хатніх жывёл",
   "product_type_label_product": "Other",
+  "product_type_label_unknown": "Невядома",
   "product_type_selection_title": "Тып прадукту",
   "product_type_selection_subtitle": "Выберыце тып гэтага прадукту",
   "product_type_selection_empty": "Спачатку трэба выбраць тып прадукту!",
@@ -2432,6 +2434,7 @@
       }
     }
   },
+  "prices_entry_menu_open_product": "Праглядзець падрабязную інфармацыю аб прадукце",
   "prices_entry_menu_open_product_prices": "Паглядзець усе цэны на гэты тавар",
   "prices_entry_menu_open_proof": "Паглядзець доказ",
   "prices_entry_menu_my_prices": "Глядзіце мае іншыя цэны",
@@ -2652,7 +2655,7 @@
   "@prices_unknown_product": {
     "description": "Very small text, in the context of prices, to say that the product is unknown"
   },
-  "prices_menu_know_more": "Know more about Open Prices",
+  "prices_menu_know_more": "Даведайцеся больш пра адкрытыя цэны",
   "@prices_menu_know_more": {
     "description": "Menu item to open the Open Prices guide"
   },
@@ -3849,7 +3852,7 @@
     }
   },
   "nutriscore_new_formula_title": "Nutri-Score (новы разлік)",
-  "nutriscore_unknown": "Unknown Nutri-Score",
+  "nutriscore_unknown": "Невядомы паказчык харчовай каштоўнасці",
   "nutriscore_unknown_new_formula": "Невядомы Nutri-Score (новы разлік)",
   "nutriscore_not_applicable": "Nutri-Score не ўжываецца",
   "nutriscore_not_applicable_new_formula": "Nutri-Score не ўжываецца (новы разлік)",
@@ -3862,10 +3865,10 @@
   "environmental_score_unknown_new": "Невядомы зялёны бал",
   "environmental_score_not_applicable_new": "Зялёны бал не ўжываецца",
   "nova_group_generic_new": "Ультраапрацаваныя прадукты - групы NOVA",
-  "nova_group_1": "NOVA Group 1",
-  "nova_group_2": "NOVA Group 2",
-  "nova_group_3": "NOVA Group 3",
-  "nova_group_4": "NOVA Group 4",
+  "nova_group_1": "Група НОВА 1",
+  "nova_group_2": "Група НОВА 2",
+  "nova_group_3": "Група НОВА 3",
+  "nova_group_4": "Група НОВА 4",
   "nova_group_unknown": "Невядомая група NOVA",
   "nutrition_facts": "Узровень пажыўных рэчываў",
   "faq_title_partners": "Партнёры і мецэнаты НДА",
@@ -4149,11 +4152,11 @@
   "guide_open_beauty_facts_scores_title": "Заўвага пра падлік ачкоў",
   "guide_open_beauty_facts_scores_paragraph1": "У адрозненне ад харчовых прадуктаў, у свеце касметыкі **няма агульнапрызнанай, падтрыманай урадам сістэмы ацэнкі, такой як Nutri-Score**. Эфекты інгрэдыентаў могуць быць вельмі індывідуальнымі і залежаць ад тыпу скуры, алергій і індывідуальных праблем.",
   "guide_open_beauty_facts_share_link": "https://world-be.openbeautyfacts.org/discover",
-  "guide_open_prices_title": "Welcome to Open Prices!",
+  "guide_open_prices_title": "Вітаем у адкрытых цэнах!",
   "@guide_open_prices_title": {
     "description": "The title of the guide (please don't forget the use of non-breaking spaces)"
   },
-  "guide_open_prices_what_is_open_prices_title": "What is Open Prices?",
+  "guide_open_prices_what_is_open_prices_title": "Што такое адкрытыя цэны?",
   "guide_open_prices_what_is_open_prices_paragraph1": "Open Prices — гэта праект па **зборы і абмене цэнамі на тавары па ўсім свеце**. Гэта агульнадаступны набор даных, які можна выкарыстоўваць для даследаванняў, аналізу і іншых мэтаў. Open Prices распрацаваны і падтрымліваецца Open Food Facts.",
   "@guide_open_prices_what_is_open_prices_paragraph1": {
     "description": "Text between asterisks (eg: **My Text**) means text in bold. Please try to keep it."
@@ -4162,7 +4165,7 @@
   "@guide_open_prices_what_is_open_prices_paragraph2": {
     "description": "Text between asterisks (eg: **My Text**) means text in bold. Please try to keep it."
   },
-  "guide_open_prices_how_title": "How does Open Prices work?",
+  "guide_open_prices_how_title": "Як працуюць адкрытыя цэны?",
   "guide_open_prices_how_paragraph1": "**Мы збіраем набор дадзеных аб цэнах з адкрытым зыходным кодам**. Карыстальнікі могуць дадаваць цэны праз гэтае вэб-прыкладанне або праз афіцыйнае мабільнае прыкладанне Open Food Facts. Рознічныя прадаўцы або праграмы іншых вытворцаў таксама могуць уносіць свой уклад, выкарыстоўваючы наш API.",
   "guide_open_prices_how_arg1_title": "Збірайце фатаграфіі цэннікаў у праходах",
   "guide_open_prices_how_arg2_title": "Збірайце фатаграфіі чэкаў",
@@ -4554,6 +4557,56 @@
   "product_page_tab_for_me": "Для мяне",
   "@product_page_tab_for_me": {
     "description": "Label of the for me tab on the product page"
+  },
+  "product_page_for_me_compatibility_score_title": "Мая сумяшчальнасць",
+  "@product_page_for_me_compatibility_score_title": {
+    "description": "Title for the compatibility score"
+  },
+  "product_page_for_me_compatibility_score_value": "{value}% сумяшчальнасці",
+  "@product_page_for_me_compatibility_score_value": {
+    "description": "Compatibility score value in the For me tab on the product page",
+    "placeholders": {
+      "value": {
+        "type": "int"
+      }
+    }
+  },
+  "product_page_for_me_compatibility_score_uncomputable": "Недастаткова дадзеных для разліку паказчыка сумяшчальнасці.",
+  "@product_page_for_me_compatibility_score_uncomputable": {
+    "description": "Message displayed when there is not enough data to compute a compatibility score for a product"
+  },
+  "product_page_for_me_compatibility_score_unsupported": "Немагчыма вылічыць бал для прадукту тыпу \"{productType}\".",
+  "@product_page_for_me_compatibility_score_unsupported": {
+    "description": "Message displayed when a compatibility score can't be computed for a product",
+    "placeholders": {
+      "productType": {
+        "type": "String"
+      }
+    }
+  },
+  "product_page_for_me_attributes_order_importance": "Важнасць",
+  "@product_page_for_me_attributes_order_importance": {
+    "description": "Button to order the attributes by importance in the For me tab on the product page"
+  },
+  "product_page_for_me_attributes_order_evaluation": "Матчы",
+  "@product_page_for_me_attributes_order_evaluation": {
+    "description": "Button to order the attributes by evaluation score in the For me tab on the product page"
+  },
+  "product_page_for_me_attributes_group_good_matches": "Добрыя матчы",
+  "@product_page_for_me_attributes_group_good_matches": {
+    "description": "Title for the group of attributes that are good matches for the user"
+  },
+  "product_page_for_me_attributes_group_average_matches": "Сярэднія супадзенні",
+  "@product_page_for_me_attributes_group_average_matches": {
+    "description": "Title for the group of attributes that are average matches for the user"
+  },
+  "product_page_for_me_attributes_group_bad_matches": "Дрэнныя супадзенні",
+  "@product_page_for_me_attributes_group_bad_matches": {
+    "description": "Title for the group of attributes that are bad matches for the user"
+  },
+  "product_page_for_me_attributes_group_unknown_matches": "Невядомыя супадзенні",
+  "@product_page_for_me_attributes_group_unknown_matches": {
+    "description": "Title for the group of attributes that are unknown matches for the user"
   },
   "product_page_tab_website": "Вэб-сайт",
   "@product_page_tab_website": {
@@ -5124,7 +5177,7 @@
   "@preferences_faq_discover_opff_title": {
     "description": "Title for discover Open Pet Food Facts tile"
   },
-  "preferences_faq_discover_op_title": "Discover Open Prices",
+  "preferences_faq_discover_op_title": "Адкрыйце цэны",
   "@preferences_faq_discover_op_title": {
     "description": "Title for discover Open Prices tile"
   },
@@ -5340,7 +5393,7 @@
   "@preferences_prices_top_contributors_title": {
     "description": "Title for top contributors tile"
   },
-  "preferences_prices_metrics_title": "Паказчыкі адкрытай цаны",
+  "preferences_prices_metrics_title": "Паказчыкі адкрытых цэн",
   "@preferences_prices_metrics_title": {
     "description": "Title for price metrics tile"
   },
@@ -5626,5 +5679,59 @@
   "location_map_details_postcode": "Паштовы індэкс",
   "location_map_details_country": "Country",
   "location_map_details_coordinates": "Каардынаты",
-  "location_map_details_osm_id": "Ідэнтыфікатар OSM"
+  "location_map_details_osm_id": "Ідэнтыфікатар OSM",
+  "homepage_scanner_back_to_home_button": "Назад дадому",
+  "@homepage_scanner_back_to_home_button": {
+    "description": "Button to go back to home from the scanner page"
+  },
+  "homepage_scanner_toggle_camera_tooltip": "Уключыць/выключыць камеру",
+  "@homepage_scanner_toggle_camera_tooltip": {
+    "description": "Tooltip for the button to toggle the camera on the scanner page"
+  },
+  "homepage_header_barcode_tooltip": "Паказаць сканер штрых-кодаў",
+  "@homepage_header_barcode_tooltip": {
+    "description": "Tooltip for the button to open the barcode scanner from the homepage"
+  },
+  "homepage_scanner_overlay_message": "Націсніце, каб адсканаваць **штрых-код**\nі даведайцеся, ці падыходзіць ён вам!",
+  "@homepage_scanner_overlay_message": {
+    "description": "Message visible above the camera."
+  },
+  "homepage_scanner_toggle_torch_tooltip": "Уключыць/выключыць ліхтарык",
+  "@homepage_scanner_toggle_torch_tooltip": {
+    "description": "Tooltip for the button to toggle the torch on the scanner page"
+  },
+  "homepage_scanner_banner_start_scanning": "Адсканіруйце прадукт, падышоўшы да яго штрых-кода",
+  "@homepage_scanner_banner_start_scanning": {
+    "description": "Banner text shown on the scanner page to prompt user to start scanning a product"
+  },
+  "homepage_scanner_banner_invalid_barcode": "Мы выявілі наступны штрых-код: {barcode}, але, здаецца, ён несапраўдны.",
+  "@homepage_scanner_banner_invalid_barcode": {
+    "description": "Banner text shown on the scanner page when an invalid barcode is detected",
+    "placeholders": {
+      "barcode": {
+        "type": "String"
+      }
+    }
+  },
+  "homepage_horizontal_list_view_more_button": "Паглядзець больш…",
+  "@homepage_horizontal_list_view_more_button": {
+    "description": "Button to see all items in a horizontal list on the homepage"
+  },
+  "homepage_list_most_scanned_title": "Most scanned products",
+  "@homepage_list_most_scanned_title": {
+    "description": "Title for the most scanned products horizontal list on the homepage"
+  },
+  "homepage_list_last_scanned_title": "Апошнія сканаваныя тавары",
+  "@homepage_list_last_scanned_title": {
+    "description": "Title for the last scanned products horizontal list on the homepage"
+  },
+  "percent_value": "{percent}%",
+  "@percent_value": {
+    "description": "A percentage value (you may insert a space before the % sign if needed)",
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  }
 }
